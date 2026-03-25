@@ -21,11 +21,9 @@
       --emerald: #2E8B6A;
       --emerald-dark: #257a5b;
       --emerald-light: #3a9e7a;
-      --silver: #94A3B8;
-      --silver-light: #CBD5E1;
-      --ice-gray: #E2E8F0;
-      --snow: #F8FAFC;
-      --terracotta: #D4956A;
+      --gold: #C9A84C;
+      --gold-light: #D4B96A;
+      --sand: #ECE7DC;
       --charcoal: #2A2A2A;
       --white: #ffffff;
       --text-muted: rgba(247, 245, 240, 0.6);
@@ -157,7 +155,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--silver);
+      background: var(--gold);
       transition: width 0.3s ease;
     }
 
@@ -243,7 +241,7 @@
       width: 600px;
       height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(148, 163, 184, 0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -319,7 +317,7 @@
 
     .hero-headline em {
       font-style: italic;
-      color: var(--silver);
+      color: var(--gold);
     }
 
     .hero-sub {
@@ -382,7 +380,7 @@
     .hero-image-area {
       position: relative;
       aspect-ratio: 4/5;
-      background: linear-gradient(145deg, rgba(46, 139, 106, 0.08), rgba(148, 163, 184, 0.06));
+      background: linear-gradient(145deg, rgba(46, 139, 106, 0.08), rgba(201, 168, 76, 0.06));
       border-radius: 12px;
       border: 1px solid rgba(247, 245, 240, 0.08);
       display: flex;
@@ -401,7 +399,7 @@
       width: 120px;
       height: 120px;
       border-radius: 0 12px 0 0;
-      background: linear-gradient(225deg, rgba(148, 163, 184, 0.12), transparent);
+      background: linear-gradient(225deg, rgba(201, 168, 76, 0.15), transparent);
       pointer-events: none;
     }
 
@@ -433,10 +431,10 @@
 
     /* ═══ MARQUEE LOGOS ═══ */
     #logos {
-      background: var(--snow);
+      background: var(--offwhite);
       padding: 72px 0;
       overflow: hidden;
-      border-top: 3px solid var(--terracotta);
+      border-top: 3px solid var(--gold);
     }
 
     .logos-headline {
@@ -468,12 +466,12 @@
 
     .marquee-wrap::before {
       left: 0;
-      background: linear-gradient(to right, var(--snow), transparent);
+      background: linear-gradient(to right, var(--offwhite), transparent);
     }
 
     .marquee-wrap::after {
       right: 0;
-      background: linear-gradient(to left, var(--snow), transparent);
+      background: linear-gradient(to left, var(--offwhite), transparent);
     }
 
     .marquee {
@@ -520,7 +518,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--silver);
+      background: var(--gold);
       flex-shrink: 0;
     }
 
@@ -611,7 +609,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: clamp(44px, 5vw, 68px);
       font-weight: 400;
-      color: var(--silver);
+      color: var(--gold);
       line-height: 1;
       letter-spacing: -0.02em;
       margin-bottom: 20px;
@@ -700,7 +698,7 @@
     .pitfall-icon svg {
       width: 36px;
       height: 36px;
-      stroke: var(--silver);
+      stroke: var(--gold);
       fill: none;
       stroke-width: 1.5;
       stroke-linecap: round;
@@ -720,7 +718,7 @@
       display: block;
       width: 28px;
       height: 2px;
-      background: var(--terracotta);
+      background: var(--gold);
       margin-bottom: 24px;
     }
 
@@ -734,7 +732,7 @@
 
     /* ═══ SERVICES ═══ */
     #services {
-      background: var(--ice-gray);
+      background: var(--sand);
       padding: 120px 48px;
     }
 
@@ -837,7 +835,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 12px;
       font-weight: 400;
-      color: var(--silver);
+      color: var(--gold);
       letter-spacing: 0.08em;
       margin-bottom: 8px;
       display: block;
@@ -886,112 +884,9 @@
       flex-shrink: 0;
     }
 
-    /* ═══ ICP / WHO WE WORK WITH ═══ */
-    #icp {
-      background: var(--navy);
-      padding: 120px 48px;
-    }
-
-    .icp-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .icp-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--offwhite);
-      max-width: 680px;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-    }
-
-    .icp-intro {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 72px;
-    }
-
-    .icp-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .icp-card {
-      background: rgba(247, 245, 240, 0.04);
-      border: 1px solid rgba(247, 245, 240, 0.08);
-      border-radius: 8px;
-      padding: 44px 40px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .icp-card:hover {
-      background: rgba(247, 245, 240, 0.07);
-      border-color: rgba(148, 163, 184, 0.25);
-    }
-
-    .icp-icon {
-      font-family: 'DM Serif Display', serif;
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--silver);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
-
-    .icp-card-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 21px;
-      font-weight: 400;
-      color: var(--offwhite);
-      line-height: 1.25;
-      margin-bottom: 14px;
-    }
-
-    .icp-card-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-    }
-
-    .icp-note {
-      padding: 28px 36px;
-      background: rgba(46, 139, 106, 0.05);
-      border-left: 3px solid var(--terracotta);
-      border-radius: 0 6px 6px 0;
-    }
-
-    .icp-note p {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .icp-note a {
-      color: var(--emerald-light);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .icp-note a:hover {
-      color: var(--emerald);
-    }
-
     /* ═══ RESULTS ═══ */
     #results {
-      background: var(--snow);
+      background: var(--offwhite);
       padding: 120px 48px;
     }
 
@@ -1038,20 +933,20 @@
     }
 
     .stat-card {
-      background: var(--snow);
+      background: var(--offwhite);
       padding: 52px 36px;
       transition: background 0.2s ease;
     }
 
     .stat-card:hover {
-      background: var(--ice-gray);
+      background: var(--sand);
     }
 
     .stat-number {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(36px, 4vw, 52px);
       font-weight: 400;
-      color: var(--silver);
+      color: var(--gold);
       line-height: 1;
       margin-bottom: 16px;
       letter-spacing: -0.02em;
@@ -1169,7 +1064,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--silver);
+      color: var(--gold);
       margin-bottom: 8px;
       display: block;
     }
@@ -1242,100 +1137,11 @@
       content: '\2192';
     }
 
-    /* ═══ TESTIMONIALS ═══ */
-    #testimonials {
-      background: var(--ice-gray);
-      padding: 120px 48px;
-    }
-
-    .testimonials-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .testimonials-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
-      max-width: 480px;
-      letter-spacing: -0.01em;
-      margin-bottom: 56px;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 44px 36px;
-      border: 1px solid rgba(30, 58, 95, 0.06);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(30, 58, 95, 0.08);
-    }
-
-    .testimonial-quote {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.65;
-      color: var(--navy);
-      flex: 1;
-    }
-
-    .testimonial-attribution {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(30, 58, 95, 0.08);
-    }
-
-    .testimonial-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0.03em;
-    }
-
-    .testimonial-company {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--text-dark-muted);
-    }
-
-    .testimonial-placeholder-note {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--terracotta);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 8px;
-    }
-
     /* ═══ VALUES ═══ */
     #values {
-      background: var(--ice-gray);
+      background: var(--sand);
       padding: 100px 48px;
       overflow: hidden;
-      border-top: 1px solid rgba(30, 58, 95, 0.08);
     }
 
     .values-inner {
@@ -1389,7 +1195,7 @@
 
     /* ═══ ABOUT ═══ */
     #about {
-      background: var(--snow);
+      background: var(--offwhite);
       padding: 120px 48px;
     }
 
@@ -1482,79 +1288,31 @@
     /* ═══ CTA BAND ═══ */
     #cta-band {
       background: var(--emerald);
-      padding: 100px 48px;
+      padding: 80px 48px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #cta-band::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     .cta-band-inner {
-      max-width: 780px;
+      max-width: 700px;
       margin: 0 auto;
-      position: relative;
-    }
-
-    .cta-band-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-band-eyebrow::before,
-    .cta-band-eyebrow::after {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.4);
     }
 
     .cta-band-headline {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(30px, 3.8vw, 50px);
+      font-size: clamp(28px, 3.5vw, 44px);
       font-weight: 400;
       color: var(--white);
-      margin-bottom: 20px;
-      line-height: 1.12;
+      margin-bottom: 16px;
+      line-height: 1.15;
     }
 
     .cta-band-sub {
       font-family: 'Inter', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.78);
-      margin-bottom: 44px;
-      line-height: 1.65;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-band-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 36px;
+      line-height: 1.6;
     }
 
     .btn-cta-band {
@@ -1564,7 +1322,7 @@
       font-weight: 600;
       color: var(--emerald);
       background: var(--white);
-      padding: 18px 44px;
+      padding: 16px 40px;
       border-radius: 6px;
       text-decoration: none;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1572,29 +1330,7 @@
 
     .btn-cta-band:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
-    }
-
-    .cta-band-link {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease, gap 0.2s ease;
-    }
-
-    .cta-band-link:hover {
-      color: var(--white);
-      gap: 12px;
-    }
-
-    .cta-band-link::after {
-      content: '\2192';
-      font-size: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
     /* ═══ FOOTER ═══ */
@@ -1800,11 +1536,6 @@
       #services { padding: 80px 24px; }
       .services-grid { grid-template-columns: 1fr; }
 
-      #icp { padding: 80px 24px; }
-      .icp-grid { grid-template-columns: 1fr; }
-      .icp-card { padding: 36px 28px; }
-      .icp-note { padding: 24px 28px; }
-
       #results { padding: 80px 24px; }
       .results-top { flex-direction: column; gap: 24px; margin-bottom: 48px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1815,10 +1546,6 @@
       .case-grid { grid-template-columns: 1fr; gap: 16px; }
       .case-card { padding: 40px 32px; min-height: auto; }
 
-      #testimonials { padding: 80px 24px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .testimonial-card { padding: 36px 28px; }
-
       #values { padding: 64px 24px; }
       .values-strip { gap: 24px; justify-content: flex-start; }
 
@@ -1826,8 +1553,7 @@
       .about-inner { grid-template-columns: 1fr; gap: 48px; }
       .about-image-box { aspect-ratio: 16/9; }
 
-      #cta-band { padding: 72px 24px; }
-      .cta-band-actions { flex-direction: column; align-items: center; gap: 16px; }
+      #cta-band { padding: 64px 24px; }
 
       footer { padding: 64px 24px 36px; }
       .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; padding-bottom: 40px; }
@@ -1862,7 +1588,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="btn-nav">Get a Free Audit</a></li>
+      <li><a href="#contact" class="btn-nav">Let's Talk</a></li>
     </ul>
   </nav>
 
@@ -1877,10 +1603,10 @@
           <em>without compromise.</em>
         </h1>
         <p class="hero-sub reveal reveal-delay-2">
-          Stonecutter partners with established beauty, wellness, and CPG brands to scale profitably on Amazon. Strategic depth, operational precision, genuine partnership — built around your brand's long-term success.
+          Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon. Strategic depth, operational rigor, genuine partnership.
         </p>
         <div class="hero-ctas reveal reveal-delay-3">
-          <a href="#contact" class="btn-primary">Get Your Free Audit</a>
+          <a href="#contact" class="btn-primary">Work With Us</a>
           <a href="#work" class="btn-secondary">See Our Work</a>
         </div>
       </div>
@@ -1897,30 +1623,30 @@
     </div>
   </section>
 
-  <!-- ═══ SCROLLING MARQUEE ═══ -->
+  <!-- ═══ SCROLLING CLIENT LOGOS ═══ -->
   <section id="logos">
     <h2 class="logos-headline reveal">Trusted by brands doing $220M+ on Amazon.</h2>
     <div class="marquee-wrap">
       <div class="marquee" aria-hidden="true">
-        <div class="marquee-item">P&G-Owned Skincare</div>
-        <div class="marquee-item">DTC Sports Brand</div>
-        <div class="marquee-item">Wellness Supplements</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">Children's Health</div>
-        <div class="marquee-item">Prenatal Nutrition</div>
-        <div class="marquee-item">Clean Beauty</div>
-        <div class="marquee-item">Natural Deodorant</div>
-        <div class="marquee-item">Kitchen Innovations</div>
+        <div class="marquee-item">First Aid Beauty</div>
+        <div class="marquee-item">CRBN Pickleball</div>
+        <div class="marquee-item">JSHealth Vitamins</div>
+        <div class="marquee-item">Pet Honesty</div>
+        <div class="marquee-item">Hiya Health</div>
+        <div class="marquee-item">Needed</div>
+        <div class="marquee-item">OGEE</div>
+        <div class="marquee-item">Off Topic</div>
+        <div class="marquee-item">Tumbler</div>
         <!-- duplicate for seamless loop -->
-        <div class="marquee-item">P&G-Owned Skincare</div>
-        <div class="marquee-item">DTC Sports Brand</div>
-        <div class="marquee-item">Wellness Supplements</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">Children's Health</div>
-        <div class="marquee-item">Prenatal Nutrition</div>
-        <div class="marquee-item">Clean Beauty</div>
-        <div class="marquee-item">Natural Deodorant</div>
-        <div class="marquee-item">Kitchen Innovations</div>
+        <div class="marquee-item">First Aid Beauty</div>
+        <div class="marquee-item">CRBN Pickleball</div>
+        <div class="marquee-item">JSHealth Vitamins</div>
+        <div class="marquee-item">Pet Honesty</div>
+        <div class="marquee-item">Hiya Health</div>
+        <div class="marquee-item">Needed</div>
+        <div class="marquee-item">OGEE</div>
+        <div class="marquee-item">Off Topic</div>
+        <div class="marquee-item">Tumbler</div>
       </div>
     </div>
     <div class="marquee-wrap" style="margin-top: 0;">
@@ -2076,40 +1802,6 @@
     </div>
   </section>
 
-  <!-- ═══ WHO WE WORK WITH ═══ -->
-  <section id="icp">
-    <div class="icp-inner">
-      <span class="section-label reveal">Who We Work With</span>
-      <h2 class="icp-headline reveal reveal-delay-1">Built for brands that are serious about Amazon.</h2>
-      <p class="icp-intro reveal reveal-delay-2">We're selective by design. Our model is built around depth, not volume — which means we only take on partners where we're confident we can move the needle.</p>
-      <div class="icp-grid">
-        <div class="icp-card reveal reveal-delay-1">
-          <div class="icp-icon">$10M+</div>
-          <h3 class="icp-card-title">Established Amazon Revenue</h3>
-          <p class="icp-card-body">Or a clear, funded trajectory to get there. We partner with brands that have proven product-market fit and are ready to scale — not startups finding their footing.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-2">
-          <div class="icp-icon">CPG</div>
-          <h3 class="icp-card-title">Beauty, Wellness & Consumer Goods</h3>
-          <p class="icp-card-body">Our expertise runs deepest in health, wellness, skincare, and CPG — categories where brand integrity and customer trust matter most on Amazon.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-3">
-          <div class="icp-icon">3–5yr</div>
-          <h3 class="icp-card-title">Long-Term Partnership Mindset</h3>
-          <p class="icp-card-body">We look for brands that value sustainable growth over short-term gains. Our best relationships are multi-year partnerships built on genuine trust and shared accountability.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-4">
-          <div class="icp-icon">↑ DTC</div>
-          <h3 class="icp-card-title">Strong Off-Amazon Presence</h3>
-          <p class="icp-card-body">Brands investing significantly in social and DTC — typically $3M+ in external media. Amazon should amplify what you've already built, not replace it.</p>
-        </div>
-      </div>
-      <div class="icp-note reveal">
-        <p>Not sure if you're a fit? <a href="#contact">Reach out anyway</a> — we're happy to have an honest conversation about where you are and what you actually need.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══ RESULTS ═══ -->
   <section id="results">
     <div class="results-inner">
@@ -2144,101 +1836,67 @@
       <div class="work-header">
         <div>
           <span class="section-label reveal">Selected Work</span>
-          <h2 class="work-headline reveal reveal-delay-1">Real results, real categories.</h2>
+          <h2 class="work-headline reveal reveal-delay-1">Brand stories, Amazon results.</h2>
         </div>
-        <a href="#contact" class="work-link reveal reveal-delay-2">Start a conversation</a>
+        <a href="#contact" class="work-link reveal reveal-delay-2">View all work</a>
       </div>
       <div class="case-grid">
         <div class="case-card reveal reveal-delay-1">
           <div>
             <div class="case-top">
-              <span class="case-brand">P&G-Owned Skincare Brand</span>
-              <span class="case-category">Premium Skincare</span>
+              <span class="case-brand">First Aid Beauty</span>
+              <span class="case-category">Skincare / P&G</span>
             </div>
             <div class="case-metric">
               <span class="case-metric-number">+143%</span>
               <span class="case-metric-label">YoY Revenue Growth</span>
             </div>
-            <p class="case-result">Rebuilt branded search strategy after a <em>27% search volume decline,</em> recovering visibility and category rank within 60 days.</p>
+            <p class="case-result">Rebuilt branded search strategy after a <em>27% search volume decline,</em> recovering visibility within 60 days.</p>
           </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <a href="#contact" class="case-read-more">Read More</a>
         </div>
         <div class="case-card reveal reveal-delay-2">
           <div>
             <div class="case-top">
-              <span class="case-brand">DTC Sports Equipment Brand</span>
-              <span class="case-category">Sports & Outdoors</span>
+              <span class="case-brand">CRBN Pickleball</span>
+              <span class="case-category">Sports Equipment</span>
             </div>
             <div class="case-metric">
               <span class="case-metric-number">5.1x</span>
               <span class="case-metric-label">ROAS</span>
             </div>
-            <p class="case-result">Built category authority from scratch, reaching <em>page-one search dominance</em> in 90 days within a highly competitive sports market.</p>
+            <p class="case-result">Built category authority from scratch, reaching <em>page-one search dominance</em> in 90 days in a competitive sports market.</p>
           </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <a href="#contact" class="case-read-more">Read More</a>
         </div>
         <div class="case-card reveal reveal-delay-3">
           <div>
             <div class="case-top">
-              <span class="case-brand">International Wellness Supplement Brand</span>
-              <span class="case-category">Health & Wellness</span>
+              <span class="case-brand">JSHealth Vitamins</span>
+              <span class="case-category">Wellness Supplements</span>
             </div>
             <div class="case-metric">
               <span class="case-metric-number">2.8x</span>
               <span class="case-metric-label">YoY Growth</span>
             </div>
-            <p class="case-result">Dominant keyword presence and <em>multi-market expansion strategy</em> driving compounding growth across health and beauty categories.</p>
+            <p class="case-result">Dominant keyword presence and <em>international expansion strategy</em> driving compounding growth across multiple categories.</p>
           </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <a href="#contact" class="case-read-more">Read More</a>
         </div>
         <div class="case-card reveal reveal-delay-4">
           <div>
             <div class="case-top">
-              <span class="case-brand">Premium Pet Supplement Brand</span>
-              <span class="case-category">Pet Health</span>
+              <span class="case-brand">Pet Honesty</span>
+              <span class="case-category">Pet Supplements</span>
             </div>
             <div class="case-metric">
               <span class="case-metric-number">4.2x</span>
               <span class="case-metric-label">ROAS</span>
             </div>
-            <p class="case-result">Navigated complex SKU subscription transfers and <em>inventory restructuring</em> while maintaining growth trajectory and subscriber retention.</p>
+            <p class="case-result">Complex SKU subscription transfers and <em>inventory management</em> while maintaining growth trajectory and operational stability.</p>
           </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <a href="#contact" class="case-read-more">Read More</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TESTIMONIALS ═══ -->
-  <section id="testimonials">
-    <div class="testimonials-inner">
-      <span class="section-label-dark reveal">Client Perspective</span>
-      <h2 class="testimonials-headline reveal reveal-delay-1">What our partners say.</h2>
-      <div class="testimonials-grid">
-        <blockquote class="testimonial-card reveal reveal-delay-1">
-          <p class="testimonial-quote">"Stonecutter doesn't feel like a vendor — they feel like part of our internal team. The proactivity and strategic depth is unlike any agency we've worked with."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">VP of E-Commerce</span>
-            <span class="testimonial-company">P&G-owned skincare brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-card reveal reveal-delay-2">
-          <p class="testimonial-quote">"We went from a messy Amazon presence to category leaders within a year. The combination of ad strategy and catalog optimization is what makes the real difference."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">Founder & CEO</span>
-            <span class="testimonial-company">DTC wellness supplement brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-card reveal reveal-delay-3">
-          <p class="testimonial-quote">"Most agencies hand you reports. Stonecutter gives you decisions. That shift in how we think about Amazon data has been genuinely transformative."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">Head of Digital</span>
-            <span class="testimonial-company">Premium CPG brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
-        </blockquote>
       </div>
     </div>
   </section>
@@ -2267,7 +1925,7 @@
           We built Stonecutter for brands that care about how they grow, not just how fast. We combine strategic depth with operational precision to protect your brand equity while scaling your Amazon business.
         </p>
         <p class="about-detail reveal reveal-delay-3">
-          Most Amazon agencies are built around volume. We're built around quality. Fewer clients, deeper relationships, and a genuine stake in the outcome. We operate with a "fail together, win together" philosophy, and we turn away clients that don't fit our profile — even when it's lucrative to say yes.
+          Most Amazon agencies are built around volume. We're built around quality. Fewer clients, deeper relationships, and a genuine stake in the outcome. We operate with a "fail together, win together" philosophy, and we reject clients that don't fit our profile, even if they're lucrative.
         </p>
         <div class="about-badges reveal reveal-delay-4">
           <span class="badge">Amazon Verified Partner</span>
@@ -2292,13 +1950,9 @@
   <!-- ═══ CTA BAND ═══ -->
   <section id="cta-band">
     <div class="cta-band-inner">
-      <div class="cta-band-eyebrow reveal">Free Amazon Audit</div>
-      <h2 class="cta-band-headline reveal reveal-delay-1">Your Amazon channel is either an asset or a liability.</h2>
-      <p class="cta-band-sub reveal reveal-delay-2">Start with a free audit — no commitment, no pitch deck. Just an honest look at where your brand stands on Amazon and what's realistically possible.</p>
-      <div class="cta-band-actions reveal reveal-delay-3">
-        <a href="mailto:lee@stonecutter.nyc" class="btn-cta-band">Schedule a Free Audit</a>
-        <a href="#work" class="cta-band-link">See our work first</a>
-      </div>
+      <h2 class="cta-band-headline reveal">Ready to take Amazon seriously?</h2>
+      <p class="cta-band-sub reveal reveal-delay-1">Let's start with a conversation about where your brand stands today and where it should be.</p>
+      <a href="mailto:lee@stonecutter.nyc" class="btn-cta-band reveal reveal-delay-2">Start a Conversation</a>
     </div>
   </section>
 
@@ -2319,7 +1973,7 @@
           <div class="footer-contact">
             <span class="footer-contact-label">Get in touch</span>
             <a href="mailto:lee@stonecutter.nyc" class="footer-email">lee@stonecutter.nyc</a>
-            <a href="mailto:lee@stonecutter.nyc" class="btn-footer">Schedule a Free Audit</a>
+            <a href="mailto:lee@stonecutter.nyc" class="btn-footer">Start a Conversation</a>
           </div>
         </div>
       </div>
