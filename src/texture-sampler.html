@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter — Background Texture Sampler</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #EDE8E0; color: #033F63; }
+  
+  .header {
+    text-align: center; padding: 60px 40px 20px;
+  }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; margin-bottom: 10px; }
+  .header p { color: #6B7B8D; max-width: 600px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6; }
+
+  .sample {
+    max-width: 1100px;
+    margin: 40px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(3,63,99,0.06);
+  }
+  .sample-label {
+    background: #033F63;
+    color: #EDE8E0;
+    padding: 14px 28px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sample-label span { opacity: 0.5; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .sample-body {
+    padding: 60px 50px;
+    position: relative;
+  }
+  .sample-body h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  .sample-body p {
+    color: #6B7B8D;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 550px;
+  }
+  .sample-body .stats {
+    display: flex;
+    gap: 50px;
+    margin-top: 28px;
+  }
+  .sample-body .stat h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: #28666E;
+  }
+  .sample-body .stat span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7B8D;
+  }
+
+  /* ===== TEXTURE 1: DOTS ===== */
+  .tex-dots {
+    background-color: #EDE8E0;
+    background-image: radial-gradient(circle, #D4CFC7 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ===== TEXTURE 2: FINE DOTS (smaller, more subtle) ===== */
+  .tex-fine-dots {
+    background-color: #EDE8E0;
+    background-image: radial-gradient(circle, #D8D3CB 0.8px, transparent 0.8px);
+    background-size: 16px 16px;
+  }
+
+  /* ===== TEXTURE 3: HORIZONTAL LINES ===== */
+  .tex-lines {
+    background-color: #EDE8E0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 19px,
+      #D4CFC7 19px,
+      #D4CFC7 20px
+    );
+  }
+
+  /* ===== TEXTURE 4: DIAGONAL LINES ===== */
+  .tex-diagonal {
+    background-color: #EDE8E0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 14px,
+      #D8D3CB 14px,
+      #D8D3CB 15px
+    );
+  }
+
+  /* ===== TEXTURE 5: CROSSHATCH ===== */
+  .tex-crosshatch {
+    background-color: #EDE8E0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 23px,
+        #D8D3CB 23px,
+        #D8D3CB 24px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 23px,
+        #D8D3CB 23px,
+        #D8D3CB 24px
+      );
+  }
+
+  /* ===== TEXTURE 6: GRAIN / NOISE (CSS-only) ===== */
+  .tex-grain {
+    background-color: #EDE8E0;
+    position: relative;
+  }
+  .tex-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    pointer-events: none;
+    opacity: 1;
+  }
+  .tex-grain > * { position: relative; z-index: 1; }
+
+  /* ===== TEXTURE 7: TOPOGRAPHIC WAVES ===== */
+  .tex-topo {
+    background-color: #EDE8E0;
+    background-image: url("data:image/svg+xml,%3Csvg width='400' height='200' viewBox='0 0 400 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,80 C50,60 100,100 150,80 C200,60 250,100 300,80 C350,60 400,100 400,80' stroke='%23D4CFC7' fill='none' stroke-width='1'/%3E%3Cpath d='M0,100 C50,80 100,120 150,100 C200,80 250,120 300,100 C350,80 400,120 400,100' stroke='%23D4CFC7' fill='none' stroke-width='1'/%3E%3Cpath d='M0,120 C50,100 100,140 150,120 C200,100 250,140 300,120 C350,100 400,140 400,120' stroke='%23D4CFC7' fill='none' stroke-width='1'/%3E%3Cpath d='M0,140 C50,120 100,160 150,140 C200,120 250,160 300,140 C350,120 400,160 400,140' stroke='%23D4CFC7' fill='none' stroke-width='1'/%3E%3Cpath d='M0,160 C50,140 100,180 150,160 C200,140 250,180 300,160 C350,140 400,180 400,160' stroke='%23D4CFC7' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 400px 200px;
+  }
+
+  /* ===== TEXTURE 8: LARGE SCATTERED DOTS (organic) ===== */
+  .tex-scatter {
+    background-color: #EDE8E0;
+    background-image:
+      radial-gradient(circle at 15% 25%, #D4CFC7 2px, transparent 2px),
+      radial-gradient(circle at 85% 15%, #D4CFC7 1.5px, transparent 1.5px),
+      radial-gradient(circle at 45% 75%, #D4CFC7 2.5px, transparent 2.5px),
+      radial-gradient(circle at 75% 55%, #D4CFC7 1.8px, transparent 1.8px),
+      radial-gradient(circle at 25% 65%, #D4CFC7 1.2px, transparent 1.2px),
+      radial-gradient(circle at 60% 30%, #D4CFC7 2px, transparent 2px),
+      radial-gradient(circle at 35% 45%, #D4CFC7 1.5px, transparent 1.5px),
+      radial-gradient(circle at 90% 80%, #D4CFC7 2px, transparent 2px),
+      radial-gradient(circle at 10% 90%, #D4CFC7 1.8px, transparent 1.8px),
+      radial-gradient(circle at 55% 10%, #D4CFC7 1.3px, transparent 1.3px);
+    background-size: 200px 200px;
+  }
+
+  /* ===== TEXTURE 9: SUBTLE CHEVRONS ===== */
+  .tex-chevron {
+    background-color: #EDE8E0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 L30,15 L60,30' stroke='%23D4CFC7' fill='none' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 60px 30px;
+  }
+
+  /* ===== TEXTURE 10: TINTED DOTS (using palette color) ===== */
+  .tex-tinted-dots {
+    background-color: #EDE8E0;
+    background-image: radial-gradient(circle, rgba(124,152,133,0.12) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+
+  /* ===== TEXTURE 11: TINTED DIAGONAL (sage) ===== */
+  .tex-tinted-diagonal {
+    background-color: #EDE8E0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(124,152,133,0.1) 18px,
+      rgba(124,152,133,0.1) 19px
+    );
+  }
+
+  /* ===== TEXTURE 12: GRADIENT FADE (no pattern) ===== */
+  .tex-gradient {
+    background: linear-gradient(180deg, #EDE8E0 0%, #E4DED4 50%, #EDE8E0 100%);
+  }
+
+  /* ===== COMPARISON: PLAIN ===== */
+  .tex-plain {
+    background-color: #EDE8E0;
+  }
+
+  /* ===== MIXED DEMO ===== */
+  .flow-demo {
+    max-width: 1100px;
+    margin: 60px auto 40px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(3,63,99,0.06);
+  }
+  .flow-section {
+    padding: 50px;
+  }
+  .flow-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  .flow-section p {
+    color: #6B7B8D;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .flow-section .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 768px) {
+    .sample-body { padding: 40px 24px; }
+    .sample-body .stats { gap: 24px; flex-wrap: wrap; }
+    .flow-section { padding: 36px 24px; }
+    .header { padding: 40px 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Background Texture Sampler</h1>
+  <p>Different ways to add depth to cream sections. Each texture is CSS-only, lightweight, and stays in the Stonecutter palette. All are subtle enough to not compete with content.</p>
+</div>
+
+<!-- 1: DOTS -->
+<div class="sample">
+  <div class="sample-label">1. Dot Grid <span>Regular spaced dots — clean, geometric, modern</span></div>
+  <div class="sample-body tex-dots">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2: FINE DOTS -->
+<div class="sample">
+  <div class="sample-label">2. Fine Dot Grid <span>Smaller, tighter — almost like paper texture</span></div>
+  <div class="sample-body tex-fine-dots">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3: HORIZONTAL LINES -->
+<div class="sample">
+  <div class="sample-label">3. Horizontal Lines <span>Notebook/ledger feel — structured, editorial</span></div>
+  <div class="sample-body tex-lines">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4: DIAGONAL LINES -->
+<div class="sample">
+  <div class="sample-label">4. Diagonal Lines <span>Subtle motion — more dynamic than horizontal</span></div>
+  <div class="sample-body tex-diagonal">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5: CROSSHATCH -->
+<div class="sample">
+  <div class="sample-label">5. Crosshatch Grid <span>Graph paper feel — precise, analytical</span></div>
+  <div class="sample-body tex-crosshatch">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 6: GRAIN -->
+<div class="sample">
+  <div class="sample-label">6. Film Grain <span>Organic noise overlay — warm, tactile, premium</span></div>
+  <div class="sample-body tex-grain">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7: TOPO WAVES -->
+<div class="sample">
+  <div class="sample-label">7. Topographic Waves <span>Flowing organic lines — unique, elevated</span></div>
+  <div class="sample-body tex-topo">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 8: SCATTERED DOTS -->
+<div class="sample">
+  <div class="sample-label">8. Scattered Dots <span>Organic, random placement — feels hand-placed</span></div>
+  <div class="sample-body tex-scatter">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 9: CHEVRONS -->
+<div class="sample">
+  <div class="sample-label">9. Subtle Chevrons <span>Directional energy — growth-oriented</span></div>
+  <div class="sample-body tex-chevron">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10: TINTED DOTS -->
+<div class="sample">
+  <div class="sample-label">10. Sage-Tinted Dots <span>Dots using palette color (sage) — adds warmth</span></div>
+  <div class="sample-body tex-tinted-dots">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 11: TINTED DIAGONAL -->
+<div class="sample">
+  <div class="sample-label">11. Sage-Tinted Diagonals <span>Diagonals in palette color — subtle but present</span></div>
+  <div class="sample-body tex-tinted-diagonal">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 12: GRADIENT -->
+<div class="sample">
+  <div class="sample-label">12. Subtle Gradient <span>No pattern — just a gentle darkening in the middle</span></div>
+  <div class="sample-body tex-gradient">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAIN FOR COMPARISON -->
+<div class="sample">
+  <div class="sample-label">Plain Cream (for comparison) <span>No texture — baseline</span></div>
+  <div class="sample-body tex-plain">
+    <h2>Built on Results</h2>
+    <p>$220M+ in managed revenue across 14 premium brands. We don't just promise growth — we deliver it.</p>
+    <div class="stats">
+      <div class="stat"><h3>$220M+</h3><span>Managed Revenue</span></div>
+      <div class="stat"><h3>14</h3><span>Premium Brands</span></div>
+      <div class="stat"><h3>92%</h3><span>Client Retention</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FLOW DEMO: Mixing textures across sections ===== -->
+<div class="header" style="margin-top: 60px;">
+  <h1>Mixed Texture Flow</h1>
+  <p>How different textures might alternate between sections to create visual rhythm while keeping the cream base.</p>
+</div>
+
+<div class="flow-demo">
+  <div class="flow-section tex-plain">
+    <div class="tag" style="background: rgba(40,102,110,0.1); color: #28666E;">Hero</div>
+    <h2>Your Brand Deserves a Better Partner.</h2>
+    <p>Clean cream — hero stays clean and uncluttered.</p>
+  </div>
+  <div class="flow-section tex-fine-dots">
+    <div class="tag" style="background: rgba(124,152,133,0.15); color: #7C9885;">Stats Section</div>
+    <h2>$220M+ in Managed Revenue</h2>
+    <p>Fine dots add subtle texture — differentiates from hero above.</p>
+  </div>
+  <div class="flow-section tex-plain">
+    <div class="tag" style="background: rgba(40,102,110,0.1); color: #28666E;">Services</div>
+    <h2>End-to-End Amazon Expertise</h2>
+    <p>Back to clean cream — let the service cards breathe.</p>
+  </div>
+  <div class="flow-section tex-tinted-diagonal">
+    <div class="tag" style="background: rgba(181,182,130,0.15); color: #7C9885;">Case Studies</div>
+    <h2>Real Results for Real Brands</h2>
+    <p>Sage diagonals — signals a different content type.</p>
+  </div>
+  <div class="flow-section tex-plain">
+    <div class="tag" style="background: rgba(40,102,110,0.1); color: #28666E;">Testimonials</div>
+    <h2>What Clients Say</h2>
+    <p>Clean again — quotes need readability.</p>
+  </div>
+  <div class="flow-section tex-topo">
+    <div class="tag" style="background: rgba(3,63,99,0.1); color: #033F63;">About</div>
+    <h2>A Different Kind of Amazon Partner</h2>
+    <p>Topographic waves — unique, premium, memorable.</p>
+  </div>
+</div>
+
+<div style="text-align: center; padding: 40px 20px 60px; color: #6B7B8D; font-size: 0.85rem;">
+  <p><strong>My picks for Stonecutter:</strong> Fine Dots (#2) for stats/data sections, Sage Diagonals (#11) for case studies, and Topographic Waves (#7) for the about section. Mix with plain cream for hero, services, and testimonials.</p>
+</div>
+
+</body>
+</html>
