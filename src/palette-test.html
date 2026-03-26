@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter Palette Test</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f5f5f5; padding: 40px 20px; }
+  h1 { font-family: 'DM Serif Display', serif; text-align: center; margin-bottom: 10px; font-size: 2rem; }
+  .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 0.95rem; }
+  
+  .section { max-width: 1000px; margin: 0 auto 60px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
+  
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  
+  .card {
+    border-radius: 12px;
+    padding: 30px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 8px; }
+  .card p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 12px; }
+  .card .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.6; }
+  
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin: 4px 4px 4px 0;
+  }
+  .underline-demo {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    padding-bottom: 4px;
+    margin-top: 8px;
+  }
+  
+  .compare { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+  .compare > div { flex: 1; min-width: 280px; }
+  .compare .tag { 
+    display: inline-block; 
+    background: rgba(0,0,0,0.15); 
+    padding: 3px 10px; 
+    border-radius: 20px; 
+    font-size: 0.7rem; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  /* Colors */
+  .bg-cream { background: #EDE8E0; }
+  .bg-navy { background: #1E3A5F; }
+  .bg-hunter { background: #355E3B; }
+  .bg-burnt { background: #CC5500; }
+  .bg-terra { background: #70301E; }
+  .bg-sand { background: #C4A882; }
+  .bg-gold { background: #FEDC97; }
+  .bg-gunmetal { background: #6B7B8D; }
+  
+  .text-cream { color: #EDE8E0; }
+  .text-navy { color: #1E3A5F; }
+  .text-hunter { color: #355E3B; }
+  .text-burnt { color: #CC5500; }
+  .text-terra { color: #70301E; }
+  .text-sand { color: #C4A882; }
+  .text-gold { color: #FEDC97; }
+  .text-gunmetal { color: #6B7B8D; }
+</style>
+</head>
+<body>
+
+<h1>Stonecutter Palette Lab</h1>
+<p class="subtitle">Side-by-side comparisons to lock down the final palette</p>
+
+<!-- ========== POP COLOR ON DARK BACKGROUNDS ========== -->
+<div class="section">
+  <h2>🔥 Pop Color on Dark Backgrounds — Burnt Orange vs Rich Terra</h2>
+  
+  <div class="grid">
+    <!-- Navy bg -->
+    <div class="card bg-navy">
+      <div>
+        <span class="label text-cream">On Navy #1E3A5F</span>
+        <h3 style="color: #CC5500;">Burnt Orange</h3>
+        <p style="color: #CC5500;">#CC5500 — current pop color</p>
+        <span class="btn" style="background: #CC5500; color: #EDE8E0;">Get Started →</span>
+      </div>
+    </div>
+    <div class="card bg-navy">
+      <div>
+        <span class="label text-cream">On Navy #1E3A5F</span>
+        <h3 style="color: #70301E;">Rich Terra</h3>
+        <p style="color: #70301E;">#70301E — proposed alternative</p>
+        <span class="btn" style="background: #70301E; color: #EDE8E0;">Get Started →</span>
+      </div>
+    </div>
+    
+    <!-- Hunter bg -->
+    <div class="card bg-hunter">
+      <div>
+        <span class="label text-cream">On Hunter Green #355E3B</span>
+        <h3 style="color: #CC5500;">Burnt Orange</h3>
+        <p style="color: #CC5500;">#CC5500 — current pop color</p>
+        <span class="btn" style="background: #CC5500; color: #EDE8E0;">Learn More →</span>
+      </div>
+    </div>
+    <div class="card bg-hunter">
+      <div>
+        <span class="label text-cream">On Hunter Green #355E3B</span>
+        <h3 style="color: #70301E;">Rich Terra</h3>
+        <p style="color: #70301E;">#70301E — proposed alternative</p>
+        <span class="btn" style="background: #70301E; color: #EDE8E0;">Learn More →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== POP COLOR ON CREAM ========== -->
+<div class="section">
+  <h2>☀️ Pop Color on Cream — Both Should Work Here</h2>
+  
+  <div class="grid">
+    <div class="card bg-cream">
+      <div>
+        <span class="label text-gunmetal">On Cream #EDE8E0</span>
+        <h3 class="text-navy">Burnt Orange Accents</h3>
+        <p class="text-gunmetal">Underlines, CTAs, highlights</p>
+        <div class="underline-demo text-navy" style="border-bottom: 3px solid #CC5500;">Strategy That Scales</div>
+        <br>
+        <span class="btn" style="background: #CC5500; color: #EDE8E0;">Get a Free Audit →</span>
+      </div>
+    </div>
+    <div class="card bg-cream">
+      <div>
+        <span class="label text-gunmetal">On Cream #EDE8E0</span>
+        <h3 class="text-navy">Rich Terra Accents</h3>
+        <p class="text-gunmetal">Underlines, CTAs, highlights</p>
+        <div class="underline-demo text-navy" style="border-bottom: 3px solid #70301E;">Strategy That Scales</div>
+        <br>
+        <span class="btn" style="background: #70301E; color: #EDE8E0;">Get a Free Audit →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SUBTLE ACCENT — SAND vs GOLD ========== -->
+<div class="section">
+  <h2>✨ Subtle Accent — Sand vs Gold</h2>
+  
+  <div class="grid">
+    <!-- On cream -->
+    <div class="card bg-cream" style="border: 2px solid #C4A882;">
+      <div>
+        <span class="label text-gunmetal">Sand #C4A882 on Cream</span>
+        <h3 class="text-navy">Warm & Muted</h3>
+        <p class="text-gunmetal">Borders, dividers, subtle highlights</p>
+        <div style="height: 4px; background: #C4A882; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+        <span class="btn" style="background: #C4A882; color: #1E3A5F;">Secondary Action</span>
+      </div>
+    </div>
+    <div class="card bg-cream" style="border: 2px solid #FEDC97;">
+      <div>
+        <span class="label text-gunmetal">Gold #FEDC97 on Cream</span>
+        <h3 class="text-navy">Bright & Warm</h3>
+        <p class="text-gunmetal">Borders, dividers, subtle highlights</p>
+        <div style="height: 4px; background: #FEDC97; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+        <span class="btn" style="background: #FEDC97; color: #1E3A5F;">Secondary Action</span>
+      </div>
+    </div>
+    
+    <!-- On navy -->
+    <div class="card bg-navy">
+      <div>
+        <span class="label text-cream">Sand #C4A882 on Navy</span>
+        <h3 style="color: #C4A882;">Understated Warmth</h3>
+        <p class="text-cream">Accents, labels, subtle text</p>
+        <div style="height: 4px; background: #C4A882; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+        <span class="btn" style="background: #C4A882; color: #1E3A5F;">Learn More</span>
+      </div>
+    </div>
+    <div class="card bg-navy">
+      <div>
+        <span class="label text-cream">Gold #FEDC97 on Navy</span>
+        <h3 style="color: #FEDC97;">Golden Highlight</h3>
+        <p class="text-cream">Accents, labels, subtle text</p>
+        <div style="height: 4px; background: #FEDC97; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+        <span class="btn" style="background: #FEDC97; color: #1E3A5F;">Learn More</span>
+      </div>
+    </div>
+
+    <!-- On hunter -->
+    <div class="card bg-hunter">
+      <div>
+        <span class="label text-cream">Sand #C4A882 on Hunter</span>
+        <h3 style="color: #C4A882;">Earthy Pairing</h3>
+        <p class="text-cream">Accents, labels, subtle text</p>
+        <div style="height: 4px; background: #C4A882; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+      </div>
+    </div>
+    <div class="card bg-hunter">
+      <div>
+        <span class="label text-cream">Gold #FEDC97 on Hunter</span>
+        <h3 style="color: #FEDC97;">Rich Contrast</h3>
+        <p class="text-cream">Accents, labels, subtle text</p>
+        <div style="height: 4px; background: #FEDC97; border-radius: 2px; width: 60%; margin: 8px 0;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FULL PALETTE MOCKUP ========== -->
+<div class="section">
+  <h2>🎨 Full Palette Combos — Realistic Sections</h2>
+  
+  <div class="grid">
+    <!-- Combo A: Burnt Orange + Sand (current) -->
+    <div class="card bg-navy" style="min-height: 220px;">
+      <div>
+        <span class="tag text-cream">Combo A — Current</span>
+        <h3 class="text-cream">We Scale Amazon Brands</h3>
+        <p class="text-cream">$220M+ in managed revenue across 14 premium brands.</p>
+        <div style="margin-top: 12px;">
+          <span class="btn" style="background: #CC5500; color: #EDE8E0;">Get a Free Audit</span>
+          <span class="btn" style="background: transparent; color: #C4A882; border: 1.5px solid #C4A882;">Our Services</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Combo B: Terra + Sand -->
+    <div class="card bg-navy" style="min-height: 220px;">
+      <div>
+        <span class="tag text-cream">Combo B — Terra + Sand</span>
+        <h3 class="text-cream">We Scale Amazon Brands</h3>
+        <p class="text-cream">$220M+ in managed revenue across 14 premium brands.</p>
+        <div style="margin-top: 12px;">
+          <span class="btn" style="background: #70301E; color: #EDE8E0;">Get a Free Audit</span>
+          <span class="btn" style="background: transparent; color: #C4A882; border: 1.5px solid #C4A882;">Our Services</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combo C: Terra + Gold -->
+    <div class="card bg-navy" style="min-height: 220px;">
+      <div>
+        <span class="tag text-cream">Combo C — Terra + Gold</span>
+        <h3 class="text-cream">We Scale Amazon Brands</h3>
+        <p class="text-cream">$220M+ in managed revenue across 14 premium brands.</p>
+        <div style="margin-top: 12px;">
+          <span class="btn" style="background: #70301E; color: #EDE8E0;">Get a Free Audit</span>
+          <span class="btn" style="background: transparent; color: #FEDC97; border: 1.5px solid #FEDC97;">Our Services</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combo D: Burnt Orange + Gold -->
+    <div class="card bg-navy" style="min-height: 220px;">
+      <div>
+        <span class="tag text-cream">Combo D — Burnt Orange + Gold</span>
+        <h3 class="text-cream">We Scale Amazon Brands</h3>
+        <p class="text-cream">$220M+ in managed revenue across 14 premium brands.</p>
+        <div style="margin-top: 12px;">
+          <span class="btn" style="background: #CC5500; color: #EDE8E0;">Get a Free Audit</span>
+          <span class="btn" style="background: transparent; color: #FEDC97; border: 1.5px solid #FEDC97;">Our Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
