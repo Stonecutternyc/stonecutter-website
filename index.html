@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stonecutter NYC | Premium Amazon Agency</title>
+  <meta name="description" content="Stonecutter is a boutique Amazon management agency for established beauty, wellness, and CPG brands. Strategic depth. Genuine partnership. New York." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -15,56 +16,46 @@
     }
 
     :root {
+      --cream: #EDE8E0;
+      --cream-dark: #E3DDD4;
       --navy: #1E3A5F;
-      --navy-dark: #162d4a;
-      --offwhite: #F7F5F0;
-      --emerald: #2E8B6A;
-      --emerald-dark: #257a5b;
-      --emerald-light: #3a9e7a;
-      --silver: #94A3B8;
-      --silver-light: #CBD5E1;
-      --ice-gray: #E2E8F0;
-      --snow: #F8FAFC;
-      --terracotta: #D4956A;
-      --charcoal: #2A2A2A;
-      --white: #ffffff;
-      --text-muted: rgba(247, 245, 240, 0.6);
-      --text-dark-muted: rgba(30, 58, 95, 0.55);
+      --navy-dark: #162D4A;
+      --green: #355E3B;
+      --green-dark: #2A4B2F;
+      --orange: #CC5500;
+      --orange-hover: #B34A00;
+      --sand: #C4A882;
+      --gunmetal: #6B7B8D;
+      --white: #FFFFFF;
+      --text-muted: rgba(30, 58, 95, 0.5);
+      --text-light: rgba(255, 255, 255, 0.72);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
       color: var(--navy);
-      background: var(--navy);
+      background: var(--cream);
       overflow-x: hidden;
     }
 
-    /* ═══ ANIMATIONS ═══ */
+    /* ── REVEAL ANIMATIONS ── */
     .reveal {
       opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
     .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
 
-    /* ═══ PAGE LOADER ═══ */
+    /* ── PAGE LOADER ── */
     .page-loader {
       position: fixed;
       inset: 0;
@@ -73,125 +64,91 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
     }
+    .page-loader.hidden { opacity: 0; visibility: hidden; }
 
-    .page-loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-wordmark {
+    .loader-mark {
       font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      color: var(--offwhite);
-      letter-spacing: 0.06em;
+      font-size: 26px;
+      color: var(--cream);
+      letter-spacing: 0.08em;
       opacity: 0;
-      animation: loaderFade 1.2s ease forwards;
+      animation: loaderIn 1.4s ease forwards;
+    }
+    .loader-mark span { color: var(--orange); }
+
+    @keyframes loaderIn {
+      0%   { opacity: 0; transform: translateY(10px); }
+      35%  { opacity: 1; transform: translateY(0); }
+      80%  { opacity: 1; }
+      100% { opacity: 0.5; }
     }
 
-    .loader-wordmark span {
-      color: var(--emerald);
-    }
-
-    @keyframes loaderFade {
-      0% { opacity: 0; transform: translateY(12px); }
-      40% { opacity: 1; transform: translateY(0); }
-      80% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-
-    /* ═══ NAVIGATION ═══ */
+    /* ── NAVIGATION ── */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;
-      background: transparent;
-      padding: 0 48px;
+      z-index: 200;
+      padding: 0 56px;
       height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s ease, box-shadow 0.4s ease, height 0.3s ease;
+      background: transparent;
+      transition: background 0.4s ease, height 0.3s ease, box-shadow 0.4s ease;
     }
 
     nav.scrolled {
-      background: rgba(30, 58, 95, 0.97);
-      box-shadow: 0 1px 24px rgba(0,0,0,0.2);
+      background: rgba(237, 232, 224, 0.97);
+      box-shadow: 0 1px 0 rgba(30, 58, 95, 0.1);
       height: 68px;
     }
 
-    .nav-wordmark {
+    .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--offwhite);
+      color: var(--navy);
       text-decoration: none;
+      letter-spacing: 0.03em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 44px;
       list-style: none;
     }
 
     .nav-links a {
-      font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.03em;
-      color: rgba(247, 245, 240, 0.7);
+      color: var(--gunmetal);
       text-decoration: none;
+      letter-spacing: 0.01em;
       transition: color 0.2s ease;
-      position: relative;
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--silver);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--offwhite);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover { color: var(--navy); }
 
     .btn-nav {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px !important;
+      font-weight: 600 !important;
       color: var(--white) !important;
-      background: var(--emerald);
-      border: none;
-      padding: 11px 24px;
-      border-radius: 6px;
-      cursor: pointer;
+      background: var(--orange);
+      padding: 10px 22px;
+      border-radius: 5px;
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
       display: inline-block;
     }
 
-    .btn-nav::after {
-      display: none !important;
-    }
-
     .btn-nav:hover {
-      background: var(--emerald-dark);
-      transform: translateY(-1px);
+      background: var(--orange-hover) !important;
       color: var(--white) !important;
+      transform: translateY(-1px);
     }
 
     .hamburger {
@@ -199,169 +156,921 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 4px;
       background: none;
       border: none;
+      padding: 4px;
     }
 
     .hamburger span {
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--offwhite);
+      background: var(--navy);
       transition: all 0.3s ease;
     }
 
-    /* ═══ HERO ═══ */
+    /* ── HERO ── */
     #hero {
+      background: var(--cream);
       min-height: 100vh;
-      background: var(--navy);
       display: flex;
       align-items: center;
-      padding: 140px 48px 100px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(46, 139, 106, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: -15%;
-      left: -8%;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(148, 163, 184, 0.04) 0%, transparent 70%);
-      pointer-events: none;
+      padding: 140px 56px 100px;
     }
 
     .hero-inner {
-      max-width: 1200px;
+      max-width: 1160px;
       margin: 0 auto;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 80px;
       align-items: center;
     }
 
-    .hero-content {}
-
-    .hero-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--emerald);
+      color: var(--orange);
       margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
-    .hero-label::before {
+    .hero-eyebrow::before {
       content: '';
-      width: 32px;
+      width: 28px;
       height: 2px;
-      background: var(--emerald);
+      background: var(--orange);
+      flex-shrink: 0;
     }
 
     .hero-headline {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(42px, 5.5vw, 72px);
+      font-size: clamp(44px, 5.8vw, 78px);
       font-weight: 400;
-      line-height: 1.08;
-      color: var(--offwhite);
-      margin-bottom: 32px;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-headline .ink-underline {
-      position: relative;
-      display: inline;
-    }
-
-    .hero-headline .ink-underline svg {
-      position: absolute;
-      bottom: -6px;
-      left: -4px;
-      width: calc(100% + 8px);
-      height: 14px;
-      overflow: visible;
-    }
-
-    .hero-headline .ink-underline svg path {
-      stroke: var(--emerald);
-      stroke-width: 3;
-      fill: none;
-      stroke-linecap: round;
-      stroke-dasharray: 500;
-      stroke-dashoffset: 500;
-      animation: drawInk 1.2s ease forwards 0.8s;
-    }
-
-    @keyframes drawInk {
-      to { stroke-dashoffset: 0; }
+      line-height: 1.06;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
     }
 
     .hero-headline em {
       font-style: italic;
-      color: var(--silver);
+      color: var(--green);
     }
 
     .hero-sub {
-      font-family: 'Inter', sans-serif;
       font-size: 18px;
       font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-      max-width: 460px;
+      line-height: 1.72;
+      color: var(--gunmetal);
+      max-width: 480px;
       margin-bottom: 48px;
     }
 
     .hero-ctas {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
     .btn-primary {
       display: inline-block;
-      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 600;
       color: var(--white);
-      background: var(--emerald);
-      padding: 16px 36px;
+      background: var(--orange);
+      padding: 17px 38px;
       border-radius: 6px;
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
     }
 
     .btn-primary:hover {
-      background: var(--emerald-dark);
+      background: var(--orange-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(46, 139, 106, 0.25);
+      box-shadow: 0 8px 24px rgba(204, 85, 0, 0.22);
     }
 
-    .btn-secondary {
-      font-family: 'DM Sans', sans-serif;
+    .btn-ghost {
       font-size: 15px;
       font-weight: 500;
-      color: rgba(247, 245, 240, 0.7);
+      color: var(--navy);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(30, 58, 95, 0.25);
+      padding-bottom: 2px;
+      transition: gap 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      gap: 14px;
+      border-color: var(--navy);
+    }
+
+    .btn-ghost::after { content: '→'; font-size: 16px; }
+
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--cream-dark);
+      border-radius: 4px;
+      border: 1px solid rgba(30, 58, 95, 0.08);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-visual-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(30, 58, 95, 0.22);
+    }
+
+    .hero-visual-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(30, 58, 95, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: rgba(30, 58, 95, 0.2);
+      fill: none;
+    }
+
+    /* ── STATS STRIP ── */
+    #stats-strip {
+      background: var(--navy);
+      padding: 72px 56px;
+    }
+
+    .stats-strip-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .strip-stat {
+      background: var(--navy);
+      padding: 48px 40px;
+      transition: background 0.2s ease;
+    }
+
+    .strip-stat:hover { background: var(--navy-dark); }
+
+    .strip-stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .strip-stat-number span {
+      color: var(--orange);
+    }
+
+    .strip-stat-label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(237, 232, 224, 0.55);
+    }
+
+    /* ── STATEMENT ── */
+    #statement {
+      background: var(--cream);
+      padding: 140px 56px;
+    }
+
+    .statement-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .statement-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.07;
+      color: var(--navy);
+      max-width: 900px;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    .statement-headline em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .statement-body {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.78;
+      color: var(--gunmetal);
+      max-width: 560px;
+      margin-bottom: 80px;
+    }
+
+    .statement-data {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(30, 58, 95, 0.1);
+    }
+
+    .data-point {
+      padding: 52px 0 52px 48px;
+      border-right: 1px solid rgba(30, 58, 95, 0.08);
+    }
+
+    .data-point:first-child { padding-left: 0; }
+    .data-point:last-child { border-right: none; }
+
+    .data-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(40px, 4.5vw, 60px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .data-number sup {
+      font-size: 0.55em;
+      vertical-align: super;
+      color: var(--orange);
+    }
+
+    .data-label {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--gunmetal);
+      max-width: 260px;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--white);
+      padding: 140px 56px;
+    }
+
+    .services-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .section-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--navy);
+      max-width: 560px;
+      letter-spacing: -0.01em;
+      margin-bottom: 80px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(30, 58, 95, 0.06);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 52px 44px;
+      position: relative;
+      transition: background 0.25s ease;
+      overflow: hidden;
+    }
+
+    .service-card:hover { background: var(--cream); }
+
+    .service-accent {
+      width: 36px;
+      height: 3px;
+      background: var(--orange);
+      margin-bottom: 28px;
+      transition: width 0.3s ease;
+    }
+
+    .service-card:hover .service-accent { width: 56px; }
+
+    .service-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--gunmetal);
+    }
+
+    /* ── WHO WE WORK WITH ── */
+    #icp {
+      background: var(--green);
+      padding: 140px 56px;
+    }
+
+    .icp-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow-light {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(237, 232, 224, 0.6);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-eyebrow-light::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .section-headline-light {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cream);
+      max-width: 660px;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .section-intro-light {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(237, 232, 224, 0.72);
+      max-width: 560px;
+      margin-bottom: 72px;
+    }
+
+    .icp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      margin-bottom: 48px;
+    }
+
+    .icp-card {
+      background: var(--green);
+      padding: 52px 48px;
+      transition: background 0.25s ease;
+    }
+
+    .icp-card:hover { background: var(--green-dark); }
+
+    .icp-badge {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--orange);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+      display: block;
+    }
+
+    .icp-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .icp-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(237, 232, 224, 0.65);
+    }
+
+    .icp-note {
+      padding: 28px 36px;
+      background: rgba(237, 232, 224, 0.06);
+      border-left: 3px solid var(--orange);
+    }
+
+    .icp-note p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(237, 232, 224, 0.72);
+    }
+
+    .icp-note a {
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .icp-note a:hover { color: var(--orange); }
+
+    /* ── CASE STUDIES ── */
+    #work {
+      background: var(--cream);
+      padding: 140px 56px;
+    }
+
+    .work-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 72px;
+    }
+
+    .work-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--orange);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: gap 0.2s ease;
+      padding-bottom: 4px;
+    }
+
+    .work-link:hover { gap: 14px; }
+    .work-link::after { content: '→'; }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(30, 58, 95, 0.08);
+    }
+
+    .case-card {
+      background: var(--white);
+      padding: 56px 52px;
+      transition: background 0.25s ease;
+      position: relative;
+    }
+
+    .case-card:hover { background: var(--cream); }
+
+    .case-category {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gunmetal);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .case-metric-big {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .case-metric-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .case-result {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--navy);
+      border-top: 1px solid rgba(30, 58, 95, 0.1);
+      padding-top: 24px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--navy);
+      padding: 140px 56px;
+    }
+
+    .testimonials-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      margin-top: 72px;
+    }
+
+    .testimonial-card {
+      background: var(--navy);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 36px;
+      transition: background 0.25s ease;
+    }
+
+    .testimonial-card:hover { background: var(--navy-dark); }
+
+    .testimonial-quote-mark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 0.8;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--cream);
+      flex: 1;
+    }
+
+    .testimonial-attribution {
+      border-top: 1px solid rgba(237, 232, 224, 0.1);
+      padding-top: 24px;
+    }
+
+    .testimonial-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(237, 232, 224, 0.7);
+      margin-bottom: 4px;
+    }
+
+    .testimonial-company {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(237, 232, 224, 0.38);
+    }
+
+    .testimonial-note {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 8px;
+      opacity: 0.7;
+    }
+
+    /* ── VALUES ── */
+    #values {
+      background: var(--cream-dark);
+      padding: 100px 56px;
+      border-top: 1px solid rgba(30, 58, 95, 0.08);
+    }
+
+    .values-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .values-label {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .values-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .value-item {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.4;
+      padding: 16px 40px;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    .value-item:hover { opacity: 1; }
+
+    .value-item + .value-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--sand);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--cream);
+      padding: 140px 56px;
+    }
+
+    .about-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .about-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 3.8vw, 48px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+
+    .about-body {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--gunmetal);
+      margin-bottom: 24px;
+    }
+
+    .about-callout {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--navy);
+      border-left: 3px solid var(--orange);
+      padding: 4px 0 4px 24px;
+      margin-bottom: 36px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border: 1px solid rgba(30, 58, 95, 0.18);
+      padding: 8px 16px;
+      border-radius: 3px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--orange);
+      background: rgba(204, 85, 0, 0.04);
+    }
+
+    .about-visual {
+      aspect-ratio: 4 / 5;
+      background: var(--cream-dark);
+      border-radius: 4px;
+      border: 1px solid rgba(30, 58, 95, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .about-visual-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(30, 58, 95, 0.22);
+    }
+
+    .about-visual-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(30, 58, 95, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: rgba(30, 58, 95, 0.2);
+      fill: none;
+    }
+
+    /* ── CTA BAND ── */
+    #cta-band {
+      background: var(--navy);
+      padding: 120px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-band::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204, 85, 0, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-band-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cta-eyebrow::before,
+    .cta-eyebrow::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: rgba(204, 85, 0, 0.5);
+    }
+
+    .cta-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 3.8vw, 52px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(237, 232, 224, 0.65);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .cta-details {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(237, 232, 224, 0.42);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--cream);
+      padding: 18px 44px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .cta-alt-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(237, 232, 224, 0.55);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -369,86 +1078,161 @@
       transition: color 0.2s ease, gap 0.2s ease;
     }
 
-    .btn-secondary:hover {
-      color: var(--offwhite);
+    .cta-alt-link:hover {
+      color: var(--cream);
+      gap: 14px;
+    }
+
+    .cta-alt-link::after { content: '→'; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      padding: 80px 56px 48px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      max-width: 280px;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(237, 232, 224, 0.38);
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .footer-nav-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(237, 232, 224, 0.38);
+      margin-bottom: 20px;
+    }
+
+    .footer-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
 
-    .btn-secondary::after {
-      content: '\2192';
-      font-size: 18px;
-    }
-
-    .hero-image-area {
-      position: relative;
-      aspect-ratio: 4/5;
-      background: linear-gradient(145deg, rgba(46, 139, 106, 0.08), rgba(148, 163, 184, 0.06));
-      border-radius: 12px;
-      border: 1px solid rgba(247, 245, 240, 0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      overflow: hidden;
-    }
-
-    .hero-image-area::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      right: -2px;
-      width: 120px;
-      height: 120px;
-      border-radius: 0 12px 0 0;
-      background: linear-gradient(225deg, rgba(148, 163, 184, 0.12), transparent);
-      pointer-events: none;
-    }
-
-    .image-placeholder-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(247, 245, 240, 0.25);
-    }
-
-    .image-placeholder-icon {
-      width: 56px;
-      height: 56px;
-      border: 1px solid rgba(247, 245, 240, 0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-placeholder-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: rgba(247, 245, 240, 0.2);
-      fill: none;
-    }
-
-    /* ═══ MARQUEE LOGOS ═══ */
-    #logos {
-      background: var(--snow);
-      padding: 72px 0;
-      overflow: hidden;
-      border-top: 3px solid var(--terracotta);
-    }
-
-    .logos-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(20px, 2.5vw, 26px);
+    .footer-nav-links a {
+      font-size: 14px;
       font-weight: 400;
-      font-style: italic;
-      color: var(--navy);
-      text-align: center;
-      margin-bottom: 48px;
-      padding: 0 48px;
-      letter-spacing: -0.01em;
+      color: rgba(237, 232, 224, 0.55);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav-links a:hover { color: var(--cream); }
+
+    .footer-contact-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(237, 232, 224, 0.38);
+      margin-bottom: 20px;
+    }
+
+    .footer-email {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--cream);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 20px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-email:hover { color: var(--orange); }
+
+    .btn-footer-audit {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--orange);
+      padding: 11px 22px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-footer-audit:hover { background: var(--orange-hover); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(237, 232, 224, 0.25);
+    }
+
+    .footer-location {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(237, 232, 224, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-location::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    /* ── MARQUEE CLIENT STRIP ── */
+    #clients {
+      background: var(--cream-dark);
+      padding: 64px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(30, 58, 95, 0.07);
+      border-bottom: 1px solid rgba(30, 58, 95, 0.07);
     }
 
     .marquee-wrap {
@@ -461,32 +1245,26 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 120px;
+      width: 100px;
       z-index: 2;
       pointer-events: none;
     }
 
     .marquee-wrap::before {
       left: 0;
-      background: linear-gradient(to right, var(--snow), transparent);
+      background: linear-gradient(to right, var(--cream-dark), transparent);
     }
 
     .marquee-wrap::after {
       right: 0;
-      background: linear-gradient(to left, var(--snow), transparent);
+      background: linear-gradient(to left, var(--cream-dark), transparent);
     }
 
-    .marquee {
+    .marquee-track {
       display: flex;
       gap: 0;
       width: max-content;
-      animation: marqueeScroll 35s linear infinite;
-    }
-
-    .marquee-reverse {
-      animation-direction: reverse;
-      animation-duration: 42s;
-      margin-top: 20px;
+      animation: marqueeScroll 40s linear infinite;
     }
 
     @keyframes marqueeScroll {
@@ -494,1760 +1272,395 @@
       100% { transform: translateX(-50%); }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
     .marquee-item {
       flex-shrink: 0;
-      padding: 16px 48px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
+      padding: 12px 52px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--navy);
-      opacity: 0.4;
-      transition: opacity 0.3s ease;
+      opacity: 0.32;
       white-space: nowrap;
-    }
-
-    .marquee-item:hover {
-      opacity: 0.8;
-    }
-
-    .marquee-item::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--silver);
-      flex-shrink: 0;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .marquee { animation: none; }
-    }
-
-    /* ═══ STATEMENT ═══ */
-    #statement {
-      background: var(--navy);
-      padding: 140px 48px;
-      position: relative;
-    }
-
-    .statement-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .statement-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 5vw, 68px);
-      font-weight: 400;
-      line-height: 1.08;
-      color: var(--offwhite);
-      max-width: 880px;
-      letter-spacing: -0.02em;
-      margin-bottom: 36px;
-    }
-
-    .statement-headline .ink-circle {
-      position: relative;
-      display: inline;
-    }
-
-    .statement-headline .ink-circle svg {
-      position: absolute;
-      top: -12px;
-      left: -14px;
-      width: calc(100% + 28px);
-      height: calc(100% + 24px);
-      overflow: visible;
-      pointer-events: none;
-    }
-
-    .statement-headline .ink-circle svg ellipse {
-      stroke: var(--emerald);
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-dasharray: 600;
-      stroke-dashoffset: 600;
-      opacity: 0.5;
-    }
-
-    .statement-headline .ink-circle svg ellipse.animated {
-      animation: drawInk 1.5s ease forwards;
-    }
-
-    .statement-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 96px;
-    }
-
-    .statement-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(247, 245, 240, 0.06);
-      border-top: 1px solid rgba(247, 245, 240, 0.08);
-    }
-
-    .statement-stat {
-      background: var(--navy);
-      padding: 56px 0 56px 48px;
-    }
-
-    .statement-stat:first-child {
-      padding-left: 0;
-    }
-
-    .statement-stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(44px, 5vw, 68px);
-      font-weight: 400;
-      color: var(--silver);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .statement-stat-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 280px;
-    }
-
-    /* ═══ PITFALLS ═══ */
-    #pitfalls {
-      background: var(--charcoal);
-      padding: 120px 48px;
-    }
-
-    .pitfalls-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .pitfalls-header {
-      margin-bottom: 72px;
-    }
-
-    .section-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--emerald);
-      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-    }
-
-    .pitfalls-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.12;
-      color: var(--offwhite);
-      max-width: 680px;
-      letter-spacing: -0.01em;
-    }
-
-    .pitfalls-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(247, 245, 240, 0.06);
-    }
-
-    .pitfall-col {
-      background: var(--charcoal);
-      padding: 52px 44px;
-      transition: background 0.3s ease;
-    }
-
-    .pitfall-col:hover {
-      background: #333;
-    }
-
-    .pitfall-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pitfall-icon svg {
-      width: 36px;
-      height: 36px;
-      stroke: var(--silver);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .pitfall-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--offwhite);
-      margin-bottom: 20px;
-    }
-
-    .pitfall-accent {
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--terracotta);
-      margin-bottom: 24px;
-    }
-
-    .pitfall-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: rgba(247, 245, 240, 0.5);
-    }
-
-    /* ═══ SERVICES ═══ */
-    #services {
-      background: var(--ice-gray);
-      padding: 120px 48px;
-    }
-
-    .services-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label-dark {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--emerald);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-label-dark::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-    }
-
-    .section-headline-dark {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(34px, 4.2vw, 56px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
-      margin-bottom: 80px;
-      max-width: 600px;
-      letter-spacing: -0.01em;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 52px 44px;
-      border-radius: 8px;
-      border: 1px solid rgba(30, 58, 95, 0.08);
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--emerald);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(30, 58, 95, 0.1);
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(46, 139, 106, 0.08);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-
-    .service-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: var(--emerald);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .service-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--silver);
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .service-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .service-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-dark-muted);
-      margin-bottom: 24px;
-    }
-
-    .service-items {
-      list-style: none;
-    }
-
-    .service-items li {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(30, 58, 95, 0.5);
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(30, 58, 95, 0.06);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .service-items li::before {
-      content: '';
-      display: block;
-      width: 14px;
-      height: 1px;
-      background: var(--emerald);
-      flex-shrink: 0;
-    }
-
-    /* ═══ ICP / WHO WE WORK WITH ═══ */
-    #icp {
-      background: var(--navy);
-      padding: 120px 48px;
-    }
-
-    .icp-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .icp-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--offwhite);
-      max-width: 680px;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-    }
-
-    .icp-intro {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 72px;
-    }
-
-    .icp-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .icp-card {
-      background: rgba(247, 245, 240, 0.04);
-      border: 1px solid rgba(247, 245, 240, 0.08);
-      border-radius: 8px;
-      padding: 44px 40px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .icp-card:hover {
-      background: rgba(247, 245, 240, 0.07);
-      border-color: rgba(148, 163, 184, 0.25);
-    }
-
-    .icp-icon {
-      font-family: 'DM Serif Display', serif;
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--silver);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
-
-    .icp-card-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 21px;
-      font-weight: 400;
-      color: var(--offwhite);
-      line-height: 1.25;
-      margin-bottom: 14px;
-    }
-
-    .icp-card-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-muted);
-    }
-
-    .icp-note {
-      padding: 28px 36px;
-      background: rgba(46, 139, 106, 0.05);
-      border-left: 3px solid var(--terracotta);
-      border-radius: 0 6px 6px 0;
-    }
-
-    .icp-note p {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .icp-note a {
-      color: var(--emerald-light);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .icp-note a:hover {
-      color: var(--emerald);
-    }
-
-    /* ═══ RESULTS ═══ */
-    #results {
-      background: var(--snow);
-      padding: 120px 48px;
-    }
-
-    .results-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .results-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 80px;
-    }
-
-    .results-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 3.8vw, 50px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
-      max-width: 420px;
-      letter-spacing: -0.01em;
-    }
-
-    .results-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-dark-muted);
-      max-width: 380px;
-      padding-top: 8px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(30, 58, 95, 0.08);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .stat-card {
-      background: var(--snow);
-      padding: 52px 36px;
-      transition: background 0.2s ease;
-    }
-
-    .stat-card:hover {
-      background: var(--ice-gray);
-    }
-
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 400;
-      color: var(--silver);
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .stat-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--text-dark-muted);
-      line-height: 1.5;
-    }
-
-    /* ═══ CASE STUDIES ═══ */
-    #work {
-      background: var(--navy);
-      padding: 120px 48px;
-    }
-
-    .work-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .work-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 32px;
-      margin-bottom: 64px;
-    }
-
-    .work-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(34px, 4vw, 52px);
-      font-weight: 400;
-      color: var(--offwhite);
-      line-height: 1.1;
-      max-width: 500px;
-      letter-spacing: -0.01em;
-    }
-
-    .work-link {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--emerald);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      transition: gap 0.2s ease;
-    }
-
-    .work-link:hover {
       gap: 14px;
-    }
-
-    .work-link::after {
-      content: '\2192';
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .case-card {
-      background: rgba(247, 245, 240, 0.04);
-      border: 1px solid rgba(247, 245, 240, 0.08);
-      border-radius: 8px;
-      padding: 52px 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 300px;
-      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--emerald);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-
-    .case-card:hover {
-      background: rgba(247, 245, 240, 0.07);
-      border-color: rgba(247, 245, 240, 0.14);
-      transform: translateY(-4px);
-    }
-
-    .case-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .case-top {
-      margin-bottom: 32px;
-    }
-
-    .case-brand {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--silver);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .case-category {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(247, 245, 240, 0.35);
-      letter-spacing: 0.04em;
-    }
-
-    .case-result {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(20px, 2.2vw, 26px);
-      font-weight: 400;
-      color: var(--offwhite);
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      margin-bottom: 36px;
-      flex: 1;
-    }
-
-    .case-result em {
-      font-style: italic;
-      color: rgba(247, 245, 240, 0.6);
-    }
-
-    .case-metric {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .case-metric-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 36px;
-      font-weight: 400;
-      color: var(--emerald-light);
-      line-height: 1;
-    }
-
-    .case-metric-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(247, 245, 240, 0.4);
-      letter-spacing: 0.04em;
-    }
-
-    .case-read-more {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--emerald);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: gap 0.2s ease;
-    }
-
-    .case-read-more:hover {
-      gap: 14px;
-    }
-
-    .case-read-more::after {
-      content: '\2192';
-    }
-
-    /* ═══ TESTIMONIALS ═══ */
-    #testimonials {
-      background: var(--ice-gray);
-      padding: 120px 48px;
-    }
-
-    .testimonials-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .testimonials-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
-      max-width: 480px;
-      letter-spacing: -0.01em;
-      margin-bottom: 56px;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 44px 36px;
-      border: 1px solid rgba(30, 58, 95, 0.06);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(30, 58, 95, 0.08);
-    }
-
-    .testimonial-quote {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.65;
-      color: var(--navy);
-      flex: 1;
-    }
-
-    .testimonial-attribution {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(30, 58, 95, 0.08);
-    }
-
-    .testimonial-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0.03em;
-    }
-
-    .testimonial-company {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--text-dark-muted);
-    }
-
-    .testimonial-placeholder-note {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--terracotta);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 8px;
-    }
-
-    /* ═══ VALUES ═══ */
-    #values {
-      background: var(--ice-gray);
-      padding: 100px 48px;
-      overflow: hidden;
-      border-top: 1px solid rgba(30, 58, 95, 0.08);
-    }
-
-    .values-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .values-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 3vw, 38px);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--navy);
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .values-strip {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .value-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--navy);
-      opacity: 0.5;
       transition: opacity 0.3s ease;
     }
 
-    .value-item:hover {
-      opacity: 1;
-    }
+    .marquee-item:hover { opacity: 0.7; }
 
-    .value-item::before {
+    .marquee-item::after {
       content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--emerald);
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
-      flex-shrink: 0;
+      background: var(--sand);
     }
 
-    /* ═══ ABOUT ═══ */
-    #about {
-      background: var(--snow);
-      padding: 120px 48px;
-    }
-
-    .about-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: center;
-    }
-
-    .about-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 3.8vw, 48px);
-      font-weight: 400;
-      line-height: 1.12;
-      color: var(--navy);
-      margin-bottom: 32px;
-    }
-
-    .about-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: rgba(30, 58, 95, 0.7);
-      margin-bottom: 24px;
-    }
-
-    .about-detail {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--text-dark-muted);
-      margin-bottom: 36px;
-    }
-
-    .about-badges {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--navy);
-      border: 1px solid rgba(30, 58, 95, 0.15);
-      padding: 8px 16px;
-      border-radius: 4px;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .badge:hover {
-      border-color: var(--emerald);
-      background: rgba(46, 139, 106, 0.04);
-    }
-
-    .about-image-box {
-      aspect-ratio: 4/5;
-      background: linear-gradient(145deg, rgba(30, 58, 95, 0.06), rgba(46, 139, 106, 0.04));
-      border: 1px solid rgba(30, 58, 95, 0.08);
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-image-box .image-placeholder-label {
-      color: rgba(30, 58, 95, 0.25);
-    }
-
-    .about-image-box .image-placeholder-icon {
-      border-color: rgba(30, 58, 95, 0.12);
-    }
-
-    .about-image-box .image-placeholder-icon svg {
-      stroke: rgba(30, 58, 95, 0.2);
-    }
-
-    /* ═══ CTA BAND ═══ */
-    #cta-band {
-      background: var(--emerald);
-      padding: 100px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #cta-band::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-band-inner {
-      max-width: 780px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .cta-band-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-band-eyebrow::before,
-    .cta-band-eyebrow::after {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .cta-band-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(30px, 3.8vw, 50px);
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 20px;
-      line-height: 1.12;
-    }
-
-    .cta-band-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.78);
-      margin-bottom: 44px;
-      line-height: 1.65;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-band-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .btn-cta-band {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--emerald);
-      background: var(--white);
-      padding: 18px 44px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-cta-band:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
-    }
-
-    .cta-band-link {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease, gap 0.2s ease;
-    }
-
-    .cta-band-link:hover {
-      color: var(--white);
-      gap: 12px;
-    }
-
-    .cta-band-link::after {
-      content: '\2192';
-      font-size: 16px;
-    }
-
-    /* ═══ FOOTER ═══ */
-    footer {
-      background: var(--navy-dark);
-      padding: 80px 48px 48px;
-      border-top: 1px solid rgba(247, 245, 240, 0.06);
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 48px;
-      margin-bottom: 64px;
-      padding-bottom: 64px;
-      border-bottom: 1px solid rgba(247, 245, 240, 0.08);
-    }
-
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 36px;
-    }
-
-    .footer-wordmark {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--offwhite);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 16px;
-    }
-
-    .footer-tagline {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 260px;
-    }
-
-    .footer-nav {
-      display: flex;
-      flex-direction: row;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .footer-nav a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(247, 245, 240, 0.45);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-nav a:hover {
-      color: var(--offwhite);
-    }
-
-    .footer-contact {
-      text-align: right;
-    }
-
-    .footer-contact-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--emerald);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .footer-email {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--offwhite);
-      text-decoration: none;
-      transition: color 0.2s ease;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .footer-email:hover {
-      color: var(--emerald);
-    }
-
-    .btn-footer {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--emerald);
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-
-    .btn-footer:hover {
-      background: var(--emerald-dark);
-      transform: translateY(-1px);
-    }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .footer-copy {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(247, 245, 240, 0.3);
-    }
-
-    .footer-loc {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(247, 245, 240, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-loc::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--emerald);
-      border-radius: 50%;
-    }
-
-    /* ═══ MOBILE ═══ */
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 28px; }
       .nav-links {
         display: none;
         position: fixed;
-        top: 80px;
+        top: 68px;
         left: 0;
         right: 0;
-        background: var(--navy-dark);
+        background: var(--cream);
         flex-direction: column;
         gap: 0;
-        padding: 24px 0;
-        border-bottom: 1px solid rgba(247, 245, 240, 0.08);
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+        box-shadow: 0 4px 20px rgba(30, 58, 95, 0.1);
       }
-
       .nav-links.open { display: flex; }
       .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block;
-        padding: 14px 28px;
-        font-size: 15px;
-      }
-      .nav-links a::after { display: none; }
-      .btn-nav { margin: 12px 28px 0; text-align: center; }
+      .nav-links a { display: block; padding: 14px 28px; }
+      .btn-nav { margin: 8px 28px; display: block; text-align: center; }
       .hamburger { display: flex; }
 
-      #hero { padding: 120px 24px 80px; }
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero-image-area {
-        aspect-ratio: 16/9;
-        max-height: 280px;
-      }
+      #hero { padding: 120px 28px 80px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { aspect-ratio: 16/9; max-height: 260px; }
 
-      #logos { padding: 56px 0; }
+      #stats-strip { padding: 56px 28px; }
+      .stats-strip-inner { grid-template-columns: repeat(2, 1fr); }
 
-      #statement { padding: 80px 24px; }
-      .statement-stats { grid-template-columns: 1fr; }
-      .statement-stat { padding: 40px 0; }
-      .statement-stat:first-child { padding-left: 0; }
+      #statement { padding: 96px 28px; }
+      .statement-data { grid-template-columns: 1fr; }
+      .data-point { padding: 40px 0; border-right: none; border-bottom: 1px solid rgba(30, 58, 95, 0.08); }
+      .data-point:last-child { border-bottom: none; }
+      .data-point:first-child { padding-left: 0; }
 
-      #pitfalls { padding: 80px 24px; }
-      .pitfalls-grid { grid-template-columns: 1fr; }
-      .pitfall-col { padding: 44px 28px; }
-
-      #services { padding: 80px 24px; }
+      #services { padding: 96px 28px; }
       .services-grid { grid-template-columns: 1fr; }
 
-      #icp { padding: 80px 24px; }
+      #icp { padding: 96px 28px; }
       .icp-grid { grid-template-columns: 1fr; }
-      .icp-card { padding: 36px 28px; }
-      .icp-note { padding: 24px 28px; }
+      .icp-card { padding: 44px 36px; }
 
-      #results { padding: 80px 24px; }
-      .results-top { flex-direction: column; gap: 24px; margin-bottom: 48px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-card { padding: 36px 24px; }
+      #work { padding: 96px 28px; }
+      .work-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 48px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .case-card { padding: 44px 36px; }
 
-      #work { padding: 80px 24px; }
-      .work-header { flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 40px; }
-      .case-grid { grid-template-columns: 1fr; gap: 16px; }
-      .case-card { padding: 40px 32px; min-height: auto; }
-
-      #testimonials { padding: 80px 24px; }
+      #testimonials { padding: 96px 28px; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .testimonial-card { padding: 36px 28px; }
+      .testimonial-card { padding: 44px 36px; }
 
-      #values { padding: 64px 24px; }
-      .values-strip { gap: 24px; justify-content: flex-start; }
+      #values { padding: 72px 28px; }
 
-      #about { padding: 80px 24px; }
+      #about { padding: 96px 28px; }
       .about-inner { grid-template-columns: 1fr; gap: 48px; }
-      .about-image-box { aspect-ratio: 16/9; }
+      .about-visual { aspect-ratio: 16/9; max-height: 280px; position: static; }
 
-      #cta-band { padding: 72px 24px; }
-      .cta-band-actions { flex-direction: column; align-items: center; gap: 16px; }
+      #cta-band { padding: 96px 28px; }
+      .cta-actions { flex-direction: column; align-items: center; gap: 20px; }
 
-      footer { padding: 64px 24px 36px; }
-      .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; padding-bottom: 40px; }
-      .footer-right { align-items: flex-start; width: 100%; }
-      .footer-contact { text-align: left; }
-      .footer-nav { gap: 20px; flex-wrap: wrap; }
+      footer { padding: 64px 28px 40px; }
+      .footer-top { flex-direction: column; gap: 48px; }
+      .footer-right { flex-direction: column; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
 
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr; }
+    @media (max-width: 540px) {
+      .stats-strip-inner { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .value-item { padding: 12px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══ PAGE LOADER ═══ -->
+  <!-- PAGE LOADER -->
   <div class="page-loader" id="pageLoader">
-    <div class="loader-wordmark">Stonecutter<span>.</span></div>
+    <div class="loader-mark">Stonecutter<span>.</span></div>
   </div>
 
-  <!-- ═══ NAVIGATION ═══ -->
+  <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="#hero" class="nav-wordmark">Stonecutter</a>
+    <a href="#hero" class="nav-logo">Stonecutter</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="btn-nav">Get a Free Audit</a></li>
+      <li><a href="#contact" class="btn-nav">Free Audit</a></li>
     </ul>
   </nav>
 
-  <!-- ═══ HERO ═══ -->
+  <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-content">
-        <span class="hero-label reveal">New York Amazon Agency</span>
+        <div class="hero-eyebrow reveal">New York Amazon Agency</div>
         <h1 class="hero-headline reveal reveal-delay-1">
-          We help premium brands
-          <span class="ink-underline">master Amazon<svg viewBox="0 0 280 14" preserveAspectRatio="none"><path d="M2 10 C40 4, 80 12, 140 7 S240 10, 278 6" /></svg></span>,
-          <em>without compromise.</em>
+          We grow premium brands on Amazon.<br>
+          <em>Without compromise.</em>
         </h1>
         <p class="hero-sub reveal reveal-delay-2">
-          Stonecutter partners with established beauty, wellness, and CPG brands to scale profitably on Amazon. Strategic depth, operational precision, genuine partnership — built around your brand's long-term success.
+          Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon — with strategic depth, operational rigor, and a genuine stake in your success.
         </p>
         <div class="hero-ctas reveal reveal-delay-3">
-          <a href="#contact" class="btn-primary">Get Your Free Audit</a>
-          <a href="#work" class="btn-secondary">See Our Work</a>
+          <a href="mailto:lee@stonecutter.nyc" class="btn-primary">Schedule a Free Audit</a>
+          <a href="#work" class="btn-ghost">See Our Work</a>
         </div>
       </div>
-      <div class="hero-image-area reveal reveal-delay-4">
-        <div class="image-placeholder-icon">
+      <div class="hero-visual reveal reveal-delay-4">
+        <div class="hero-visual-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <polyline points="21 15 16 10 5 21"/>
           </svg>
         </div>
-        <span class="image-placeholder-label">Hero Image</span>
+        <span class="hero-visual-tag">Hero Image</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SCROLLING MARQUEE ═══ -->
-  <section id="logos">
-    <h2 class="logos-headline reveal">Trusted by brands doing $220M+ on Amazon.</h2>
+  <!-- CLIENT MARQUEE -->
+  <div id="clients">
     <div class="marquee-wrap">
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-item">P&G-Owned Skincare</div>
-        <div class="marquee-item">DTC Sports Brand</div>
-        <div class="marquee-item">Wellness Supplements</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">Children's Health</div>
-        <div class="marquee-item">Prenatal Nutrition</div>
-        <div class="marquee-item">Clean Beauty</div>
-        <div class="marquee-item">Natural Deodorant</div>
-        <div class="marquee-item">Kitchen Innovations</div>
-        <!-- duplicate for seamless loop -->
-        <div class="marquee-item">P&G-Owned Skincare</div>
-        <div class="marquee-item">DTC Sports Brand</div>
-        <div class="marquee-item">Wellness Supplements</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">Children's Health</div>
-        <div class="marquee-item">Prenatal Nutrition</div>
-        <div class="marquee-item">Clean Beauty</div>
-        <div class="marquee-item">Natural Deodorant</div>
-        <div class="marquee-item">Kitchen Innovations</div>
+      <div class="marquee-track" aria-hidden="true">
+        <span class="marquee-item">P&amp;G-Owned Skincare</span>
+        <span class="marquee-item">DTC Sports Brand</span>
+        <span class="marquee-item">Wellness Supplements</span>
+        <span class="marquee-item">Pet Supplements</span>
+        <span class="marquee-item">Children's Health</span>
+        <span class="marquee-item">Prenatal Nutrition</span>
+        <span class="marquee-item">Clean Beauty</span>
+        <span class="marquee-item">Natural Deodorant</span>
+        <span class="marquee-item">Kitchen Innovation</span>
+        <span class="marquee-item">P&amp;G-Owned Skincare</span>
+        <span class="marquee-item">DTC Sports Brand</span>
+        <span class="marquee-item">Wellness Supplements</span>
+        <span class="marquee-item">Pet Supplements</span>
+        <span class="marquee-item">Children's Health</span>
+        <span class="marquee-item">Prenatal Nutrition</span>
+        <span class="marquee-item">Clean Beauty</span>
+        <span class="marquee-item">Natural Deodorant</span>
+        <span class="marquee-item">Kitchen Innovation</span>
       </div>
     </div>
-    <div class="marquee-wrap" style="margin-top: 0;">
-      <div class="marquee marquee-reverse" aria-hidden="true">
-        <div class="marquee-item">Beauty & Wellness</div>
-        <div class="marquee-item">Health Supplements</div>
-        <div class="marquee-item">Sports Equipment</div>
-        <div class="marquee-item">Clean Skincare</div>
-        <div class="marquee-item">Kids Vitamins</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">CPG Brands</div>
-        <div class="marquee-item">Premium Beauty</div>
-        <div class="marquee-item">Prenatal Health</div>
-        <!-- duplicate -->
-        <div class="marquee-item">Beauty & Wellness</div>
-        <div class="marquee-item">Health Supplements</div>
-        <div class="marquee-item">Sports Equipment</div>
-        <div class="marquee-item">Clean Skincare</div>
-        <div class="marquee-item">Kids Vitamins</div>
-        <div class="marquee-item">Pet Supplements</div>
-        <div class="marquee-item">CPG Brands</div>
-        <div class="marquee-item">Premium Beauty</div>
-        <div class="marquee-item">Prenatal Health</div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <section id="stats-strip">
+    <div class="stats-strip-inner reveal">
+      <div class="strip-stat">
+        <div class="strip-stat-number">$<span>220M</span>+</div>
+        <p class="strip-stat-label">In client revenue managed annually across beauty, wellness, and CPG.</p>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-stat-number"><span>14</span></div>
+        <p class="strip-stat-label">Premium brand partners — deliberately focused, never spread thin.</p>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-stat-number"><span>9</span>+</div>
+        <p class="strip-stat-label">Years navigating Amazon's complexity, long before it was mainstream.</p>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-stat-number"><span>32</span></div>
+        <p class="strip-stat-label">Team members dedicated exclusively to Amazon — nothing else.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ STATEMENT ═══ -->
+  <!-- STATEMENT -->
   <section id="statement">
     <div class="statement-inner">
       <h2 class="statement-headline reveal">
-        Amazon isn't a channel. It's where your
-        <span class="ink-circle">category<svg viewBox="0 0 120 60"><ellipse cx="60" cy="30" rx="58" ry="26" /></svg></span>
-        is won or lost.
+        Amazon isn't a channel. It's where your <em>category is won or lost.</em>
       </h2>
-      <p class="statement-sub reveal reveal-delay-1">Your customer is already there. The question is whether your brand shows up like a market leader or an afterthought.</p>
-      <div class="statement-stats">
-        <div class="statement-stat reveal reveal-delay-1">
-          <div class="statement-stat-number" data-count="40">0%</div>
-          <p class="statement-stat-label">Amazon's share of all U.S. e-commerce. More than the next 10 competitors combined.</p>
+      <p class="statement-body reveal reveal-delay-1">
+        Your customer is already searching there. The question is whether your brand shows up like a category leader — or an afterthought with poor reviews and wasted ad spend.
+      </p>
+      <div class="statement-data">
+        <div class="data-point reveal reveal-delay-1">
+          <div class="data-number" data-count="40">0<sup>%</sup></div>
+          <p class="data-label">Amazon's share of all U.S. e-commerce. More than the next 10 competitors combined.</p>
         </div>
-        <div class="statement-stat reveal reveal-delay-2">
-          <div class="statement-stat-number" data-count="74">0%</div>
-          <p class="statement-stat-label">of shoppers go directly to Amazon when they're ready to buy. Not Google. Not your website.</p>
+        <div class="data-point reveal reveal-delay-2">
+          <div class="data-number" data-count="74">0<sup>%</sup></div>
+          <p class="data-label">of shoppers go directly to Amazon when they're ready to buy. Not Google. Not your website.</p>
         </div>
-        <div class="statement-stat reveal reveal-delay-3">
-          <div class="statement-stat-number" data-count="20">0%+</div>
-          <p class="statement-stat-label">average year-over-year sales growth for brands that strategically optimize on Amazon.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PITFALLS ═══ -->
-  <section id="pitfalls">
-    <div class="pitfalls-inner">
-      <div class="pitfalls-header">
-        <span class="section-label reveal">The Common Mistakes</span>
-        <h2 class="pitfalls-headline reveal reveal-delay-1">Where established brands underestimate Amazon.</h2>
-      </div>
-      <div class="pitfalls-grid">
-        <div class="pitfall-col reveal reveal-delay-1">
-          <div class="pitfall-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          </div>
-          <span class="pitfall-accent"></span>
-          <h3 class="pitfall-title">Treating Amazon like a media buy</h3>
-          <p class="pitfall-body">Most brands pour ad spend onto a broken foundation. If your listings aren't converting, more spend just accelerates the bleed.</p>
-        </div>
-        <div class="pitfall-col reveal reveal-delay-2">
-          <div class="pitfall-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <span class="pitfall-accent"></span>
-          <h3 class="pitfall-title">Missing the brand halo effect</h3>
-          <p class="pitfall-body">What happens on Amazon doesn't stay on Amazon. Poor reviews and pricing chaos erode brand perception across every channel.</p>
-        </div>
-        <div class="pitfall-col reveal reveal-delay-3">
-          <div class="pitfall-icon">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <span class="pitfall-accent"></span>
-          <h3 class="pitfall-title">Reactive instead of proactive</h3>
-          <p class="pitfall-body">Most brands only act when something breaks. The real opportunity is in constant optimization and catching signals before they become problems.</p>
+        <div class="data-point reveal reveal-delay-3">
+          <div class="data-number" data-count="20">0<sup>%+</sup></div>
+          <p class="data-label">avg. year-over-year growth for brands that treat Amazon as a strategic priority.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SERVICES ═══ -->
+  <!-- SERVICES -->
   <section id="services">
     <div class="services-inner">
-      <span class="section-label-dark reveal">What We Do</span>
-      <h2 class="section-headline-dark reveal reveal-delay-1">Precision at every layer of your Amazon business.</h2>
+      <div class="section-eyebrow reveal">What We Do</div>
+      <h2 class="section-headline reveal reveal-delay-1">Every layer of your Amazon business, done right.</h2>
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-          </div>
-          <span class="service-number">01</span>
+          <div class="service-accent"></div>
           <h3 class="service-title">Amazon Advertising</h3>
-          <p class="service-desc">Full-funnel ad strategies that grow efficiently, protecting margins while building long-term brand equity.</p>
-          <ul class="service-items">
-            <li>Sponsored Products & Brands</li>
-            <li>DSP & Programmatic</li>
-            <li>Bid strategy & TACoS management</li>
-            <li>New product launch campaigns</li>
-          </ul>
+          <p class="service-desc">Full-funnel ad strategy that grows efficiently — protecting margins while building the brand equity that compounds over time. We manage Sponsored Products, Brands, Display, and DSP with precision bid strategy and TACoS discipline.</p>
         </div>
         <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-          </div>
-          <span class="service-number">02</span>
-          <h3 class="service-title">Brand & Content</h3>
-          <p class="service-desc">Your brand deserves to look as premium on Amazon as it does anywhere else. Storefronts, A+ content, and listings that convert.</p>
-          <ul class="service-items">
-            <li>Amazon Storefront design</li>
-            <li>A+ Content & Brand Story</li>
-            <li>Listing copywriting & SEO</li>
-            <li>Brand Registry strategy</li>
-          </ul>
+          <div class="service-accent"></div>
+          <h3 class="service-title">Catalog & Listings</h3>
+          <p class="service-desc">Your brand deserves to look as premium on Amazon as it does anywhere else. We handle A+ Content, Brand Story, Storefronts, listing SEO, and variation architecture — built to convert, not just to exist.</p>
         </div>
         <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-          </div>
-          <span class="service-number">03</span>
+          <div class="service-accent"></div>
           <h3 class="service-title">Operations & Fulfillment</h3>
-          <p class="service-desc">Inventory, supply chain, Subscribe & Save, and marketplace operations managed with precision so nothing falls through the cracks.</p>
-          <ul class="service-items">
-            <li>Inventory & replenishment planning</li>
-            <li>FBA inbound management</li>
-            <li>Subscribe & Save optimization</li>
-            <li>Buy Box defense & pricing</li>
-          </ul>
+          <p class="service-desc">Inventory management, replenishment planning, FBA inbound coordination, Subscribe &amp; Save optimization, and Buy Box defense — the operational backbone that keeps growth from becoming chaos.</p>
         </div>
-        <div class="service-card reveal reveal-delay-4">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-          </div>
-          <span class="service-number">04</span>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-accent"></div>
           <h3 class="service-title">Analytics & Strategy</h3>
-          <p class="service-desc">Data without context is noise. We turn Amazon's complex reporting into clear strategic decisions so you always know where you stand.</p>
-          <ul class="service-items">
-            <li>Market share & competitive intelligence</li>
-            <li>Search term & category analysis</li>
-            <li>Monthly business reviews</li>
-            <li>Marketplace expansion strategy</li>
-          </ul>
+          <p class="service-desc">Data without context is noise. We turn Amazon's complex reporting into clear strategic decisions — monthly business reviews, competitive intelligence, and market expansion planning that actually moves the needle.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-accent"></div>
+          <h3 class="service-title">Brand & Content</h3>
+          <p class="service-desc">Brand Registry strategy, image optimization, video content direction, and creative asset briefing. Your visual brand on Amazon should reinforce everything you've built off-platform.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-accent"></div>
+          <h3 class="service-title">Marketplace Expansion</h3>
+          <p class="service-desc">When you're ready to grow beyond the US, we handle UK, EU, and Canadian marketplaces with the same care as your core business — not as an afterthought, and only when the opportunity is real.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ WHO WE WORK WITH ═══ -->
+  <!-- WHO WE WORK WITH -->
   <section id="icp">
     <div class="icp-inner">
-      <span class="section-label reveal">Who We Work With</span>
-      <h2 class="icp-headline reveal reveal-delay-1">Built for brands that are serious about Amazon.</h2>
-      <p class="icp-intro reveal reveal-delay-2">We're selective by design. Our model is built around depth, not volume — which means we only take on partners where we're confident we can move the needle.</p>
+      <div class="section-eyebrow-light reveal">Who We Work With</div>
+      <h2 class="section-headline-light reveal reveal-delay-1">We're selective. That's the point.</h2>
+      <p class="section-intro-light reveal reveal-delay-2">Our model is built on depth, not volume. We only take on partners where we're genuinely confident we can make a difference — which means we also say no, a lot.</p>
       <div class="icp-grid">
         <div class="icp-card reveal reveal-delay-1">
-          <div class="icp-icon">$10M+</div>
-          <h3 class="icp-card-title">Established Amazon Revenue</h3>
-          <p class="icp-card-body">Or a clear, funded trajectory to get there. We partner with brands that have proven product-market fit and are ready to scale — not startups finding their footing.</p>
+          <span class="icp-badge">$10M+</span>
+          <h3 class="icp-title">Established Amazon Revenue</h3>
+          <p class="icp-body">Or a clear, funded trajectory toward it. We partner with brands that have proven product-market fit and are ready to scale intelligently — not startups still figuring out the basics.</p>
         </div>
         <div class="icp-card reveal reveal-delay-2">
-          <div class="icp-icon">CPG</div>
-          <h3 class="icp-card-title">Beauty, Wellness & Consumer Goods</h3>
-          <p class="icp-card-body">Our expertise runs deepest in health, wellness, skincare, and CPG — categories where brand integrity and customer trust matter most on Amazon.</p>
+          <span class="icp-badge">CPG</span>
+          <h3 class="icp-title">Beauty, Wellness & Consumer Goods</h3>
+          <p class="icp-body">Our expertise runs deepest in health, wellness, skincare, and CPG — categories where brand integrity and customer trust are the competitive moat, not just nice to have.</p>
         </div>
         <div class="icp-card reveal reveal-delay-3">
-          <div class="icp-icon">3–5yr</div>
-          <h3 class="icp-card-title">Long-Term Partnership Mindset</h3>
-          <p class="icp-card-body">We look for brands that value sustainable growth over short-term gains. Our best relationships are multi-year partnerships built on genuine trust and shared accountability.</p>
+          <span class="icp-badge">3–5yr</span>
+          <h3 class="icp-title">Long-Term Partnership Mindset</h3>
+          <p class="icp-body">We look for brands that value sustainable growth over short-term spikes. Our best client relationships span years — built on shared accountability, honest communication, and genuine trust.</p>
         </div>
         <div class="icp-card reveal reveal-delay-4">
-          <div class="icp-icon">↑ DTC</div>
-          <h3 class="icp-card-title">Strong Off-Amazon Presence</h3>
-          <p class="icp-card-body">Brands investing significantly in social and DTC — typically $3M+ in external media. Amazon should amplify what you've already built, not replace it.</p>
+          <span class="icp-badge">DTC</span>
+          <h3 class="icp-title">Strong Off-Amazon Presence</h3>
+          <p class="icp-body">Brands investing $3M+ in external media. Amazon should amplify what you've already built — brand recognition, loyal customers, and product credibility — not replace it.</p>
         </div>
       </div>
       <div class="icp-note reveal">
-        <p>Not sure if you're a fit? <a href="#contact">Reach out anyway</a> — we're happy to have an honest conversation about where you are and what you actually need.</p>
+        <p>Not sure if you're the right fit? <a href="mailto:lee@stonecutter.nyc">Reach out anyway</a> — we're always happy to have an honest conversation, even if the answer is no.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ RESULTS ═══ -->
-  <section id="results">
-    <div class="results-inner">
-      <div class="results-top">
-        <h2 class="results-headline reveal">Numbers that speak for themselves.</h2>
-        <p class="results-body reveal reveal-delay-2">We're deliberately focused, working closely with a select number of brands we genuinely believe in.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number">$220M+</div>
-          <div class="stat-label">In managed<br>annual revenue</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-2">
-          <div class="stat-number">14</div>
-          <div class="stat-label">Premium brand<br>partners</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-3">
-          <div class="stat-number">60+</div>
-          <div class="stat-label">Years of combined<br>Amazon expertise</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-4">
-          <div class="stat-number">32</div>
-          <div class="stat-label">Dedicated<br>team members</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CASE STUDIES ═══ -->
+  <!-- CASE STUDIES -->
   <section id="work">
     <div class="work-inner">
       <div class="work-header">
         <div>
-          <span class="section-label reveal">Selected Work</span>
-          <h2 class="work-headline reveal reveal-delay-1">Real results, real categories.</h2>
+          <div class="section-eyebrow reveal">Selected Work</div>
+          <h2 class="section-headline reveal reveal-delay-1" style="margin-bottom:0;">Real brands. Real results.</h2>
         </div>
-        <a href="#contact" class="work-link reveal reveal-delay-2">Start a conversation</a>
+        <a href="mailto:lee@stonecutter.nyc" class="work-link reveal reveal-delay-2">Start a conversation</a>
       </div>
       <div class="case-grid">
         <div class="case-card reveal reveal-delay-1">
-          <div>
-            <div class="case-top">
-              <span class="case-brand">P&G-Owned Skincare Brand</span>
-              <span class="case-category">Premium Skincare</span>
-            </div>
-            <div class="case-metric">
-              <span class="case-metric-number">+143%</span>
-              <span class="case-metric-label">YoY Revenue Growth</span>
-            </div>
-            <p class="case-result">Rebuilt branded search strategy after a <em>27% search volume decline,</em> recovering visibility and category rank within 60 days.</p>
-          </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <span class="case-category">P&amp;G-Owned Skincare Brand — Premium Skincare</span>
+          <div class="case-metric-big">+143%</div>
+          <span class="case-metric-label">YoY Revenue Growth</span>
+          <p class="case-result">Rebuilt branded search strategy after a 27% search volume decline, recovering visibility and category rank within 60 days through aggressive listing and ad restructuring.</p>
         </div>
         <div class="case-card reveal reveal-delay-2">
-          <div>
-            <div class="case-top">
-              <span class="case-brand">DTC Sports Equipment Brand</span>
-              <span class="case-category">Sports & Outdoors</span>
-            </div>
-            <div class="case-metric">
-              <span class="case-metric-number">5.1x</span>
-              <span class="case-metric-label">ROAS</span>
-            </div>
-            <p class="case-result">Built category authority from scratch, reaching <em>page-one search dominance</em> in 90 days within a highly competitive sports market.</p>
-          </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <span class="case-category">DTC Sports Equipment Brand — Sports &amp; Outdoors</span>
+          <div class="case-metric-big">5.1×</div>
+          <span class="case-metric-label">Return on Ad Spend</span>
+          <p class="case-result">Built category authority from scratch, reaching page-one search dominance in 90 days within a highly competitive, established sports market.</p>
         </div>
         <div class="case-card reveal reveal-delay-3">
-          <div>
-            <div class="case-top">
-              <span class="case-brand">International Wellness Supplement Brand</span>
-              <span class="case-category">Health & Wellness</span>
-            </div>
-            <div class="case-metric">
-              <span class="case-metric-number">2.8x</span>
-              <span class="case-metric-label">YoY Growth</span>
-            </div>
-            <p class="case-result">Dominant keyword presence and <em>multi-market expansion strategy</em> driving compounding growth across health and beauty categories.</p>
-          </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <span class="case-category">International Wellness Brand — Health &amp; Wellness</span>
+          <div class="case-metric-big">2.8×</div>
+          <span class="case-metric-label">YoY Growth</span>
+          <p class="case-result">Dominant keyword presence and multi-market expansion strategy driving compounding growth across health and beauty categories in the US and UK.</p>
         </div>
         <div class="case-card reveal reveal-delay-4">
-          <div>
-            <div class="case-top">
-              <span class="case-brand">Premium Pet Supplement Brand</span>
-              <span class="case-category">Pet Health</span>
-            </div>
-            <div class="case-metric">
-              <span class="case-metric-number">4.2x</span>
-              <span class="case-metric-label">ROAS</span>
-            </div>
-            <p class="case-result">Navigated complex SKU subscription transfers and <em>inventory restructuring</em> while maintaining growth trajectory and subscriber retention.</p>
-          </div>
-          <a href="#contact" class="case-read-more">Discuss a similar challenge</a>
+          <span class="case-category">Premium Pet Supplement Brand — Pet Health</span>
+          <div class="case-metric-big">4.2×</div>
+          <span class="case-metric-label">Return on Ad Spend</span>
+          <p class="case-result">Navigated complex SKU subscription transfers and inventory restructuring while maintaining full growth trajectory and protecting a high subscriber retention rate.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ TESTIMONIALS ═══ -->
+  <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="testimonials-inner">
-      <span class="section-label-dark reveal">Client Perspective</span>
-      <h2 class="testimonials-headline reveal reveal-delay-1">What our partners say.</h2>
+      <div class="section-eyebrow-light reveal">Client Perspective</div>
+      <h2 class="section-headline-light reveal reveal-delay-1">What our partners say.</h2>
       <div class="testimonials-grid">
         <blockquote class="testimonial-card reveal reveal-delay-1">
-          <p class="testimonial-quote">"Stonecutter doesn't feel like a vendor — they feel like part of our internal team. The proactivity and strategic depth is unlike any agency we've worked with."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">VP of E-Commerce</span>
-            <span class="testimonial-company">P&G-owned skincare brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
+          <div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">Stonecutter doesn't feel like a vendor — they feel like part of our internal team. The proactivity and strategic depth is unlike any agency we've worked with.</p>
+          </div>
+          <div class="testimonial-attribution">
+            <p class="testimonial-role">VP of E-Commerce</p>
+            <p class="testimonial-company">P&amp;G-owned skincare brand</p>
+            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
+          </div>
         </blockquote>
         <blockquote class="testimonial-card reveal reveal-delay-2">
-          <p class="testimonial-quote">"We went from a messy Amazon presence to category leaders within a year. The combination of ad strategy and catalog optimization is what makes the real difference."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">Founder & CEO</span>
-            <span class="testimonial-company">DTC wellness supplement brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
+          <div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">We went from a messy Amazon presence to category leaders within a year. The combination of ad strategy and catalog work is what makes the real difference.</p>
+          </div>
+          <div class="testimonial-attribution">
+            <p class="testimonial-role">Founder & CEO</p>
+            <p class="testimonial-company">DTC wellness supplement brand</p>
+            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
+          </div>
         </blockquote>
         <blockquote class="testimonial-card reveal reveal-delay-3">
-          <p class="testimonial-quote">"Most agencies hand you reports. Stonecutter gives you decisions. That shift in how we think about Amazon data has been genuinely transformative."</p>
-          <footer class="testimonial-attribution">
-            <span class="testimonial-name">Head of Digital</span>
-            <span class="testimonial-company">Premium CPG brand</span>
-            <span class="testimonial-placeholder-note">[Placeholder — awaiting approval]</span>
-          </footer>
+          <div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">Most agencies hand you reports. Stonecutter gives you decisions. That shift in how we think about Amazon data has been genuinely transformative for our business.</p>
+          </div>
+          <div class="testimonial-attribution">
+            <p class="testimonial-role">Head of Digital</p>
+            <p class="testimonial-company">Premium CPG brand</p>
+            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
+          </div>
         </blockquote>
       </div>
     </div>
   </section>
 
-  <!-- ═══ VALUES STRIP ═══ -->
+  <!-- VALUES -->
   <section id="values">
     <div class="values-inner">
-      <h2 class="values-headline reveal">Built on five principles we never compromise.</h2>
-      <div class="values-strip">
+      <h2 class="values-label reveal">Five principles we never compromise on.</h2>
+      <div class="values-row">
         <div class="value-item reveal reveal-delay-1">Trust</div>
         <div class="value-item reveal reveal-delay-2">Clarity</div>
         <div class="value-item reveal reveal-delay-3">Excellence</div>
@@ -2257,89 +1670,99 @@
     </div>
   </section>
 
-  <!-- ═══ ABOUT ═══ -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="about-inner">
-      <div class="about-left">
-        <span class="section-label-dark reveal">About Stonecutter</span>
+      <div>
+        <div class="section-eyebrow reveal">About Stonecutter</div>
         <h2 class="about-headline reveal reveal-delay-1">A different kind of Amazon partner.</h2>
         <p class="about-body reveal reveal-delay-2">
-          We built Stonecutter for brands that care about how they grow, not just how fast. We combine strategic depth with operational precision to protect your brand equity while scaling your Amazon business.
+          We built Stonecutter for brands that care about <em>how</em> they grow, not just how fast. We're a boutique agency — deliberately small, deeply invested in each partner, and relentlessly focused on sustainable results.
         </p>
-        <p class="about-detail reveal reveal-delay-3">
-          Most Amazon agencies are built around volume. We're built around quality. Fewer clients, deeper relationships, and a genuine stake in the outcome. We operate with a "fail together, win together" philosophy, and we turn away clients that don't fit our profile — even when it's lucrative to say yes.
+        <p class="about-callout reveal reveal-delay-3">"Fail together, win together" isn't a tagline. It's how we operate every day.</p>
+        <p class="about-body reveal reveal-delay-3">
+          Most Amazon agencies are built around volume. We're built around quality. Fewer clients, deeper relationships, and a genuine stake in the outcome. We turn away clients that don't fit our profile — even when it's lucrative to say yes.
         </p>
-        <div class="about-badges reveal reveal-delay-4">
-          <span class="badge">Amazon Verified Partner</span>
-          <span class="badge">Beauty & Wellness</span>
-          <span class="badge">Full-Service Management</span>
-          <span class="badge">New York City</span>
+        <p class="about-body reveal reveal-delay-4">
+          Led by Lee Assoulin from New York City, Stonecutter is an Amazon Verified Partner, EOS-driven, and proud member of the Million Dollar Sellers community.
+        </p>
+        <div class="about-tags reveal reveal-delay-4">
+          <span class="tag">Amazon Verified Partner</span>
+          <span class="tag">EOS-Driven</span>
+          <span class="tag">MDS Member</span>
+          <span class="tag">New York City</span>
+          <span class="tag">Full-Service</span>
         </div>
       </div>
-      <div class="about-image-box reveal reveal-delay-2">
-        <div class="image-placeholder-icon">
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-visual-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <polyline points="21 15 16 10 5 21"/>
           </svg>
         </div>
-        <span class="image-placeholder-label">Team / Agency Photo</span>
+        <span class="about-visual-tag">Lee Assoulin, Founder</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══ CTA BAND ═══ -->
+  <!-- CTA BAND -->
   <section id="cta-band">
     <div class="cta-band-inner">
-      <div class="cta-band-eyebrow reveal">Free Amazon Audit</div>
-      <h2 class="cta-band-headline reveal reveal-delay-1">Your Amazon channel is either an asset or a liability.</h2>
-      <p class="cta-band-sub reveal reveal-delay-2">Start with a free audit — no commitment, no pitch deck. Just an honest look at where your brand stands on Amazon and what's realistically possible.</p>
-      <div class="cta-band-actions reveal reveal-delay-3">
-        <a href="mailto:lee@stonecutter.nyc" class="btn-cta-band">Schedule a Free Audit</a>
-        <a href="#work" class="cta-band-link">See our work first</a>
+      <div class="cta-eyebrow reveal">Free Amazon Audit</div>
+      <h2 class="cta-headline reveal reveal-delay-1">Your Amazon channel is either an asset or a liability.</h2>
+      <p class="cta-sub reveal reveal-delay-2">Most brands don't know which one they have until it's costing them.</p>
+      <p class="cta-details reveal reveal-delay-2">Start with a free audit — no commitment, no pitch deck. Just an honest look at where your brand stands on Amazon and what's realistically possible. We cover ad efficiency, catalog health, competitive positioning, and growth opportunities.</p>
+      <div class="cta-actions reveal reveal-delay-3">
+        <a href="mailto:lee@stonecutter.nyc" class="btn-cta-primary">Schedule a Free Audit</a>
+        <a href="#work" class="cta-alt-link">See our work first</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="footer-inner">
       <div class="footer-top">
-        <div>
-          <a href="#hero" class="footer-wordmark">Stonecutter</a>
-          <p class="footer-tagline">Premium Amazon management for brands that mean it.</p>
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo">Stonecutter</a>
+          <p class="footer-tagline">Premium Amazon management for brands that mean it. New York City.</p>
         </div>
         <div class="footer-right">
-          <nav class="footer-nav">
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-          </nav>
-          <div class="footer-contact">
-            <span class="footer-contact-label">Get in touch</span>
+          <div class="footer-nav-col">
+            <h4>Navigation</h4>
+            <ul class="footer-nav-links">
+              <li><a href="#services">Services</a></li>
+              <li><a href="#work">Work</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#values">Values</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact-col">
+            <h4>Get in Touch</h4>
             <a href="mailto:lee@stonecutter.nyc" class="footer-email">lee@stonecutter.nyc</a>
-            <a href="mailto:lee@stonecutter.nyc" class="btn-footer">Schedule a Free Audit</a>
+            <a href="mailto:lee@stonecutter.nyc" class="btn-footer-audit">Schedule a Free Audit</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2026 Stonecutter NYC. All rights reserved.</p>
-        <p class="footer-loc">New York City</p>
+        <p class="footer-location">New York City</p>
       </div>
     </div>
   </footer>
 
-  <!-- ═══ JAVASCRIPT ═══ -->
+  <!-- JAVASCRIPT -->
   <script>
-    // ── Page loader
+    // Page loader
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('pageLoader').classList.add('hidden');
-      }, 1400);
+      }, 1500);
     });
 
-    // ── Scroll-triggered fade-ins
+    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2348,17 +1771,17 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
 
-    // ── Navbar scroll state
+    // Nav scroll state
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 48);
     }, { passive: true });
 
-    // ── Mobile hamburger
+    // Mobile hamburger
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
@@ -2383,7 +1806,7 @@
       });
     });
 
-    // ── Smooth scroll
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
@@ -2394,26 +1817,14 @@
       });
     });
 
-    // ── Ink circle animation on scroll
-    const inkCircles = document.querySelectorAll('.ink-circle svg ellipse');
-    const inkObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelector('svg ellipse')?.classList.add('animated');
-          inkObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.ink-circle').forEach(el => inkObserver.observe(el));
-
-    // ── Count-up animation for statement stats
+    // Count-up animation
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
           const target = parseInt(el.dataset.count);
-          const suffix = el.textContent.replace(/[0-9]/g, '');
+          const supEl = el.querySelector('sup');
+          const supText = supEl ? supEl.outerHTML : '';
           let current = 0;
           const duration = 1800;
           const step = target / (duration / 16);
@@ -2424,7 +1835,7 @@
               current = target;
               clearInterval(counter);
             }
-            el.textContent = Math.floor(current) + suffix;
+            el.innerHTML = Math.floor(current) + supText;
           }, 16);
 
           countObserver.unobserve(el);
@@ -2434,12 +1845,12 @@
 
     document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
-    // ── Trigger above-fold reveals immediately
-    window.addEventListener('DOMContentLoaded', () => {
+    // Trigger above-fold reveals
+    document.addEventListener('DOMContentLoaded', () => {
       revealEls.forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight) {
-          setTimeout(() => el.classList.add('visible'), 100);
+          setTimeout(() => el.classList.add('visible'), 120);
         }
       });
     });
