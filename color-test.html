@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stonecutter — Full Palette Explorer</title>
+<title>Stonecutter — Burnt Orange Variations</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: #EDE8E0; color: #1E3A5F; padding: 40px 20px; }
   
   h1 { font-family: 'DM Serif Display', serif; font-size: 28px; text-align: center; margin-bottom: 8px; }
-  .subtitle { text-align: center; color: rgba(30,58,95,0.5); margin-bottom: 16px; font-size: 14px; }
-  .legend { text-align: center; font-size: 12px; color: rgba(30,58,95,0.4); margin-bottom: 60px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .subtitle { text-align: center; color: rgba(30,58,95,0.5); margin-bottom: 60px; font-size: 14px; }
   
   .option { margin-bottom: 80px; border-bottom: 1px solid rgba(30,58,95,0.1); padding-bottom: 60px; }
   .option:last-child { border: none; }
@@ -34,6 +33,7 @@
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto 30px; }
   .card { background: white; border-radius: 10px; padding: 28px 20px; }
   .card-dot { width: 10px; height: 10px; border-radius: 50%; margin-bottom: 14px; }
+  .card-line { width: 30px; height: 3px; border-radius: 2px; margin-bottom: 14px; }
   .card h3 { font-family: 'DM Serif Display', serif; font-size: 16px; margin-bottom: 8px; color: #1E3A5F; }
   .card p { font-size: 12px; line-height: 1.6; color: rgba(30,58,95,0.5); }
   
@@ -46,7 +46,11 @@
   .cta p { font-size: 13px; opacity: 0.7; margin-bottom: 20px; }
   .cta-btn { display: inline-block; padding: 13px 28px; background: white; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; }
   
-  .divider { height: 3px; width: 60px; margin: 30px auto; border-radius: 2px; }
+  /* Dark section variant */
+  .dark-section { background: #1E3A5F; border-radius: 12px; max-width: 900px; margin: 30px auto; padding: 40px; }
+  .dark-section .card { background: rgba(255,255,255,0.08); }
+  .dark-section .card h3 { color: #F0EBE3; }
+  .dark-section .card p { color: rgba(240,235,227,0.5); }
   
   @media (max-width: 700px) {
     .cards { grid-template-columns: 1fr; }
@@ -57,86 +61,13 @@
 </head>
 <body>
 
-<h1>Stonecutter — Palette Explorer</h1>
-<p class="subtitle">Base: Cream + Navy. Testing different "pop" accent colors.</p>
-<p class="legend">Each option shows 5-6 colors: cream base, navy for text, a dark green, a pop color, terracotta warmth, and sometimes a muted complement. See which combo feels like Stonecutter.</p>
+<h1>Burnt Orange — Dialed In</h1>
+<p class="subtitle">Locked: Cream + Navy + Hunter Green. Exploring the orange range + warm neutrals.</p>
 
-<!-- ═══ OPTION 1: CORAL POP ═══ -->
+<!-- ═══ 3A: ORIGINAL BURNT ORANGE ═══ -->
 <div class="option">
-  <div class="option-label">1 — Coral Pop</div>
-  <div class="option-desc">Warm, approachable, confident. The coral is the pop — energetic without being aggressive.</div>
-  <div class="swatches">
-    <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
-    <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
-    <div class="sw"><div class="sw-box" style="background:#355E3B"></div><div class="sw-name">Hunter</div><div class="sw-hex">#355E3B</div></div>
-    <div class="sw"><div class="sw-box" style="background:#E8654A"></div><div class="sw-name">Coral</div><div class="sw-hex">#E8654A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#D4956A"></div><div class="sw-name">Terracotta</div><div class="sw-hex">#D4956A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#94A3B8"></div><div class="sw-name">Slate</div><div class="sw-hex">#94A3B8</div></div>
-  </div>
-  <div class="preview">
-    <div class="eyebrow" style="color:#E8654A">New York Amazon Agency</div>
-    <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
-    <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#E8654A" href="#">Schedule a Free Audit</a>
-    <a class="btn-ghost" href="#">See Our Work</a>
-  </div>
-  <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#E8654A"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
-  </div>
-  <div class="stats">
-    <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#E8654A">14</div><div class="stat-label">Brand partners</div></div>
-    <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
-  </div>
-  <div class="cta" style="background:#1E3A5F">
-    <h3>Your Amazon channel is either an asset or a liability.</h3>
-    <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#E8654A" href="#">Schedule a Free Audit</a>
-  </div>
-</div>
-
-<!-- ═══ OPTION 2: ELECTRIC BLUE POP ═══ -->
-<div class="option">
-  <div class="option-label">2 — Electric Blue Pop</div>
-  <div class="option-desc">Modern, tech-forward, sharp. Blue pops against cream without fighting the navy.</div>
-  <div class="swatches">
-    <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
-    <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
-    <div class="sw"><div class="sw-box" style="background:#2C4A3E"></div><div class="sw-name">Forest</div><div class="sw-hex">#2C4A3E</div></div>
-    <div class="sw"><div class="sw-box" style="background:#2D7FF9"></div><div class="sw-name">Electric</div><div class="sw-hex">#2D7FF9</div></div>
-    <div class="sw"><div class="sw-box" style="background:#D4956A"></div><div class="sw-name">Terracotta</div><div class="sw-hex">#D4956A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#8B9DAF"></div><div class="sw-name">Steel</div><div class="sw-hex">#8B9DAF</div></div>
-  </div>
-  <div class="preview">
-    <div class="eyebrow" style="color:#2D7FF9">New York Amazon Agency</div>
-    <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
-    <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#2D7FF9" href="#">Schedule a Free Audit</a>
-    <a class="btn-ghost" href="#">See Our Work</a>
-  </div>
-  <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#2D7FF9"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#2C4A3E"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
-  </div>
-  <div class="stats">
-    <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#2D7FF9">14</div><div class="stat-label">Brand partners</div></div>
-    <div><div class="stat-num" style="color:#2C4A3E">98%</div><div class="stat-label">Client retention</div></div>
-  </div>
-  <div class="cta" style="background:#2C4A3E">
-    <h3>Your Amazon channel is either an asset or a liability.</h3>
-    <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#2D7FF9" href="#">Schedule a Free Audit</a>
-  </div>
-</div>
-
-<!-- ═══ OPTION 3: BURNT ORANGE POP ═══ -->
-<div class="option">
-  <div class="option-label">3 — Burnt Orange Pop</div>
-  <div class="option-desc">Earthy but punchy. Feels premium and grounded — like leather and stone.</div>
+  <div class="option-label">3A — Classic Burnt Orange</div>
+  <div class="option-desc">The original. Bold, earthy, unmistakable.</div>
   <div class="swatches">
     <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
     <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
@@ -153,9 +84,9 @@
     <a class="btn-ghost" href="#">See Our Work</a>
   </div>
   <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#CC5500"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+    <div class="card"><div class="card-line" style="background:#CC5500"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
   </div>
   <div class="stats">
     <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
@@ -169,147 +100,183 @@
   </div>
 </div>
 
-<!-- ═══ OPTION 4: CRIMSON POP ═══ -->
+<!-- ═══ 3B: DEEPER / RUST ═══ -->
 <div class="option">
-  <div class="option-label">4 — Crimson Pop</div>
-  <div class="option-desc">Bold and authoritative. Similar energy to Aisle3's red but deeper and more refined.</div>
-  <div class="swatches">
-    <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
-    <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
-    <div class="sw"><div class="sw-box" style="background:#2C4A3E"></div><div class="sw-name">Forest</div><div class="sw-hex">#2C4A3E</div></div>
-    <div class="sw"><div class="sw-box" style="background:#B83240"></div><div class="sw-name">Crimson</div><div class="sw-hex">#B83240</div></div>
-    <div class="sw"><div class="sw-box" style="background:#D4956A"></div><div class="sw-name">Terracotta</div><div class="sw-hex">#D4956A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#8B9DAF"></div><div class="sw-name">Steel</div><div class="sw-hex">#8B9DAF</div></div>
-  </div>
-  <div class="preview">
-    <div class="eyebrow" style="color:#B83240">New York Amazon Agency</div>
-    <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
-    <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#B83240" href="#">Schedule a Free Audit</a>
-    <a class="btn-ghost" href="#">See Our Work</a>
-  </div>
-  <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#B83240"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#2C4A3E"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
-  </div>
-  <div class="stats">
-    <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#B83240">14</div><div class="stat-label">Brand partners</div></div>
-    <div><div class="stat-num" style="color:#2C4A3E">98%</div><div class="stat-label">Client retention</div></div>
-  </div>
-  <div class="cta" style="background:#1E3A5F">
-    <h3>Your Amazon channel is either an asset or a liability.</h3>
-    <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#B83240" href="#">Schedule a Free Audit</a>
-  </div>
-</div>
-
-<!-- ═══ OPTION 5: AMBER POP ═══ -->
-<div class="option">
-  <div class="option-label">5 — Amber Pop</div>
-  <div class="option-desc">Warm luxury. Like aged whiskey — rich, inviting, premium without being stuffy.</div>
+  <div class="option-label">3B — Rust</div>
+  <div class="option-desc">Darker, moodier. More leather, less fire. Feels vintage-premium.</div>
   <div class="swatches">
     <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
     <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
     <div class="sw"><div class="sw-box" style="background:#355E3B"></div><div class="sw-name">Hunter</div><div class="sw-hex">#355E3B</div></div>
-    <div class="sw"><div class="sw-box" style="background:#D4880F"></div><div class="sw-name">Amber</div><div class="sw-hex">#D4880F</div></div>
+    <div class="sw"><div class="sw-box" style="background:#A0522D"></div><div class="sw-name">Rust</div><div class="sw-hex">#A0522D</div></div>
     <div class="sw"><div class="sw-box" style="background:#C4A882"></div><div class="sw-name">Sand</div><div class="sw-hex">#C4A882</div></div>
     <div class="sw"><div class="sw-box" style="background:#6B7B8D"></div><div class="sw-name">Gunmetal</div><div class="sw-hex">#6B7B8D</div></div>
   </div>
   <div class="preview">
-    <div class="eyebrow" style="color:#D4880F">New York Amazon Agency</div>
+    <div class="eyebrow" style="color:#A0522D">New York Amazon Agency</div>
     <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
     <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#D4880F" href="#">Schedule a Free Audit</a>
+    <a class="btn" style="background:#A0522D" href="#">Schedule a Free Audit</a>
     <a class="btn-ghost" href="#">See Our Work</a>
   </div>
   <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#D4880F"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+    <div class="card"><div class="card-line" style="background:#A0522D"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
   </div>
   <div class="stats">
     <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#D4880F">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#A0522D">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
+  </div>
+  <div class="cta" style="background:#1E3A5F">
+    <h3>Your Amazon channel is either an asset or a liability.</h3>
+    <p>Start with a free audit — no commitment, no pitch deck.</p>
+    <a class="cta-btn" style="color:#A0522D" href="#">Schedule a Free Audit</a>
+  </div>
+</div>
+
+<!-- ═══ 3C: BRIGHTER / TANGERINE ═══ -->
+<div class="option">
+  <div class="option-label">3C — Tangerine</div>
+  <div class="option-desc">Brighter, more energetic. Still warm but with more punch and visibility.</div>
+  <div class="swatches">
+    <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
+    <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
+    <div class="sw"><div class="sw-box" style="background:#355E3B"></div><div class="sw-name">Hunter</div><div class="sw-hex">#355E3B</div></div>
+    <div class="sw"><div class="sw-box" style="background:#E07020"></div><div class="sw-name">Tangerine</div><div class="sw-hex">#E07020</div></div>
+    <div class="sw"><div class="sw-box" style="background:#D4B896"></div><div class="sw-name">Wheat</div><div class="sw-hex">#D4B896</div></div>
+    <div class="sw"><div class="sw-box" style="background:#6B7B8D"></div><div class="sw-name">Gunmetal</div><div class="sw-hex">#6B7B8D</div></div>
+  </div>
+  <div class="preview">
+    <div class="eyebrow" style="color:#E07020">New York Amazon Agency</div>
+    <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
+    <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
+    <a class="btn" style="background:#E07020" href="#">Schedule a Free Audit</a>
+    <a class="btn-ghost" href="#">See Our Work</a>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-line" style="background:#E07020"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
+    <div><div class="stat-num" style="color:#E07020">14</div><div class="stat-label">Brand partners</div></div>
     <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
   </div>
   <div class="cta" style="background:#355E3B">
     <h3>Your Amazon channel is either an asset or a liability.</h3>
     <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#D4880F" href="#">Schedule a Free Audit</a>
+    <a class="cta-btn" style="color:#E07020" href="#">Schedule a Free Audit</a>
   </div>
 </div>
 
-<!-- ═══ OPTION 6: PLUM POP ═══ -->
+<!-- ═══ 3D: COPPER ═══ -->
 <div class="option">
-  <div class="option-label">6 — Plum Pop</div>
-  <div class="option-desc">Unexpected and sophisticated. Stands out from every other Amazon agency instantly.</div>
+  <div class="option-label">3D — Copper</div>
+  <div class="option-desc">Metallic warmth. Sophisticated, like the hardware on a luxury bag.</div>
   <div class="swatches">
     <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
     <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
     <div class="sw"><div class="sw-box" style="background:#2C4A3E"></div><div class="sw-name">Forest</div><div class="sw-hex">#2C4A3E</div></div>
-    <div class="sw"><div class="sw-box" style="background:#7B2D5F"></div><div class="sw-name">Plum</div><div class="sw-hex">#7B2D5F</div></div>
-    <div class="sw"><div class="sw-box" style="background:#D4956A"></div><div class="sw-name">Terracotta</div><div class="sw-hex">#D4956A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#8B9DAF"></div><div class="sw-name">Steel</div><div class="sw-hex">#8B9DAF</div></div>
+    <div class="sw"><div class="sw-box" style="background:#B87333"></div><div class="sw-name">Copper</div><div class="sw-hex">#B87333</div></div>
+    <div class="sw"><div class="sw-box" style="background:#C4A882"></div><div class="sw-name">Sand</div><div class="sw-hex">#C4A882</div></div>
+    <div class="sw"><div class="sw-box" style="background:#7A8B99"></div><div class="sw-name">Pewter</div><div class="sw-hex">#7A8B99</div></div>
   </div>
   <div class="preview">
-    <div class="eyebrow" style="color:#7B2D5F">New York Amazon Agency</div>
+    <div class="eyebrow" style="color:#B87333">New York Amazon Agency</div>
     <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
     <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#7B2D5F" href="#">Schedule a Free Audit</a>
+    <a class="btn" style="background:#B87333" href="#">Schedule a Free Audit</a>
     <a class="btn-ghost" href="#">See Our Work</a>
   </div>
   <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#7B2D5F"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#2C4A3E"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+    <div class="card"><div class="card-line" style="background:#B87333"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#2C4A3E"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
   </div>
   <div class="stats">
     <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#7B2D5F">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#B87333">14</div><div class="stat-label">Brand partners</div></div>
     <div><div class="stat-num" style="color:#2C4A3E">98%</div><div class="stat-label">Client retention</div></div>
   </div>
-  <div class="cta" style="background:#1E3A5F">
+  <div class="cta" style="background:#2C4A3E">
     <h3>Your Amazon channel is either an asset or a liability.</h3>
     <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#7B2D5F" href="#">Schedule a Free Audit</a>
+    <a class="cta-btn" style="color:#B87333" href="#">Schedule a Free Audit</a>
   </div>
 </div>
 
-<!-- ═══ OPTION 7: TEAL POP ═══ -->
+<!-- ═══ 3E: RED-ORANGE (PAPRIKA) ═══ -->
 <div class="option">
-  <div class="option-label">7 — Teal Pop</div>
-  <div class="option-desc">Fresh and modern. Pops against cream while complementing both navy and green.</div>
+  <div class="option-label">3E — Paprika</div>
+  <div class="option-desc">Warmer than coral, deeper than orange. Spicy and distinctive. Maximum pop.</div>
   <div class="swatches">
     <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
     <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
     <div class="sw"><div class="sw-box" style="background:#355E3B"></div><div class="sw-name">Hunter</div><div class="sw-hex">#355E3B</div></div>
-    <div class="sw"><div class="sw-box" style="background:#0891B2"></div><div class="sw-name">Teal</div><div class="sw-hex">#0891B2</div></div>
+    <div class="sw"><div class="sw-box" style="background:#C24B2A"></div><div class="sw-name">Paprika</div><div class="sw-hex">#C24B2A</div></div>
     <div class="sw"><div class="sw-box" style="background:#D4956A"></div><div class="sw-name">Terracotta</div><div class="sw-hex">#D4956A</div></div>
-    <div class="sw"><div class="sw-box" style="background:#94A3B8"></div><div class="sw-name">Slate</div><div class="sw-hex">#94A3B8</div></div>
+    <div class="sw"><div class="sw-box" style="background:#6B7B8D"></div><div class="sw-name">Gunmetal</div><div class="sw-hex">#6B7B8D</div></div>
   </div>
   <div class="preview">
-    <div class="eyebrow" style="color:#0891B2">New York Amazon Agency</div>
+    <div class="eyebrow" style="color:#C24B2A">New York Amazon Agency</div>
     <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
     <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
-    <a class="btn" style="background:#0891B2" href="#">Schedule a Free Audit</a>
+    <a class="btn" style="background:#C24B2A" href="#">Schedule a Free Audit</a>
     <a class="btn-ghost" href="#">See Our Work</a>
   </div>
   <div class="cards">
-    <div class="card"><div class="card-dot" style="background:#0891B2"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
-    <div class="card"><div class="card-dot" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
-    <div class="card"><div class="card-dot" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+    <div class="card"><div class="card-line" style="background:#C24B2A"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
   </div>
   <div class="stats">
     <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
-    <div><div class="stat-num" style="color:#0891B2">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#C24B2A">14</div><div class="stat-label">Brand partners</div></div>
     <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
   </div>
   <div class="cta" style="background:#1E3A5F">
     <h3>Your Amazon channel is either an asset or a liability.</h3>
     <p>Start with a free audit — no commitment, no pitch deck.</p>
-    <a class="cta-btn" style="color:#0891B2" href="#">Schedule a Free Audit</a>
+    <a class="cta-btn" style="color:#C24B2A" href="#">Schedule a Free Audit</a>
+  </div>
+</div>
+
+<!-- ═══ 3F: SIENNA ═══ -->
+<div class="option">
+  <div class="option-label">3F — Sienna</div>
+  <div class="option-desc">Right between rust and burnt orange. Natural clay warmth. Balanced and grounded.</div>
+  <div class="swatches">
+    <div class="sw"><div class="sw-box" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.08)"></div><div class="sw-name">Cream</div><div class="sw-hex">#EDE8E0</div></div>
+    <div class="sw"><div class="sw-box" style="background:#1E3A5F"></div><div class="sw-name">Navy</div><div class="sw-hex">#1E3A5F</div></div>
+    <div class="sw"><div class="sw-box" style="background:#355E3B"></div><div class="sw-name">Hunter</div><div class="sw-hex">#355E3B</div></div>
+    <div class="sw"><div class="sw-box" style="background:#B5541E"></div><div class="sw-name">Sienna</div><div class="sw-hex">#B5541E</div></div>
+    <div class="sw"><div class="sw-box" style="background:#C4A882"></div><div class="sw-name">Sand</div><div class="sw-hex">#C4A882</div></div>
+    <div class="sw"><div class="sw-box" style="background:#6B7B8D"></div><div class="sw-name">Gunmetal</div><div class="sw-hex">#6B7B8D</div></div>
+  </div>
+  <div class="preview">
+    <div class="eyebrow" style="color:#B5541E">New York Amazon Agency</div>
+    <h2 class="headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
+    <p class="sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
+    <a class="btn" style="background:#B5541E" href="#">Schedule a Free Audit</a>
+    <a class="btn-ghost" href="#">See Our Work</a>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-line" style="background:#B5541E"></div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-line" style="background:#355E3B"></div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-line" style="background:#1E3A5F"></div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num" style="color:#1E3A5F">$220M+</div><div class="stat-label">Revenue managed</div></div>
+    <div><div class="stat-num" style="color:#B5541E">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
+  </div>
+  <div class="cta" style="background:#355E3B">
+    <h3>Your Amazon channel is either an asset or a liability.</h3>
+    <p>Start with a free audit — no commitment, no pitch deck.</p>
+    <a class="cta-btn" style="color:#B5541E" href="#">Schedule a Free Audit</a>
   </div>
 </div>
 
