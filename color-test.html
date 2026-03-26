@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter — Color Direction on Cream</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #EDE8E0; color: #1E3A5F; padding: 40px 20px; }
+  
+  h1 { font-family: 'DM Serif Display', serif; font-size: 28px; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: rgba(30,58,95,0.5); margin-bottom: 60px; font-size: 14px; }
+  
+  .option { margin-bottom: 80px; border-bottom: 1px solid rgba(30,58,95,0.1); padding-bottom: 60px; }
+  .option:last-child { border: none; }
+  .option-label { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 30px; text-align: center; }
+  .option-label span { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: rgba(30,58,95,0.5); display: block; margin-top: 4px; }
+  
+  /* Swatches */
+  .swatches { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; }
+  .swatch { width: 80px; height: 80px; border-radius: 8px; position: relative; }
+  .swatch-label { font-size: 10px; text-align: center; margin-top: 6px; color: rgba(30,58,95,0.5); }
+  
+  /* Hero Preview */
+  .hero-preview { max-width: 900px; margin: 0 auto  30px; padding: 60px 40px; }
+  .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .hero-headline { font-family: 'DM Serif Display', serif; font-size: 48px; line-height: 1.15; margin-bottom: 20px; color: #1E3A5F; max-width: 700px; }
+  .hero-sub { font-size: 17px; line-height: 1.7; color: rgba(30,58,95,0.6); max-width: 550px; margin-bottom: 32px; }
+  .hero-btn { display: inline-block; padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 15px; color: white; text-decoration: none; margin-right: 16px; }
+  .hero-btn-outline { display: inline-block; padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; background: transparent; border: 2px solid; }
+  
+  /* Service Cards */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .card { background: white; border-radius: 10px; padding: 32px 24px; }
+  .card-icon { width: 40px; height: 40px; border-radius: 8px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; }
+  .card h3 { font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 10px; color: #1E3A5F; }
+  .card p { font-size: 13px; line-height: 1.6; color: rgba(30,58,95,0.55); }
+  
+  /* Stat bar */
+  .stats { display: flex; gap: 40px; max-width: 900px; margin: 40px auto 0; justify-content: center; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 36px; }
+  .stat-label { font-size: 12px; color: rgba(30,58,95,0.5); margin-top: 4px; }
+  
+  /* CTA band */
+  .cta-band { max-width: 900px; margin: 40px auto 0; padding: 48px 40px; border-radius: 12px; color: white; text-align: center; }
+  .cta-band h3 { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 12px; }
+  .cta-band p { font-size: 14px; opacity: 0.75; margin-bottom: 24px; }
+  .cta-band-btn { display: inline-block; padding: 14px 32px; background: white; border-radius: 6px; font-weight: 600; font-size: 14px; text-decoration: none; }
+  
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero-headline { font-size: 32px; }
+    .stats { flex-direction: column; align-items: center; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Stonecutter — Color on Cream</h1>
+<p class="subtitle">Same content, three accent directions. Which feels right?</p>
+
+<!-- ═══ OPTION A: EMERALD ═══ -->
+<div class="option">
+  <div class="option-label">Option A — Emerald<span>#2E8B6A · Brighter, energetic, fresh</span></div>
+  <div class="swatches">
+    <div><div class="swatch" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.1)"></div><div class="swatch-label">Cream</div></div>
+    <div><div class="swatch" style="background:#1E3A5F"></div><div class="swatch-label">Navy</div></div>
+    <div><div class="swatch" style="background:#2E8B6A"></div><div class="swatch-label">Emerald</div></div>
+    <div><div class="swatch" style="background:#D4956A"></div><div class="swatch-label">Terracotta</div></div>
+  </div>
+  <div class="hero-preview">
+    <div class="hero-eyebrow" style="color:#2E8B6A">New York Amazon Agency</div>
+    <h2 class="hero-headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
+    <p class="hero-sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
+    <a class="hero-btn" style="background:#2E8B6A" href="#">Schedule a Free Audit</a>
+    <a class="hero-btn-outline" style="color:#1E3A5F; border-color:rgba(30,58,95,0.2)" href="#">See Our Work</a>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-icon" style="background:#2E8B6A">A</div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-icon" style="background:#1E3A5F">C</div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-icon" style="background:#D4956A">S</div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num" style="color:#2E8B6A">$220M+</div><div class="stat-label">Revenue managed</div></div>
+    <div><div class="stat-num" style="color:#1E3A5F">14</div><div class="stat-label">Brand partners</div></div>
+    <div><div class="stat-num" style="color:#2E8B6A">98%</div><div class="stat-label">Client retention</div></div>
+  </div>
+  <div class="cta-band" style="background:#1E3A5F">
+    <h3>Your Amazon channel is either an asset or a liability.</h3>
+    <p>Start with a free audit — no commitment, no pitch deck.</p>
+    <a class="cta-band-btn" style="color:#2E8B6A" href="#">Schedule a Free Audit</a>
+  </div>
+</div>
+
+<!-- ═══ OPTION B: HUNTER GREEN ═══ -->
+<div class="option">
+  <div class="option-label">Option B — Hunter Green<span>#355E3B · Deeper, moodier, classic premium</span></div>
+  <div class="swatches">
+    <div><div class="swatch" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.1)"></div><div class="swatch-label">Cream</div></div>
+    <div><div class="swatch" style="background:#1E3A5F"></div><div class="swatch-label">Navy</div></div>
+    <div><div class="swatch" style="background:#355E3B"></div><div class="swatch-label">Hunter</div></div>
+    <div><div class="swatch" style="background:#D4956A"></div><div class="swatch-label">Terracotta</div></div>
+  </div>
+  <div class="hero-preview">
+    <div class="hero-eyebrow" style="color:#355E3B">New York Amazon Agency</div>
+    <h2 class="hero-headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
+    <p class="hero-sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
+    <a class="hero-btn" style="background:#355E3B" href="#">Schedule a Free Audit</a>
+    <a class="hero-btn-outline" style="color:#1E3A5F; border-color:rgba(30,58,95,0.2)" href="#">See Our Work</a>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-icon" style="background:#355E3B">A</div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-icon" style="background:#1E3A5F">C</div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-icon" style="background:#D4956A">S</div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num" style="color:#355E3B">$220M+</div><div class="stat-label">Revenue managed</div></div>
+    <div><div class="stat-num" style="color:#1E3A5F">14</div><div class="stat-label">Client retention</div></div>
+    <div><div class="stat-num" style="color:#355E3B">98%</div><div class="stat-label">Client retention</div></div>
+  </div>
+  <div class="cta-band" style="background:#355E3B">
+    <h3>Your Amazon channel is either an asset or a liability.</h3>
+    <p>Start with a free audit — no commitment, no pitch deck.</p>
+    <a class="cta-band-btn" style="color:#355E3B" href="#">Schedule a Free Audit</a>
+  </div>
+</div>
+
+<!-- ═══ OPTION C: DARK FOREST ═══ -->
+<div class="option">
+  <div class="option-label">Option C — Dark Forest<span>#2C4A3E · Almost black-green, very editorial</span></div>
+  <div class="swatches">
+    <div><div class="swatch" style="background:#EDE8E0; border:1px solid rgba(0,0,0,0.1)"></div><div class="swatch-label">Cream</div></div>
+    <div><div class="swatch" style="background:#1E3A5F"></div><div class="swatch-label">Navy</div></div>
+    <div><div class="swatch" style="background:#2C4A3E"></div><div class="swatch-label">Forest</div></div>
+    <div><div class="swatch" style="background:#D4956A"></div><div class="swatch-label">Terracotta</div></div>
+  </div>
+  <div class="hero-preview">
+    <div class="hero-eyebrow" style="color:#2C4A3E">New York Amazon Agency</div>
+    <h2 class="hero-headline">We help premium brands master Amazon, <em>without compromise.</em></h2>
+    <p class="hero-sub">Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon.</p>
+    <a class="hero-btn" style="background:#2C4A3E" href="#">Schedule a Free Audit</a>
+    <a class="hero-btn-outline" style="color:#1E3A5F; border-color:rgba(30,58,95,0.2)" href="#">See Our Work</a>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-icon" style="background:#2C4A3E">A</div><h3>Advertising</h3><p>Full-funnel PPC strategy built on data, not guesswork.</p></div>
+    <div class="card"><div class="card-icon" style="background:#1E3A5F">C</div><h3>Catalog</h3><p>Listings optimized for conversion and search visibility.</p></div>
+    <div class="card"><div class="card-icon" style="background:#D4956A">S</div><h3>Strategy</h3><p>Monthly business reviews and proactive growth planning.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num" style="color:#2C4A3E">$220M+</div><div class="stat-label">Revenue managed</div></div>
+    <div><div class="stat-num" style="color:#1E3A5F">14</div><div class="stat-label">Client retention</div></div>
+    <div><div class="stat-num" style="color:#2C4A3E">98%</div><div class="stat-label">Client retention</div></div>
+  </div>
+  <div class="cta-band" style="background:#2C4A3E">
+    <h3>Your Amazon channel is either an asset or a liability.</h3>
+    <p>Start with a free audit — no commitment, no pitch deck.</p>
+    <a class="cta-band-btn" style="color:#2C4A3E" href="#">Schedule a Free Audit</a>
+  </div>
+</div>
+
+</body>
+</html>
