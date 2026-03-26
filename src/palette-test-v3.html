@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter Palette v3 — Nicola's Direction</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; margin: 0; }
+
+  /* === COLORS === */
+  /* Deep Navy-Teal #033F63 | Teal #28666E | Sage #7C9885 | Olive-Sage #B5B682 | Gold #FEDC97 */
+
+  /* === NAV === */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 60px; background: #033F63;
+  }
+  nav .logo { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #FEDC97; }
+  nav .links { display: flex; gap: 28px; }
+  nav .links a { color: rgba(254,220,151,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+  nav .links a:hover { color: #FEDC97; }
+  nav .cta-nav { background: #FEDC97; color: #033F63; padding: 10px 24px; border-radius: 5px; font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+
+  /* === HERO === */
+  .hero {
+    background: #033F63; padding: 100px 60px 80px; text-align: center;
+  }
+  .hero .eyebrow { color: #FEDC97; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 3.4rem; line-height: 1.15; max-width: 700px; margin: 0 auto 20px; }
+  .hero h1 span { border-bottom: 3px solid #FEDC97; }
+  .hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+  .hero .btn-row { display: flex; gap: 12px; justify-content: center; }
+
+  .btn-primary { background: #FEDC97; color: #033F63; padding: 15px 36px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; }
+  .btn-ghost { background: transparent; color: #FEDC97; padding: 15px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid rgba(254,220,151,0.4); }
+
+  /* === STATS === */
+  .stats {
+    background: #28666E; display: flex; justify-content: center; gap: 80px; padding: 50px 60px; flex-wrap: wrap;
+  }
+  .stats .stat h3 { font-family: 'DM Serif Display', serif; font-size: 2.6rem; color: #FEDC97; }
+  .stats .stat p { color: rgba(255,255,255,0.8); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+  /* === SERVICES === */
+  .services { background: #f8f6f2; padding: 80px 60px; }
+  .services .eyebrow { color: #28666E; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+  .services h2 { font-family: 'DM Serif Display', serif; color: #033F63; font-size: 2.4rem; text-align: center; margin-bottom: 50px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+  .service-card {
+    background: #fff; border-radius: 10px; padding: 36px 28px; border-top: 4px solid #7C9885;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(3,63,99,0.08); }
+  .service-card h4 { font-family: 'DM Serif Display', serif; color: #033F63; font-size: 1.2rem; margin-bottom: 10px; }
+  .service-card p { color: #666; font-size: 0.88rem; line-height: 1.6; }
+
+  /* === STATEMENT === */
+  .statement { background: #7C9885; padding: 80px 60px; text-align: center; }
+  .statement h2 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 2.4rem; max-width: 650px; margin: 0 auto 16px; line-height: 1.25; }
+  .statement p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+  /* === CASE STUDY === */
+  .case-study { background: #033F63; padding: 80px 60px; }
+  .case-study .eyebrow { color: #B5B682; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
+  .case-study h2 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 2.2rem; margin-bottom: 16px; }
+  .case-study h2 span { color: #FEDC97; }
+  .case-study p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; max-width: 600px; margin-bottom: 28px; }
+  .case-metrics { display: flex; gap: 40px; flex-wrap: wrap; }
+  .case-metrics .metric { }
+  .case-metrics .metric h4 { font-family: 'DM Serif Display', serif; color: #FEDC97; font-size: 1.8rem; }
+  .case-metrics .metric p { color: rgba(255,255,255,0.6); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* === VALUES === */
+  .values { background: #28666E; padding: 80px 60px; }
+  .values .eyebrow { color: #B5B682; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+  .values h2 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 2.2rem; text-align: center; margin-bottom: 50px; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 900px; margin: 0 auto; }
+  .value-item h4 { font-family: 'DM Serif Display', serif; color: #FEDC97; font-size: 1.15rem; margin-bottom: 8px; }
+  .value-item p { color: rgba(255,255,255,0.75); font-size: 0.88rem; line-height: 1.6; }
+
+  /* === CTA BAND === */
+  .cta-band {
+    background: #B5B682; padding: 70px 60px; text-align: center;
+  }
+  .cta-band h2 { font-family: 'DM Serif Display', serif; color: #033F63; font-size: 2.4rem; margin-bottom: 12px; }
+  .cta-band p { color: rgba(3,63,99,0.7); font-size: 1rem; margin-bottom: 28px; }
+  .cta-band .btn-dark { background: #033F63; color: #FEDC97; padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; }
+
+  /* === FOOTER === */
+  footer { background: #033F63; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  footer .logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #FEDC97; }
+  footer .footer-links { display: flex; gap: 24px; }
+  footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; }
+  footer .footer-links a:hover { color: #FEDC97; }
+  footer .copy { color: rgba(255,255,255,0.3); font-size: 0.75rem; width: 100%; text-align: center; margin-top: 20px; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav .links { display: none; }
+    .hero { padding: 60px 24px 50px; }
+    .hero h1 { font-size: 2.2rem; }
+    .stats { gap: 40px; padding: 40px 24px; }
+    .services, .statement, .case-study, .values, .cta-band { padding: 60px 24px; }
+    .services-grid, .values-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Stonecutter</div>
+  <div class="links">
+    <a href="#">Services</a>
+    <a href="#">Results</a>
+    <a href="#">About</a>
+    <a href="#">Careers</a>
+  </div>
+  <a href="#" class="cta-nav">Get a Free Audit</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Boutique Amazon Agency · NYC</div>
+  <h1>Your Brand Deserves<br>a Better <span>Partner.</span></h1>
+  <p>We're a tight-knit team of Amazon specialists who treat your brand like our own. Strategy, creative, advertising, logistics — all under one roof.</p>
+  <div class="btn-row">
+    <a href="#" class="btn-primary">Get a Free Audit →</a>
+    <a href="#" class="btn-ghost">See Our Work</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><h3>$220M+</h3><p>Managed Revenue</p></div>
+  <div class="stat"><h3>14</h3><p>Premium Brands</p></div>
+  <div class="stat"><h3>92%</h3><p>Client Retention</p></div>
+  <div class="stat"><h3>4.2×</h3><p>Avg ROAS</p></div>
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+  <div class="eyebrow">What We Do</div>
+  <h2>End-to-End Amazon Expertise</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h4>Full Account Management</h4>
+      <p>Your entire Amazon business, managed by a team that knows every lever to pull.</p>
+    </div>
+    <div class="service-card">
+      <h4>PPC & Advertising</h4>
+      <p>Data-driven campaigns across Sponsored Products, Brands, Display, and DSP.</p>
+    </div>
+    <div class="service-card">
+      <h4>Creative & Content</h4>
+      <p>A+ content, brand stores, photography, and listing optimization that converts.</p>
+    </div>
+    <div class="service-card">
+      <h4>Supply Chain</h4>
+      <p>FBA prep, inventory forecasting, and logistics management to keep you in stock.</p>
+    </div>
+    <div class="service-card">
+      <h4>Brand Strategy</h4>
+      <p>Catalog expansion, pricing strategy, and competitive intelligence to grow market share.</p>
+    </div>
+    <div class="service-card">
+      <h4>Amazon DSP</h4>
+      <p>Programmatic display and video to reach shoppers on and off Amazon.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<div class="statement">
+  <h2>"We don't do cookie-cutter. Every brand gets a team, a strategy, and our full attention."</h2>
+  <p>— The Stonecutter Way</p>
+</div>
+
+<!-- CASE STUDY -->
+<div class="case-study">
+  <div class="eyebrow">Case Study</div>
+  <h2>Premium Skincare Brand: <span>$2M → $25M</span></h2>
+  <p>A P&G-owned skincare line came to us plateaued at $2M. Through catalog expansion, aggressive PPC restructuring, and creative overhaul, we drove 12.5× revenue growth in 24 months.</p>
+  <div class="case-metrics">
+    <div class="metric"><h4>12.5×</h4><p>Revenue Growth</p></div>
+    <div class="metric"><h4>3.8×</h4><p>ROAS</p></div>
+    <div class="metric"><h4>42%</h4><p>Organic Share</p></div>
+    <div class="metric"><h4>#1</h4><p>Category Rank</p></div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="values">
+  <div class="eyebrow">Our Values</div>
+  <h2>What We Stand For</h2>
+  <div class="values-grid">
+    <div class="value-item">
+      <h4>Ownership</h4>
+      <p>We treat your P&L like it's ours. Because when you win, we win.</p>
+    </div>
+    <div class="value-item">
+      <h4>Transparency</h4>
+      <p>No black boxes. You see what we see — every metric, every decision.</p>
+    </div>
+    <div class="value-item">
+      <h4>Craft</h4>
+      <p>We sweat the details. Every listing, every bid, every creative asset matters.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Grow?</h2>
+  <p>Let's talk about what Stonecutter can do for your brand.</p>
+  <a href="#" class="btn-dark">Book a Free Strategy Call →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Stonecutter</div>
+  <div class="footer-links">
+    <a href="#">Services</a>
+    <a href="#">Results</a>
+    <a href="#">About</a>
+    <a href="#">Careers</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="copy">© 2026 Stonecutter NYC. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
