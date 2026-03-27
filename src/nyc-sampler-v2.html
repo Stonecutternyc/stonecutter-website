@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Sampler v2 — Subway Map Lines</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --teal: #28666E;
+  --sage: #7C9885;
+  --olive: #B5B682;
+  --taxi: #F7C948;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--deep-teal); }
+h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+.section-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--teal); margin-bottom: 12px;
+}
+.section-title { font-size: 2.4rem; color: var(--deep-teal); margin-bottom: 8px; }
+.section-desc { font-size: 1.05rem; color: var(--teal); margin-bottom: 40px; max-width: 650px; line-height: 1.6; }
+.btn {
+  display: inline-block; padding: 14px 32px; border-radius: 50px;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.25s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.version-tag {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2px; padding: 5px 12px;
+  border-radius: 6px; background: rgba(3,63,99,0.06); color: var(--teal); margin-bottom: 20px;
+}
+hr.divider { border: none; height: 1px; background: rgba(3,63,99,0.08); margin: 60px 0; }
+
+/* ========== SUBWAY TEXTURE SAMPLES ========== */
+.subway-sample {
+  position: relative; border-radius: 24px; padding: 60px 40px;
+  margin-bottom: 30px; overflow: hidden;
+}
+
+/*
+  REAL subway map style:
+  - Thick lines (stroke-width 5-6)
+  - Lines run horizontally or vertically then turn at 90° or 45° with rounded corners
+  - Distinct MTA-ish colors per line
+  - Circle station dots at stops
+  - stroke-linejoin: round for smooth corners
+*/
+
+/* V1: Whisper — barely visible */
+.subway-v1 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='1200' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3C!-- Blue line (A/C/E style) runs vertical then turns horizontal --%3E%3Cpath d='M200,-20 L200,200 Q200,240 240,240 L600,240 Q640,240 640,280 L640,920' stroke='%23033F63' stroke-width='6' opacity='0.04'/%3E%3C!-- Orange line (B/D/F style) horizontal with jog --%3E%3Cpath d='M-20,350 L400,350 Q440,350 440,390 L440,500 Q440,540 480,540 L1220,540' stroke='%23F7C948' stroke-width='6' opacity='0.04'/%3E%3C!-- Green line (4/5/6 style) vertical --%3E%3Cpath d='M800,-20 L800,150 Q800,190 760,190 L500,190 Q460,190 460,230 L460,920' stroke='%237C9885' stroke-width='6' opacity='0.04'/%3E%3C!-- Red line (1/2/3 style) --%3E%3Cpath d='M-20,600 L300,600 Q340,600 340,560 L340,400 Q340,360 380,360 L1220,360' stroke='%2328666E' stroke-width='6' opacity='0.04'/%3E%3C!-- Purple/brown line (7 style) diagonal connector --%3E%3Cpath d='M-20,150 L150,150 Q190,150 190,190 L190,700 Q190,740 230,740 L1220,740' stroke='%23B5B682' stroke-width='5' opacity='0.04'/%3E%3C!-- Station circles --%3E%3Ccircle cx='200' cy='200' r='8' fill='none' stroke='%23033F63' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='440' cy='350' r='8' fill='none' stroke='%23F7C948' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='640' cy='240' r='8' fill='none' stroke='%23033F63' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='800' cy='150' r='8' fill='none' stroke='%237C9885' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='340' cy='400' r='8' fill='none' stroke='%2328666E' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='460' cy='540' r='8' fill='none' stroke='%23F7C948' stroke-width='2.5' opacity='0.04'/%3E%3Ccircle cx='190' cy='700' r='8' fill='none' stroke='%23B5B682' stroke-width='2.5' opacity='0.04'/%3E%3C!-- Transfer station (double circle) --%3E%3Ccircle cx='440' cy='350' r='12' fill='none' stroke='%23033F63' stroke-width='1.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1200px 900px;
+}
+
+/* V2: Subtle — noticeable on close look */
+.subway-v2 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='1200' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3C!-- Blue line vertical to horizontal --%3E%3Cpath d='M200,-20 L200,200 Q200,240 240,240 L600,240 Q640,240 640,280 L640,920' stroke='%23033F63' stroke-width='6' opacity='0.06'/%3E%3C!-- Taxi yellow line horizontal with jog --%3E%3Cpath d='M-20,350 L400,350 Q440,350 440,390 L440,500 Q440,540 480,540 L1220,540' stroke='%23F7C948' stroke-width='6' opacity='0.06'/%3E%3C!-- Green line --%3E%3Cpath d='M800,-20 L800,150 Q800,190 760,190 L500,190 Q460,190 460,230 L460,920' stroke='%237C9885' stroke-width='6' opacity='0.06'/%3E%3C!-- Teal line --%3E%3Cpath d='M-20,600 L300,600 Q340,600 340,560 L340,400 Q340,360 380,360 L1220,360' stroke='%2328666E' stroke-width='6' opacity='0.06'/%3E%3C!-- Olive line --%3E%3Cpath d='M-20,150 L150,150 Q190,150 190,190 L190,700 Q190,740 230,740 L1220,740' stroke='%23B5B682' stroke-width='5' opacity='0.06'/%3E%3C!-- Second blue branch --%3E%3Cpath d='M640,280 Q640,320 680,320 L1000,320 Q1040,320 1040,360 L1040,920' stroke='%23033F63' stroke-width='5' opacity='0.05'/%3E%3C!-- Short spur --%3E%3Cpath d='M460,450 Q460,490 500,490 L700,490' stroke='%237C9885' stroke-width='4' opacity='0.05'/%3E%3C!-- Station circles --%3E%3Ccircle cx='200' cy='100' r='7' fill='white' stroke='%23033F63' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='200' cy='200' r='7' fill='white' stroke='%23033F63' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='400' cy='240' r='7' fill='white' stroke='%23033F63' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='640' cy='240' r='7' fill='white' stroke='%23033F63' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='200' cy='350' r='7' fill='white' stroke='%23F7C948' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='440' cy='350' r='9' fill='white' stroke='%23F7C948' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='440' cy='450' r='7' fill='white' stroke='%23F7C948' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='800' cy='150' r='7' fill='white' stroke='%237C9885' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='600' cy='190' r='7' fill='white' stroke='%237C9885' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='460' cy='350' r='7' fill='white' stroke='%237C9885' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='340' cy='500' r='7' fill='white' stroke='%2328666E' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='340' cy='600' r='7' fill='white' stroke='%2328666E' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='190' cy='400' r='7' fill='white' stroke='%23B5B682' stroke-width='2.5' opacity='0.06'/%3E%3Ccircle cx='190' cy='700' r='7' fill='white' stroke='%23B5B682' stroke-width='2.5' opacity='0.06'/%3E%3C!-- Transfer dot (bigger) --%3E%3Ccircle cx='440' cy='350' r='13' fill='none' stroke='%23033F63' stroke-width='1.5' opacity='0.04'/%3E%3Ccircle cx='340' cy='400' r='13' fill='none' stroke='%23033F63' stroke-width='1.5' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1200px 900px;
+}
+
+/* V3: More visible — richer network */
+.subway-v3 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='1200' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3C!-- Line 1 blue: vertical then east --%3E%3Cpath d='M200,-20 L200,200 Q200,240 240,240 L600,240 Q640,240 640,280 L640,920' stroke='%23033F63' stroke-width='6' opacity='0.08'/%3E%3C!-- Line 2 taxi yellow: horizontal with jog south --%3E%3Cpath d='M-20,350 L400,350 Q440,350 440,390 L440,500 Q440,540 480,540 L1220,540' stroke='%23F7C948' stroke-width='6' opacity='0.08'/%3E%3C!-- Line 3 sage: vertical with jog west --%3E%3Cpath d='M800,-20 L800,150 Q800,190 760,190 L500,190 Q460,190 460,230 L460,920' stroke='%237C9885' stroke-width='6' opacity='0.08'/%3E%3C!-- Line 4 teal: horizontal-vertical-horizontal --%3E%3Cpath d='M-20,600 L300,600 Q340,600 340,560 L340,400 Q340,360 380,360 L1220,360' stroke='%2328666E' stroke-width='6' opacity='0.08'/%3E%3C!-- Line 5 olive: vertical then east --%3E%3Cpath d='M-20,150 L150,150 Q190,150 190,190 L190,700 Q190,740 230,740 L1220,740' stroke='%23B5B682' stroke-width='6' opacity='0.07'/%3E%3C!-- Line 6 blue branch --%3E%3Cpath d='M640,320 Q640,350 680,350 L1000,350 Q1040,350 1040,390 L1040,920' stroke='%23033F63' stroke-width='5' opacity='0.06'/%3E%3C!-- Line 7 sage spur --%3E%3Cpath d='M460,450 Q460,490 500,490 L750,490 Q790,490 790,530 L790,920' stroke='%237C9885' stroke-width='5' opacity='0.06'/%3E%3C!-- Line 8 taxi short cross --%3E%3Cpath d='M300,-20 L300,100 Q300,140 340,140 L900,140 Q940,140 940,180 L940,350' stroke='%23F7C948' stroke-width='5' opacity='0.06'/%3E%3C!-- Line 9 teal vertical --%3E%3Cpath d='M550,-20 L550,80 Q550,120 510,120 L380,120 Q340,120 340,160 L340,350' stroke='%2328666E' stroke-width='4' opacity='0.06'/%3E%3C!-- Station circles with white fill --%3E%3Ccircle cx='200' cy='50' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='200' cy='200' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='350' cy='240' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='500' cy='240' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='640' cy='280' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='640' cy='500' r='7' fill='%23EDE8E0' stroke='%23033F63' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='100' cy='350' r='7' fill='%23EDE8E0' stroke='%23F7C948' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='300' cy='350' r='7' fill='%23EDE8E0' stroke='%23F7C948' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='440' cy='350' r='9' fill='%23EDE8E0' stroke='%23F7C948' stroke-width='3' opacity='0.09'/%3E%3Ccircle cx='440' cy='500' r='7' fill='%23EDE8E0' stroke='%23F7C948' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='700' cy='540' r='7' fill='%23EDE8E0' stroke='%23F7C948' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='800' cy='50' r='7' fill='%23EDE8E0' stroke='%237C9885' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='800' cy='150' r='7' fill='%23EDE8E0' stroke='%237C9885' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='600' cy='190' r='7' fill='%23EDE8E0' stroke='%237C9885' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='460' cy='350' r='7' fill='%23EDE8E0' stroke='%237C9885' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='460' cy='600' r='7' fill='%23EDE8E0' stroke='%237C9885' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='340' cy='500' r='7' fill='%23EDE8E0' stroke='%2328666E' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='340' cy='600' r='7' fill='%23EDE8E0' stroke='%2328666E' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='500' cy='360' r='7' fill='%23EDE8E0' stroke='%2328666E' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='190' cy='300' r='7' fill='%23EDE8E0' stroke='%23B5B682' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='190' cy='500' r='7' fill='%23EDE8E0' stroke='%23B5B682' stroke-width='2.5' opacity='0.09'/%3E%3Ccircle cx='190' cy='700' r='7' fill='%23EDE8E0' stroke='%23B5B682' stroke-width='2.5' opacity='0.09'/%3E%3C!-- Transfer stations (double ring) --%3E%3Ccircle cx='440' cy='350' r='14' fill='none' stroke='%23033F63' stroke-width='1.5' opacity='0.06'/%3E%3Ccircle cx='340' cy='400' r='14' fill='none' stroke='%23033F63' stroke-width='1.5' opacity='0.05'/%3E%3Ccircle cx='460' cy='350' r='14' fill='none' stroke='%2328666E' stroke-width='1.5' opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1200px 900px;
+}
+
+/* Dark hero version */
+.subway-dark {
+  background-color: var(--deep-teal);
+  background-image: url("data:image/svg+xml,%3Csvg width='1200' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M200,-20 L200,200 Q200,240 240,240 L600,240 Q640,240 640,280 L640,920' stroke='%23EDE8E0' stroke-width='6' opacity='0.06'/%3E%3Cpath d='M-20,350 L400,350 Q440,350 440,390 L440,500 Q440,540 480,540 L1220,540' stroke='%23F7C948' stroke-width='6' opacity='0.07'/%3E%3Cpath d='M800,-20 L800,150 Q800,190 760,190 L500,190 Q460,190 460,230 L460,920' stroke='%237C9885' stroke-width='6' opacity='0.06'/%3E%3Cpath d='M-20,600 L300,600 Q340,600 340,560 L340,400 Q340,360 380,360 L1220,360' stroke='%23EDE8E0' stroke-width='6' opacity='0.05'/%3E%3Cpath d='M-20,150 L150,150 Q190,150 190,190 L190,700 Q190,740 230,740 L1220,740' stroke='%23B5B682' stroke-width='5' opacity='0.05'/%3E%3Ccircle cx='200' cy='200' r='7' fill='%23033F63' stroke='%23EDE8E0' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='640' cy='280' r='7' fill='%23033F63' stroke='%23EDE8E0' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='440' cy='350' r='9' fill='%23033F63' stroke='%23F7C948' stroke-width='2.5' opacity='0.08'/%3E%3Ccircle cx='440' cy='500' r='7' fill='%23033F63' stroke='%23F7C948' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='800' cy='150' r='7' fill='%23033F63' stroke='%237C9885' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='460' cy='350' r='7' fill='%23033F63' stroke='%237C9885' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='340' cy='500' r='7' fill='%23033F63' stroke='%23EDE8E0' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='190' cy='500' r='7' fill='%23033F63' stroke='%23B5B682' stroke-width='2.5' opacity='0.07'/%3E%3Ccircle cx='440' cy='350' r='14' fill='none' stroke='%23EDE8E0' stroke-width='1.5' opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1200px 900px;
+}
+.subway-dark h2 { color: var(--cream); }
+.subway-dark p { color: rgba(237,232,224,0.8); }
+.subway-dark .version-tag { background: rgba(237,232,224,0.1); color: rgba(237,232,224,0.6); }
+
+.subway-sample h2 { font-size: 2.8rem; color: var(--deep-teal); margin-bottom: 16px; }
+.subway-sample p { font-size: 1.05rem; color: var(--teal); max-width: 550px; line-height: 1.7; margin-bottom: 20px; }
+
+/* Full-page demo at bottom */
+.full-page-demo {
+  position: relative;
+  margin: 0 -24px;
+  padding: 80px 64px;
+}
+
+.full-page-demo .card-row {
+  display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;
+}
+
+.full-page-demo .card {
+  flex: 1; min-width: 220px; padding: 28px 24px; border-radius: 20px;
+  background: white; box-shadow: 0 2px 12px rgba(3,63,99,0.06);
+}
+
+.full-page-demo .card h4 {
+  font-family: 'DM Serif Display', serif; font-size: 1.1rem;
+  color: var(--deep-teal); margin-bottom: 8px;
+}
+
+.full-page-demo .card p { font-size: 0.85rem; color: var(--teal); line-height: 1.5; }
+
+.stat-row {
+  display: flex; gap: 30px; flex-wrap: wrap; margin: 40px 0;
+}
+.stat-card {
+  flex: 1; min-width: 160px; padding: 24px; border-radius: 16px;
+  text-align: center; background: var(--deep-teal);
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif; font-size: 2.8rem;
+  color: var(--taxi); line-height: 1;
+}
+.stat-label { font-size: 0.78rem; color: rgba(237,232,224,0.65); margin-top: 6px; font-weight: 500; }
+
+@media (max-width: 700px) {
+  .section-title { font-size: 1.8rem; }
+  .subway-sample h2 { font-size: 2rem; }
+  .subway-sample { padding: 40px 24px; }
+  .full-page-demo { padding: 40px 24px; }
+  .full-page-demo .card-row { flex-direction: column; }
+  .stat-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <span class="section-label">NYC Subway Map Texture</span>
+  <h1 class="section-title">🚇 Real Map Style Lines</h1>
+  <p class="section-desc">Thick, bold lines that run straight then turn at 90° angles with rounded corners — just like the actual MTA map. Station dots at stops. Lines in our palette colors. Three opacity levels.</p>
+
+  <!-- V1 Whisper -->
+  <div class="subway-sample subway-v1">
+    <span class="version-tag">Whisper — 4% opacity</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>Almost invisible. You'd only notice it if you were looking for it. Adds the faintest hint of depth and character to the cream.</p>
+    <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- V2 Subtle -->
+  <div class="subway-sample subway-v2">
+    <span class="version-tag">Subtle — 6% opacity</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>Noticeably there on close inspection. The lines run horizontal/vertical with 90° turns and rounded corners. Station circles at intersections. Transfer stations have double rings.</p>
+    <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- V3 Visible -->
+  <div class="subway-sample subway-v3">
+    <span class="version-tag">Visible — 8% opacity</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>More lines, more stations, more character. A denser network with branch lines and spurs. You can clearly see the colored routes crossing and connecting.</p>
+    <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- Dark Hero -->
+  <div class="subway-sample subway-dark">
+    <span class="version-tag">Dark Hero + Subway</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>Dark navy hero with cream and taxi-yellow subway lines underneath. The yellow line pops just a bit more — like the N/Q/R cutting through Manhattan.</p>
+    <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Full page context demo -->
+  <span class="section-label">In Context</span>
+  <h1 class="section-title">How It Feels on a Full Section</h1>
+  <p class="section-desc">The texture behind a real content layout — services cards, stats, the whole deal. Using V2 (subtle) as the base.</p>
+</div>
+
+<!-- Full width section with subway texture -->
+<div class="full-page-demo subway-v2">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <span class="version-tag">Services Section — Subway V2 Background</span>
+    <h2 style="font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--deep-teal); margin-bottom: 8px;">
+      What We <span style="position:relative; display:inline-block;">Do Best
+        <svg style="position:absolute; bottom:-4px; left:0; width:100%; height:10px;" viewBox="0 0 200 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2,7 C30,2 60,9 100,5 C140,1 170,8 198,4" stroke="#7C9885" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </h2>
+    <p style="font-size: 1.05rem; color: var(--teal); margin-bottom: 10px;">Full-service Amazon brand management for premium brands.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">$220M+</div>
+        <div class="stat-label">Managed Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Premium Brands</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">92%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>Advertising & PPC</h4>
+        <p>Full-funnel Amazon advertising strategy, from Sponsored Products to DSP campaigns.</p>
+      </div>
+      <div class="card">
+        <h4>Catalog & Listings</h4>
+        <p>A+ Content, SEO-optimized listings, and brand storytelling that converts.</p>
+      </div>
+      <div class="card">
+        <h4>Operations</h4>
+        <p>Inventory planning, logistics coordination, and account health management.</p>
+      </div>
+      <div class="card">
+        <h4>Brand Strategy</h4>
+        <p>Market analysis, competitive positioning, and long-term growth planning.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div style="text-align: center; padding: 40px 0; color: var(--teal); font-size: 0.85rem;">
+    <p>🚕 Taxi Yellow <strong>#F7C948</strong> + 🚇 Subway Map Lines = 🗽 Unmistakably NYC</p>
+  </div>
+</div>
+
+</body>
+</html>
