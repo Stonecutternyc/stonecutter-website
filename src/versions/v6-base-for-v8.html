@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter NYC — Premium Amazon Brand Management</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --teal: #28666E;
+  --sage: #7C9885;
+  --olive: #B5B682;
+  --gold: #FEDC97;
+  --body: #2D3748;
+  --muted: #6B7280;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--body); line-height: 1.6; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(124,152,133,0.22);
+  padding: 0 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--deep-teal); text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  color: var(--teal); text-decoration: none; font-size: 0.88rem; font-weight: 500;
+  letter-spacing: 0.02em; transition: color 0.2s;
+  position: relative; padding-bottom: 3px;
+}
+/* Animated underline on nav links */
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--sage);
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
+.nav-links a:hover { color: var(--deep-teal); }
+.nav-cta { background: var(--deep-teal) !important; color: var(--gold) !important; padding: 10px 22px !important; border-radius: 6px; font-weight: 600 !important; font-size: 0.85rem !important; }
+.nav-cta:hover { opacity: 0.88; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--deep-teal); border-radius: 2px; }
+.mobile-menu { display: none; background: var(--cream); border-bottom: 1px solid rgba(124,152,133,0.2); padding: 16px 24px 24px; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 11px 0; color: var(--teal); text-decoration: none; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid rgba(124,152,133,0.15); }
+.mobile-menu a:last-child { border-bottom: none; color: var(--deep-teal); font-weight: 700; margin-top: 8px; }
+
+/* UTILITIES */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.71rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal); background: rgba(40,102,110,0.1);
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
+}
+.section-label {
+  font-size: 0.71rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--olive); display: block; margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem; color: var(--deep-teal); line-height: 1.15; margin-bottom: 16px;
+}
+.section-desc { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 480px; margin: 0 auto; }
+.section-wrapper { border-top: 1px solid rgba(124,152,133,0.15); }
+
+/* Hand-drawn underline */
+.underlined { position: relative; display: inline; }
+.underlined svg.wavy { position: absolute; bottom: -10px; left: 0; width: 100%; height: 12px; overflow: visible; pointer-events: none; }
+
+/* HERO */
+.hero { padding: 100px 60px 88px; text-align: center; max-width: 1100px; margin: 0 auto; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: 4.2rem; line-height: 1.08; color: var(--deep-teal); max-width: 800px; margin: 0 auto 24px; }
+.hero .subhead { font-size: 1.1rem; color: var(--muted); max-width: 500px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { background: var(--deep-teal); color: var(--gold); padding: 16px 36px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost { background: transparent; color: var(--teal); padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--sage); transition: background 0.2s; display: inline-block; }
+.btn-ghost:hover { background: rgba(124,152,133,0.1); }
+
+/* STATS — Version B only (bubble container) */
+.stats-section { padding: 52px 40px; }
+.stats-row { display: flex; justify-content: space-evenly; align-items: center; max-width: 980px; margin: 0 auto; flex-wrap: wrap; gap: 28px; }
+.stat-item { text-align: center; }
+/* Stat numbers: teal, with em (suffix signs) SAME color — no two-tone */
+.stat-number-b { font-family: 'DM Serif Display', serif; font-size: 3.2rem; color: var(--teal); line-height: 1; display: block; }
+.stat-number-b em { color: var(--teal); font-style: normal; }
+.stat-label { font-size: 0.76rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 7px; display: block; }
+.stat-divider { width: 1px; height: 52px; background: rgba(40,102,110,0.22); flex-shrink: 0; }
+
+/* Stats bubble wrap */
+.stats-bubble-wrap {
+  background: rgba(40,102,110,0.08);
+  border: 1px solid rgba(40,102,110,0.18);
+  border-radius: 16px;
+  padding: 44px 40px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* STATEMENT — navy bubble, bold and distinct */
+.statement-outer { padding: 80px 60px; }
+.statement-navy-bubble {
+  background: var(--deep-teal);
+  border-radius: 20px;
+  padding: 76px 80px;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+/* Sage quote mark — no gold in this section */
+.quote-mark { font-family: 'DM Serif Display', serif; font-size: 6rem; color: var(--sage); line-height: 0.6; display: block; margin-bottom: 20px; opacity: 0.8; }
+.big-quote { font-family: 'DM Serif Display', serif; font-size: 2.7rem; color: var(--cream); line-height: 1.22; margin-bottom: 18px; }
+/* Underline inside navy bubble: cream/light */
+.statement-navy-bubble .underlined svg.wavy path { stroke: rgba(124,152,133,0.7); }
+.quote-attr { color: rgba(237,232,224,0.65); font-size: 0.88rem; }
+.stat-callouts { display: flex; justify-content: center; gap: 60px; margin-top: 56px; flex-wrap: wrap; }
+.callout { text-align: center; }
+/* Callout numbers: cream — no gold text in this section */
+.callout-num { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--cream); display: block; }
+.callout-label { font-size: 0.8rem; color: rgba(237,232,224,0.55); margin-top: 4px; max-width: 180px; display: block; line-height: 1.5; }
+/* Divider between callouts */
+.callout-divider { width: 1px; height: 50px; background: rgba(237,232,224,0.18); align-self: center; flex-shrink: 0; }
+
+/* SERVICES — no card backgrounds, per-card hover colors */
+.services-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.services-section .section-header { text-align: center; margin-bottom: 64px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.service-item {
+  padding: 40px 32px;
+  border-top: 2.5px solid var(--sage);
+  border-left: 3px solid transparent;
+  transition: border-top-color 0.3s, border-left-color 0.3s, background 0.3s, transform 0.2s;
+}
+.service-item:hover { transform: translateY(-2px); }
+
+/* Per-card hover colors — dynamic and colorful */
+.service-item:nth-child(1):hover {
+  border-top-color: var(--sage); border-left-color: var(--sage);
+  background: rgba(124,152,133,0.14);
+}
+.service-item:nth-child(2):hover {
+  border-top-color: var(--teal); border-left-color: var(--teal);
+  background: rgba(40,102,110,0.1);
+}
+.service-item:nth-child(3):hover {
+  border-top-color: var(--olive); border-left-color: var(--olive);
+  background: rgba(181,182,130,0.18);
+}
+.service-item:nth-child(4):hover {
+  border-top-color: var(--deep-teal); border-left-color: var(--deep-teal);
+  background: rgba(3,63,99,0.09);
+}
+.service-item:nth-child(5):hover {
+  border-top-color: var(--sage); border-left-color: var(--sage);
+  background: rgba(124,152,133,0.14);
+}
+.service-item:nth-child(6):hover {
+  border-top-color: var(--teal); border-left-color: var(--teal);
+  background: rgba(40,102,110,0.1);
+}
+
+.service-tag { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--olive); margin-bottom: 12px; }
+.service-item h4 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--deep-teal); margin-bottom: 10px; }
+.service-item p { font-size: 0.87rem; color: var(--muted); line-height: 1.68; }
+
+/* ICP */
+.icp-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+.icp-columns { display: flex; align-items: flex-start; gap: 80px; }
+.icp-left { flex: 1; min-width: 280px; }
+.icp-right { flex: 1; min-width: 280px; }
+.icp-left p { color: var(--muted); font-size: 0.97rem; line-height: 1.78; margin-bottom: 14px; }
+/* ICP tags — full width horizontal grid, evenly spaced */
+.icp-tags-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+.icp-tag {
+  background: rgba(181,182,130,0.16);
+  border: 1px solid rgba(181,182,130,0.45);
+  color: var(--deep-teal);
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-size: 0.8rem; font-weight: 500;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.icp-tag:hover {
+  background: rgba(181,182,130,0.28);
+  border-color: rgba(181,182,130,0.65);
+}
+/* ICP card: deep teal bubble */
+.icp-card { background: var(--deep-teal); border-radius: 12px; padding: 40px 36px; color: white; }
+.icp-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--gold); margin-bottom: 20px; }
+.icp-bullet { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+.icp-bullet::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--sage); border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+/* CASE STUDIES — each card a different palette color, hover lightens */
+.cases-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.cases-section .section-header { margin-bottom: 60px; }
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.case-card {
+  border-radius: 10px; padding: 40px 36px;
+  position: relative; overflow: hidden;
+  border: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
+.case-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  transition: background 0.3s;
+}
+
+/* Card 1: Teal */
+.case-card:nth-child(1) { background: rgba(40,102,110,0.13); border-color: rgba(40,102,110,0.25); }
+.case-card:nth-child(1)::before { background: var(--teal); }
+.case-card:nth-child(1):hover { background: rgba(40,102,110,0.05); border-color: rgba(40,102,110,0.35); }
+
+/* Card 2: Sage */
+.case-card:nth-child(2) { background: rgba(124,152,133,0.14); border-color: rgba(124,152,133,0.3); }
+.case-card:nth-child(2)::before { background: var(--sage); }
+.case-card:nth-child(2):hover { background: rgba(124,152,133,0.05); border-color: rgba(124,152,133,0.42); }
+
+/* Card 3: Deep Teal */
+.case-card:nth-child(3) { background: rgba(3,63,99,0.1); border-color: rgba(3,63,99,0.2); }
+.case-card:nth-child(3)::before { background: var(--deep-teal); }
+.case-card:nth-child(3):hover { background: rgba(3,63,99,0.04); border-color: rgba(3,63,99,0.3); }
+
+/* Card 4: Olive */
+.case-card:nth-child(4) { background: rgba(181,182,130,0.15); border-color: rgba(181,182,130,0.32); }
+.case-card:nth-child(4)::before { background: var(--olive); }
+.case-card:nth-child(4):hover { background: rgba(181,182,130,0.06); border-color: rgba(181,182,130,0.45); }
+
+.case-category { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+.case-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.28rem; color: var(--deep-teal); margin-bottom: 12px; }
+.case-card > p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; margin-bottom: 22px; }
+.case-metrics-row { display: flex; gap: 28px; flex-wrap: wrap; }
+.case-metric-num { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--teal); display: block; }
+.case-metric-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+
+/* TESTIMONIALS — no gold text; teal/sage quote marks */
+.testimonials-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.testimonials-section .section-header { text-align: center; margin-bottom: 64px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card { background: rgba(124,152,133,0.08); border: 1px solid rgba(124,152,133,0.25); border-radius: 10px; padding: 32px 28px; transition: background 0.2s, box-shadow 0.2s; }
+.testimonial-card:hover { background: rgba(124,152,133,0.14); box-shadow: 0 6px 18px rgba(0,0,0,0.05); }
+/* Quote marks: teal — no gold */
+.t-quote-mark { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: var(--teal); line-height: 0.9; margin-bottom: 14px; }
+.testimonial-card p { font-size: 0.88rem; color: var(--deep-teal); line-height: 1.72; margin-bottom: 20px; font-style: italic; }
+.t-attr { font-size: 0.77rem; font-weight: 600; color: var(--deep-teal); line-height: 1.5; }
+.t-placeholder { color: var(--olive); font-weight: 400; font-size: 0.68rem; }
+
+/* VALUES — each value as a colored bubble on cream */
+.values-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.values-section .section-header { text-align: center; margin-bottom: 64px; }
+.values-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.value-bubble {
+  flex: 1; min-width: 160px;
+  text-align: center; padding: 28px 16px;
+  border-radius: 14px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  cursor: default;
+}
+.value-bubble:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+}
+/* Per-bubble colors — rich use of sage/green + other palette colors */
+.value-bubble:nth-child(1) { background: rgba(124,152,133,0.18); border: 1px solid rgba(124,152,133,0.35); }
+.value-bubble:nth-child(2) { background: rgba(40,102,110,0.12); border: 1px solid rgba(40,102,110,0.22); }
+.value-bubble:nth-child(3) { background: rgba(181,182,130,0.18); border: 1px solid rgba(181,182,130,0.35); }
+.value-bubble:nth-child(4) { background: rgba(3,63,99,0.09); border: 1px solid rgba(3,63,99,0.18); }
+.value-bubble:nth-child(5) { background: rgba(124,152,133,0.14); border: 1px solid rgba(124,152,133,0.28); }
+.value-num { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--sage); display: block; margin-bottom: 10px; font-style: italic; }
+.value-bubble h4 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--deep-teal); margin-bottom: 8px; }
+.value-bubble p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+/* ABOUT */
+.about-section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; display: flex; gap: 80px; align-items: flex-start; }
+.about-left { flex: 1; min-width: 300px; }
+.about-right { flex: 1; min-width: 280px; }
+.about-left p { font-size: 0.95rem; color: var(--muted); line-height: 1.78; margin-bottom: 14px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.badge { background: rgba(3,63,99,0.07); border: 1px solid rgba(3,63,99,0.14); color: var(--deep-teal); padding: 5px 12px; border-radius: 4px; font-size: 0.74rem; font-weight: 600; }
+.founder-block { border-left: 3px solid var(--sage); background: rgba(124,152,133,0.1); border-radius: 0 10px 10px 0; padding: 32px 30px; }
+.founder-block h4 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--deep-teal); margin-bottom: 4px; }
+.founder-title { font-size: 0.76rem; font-weight: 700; color: var(--teal); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.founder-block p { font-size: 0.87rem; color: var(--muted); line-height: 1.72; }
+
+/* CTA — deep teal bubble on cream */
+.cta-section { padding: 60px 60px; max-width: 1100px; margin: 0 auto; }
+.cta-bubble { background: var(--deep-teal); border-radius: 16px; padding: 76px 80px; text-align: center; }
+.cta-eyebrow { font-size: 0.71rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); margin-bottom: 18px; display: block; }
+.cta-bubble h2 { font-family: 'DM Serif Display', serif; font-size: 2.9rem; color: white; margin-bottom: 16px; line-height: 1.18; }
+.cta-bubble .cta-desc { color: rgba(255,255,255,0.72); font-size: 1rem; margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.72; }
+.btn-gold { background: var(--gold); color: var(--deep-teal); padding: 16px 44px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+.btn-gold:hover { opacity: 0.88; }
+
+/* FOOTER */
+footer { background: var(--deep-teal); padding: 56px 60px 36px; margin-top: 60px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--gold); }
+.footer-tagline { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 6px; }
+.footer-col h5 { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 14px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.62); text-decoration: none; font-size: 0.84rem; margin-bottom: 9px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { color: rgba(255,255,255,0.28); font-size: 0.74rem; }
+.footer-contact { color: rgba(255,255,255,0.48); font-size: 0.82rem; }
+.footer-contact a { color: var(--gold); text-decoration: none; }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 28px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 64px 24px 56px; }
+  .hero h1 { font-size: 2.8rem; }
+  .stats-section { padding: 40px 24px; }
+  .stat-divider { display: none; }
+  .stats-bubble-wrap { padding: 28px 20px; }
+  .statement-outer { padding: 40px 24px; }
+  .statement-navy-bubble { padding: 52px 28px; border-radius: 12px; }
+  .big-quote { font-size: 2rem; }
+  .services-section { padding: 72px 24px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .icp-section { padding: 72px 24px; }
+  .icp-columns { flex-direction: column; gap: 40px; }
+  .icp-tags-full { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .cases-section { padding: 72px 24px; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .testimonials-section { padding: 72px 24px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .values-section { padding: 72px 24px; }
+  .values-row { gap: 16px; }
+  .value-bubble { min-width: 140px; }
+  .about-section { padding: 72px 24px; flex-direction: column; gap: 40px; }
+  .cta-section { padding: 40px 24px 60px; }
+  .cta-bubble { padding: 52px 28px; border-radius: 12px; }
+  .cta-bubble h2 { font-size: 2.1rem; }
+  footer { padding: 40px 24px 28px; }
+  .section-title { font-size: 2.2rem; }
+  .stat-callouts { gap: 32px; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .values-row { flex-direction: column; align-items: stretch; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .icp-tags-full { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">Stonecutter</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Results</a></li>
+    <li><a href="#contact" class="nav-cta">Connect</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Results</a>
+  <a href="#contact">Connect →</a>
+</div>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="eyebrow reveal">Your Boutique Amazon Agency</div>
+    <h1 class="reveal d1">
+      Your Brand Deserves<br>
+      a Better <span class="underlined">Partner.<svg class="wavy" viewBox="0 0 160 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C18,3 40,12 62,6 C82,1 105,10 128,6 C142,3 154,8 158,7" stroke="#7C9885" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </h1>
+    <p class="subhead reveal d2">We're a tight-knit team of Amazon specialists who treat your brand like our own. Strategy, advertising, catalog, logistics — all under one roof.</p>
+    <div class="btn-row reveal d3">
+      <a href="#contact" class="btn-primary">Schedule a Free Consult →</a>
+      <a href="#work" class="btn-ghost">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS — Version B only -->
+<section class="stats-section section-wrapper">
+  <div class="stats-bubble-wrap reveal">
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-number-b">$220M+</span>
+        <span class="stat-label">Revenue Managed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number-b">14</span>
+        <span class="stat-label">Premium Brands</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number-b">92%+</span>
+        <span class="stat-label">Client Retention</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number-b">4.2×</span>
+        <span class="stat-label">Average ROAS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT — navy bubble, bold and distinct, no gold text -->
+<section class="section-wrapper">
+  <div class="statement-outer">
+    <div class="statement-navy-bubble reveal">
+      <!-- Sage quote mark — no gold in this section -->
+      <span class="quote-mark">"</span>
+      <p class="big-quote">
+        Amazon is where your customer makes their decision. It's where you
+        <span class="underlined">win or hand it to a competitor.<svg class="wavy" viewBox="0 0 420 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C35,3 80,12 125,6 C168,1 210,10 260,6 C300,3 360,9 418,7" stroke="rgba(124,152,133,0.65)" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span>
+      </p>
+      <p class="quote-attr" style="margin-top:14px;">— Lee Assoulin, Founder</p>
+      <div class="stat-callouts">
+        <div class="callout reveal">
+          <span class="callout-num">40%</span>
+          <span class="callout-label">of all US e-commerce runs through Amazon</span>
+        </div>
+        <div class="callout-divider"></div>
+        <div class="callout reveal d1">
+          <span class="callout-num">74%</span>
+          <span class="callout-label">of product searches start on Amazon, not Google</span>
+        </div>
+        <div class="callout-divider"></div>
+        <div class="callout reveal d2">
+          <span class="callout-num">$600B+</span>
+          <span class="callout-label">in Amazon GMV in 2023</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-wrapper">
+  <div class="services-section">
+    <div class="section-header">
+      <div class="eyebrow reveal">What We Do</div>
+      <h2 class="section-title reveal d1">End-to-End Amazon <span class="underlined">Expertise<svg class="wavy" viewBox="0 0 200 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C24,3 55,12 88,6 C120,1 152,10 176,6 C186,3 196,8 198,7" stroke="#7C9885" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+      <p class="section-desc reveal d2">Everything your brand needs to win on Amazon. No hand-offs, no gaps, no guesswork.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-item reveal">
+        <div class="service-tag">01</div>
+        <h4>Advertising &amp; PPC</h4>
+        <p>Data-driven campaigns across Sponsored Products, Brands, Display, and DSP. We optimize for profitable growth, not vanity metrics.</p>
+      </div>
+      <div class="service-item reveal d1">
+        <div class="service-tag">02</div>
+        <h4>Catalog &amp; Listings</h4>
+        <p>A+ content, brand stores, photography briefs, and listing SEO that converts browsers into buyers and improves organic rank.</p>
+      </div>
+      <div class="service-item reveal d2">
+        <div class="service-tag">03</div>
+        <h4>Operations &amp; Fulfillment</h4>
+        <p>FBA inbound management, inventory forecasting, stranded inventory resolution, and Subscribe &amp; Save optimization.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-tag">04</div>
+        <h4>Analytics &amp; Strategy</h4>
+        <p>Monthly business reviews, competitive analysis, pricing strategy, and Prime Day / Q4 planning with real data at the center.</p>
+      </div>
+      <div class="service-item reveal d1">
+        <div class="service-tag">05</div>
+        <h4>Brand &amp; Content</h4>
+        <p>Storefront design, brand story, and creative direction that builds equity — not just conversions.</p>
+      </div>
+      <div class="service-item reveal d2">
+        <div class="service-tag">06</div>
+        <h4>Marketplace Expansion</h4>
+        <p>We take brands to Canada, UK, and EU markets where meaningful revenue potential exists — methodically, not recklessly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="section-wrapper">
+  <div class="icp-section">
+    <div class="icp-columns">
+      <div class="icp-left">
+        <span class="section-label reveal">Who We Work With</span>
+        <h2 class="section-title reveal d1">We Choose Our<br><span class="underlined">Clients Carefully.<svg class="wavy" viewBox="0 0 270 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C28,3 68,12 105,6 C140,1 175,10 212,6 C238,3 260,8 268,7" stroke="#7C9885" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+        <p class="reveal d2">We work with a small number of brands at a time. That's intentional. Stonecutter isn't a revolving door — we build long-term partnerships where we have the bandwidth to go deep.</p>
+        <p class="reveal d2">We're looking for brands that want a partner, not a vendor. Brands that share data, move quickly, and want to win together.</p>
+      </div>
+      <div class="icp-right">
+        <div class="icp-card reveal d1">
+          <h4>The Right Fit Looks Like This</h4>
+          <div class="icp-bullet">Established brand with strong product-market fit</div>
+          <div class="icp-bullet">Minimum $10M in Amazon revenue (or clear trajectory)</div>
+          <div class="icp-bullet">Significant external marketing investment ($3M+)</div>
+          <div class="icp-bullet">Leadership that values partnership over vendor relationships</div>
+          <div class="icp-bullet">Long-term orientation — not looking for a quick fix</div>
+          <div class="icp-bullet">Willing to share data and move fast on decisions</div>
+        </div>
+      </div>
+    </div>
+    <!-- Category tags: full-width horizontal grid below both columns -->
+    <div class="icp-tags-full reveal d2">
+      <span class="icp-tag">Health &amp; Wellness</span>
+      <span class="icp-tag">Beauty &amp; Skincare</span>
+      <span class="icp-tag">CPG &amp; Food</span>
+      <span class="icp-tag">Sports &amp; Recreation</span>
+      <span class="icp-tag">$10M+ Amazon Revenue</span>
+      <span class="icp-tag">DTC Brands Expanding</span>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work" class="section-wrapper">
+  <div class="cases-section">
+    <div class="section-header">
+      <span class="section-label reveal">Case Studies</span>
+      <h2 class="section-title reveal d1">Real Results. <span class="underlined">No Names Required.<svg class="wavy" viewBox="0 0 300 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C30,3 72,12 112,6 C150,1 188,10 230,6 C258,3 285,8 298,7" stroke="#7C9885" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+    </div>
+    <div class="cases-grid">
+      <!-- Card 1: Teal -->
+      <div class="case-card reveal">
+        <div class="case-category">P&amp;G-Owned Skincare Brand</div>
+        <h4>$2M to $25M in 24 Months</h4>
+        <p>Inherited a plateaued account with fragmented advertising and weak catalog fundamentals. Rebuilt the full-funnel strategy and drove 12.5× growth.</p>
+        <div class="case-metrics-row">
+          <div class="case-metric">
+            <span class="case-metric-num">12.5×</span>
+            <span class="case-metric-label">Revenue Growth</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">3.8×</span>
+            <span class="case-metric-label">ROAS</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">#1</span>
+            <span class="case-metric-label">Category Rank</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2: Sage -->
+      <div class="case-card reveal d1">
+        <div class="case-category">DTC Sports Equipment Brand</div>
+        <h4>27% YTD Growth in a Competitive Category</h4>
+        <p>Coordinated product launches, ambassador program integration, and catalog optimization across a growing SKU portfolio in a fast-moving niche.</p>
+        <div class="case-metrics-row">
+          <div class="case-metric">
+            <span class="case-metric-num">27%</span>
+            <span class="case-metric-label">YTD Growth</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">4.5×</span>
+            <span class="case-metric-label">ROAS</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">3</span>
+            <span class="case-metric-label">New SKUs Launched</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3: Deep Teal -->
+      <div class="case-card reveal">
+        <div class="case-category">Australian Wellness Brand — US Market Entry</div>
+        <h4>Building US Amazon Presence From Zero</h4>
+        <p>Guided a brand with strong DTC history overseas through US market entry — incremental ad spend, Subscribe &amp; Save velocity, and new-to-brand acquisition.</p>
+        <div class="case-metrics-row">
+          <div class="case-metric">
+            <span class="case-metric-num">$1.3M</span>
+            <span class="case-metric-label">Year-One Revenue</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">68%</span>
+            <span class="case-metric-label">New-to-Brand Rate</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4: Olive -->
+      <div class="case-card reveal d1">
+        <div class="case-category">P&amp;G-Owned Natural Personal Care Brand</div>
+        <h4>New Line Launch + Buy Box Defense</h4>
+        <p>Simultaneously launched a new product line while defending Buy Box ownership against a surge of unauthorized resellers undercutting on price.</p>
+        <div class="case-metrics-row">
+          <div class="case-metric">
+            <span class="case-metric-num">98%</span>
+            <span class="case-metric-label">Buy Box Retention</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-num">Day 1</span>
+            <span class="case-metric-label">Launch Velocity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-wrapper">
+  <div class="testimonials-section">
+    <div class="section-header">
+      <div class="eyebrow reveal">What Clients Say</div>
+      <h2 class="section-title reveal d1">The Partnership<br>Speaks for Itself</h2>
+    </div>
+    <div class="testimonials-grid">
+      <!-- Quote marks: teal — no gold -->
+      <div class="testimonial-card reveal">
+        <div class="t-quote-mark">"</div>
+        <p>They don't just manage our account — they think like owners. Every week we get proactive updates, not just reports. That's rare in this space.</p>
+        <div class="t-attr">VP of E-Commerce, P&amp;G-Owned Skincare Brand<br><span class="t-placeholder">[PLACEHOLDER — awaiting approval]</span></div>
+      </div>
+      <div class="testimonial-card reveal d1">
+        <div class="t-quote-mark">"</div>
+        <p>Stonecutter helped us go from $0 to meaningful Amazon revenue in under a year. The team knows the platform inside and out and makes the complex feel manageable.</p>
+        <div class="t-attr">Founder, Wellness Brand<br><span class="t-placeholder">[PLACEHOLDER — awaiting approval]</span></div>
+      </div>
+      <div class="testimonial-card reveal d2">
+        <div class="t-quote-mark">"</div>
+        <p>The depth of knowledge they bring on both advertising and operations is what sets them apart. They're genuinely invested in our success, not just our retainer.</p>
+        <div class="t-attr">Director of Digital Commerce, Sports Brand<br><span class="t-placeholder">[PLACEHOLDER — awaiting approval]</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES — each value as a colored bubble (sage-heavy) -->
+<section class="section-wrapper">
+  <div class="values-section">
+    <div class="section-header">
+      <div class="eyebrow reveal">What We Stand For</div>
+      <h2 class="section-title reveal d1">Five <span class="underlined">Core Values<svg class="wavy" viewBox="0 0 190 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C22,3 52,12 84,6 C115,1 146,10 168,6 C178,3 186,8 188,7" stroke="#28666E" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+    </div>
+    <div class="values-row">
+      <!-- Bubble 1: Sage -->
+      <div class="value-bubble reveal">
+        <span class="value-num">01</span>
+        <h4>Trust</h4>
+        <p>Clients and team know we always have their back — even when the news isn't good.</p>
+      </div>
+      <!-- Bubble 2: Teal tint -->
+      <div class="value-bubble reveal d1">
+        <span class="value-num">02</span>
+        <h4>Clarity</h4>
+        <p>We make the complex simple, the hidden visible, and the messy actionable.</p>
+      </div>
+      <!-- Bubble 3: Olive tint -->
+      <div class="value-bubble reveal d2">
+        <span class="value-num">03</span>
+        <h4>Excellence</h4>
+        <p>We deliver real results, not just polished decks. It has to show up in the data.</p>
+      </div>
+      <!-- Bubble 4: Deep teal tint -->
+      <div class="value-bubble reveal d3">
+        <span class="value-num">04</span>
+        <h4>Partnership</h4>
+        <p>Fail together, win together. We're not a vendor — we're as invested as you are.</p>
+      </div>
+      <!-- Bubble 5: Sage (lighter) -->
+      <div class="value-bubble reveal d4">
+        <span class="value-num">05</span>
+        <h4>Balance</h4>
+        <p>Growth matters, but never at the cost of profitability, integrity, or the people doing the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-wrapper">
+  <div class="about-section">
+    <div class="about-left">
+      <span class="section-label reveal">About Stonecutter</span>
+      <h2 class="section-title reveal d1">A Different Kind of<br><span class="underlined">Amazon Partner<svg class="wavy" viewBox="0 0 270 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,9 C30,3 70,12 108,6 C145,1 180,10 218,6 C242,3 262,8 268,7" stroke="#7C9885" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+      <p class="reveal d2">Stonecutter was built on a simple conviction: brands deserve a partner who's genuinely invested in their Amazon success — not just an agency filling a slot on a roster.</p>
+      <p class="reveal d2">We're boutique by choice. Working with fewer clients means we go deeper, move faster, and care more. When your account wins, our team genuinely celebrates. When something goes wrong, we're the first to tell you and the first to fix it.</p>
+      <p class="reveal d2">We operate on EOS, are an Amazon Verified Partner, and are active members of the Million Dollar Sellers community.</p>
+      <div class="badges reveal d3">
+        <span class="badge">Amazon Verified Partner</span>
+        <span class="badge">EOS-Driven</span>
+        <span class="badge">MDS Member</span>
+        <span class="badge">New York City</span>
+      </div>
+    </div>
+    <div class="about-right reveal d2">
+      <!-- Sage border accent on founder block -->
+      <div class="founder-block">
+        <h4>Lee Assoulin</h4>
+        <span class="founder-title">Founder &amp; CEO</span>
+        <p>Lee founded Stonecutter with the belief that the best Amazon agencies behave more like partners than service providers. He's built a team that operates with an ownership mentality, communicates proactively, and genuinely cares about the brands they work with.</p>
+        <p style="margin-top:14px; font-size:0.82rem; color:var(--teal); font-weight:500;">lee@stonecutter.nyc</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" class="cta-section">
+  <div class="cta-bubble reveal">
+    <span class="cta-eyebrow">Free Amazon Consult</span>
+    <h2>Let's Find Out What<br>Your Brand Is Leaving Behind.</h2>
+    <p class="cta-desc">We'll audit your Amazon account and show you exactly where revenue is being lost — no strings attached, no sales pitch.</p>
+    <a href="mailto:lee@stonecutter.nyc" class="btn-gold">Schedule a Free Consult →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Stonecutter</div>
+      <div class="footer-tagline">Premium Amazon Brand Management · NYC</div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">Advertising &amp; PPC</a>
+      <a href="#services">Catalog &amp; Listings</a>
+      <a href="#services">Operations</a>
+      <a href="#services">Brand Strategy</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About</a>
+      <a href="#work">Results</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact">Connect</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Stonecutter NYC. All rights reserved.</span>
+    <span class="footer-contact">Reach us: <a href="mailto:lee@stonecutter.nyc">lee@stonecutter.nyc</a></span>
+  </div>
+</footer>
+
+<script>
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// SCROLL REVEAL
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// Catch elements already in viewport on load
+window.addEventListener('load', () => {
+  revealEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) {
+      el.classList.add('visible');
+    }
+  });
+});
+</script>
+</body>
+</html>
