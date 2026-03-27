@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Sampler — Taxi Yellow + Subway Texture</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --teal: #28666E;
+  --sage: #7C9885;
+  --olive: #B5B682;
+  --gold-old: #FEDC97;
+  /* NYC Taxi Cab Yellow options */
+  --taxi-1: #F7C948; /* Classic taxi yellow */
+  --taxi-2: #F2B705; /* Deeper/richer taxi */
+  --taxi-3: #FFD23F; /* Brighter/sunnier */
+  --taxi-4: #E8B004; /* Mustard taxi */
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep-teal);
+}
+
+h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+
+/* ========== SECTION 1: TAXI YELLOW COMPARISON ========== */
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  color: var(--deep-teal);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--teal);
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Color swatches row */
+.swatch-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.swatch-card {
+  flex: 1;
+  min-width: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(3,63,99,0.08);
+}
+
+.swatch-block {
+  height: 90px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 16px;
+}
+
+.swatch-block span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.swatch-info {
+  background: white;
+  padding: 14px 16px;
+}
+
+.swatch-info h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--deep-teal);
+}
+
+.swatch-info p {
+  font-size: 0.78rem;
+  color: var(--teal);
+  margin-top: 4px;
+}
+
+/* Button comparisons */
+.btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+
+.btn-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-group { text-align: center; }
+
+/* Stat number comparisons */
+.stats-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 28px 24px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* Badge/pill comparisons */
+.pill-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.pill {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: rgba(3,63,99,0.08);
+  margin: 60px 0;
+}
+
+/* ========== SECTION 2: SUBWAY LINE TEXTURES ========== */
+
+/* Subway texture using SVG background */
+.subway-sample {
+  position: relative;
+  border-radius: 24px;
+  padding: 60px 40px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+/* Very light, barely noticeable subway lines */
+.subway-v1 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3C!-- A train line --%3E%3Cpath d='M-20,100 C100,100 150,180 250,180 S400,80 500,120 S650,200 820,160' stroke='%23033F63' stroke-width='3' opacity='0.04'/%3E%3C!-- C/E line --%3E%3Cpath d='M-20,250 C80,250 120,200 200,200 S350,320 450,280 S580,180 700,220 L820,200' stroke='%2328666E' stroke-width='3' opacity='0.04'/%3E%3C!-- G line --%3E%3Cpath d='M100,-20 C100,80 180,120 180,200 S100,300 140,400 S200,500 160,620' stroke='%237C9885' stroke-width='3' opacity='0.04'/%3E%3C!-- L line --%3E%3Cpath d='M-20,400 L200,400 C250,400 280,350 350,350 L600,350 C650,350 680,400 820,380' stroke='%23B5B682' stroke-width='3' opacity='0.04'/%3E%3C!-- N/Q/R line --%3E%3Cpath d='M400,-20 C400,60 350,100 350,180 S420,260 380,350 S340,450 380,540 L400,620' stroke='%23F7C948' stroke-width='3' opacity='0.04'/%3E%3C!-- Transfer dots --%3E%3Ccircle cx='250' cy='180' r='6' fill='%23033F63' opacity='0.03'/%3E%3Ccircle cx='350' cy='350' r='6' fill='%2328666E' opacity='0.03'/%3E%3Ccircle cx='180' cy='200' r='6' fill='%237C9885' opacity='0.03'/%3E%3Ccircle cx='400' cy='180' r='6' fill='%23B5B682' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 800px 600px;
+}
+
+/* Slightly more visible version */
+.subway-v2 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='900' height='700' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3C!-- Horizontal lines like subway routes --%3E%3Cpath d='M-20,120 C60,120 100,80 180,80 L350,80 C400,80 420,140 500,140 L700,140 C750,140 780,100 920,100' stroke='%23033F63' stroke-width='4' opacity='0.035'/%3E%3Cpath d='M-20,280 C80,280 130,320 220,320 L380,320 C430,320 460,260 540,260 L920,260' stroke='%2328666E' stroke-width='4' opacity='0.035'/%3E%3Cpath d='M-20,440 L160,440 C210,440 240,480 320,480 L500,480 C550,480 580,420 660,420 L920,420' stroke='%237C9885' stroke-width='4' opacity='0.035'/%3E%3C!-- Vertical crossings --%3E%3Cpath d='M200,-20 L200,150 C200,200 240,240 240,320 L240,500 C240,550 200,580 200,720' stroke='%23F7C948' stroke-width='4' opacity='0.03'/%3E%3Cpath d='M550,-20 L550,100 C550,160 500,200 500,260 L500,400 C500,460 550,500 550,720' stroke='%23B5B682' stroke-width='4' opacity='0.03'/%3E%3C!-- Station dots --%3E%3Ccircle cx='180' cy='80' r='5' fill='none' stroke='%23033F63' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='500' cy='140' r='5' fill='none' stroke='%23033F63' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='220' cy='320' r='5' fill='none' stroke='%2328666E' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='540' cy='260' r='5' fill='none' stroke='%2328666E' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='320' cy='480' r='5' fill='none' stroke='%237C9885' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='200' cy='320' r='8' fill='%23033F63' opacity='0.025'/%3E%3Ccircle cx='550' cy='260' r='8' fill='%2328666E' opacity='0.025'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 900px 700px;
+}
+
+/* Denser, more abstract subway network */
+.subway-v3 {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg width='1000' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3C!-- Dense network of curving lines --%3E%3Cpath d='M-20,150 Q200,150 250,250 T500,200 T750,300 T1020,250' stroke='%23033F63' stroke-width='3' opacity='0.04'/%3E%3Cpath d='M-20,350 Q150,350 200,280 T450,350 T700,280 T1020,350' stroke='%2328666E' stroke-width='3' opacity='0.04'/%3E%3Cpath d='M-20,500 Q180,500 250,450 T520,520 T780,440 T1020,500' stroke='%237C9885' stroke-width='3' opacity='0.04'/%3E%3Cpath d='M150,-20 Q150,200 250,250 T200,500 T250,820' stroke='%23F7C948' stroke-width='2.5' opacity='0.035'/%3E%3Cpath d='M500,-20 Q500,150 450,200 T500,450 T450,820' stroke='%23B5B682' stroke-width='2.5' opacity='0.035'/%3E%3Cpath d='M800,-20 Q800,200 750,300 T800,550 T750,820' stroke='%23033F63' stroke-width='2.5' opacity='0.025'/%3E%3C!-- Transfer stations --%3E%3Ccircle cx='250' cy='250' r='7' fill='none' stroke='%23033F63' stroke-width='2' opacity='0.05'/%3E%3Ccircle cx='250' cy='250' r='3' fill='%23033F63' opacity='0.04'/%3E%3Ccircle cx='450' cy='350' r='7' fill='none' stroke='%2328666E' stroke-width='2' opacity='0.05'/%3E%3Ccircle cx='450' cy='350' r='3' fill='%2328666E' opacity='0.04'/%3E%3Ccircle cx='500' cy='200' r='7' fill='none' stroke='%23F7C948' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='500' cy='200' r='3' fill='%23F7C948' opacity='0.03'/%3E%3Ccircle cx='750' cy='300' r='7' fill='none' stroke='%237C9885' stroke-width='2' opacity='0.04'/%3E%3Ccircle cx='250' cy='450' r='5' fill='none' stroke='%23B5B682' stroke-width='2' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1000px 800px;
+}
+
+.subway-sample h2 {
+  font-size: 2.8rem;
+  color: var(--deep-teal);
+  margin-bottom: 16px;
+}
+
+.subway-sample p {
+  font-size: 1.05rem;
+  color: var(--teal);
+  max-width: 550px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.subway-sample .btn {
+  margin-top: 10px;
+}
+
+.version-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(3,63,99,0.06);
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+/* Dark hero with subway texture */
+.subway-dark {
+  background-color: var(--deep-teal);
+  background-image: url("data:image/svg+xml,%3Csvg width='900' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M-20,100 C100,100 150,180 250,180 S400,80 500,120 S650,200 820,160' stroke='%23EDE8E0' stroke-width='3' opacity='0.05'/%3E%3Cpath d='M-20,300 C80,300 130,240 220,240 L400,240 C450,240 480,300 560,300 L820,280' stroke='%23EDE8E0' stroke-width='3' opacity='0.05'/%3E%3Cpath d='M200,-20 C200,80 250,120 250,200 S200,300 230,400 S270,500 240,620' stroke='%23F7C948' stroke-width='3' opacity='0.06'/%3E%3Cpath d='M600,-20 C600,100 550,160 550,250 S600,350 580,450 L590,620' stroke='%237C9885' stroke-width='3' opacity='0.05'/%3E%3Ccircle cx='250' cy='180' r='6' fill='none' stroke='%23EDE8E0' stroke-width='2' opacity='0.06'/%3E%3Ccircle cx='550' cy='250' r='6' fill='none' stroke='%23EDE8E0' stroke-width='2' opacity='0.06'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 900px 600px;
+}
+
+.subway-dark h2 { color: var(--cream); }
+.subway-dark p { color: rgba(237,232,224,0.8); }
+.subway-dark .version-tag { background: rgba(237,232,224,0.1); color: rgba(237,232,224,0.6); }
+
+/* Comparison grid */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.compare-card {
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+}
+
+.compare-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.compare-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Underline comparisons */
+.underline-demo {
+  display: inline-block;
+  position: relative;
+}
+
+.underline-demo svg {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+@media (max-width: 700px) {
+  .swatch-row, .stats-row, .btn-row { flex-direction: column; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.8rem; }
+  .subway-sample h2 { font-size: 2rem; }
+  .subway-sample { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <span class="section-label">Part 1</span>
+  <h1 class="section-title">🚕 Taxi Cab Yellow vs Current Gold</h1>
+  <p class="section-desc">NYC Taxi Yellow is bolder, more confident, and more recognizable. It says "New York" instantly. Here's how different yellows compare.</p>
+
+  <!-- Swatches -->
+  <div class="swatch-row">
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--gold-old);">
+        <span style="background:rgba(0,0,0,0.15); color:white;">#FEDC97</span>
+      </div>
+      <div class="swatch-info">
+        <h4>Current Gold</h4>
+        <p>Soft, warm, safe. A little generic — could be any brand.</p>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--taxi-1);">
+        <span style="background:rgba(0,0,0,0.2); color:white;">#F7C948</span>
+      </div>
+      <div class="swatch-info">
+        <h4>Classic Taxi Yellow</h4>
+        <p>The real deal. Confident, unmistakably NYC.</p>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--taxi-2);">
+        <span style="background:rgba(0,0,0,0.2); color:white;">#F2B705</span>
+      </div>
+      <div class="swatch-info">
+        <h4>Deep Taxi</h4>
+        <p>Richer, more premium. Like a fresh cab on a fall day.</p>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--taxi-3);">
+        <span style="background:rgba(0,0,0,0.15); color:white;">#FFD23F</span>
+      </div>
+      <div class="swatch-info">
+        <h4>Bright Sunny</h4>
+        <p>Energetic, playful. Might be too loud for buttons.</p>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--taxi-4);">
+        <span style="background:rgba(0,0,0,0.25); color:white;">#E8B004</span>
+      </div>
+      <div class="swatch-info">
+        <h4>Mustard Taxi</h4>
+        <p>Deeper, vintage NYC feel. Sophisticated.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <h3 style="margin-bottom: 20px;">Buttons on Cream</h3>
+  <div class="btn-row">
+    <div class="btn-group">
+      <div class="btn" style="background: var(--gold-old); color: var(--deep-teal);">Connect →</div>
+      <div class="btn-label">Current Gold</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+      <div class="btn-label">Classic Taxi</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--taxi-2); color: var(--deep-teal);">Connect →</div>
+      <div class="btn-label">Deep Taxi</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--taxi-4); color: white;">Connect →</div>
+      <div class="btn-label">Mustard (white text)</div>
+    </div>
+  </div>
+
+  <!-- Buttons on dark -->
+  <h3 style="margin-bottom: 20px;">Buttons on Dark Navy</h3>
+  <div style="background: var(--deep-teal); border-radius: 20px; padding: 30px; margin-bottom: 50px;">
+    <div class="btn-row">
+      <div class="btn-group">
+        <div class="btn" style="background: var(--gold-old); color: var(--deep-teal);">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.5);">Current Gold</div>
+      </div>
+      <div class="btn-group">
+        <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.5);">Classic Taxi</div>
+      </div>
+      <div class="btn-group">
+        <div class="btn" style="background: var(--taxi-2); color: var(--deep-teal);">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.5);">Deep Taxi</div>
+      </div>
+      <div class="btn-group">
+        <div class="btn" style="background: var(--taxi-4); color: var(--deep-teal);">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.5);">Mustard Taxi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats comparison -->
+  <h3 style="margin-bottom: 20px;">Stats with Taxi Yellow Accents</h3>
+  <div class="stats-row">
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--gold-old);">$220M<span style="font-size:1.5rem;">+</span></div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.7);">Current Gold</div>
+    </div>
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--taxi-1);">$220M<span style="font-size:1.5rem;">+</span></div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.7);">Classic Taxi</div>
+    </div>
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--taxi-2);">$220M<span style="font-size:1.5rem;">+</span></div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.7);">Deep Taxi</div>
+    </div>
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--taxi-4);">$220M<span style="font-size:1.5rem;">+</span></div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.7);">Mustard Taxi</div>
+    </div>
+  </div>
+
+  <!-- Pills / badges -->
+  <h3 style="margin-bottom: 20px;">ICP Pills with Taxi Yellow</h3>
+  <div class="pill-row" style="margin-bottom: 12px;">
+    <span class="pill" style="background: var(--gold-old); color: var(--deep-teal);">DTC Brands</span>
+    <span class="pill" style="background: var(--gold-old); color: var(--deep-teal);">CPG</span>
+    <span class="pill" style="background: var(--gold-old); color: var(--deep-teal);">Beauty & Wellness</span>
+    <span class="pill" style="background: var(--gold-old); color: var(--deep-teal);">$5M+ Revenue</span>
+    <span style="font-size: 0.75rem; color: #999; align-self: center;">← Current Gold</span>
+  </div>
+  <div class="pill-row" style="margin-bottom: 50px;">
+    <span class="pill" style="background: var(--taxi-1); color: var(--deep-teal);">DTC Brands</span>
+    <span class="pill" style="background: var(--taxi-1); color: var(--deep-teal);">CPG</span>
+    <span class="pill" style="background: var(--taxi-1); color: var(--deep-teal);">Beauty & Wellness</span>
+    <span class="pill" style="background: var(--taxi-1); color: var(--deep-teal);">$5M+ Revenue</span>
+    <span style="font-size: 0.75rem; color: #999; align-self: center;">← Taxi Yellow</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ========== PART 2: SUBWAY TEXTURES ========== -->
+  <span class="section-label">Part 2</span>
+  <h1 class="section-title">🚇 Subway Line Textures</h1>
+  <p class="section-desc">Abstract subway-inspired lines as a barely-visible background texture. Not the actual map — just the feeling of transit lines curving and intersecting. Three intensity levels.</p>
+
+  <!-- Version 1: Very subtle -->
+  <div class="subway-sample subway-v1">
+    <span class="version-tag">Version 1 — Whisper</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>Barely there. You'll notice it on close inspection or when scrolling. The lines use palette colors at very low opacity with station-dot intersections.</p>
+    <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- Version 2: Slightly more visible -->
+  <div class="subway-sample subway-v2">
+    <span class="version-tag">Version 2 — Subtle</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>A bit more visible — horizontal routes with vertical crossings. Station markers at intersections. Structured like an actual transit map but abstracted.</p>
+    <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- Version 3: Dense network -->
+  <div class="subway-sample subway-v3">
+    <span class="version-tag">Version 3 — Rich Network</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>Denser, more lines curving and crossing. Transfer stations have double-circle marks. Still very light — just enough to give the cream background character.</p>
+    <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <!-- Dark hero with subway -->
+  <div class="subway-sample subway-dark">
+    <span class="version-tag">Dark Hero + Subway Lines</span>
+    <h2>Your Boutique<br>Amazon Agency</h2>
+    <p>The dark navy hero with faint cream subway lines and a taxi-yellow vertical line cutting through. Subtle but unmistakably NYC.</p>
+    <div class="btn" style="background: var(--taxi-1); color: var(--deep-teal);">Connect →</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Side by side: Old vs New -->
+  <span class="section-label">Side by Side</span>
+  <h1 class="section-title">Current vs NYC Edition</h1>
+  <p class="section-desc" style="margin-bottom: 30px;">Left is what we have. Right is where we could go.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--gold-old); font-size: 2.5rem;">$220M+</div>
+      <h3 style="color: var(--cream);">Current Palette</h3>
+      <p style="color: rgba(237,232,224,0.6);">Gold #FEDC97 · No texture</p>
+    </div>
+    <div class="compare-card subway-dark" style="border-radius: 20px;">
+      <div class="stat-num" style="color: var(--taxi-1); font-size: 2.5rem;">$220M+</div>
+      <h3 style="color: var(--cream);">NYC Edition</h3>
+      <p style="color: rgba(237,232,224,0.6);">Taxi Yellow #F7C948 · Subway lines</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; padding: 40px 0; color: var(--teal); font-size: 0.85rem;">
+    <p>🚕 + 🚇 = 🗽</p>
+    <p style="margin-top: 8px;">NYC Taxi Yellow: <strong>#F7C948</strong> (Classic) · <strong>#F2B705</strong> (Deep) · <strong>#E8B004</strong> (Mustard)</p>
+  </div>
+</div>
+
+</body>
+</html>
