@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter — Taxi Routes Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --true-patina: #4A7C6F;
+  --mid-patina: #5A8F7B;
+  --light-patina: #6B9E8A;
+  --taxi: #F7C948;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep-teal);
+  overflow-x: hidden;
+}
+h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+
+/* ===== FULL-PAGE SVG OVERLAY ===== */
+.route-lines {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.route-lines svg {
+  width: 100%; height: 100%;
+}
+/* The lines animate in on scroll */
+.route-line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: relative; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1100px; margin: 0 auto;
+  padding: 28px 32px;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; color: var(--deep-teal);
+  text-decoration: none;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 0.9rem; font-weight: 500; color: var(--deep-teal);
+  text-decoration: none; opacity: 0.7; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.btn-connect {
+  display: inline-block; padding: 12px 28px; border-radius: 50px;
+  background: var(--taxi); color: var(--deep-teal);
+  font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  transition: all 0.25s;
+}
+.btn-connect:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(247,201,72,0.4); }
+
+/* ===== SECTIONS ===== */
+section {
+  position: relative; z-index: 5;
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 32px;
+}
+.eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--true-patina); margin-bottom: 16px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding-top: 80px; padding-bottom: 100px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 4rem; line-height: 1.1; margin-bottom: 20px;
+  color: var(--deep-teal);
+}
+.hero h1 span.yellow {
+  color: var(--taxi);
+}
+.hero .sub {
+  font-size: 1.15rem; color: var(--true-patina);
+  max-width: 520px; margin: 0 auto 36px; line-height: 1.6;
+}
+/* Hand-drawn underline */
+.hand-underline {
+  position: relative; display: inline-block;
+}
+.hand-underline svg {
+  position: absolute; bottom: -6px; left: -4px;
+  width: calc(100% + 8px); height: 12px;
+}
+
+/* ===== STATS ===== */
+.stats {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  padding: 48px 32px;
+  margin-bottom: 40px;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem; color: var(--taxi); line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem; color: var(--true-patina);
+  margin-top: 4px; font-weight: 500;
+}
+
+/* ===== STATION MARKER (between sections) ===== */
+.station-marker {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 24px 0;
+  position: relative; z-index: 5;
+  max-width: 1100px; margin: 0 auto;
+}
+.station-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 3px solid var(--deep-teal); background: var(--cream);
+}
+.station-line {
+  flex: 1; height: 2px; background: rgba(3,63,99,0.08);
+}
+.station-name {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: rgba(3,63,99,0.3);
+}
+
+/* ===== SERVICES ===== */
+.services { padding: 40px 32px 80px; }
+.services h2 { font-size: 2.6rem; margin-bottom: 12px; text-align: center; }
+.services .desc { text-align: center; color: var(--true-patina); margin-bottom: 48px; font-size: 1.05rem; }
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.service-card {
+  padding: 32px 28px; border-radius: 20px;
+  background: white; transition: all 0.3s ease;
+  border: 1px solid rgba(3,63,99,0.06);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(3,63,99,0.08); }
+.service-card:nth-child(1):hover { border-color: var(--taxi); }
+.service-card:nth-child(2):hover { border-color: var(--true-patina); }
+.service-card:nth-child(3):hover { border-color: var(--deep-teal); }
+.service-card:nth-child(4):hover { border-color: var(--mid-patina); }
+.service-card:nth-child(5):hover { border-color: var(--taxi); }
+.service-card:nth-child(6):hover { border-color: var(--light-patina); }
+.service-card h3 {
+  font-size: 1.15rem; margin-bottom: 8px; color: var(--deep-teal);
+}
+.service-card p {
+  font-size: 0.88rem; color: var(--true-patina); line-height: 1.55;
+}
+
+/* ===== CASE STUDIES ===== */
+.cases { padding: 40px 32px 80px; }
+.cases h2 { font-size: 2.6rem; margin-bottom: 12px; text-align: center; }
+.cases .desc { text-align: center; color: var(--true-patina); margin-bottom: 48px; font-size: 1.05rem; }
+.case-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.case-card {
+  padding: 32px 28px; border-radius: 20px;
+  transition: all 0.3s ease; cursor: default;
+}
+.case-card:nth-child(1) { background: var(--deep-teal); color: var(--cream); }
+.case-card:nth-child(2) { background: var(--true-patina); color: var(--cream); }
+.case-card:nth-child(3) { background: var(--taxi); color: var(--deep-teal); }
+.case-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(3,63,99,0.12); }
+.case-card .case-category {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; opacity: 0.7; margin-bottom: 12px;
+}
+.case-card .case-metric {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem; line-height: 1.1; margin-bottom: 12px;
+}
+.case-card .case-desc {
+  font-size: 0.88rem; line-height: 1.5; opacity: 0.85;
+}
+
+/* ===== QUOTE ===== */
+.quote-section {
+  padding: 40px 32px 80px;
+  text-align: center;
+}
+.quote-bubble {
+  max-width: 700px; margin: 0 auto;
+  padding: 48px 40px; border-radius: 24px;
+  background: var(--deep-teal); color: var(--cream);
+}
+.quote-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem; line-height: 1.5; font-style: italic;
+  margin-bottom: 20px;
+}
+.quote-attr {
+  font-size: 0.85rem; opacity: 0.7;
+}
+
+/* ===== FOOTER CTA ===== */
+.footer-cta {
+  padding: 60px 32px 80px; text-align: center;
+}
+.footer-cta h2 {
+  font-size: 2.6rem; margin-bottom: 16px;
+}
+.footer-cta p {
+  color: var(--true-patina); margin-bottom: 32px;
+  font-size: 1.05rem;
+}
+
+/* ===== ICP ===== */
+.icp { padding: 40px 32px 60px; text-align: center; }
+.icp h2 { font-size: 2.6rem; margin-bottom: 12px; }
+.icp .desc { color: var(--true-patina); margin-bottom: 32px; font-size: 1.05rem; }
+.icp-pills {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+}
+.icp-pill {
+  padding: 10px 22px; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600;
+  background: rgba(3,63,99,0.06); color: var(--deep-teal);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.6rem; }
+  .service-grid, .case-grid { grid-template-columns: 1fr; }
+  .stats { gap: 24px; }
+  .stat-num { font-size: 2.2rem; }
+  nav { padding: 20px 16px; }
+  .nav-links { gap: 16px; }
+  section, .services, .cases, .quote-section, .footer-cta, .icp { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SUBWAY ROUTE LINES (fixed background, 4% opacity) ===== -->
+<!-- One continuous SVG with lines that "connect" the page sections like a subway map -->
+<div class="route-lines">
+<svg viewBox="0 0 1440 5000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Line 1: Deep Teal — runs left side, vertical with turns -->
+  <path class="route-line" d="M200,0 L200,400 Q200,440 240,440 L500,440 Q540,440 540,480 L540,1200 Q540,1240 500,1240 L300,1240 Q260,1240 260,1280 L260,2000 Q260,2040 300,2040 L600,2040 Q640,2040 640,2080 L640,3000 Q640,3040 600,3040 L350,3040 Q310,3040 310,3080 L310,4200 Q310,4240 350,4240 L700,4240"
+    stroke="#033F63" stroke-width="5" opacity="0.04" />
+
+  <!-- Line 2: Taxi Yellow — runs across, connecting hero to services -->
+  <path class="route-line" d="M0,600 L400,600 Q440,600 440,640 L440,1100 Q440,1140 480,1140 L900,1140 Q940,1140 940,1180 L940,2200 Q940,2240 900,2240 L600,2240 Q560,2240 560,2280 L560,3200 Q560,3240 600,3240 L1100,3240 Q1140,3240 1140,3280 L1140,4500"
+    stroke="#F7C948" stroke-width="6" opacity="0.04" />
+
+  <!-- Line 3: Patina Green — weaves through right side -->
+  <path class="route-line" d="M1000,0 L1000,300 Q1000,340 960,340 L700,340 Q660,340 660,380 L660,900 Q660,940 700,940 L1100,940 Q1140,940 1140,980 L1140,1800 Q1140,1840 1100,1840 L800,1840 Q760,1840 760,1880 L760,2800 Q760,2840 800,2840 L1200,2840 Q1240,2840 1240,2880 L1240,4000"
+    stroke="#4A7C6F" stroke-width="5" opacity="0.04" />
+
+  <!-- Line 4: Light Patina — diagonal connector -->
+  <path class="route-line" d="M0,1600 L300,1600 Q340,1600 340,1640 L340,2400 Q340,2440 380,2440 L800,2440 Q840,2440 840,2480 L840,3600 Q840,3640 880,3640 L1440,3640"
+    stroke="#6B9E8A" stroke-width="4" opacity="0.04" />
+
+  <!-- Station dots at key intersections -->
+  <circle cx="200" cy="400" r="7" fill="none" stroke="#033F63" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="540" cy="480" r="7" fill="none" stroke="#033F63" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="440" cy="600" r="7" fill="none" stroke="#F7C948" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="940" cy="1140" r="8" fill="none" stroke="#F7C948" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="1000" cy="300" r="7" fill="none" stroke="#4A7C6F" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="660" cy="900" r="7" fill="none" stroke="#4A7C6F" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="340" cy="1600" r="7" fill="none" stroke="#6B9E8A" stroke-width="2.5" opacity="0.04"/>
+  <circle cx="840" cy="2480" r="7" fill="none" stroke="#6B9E8A" stroke-width="2.5" opacity="0.04"/>
+
+  <!-- Transfer station (double ring) where lines cross -->
+  <circle cx="540" cy="1200" r="12" fill="none" stroke="#033F63" stroke-width="1.5" opacity="0.03"/>
+  <circle cx="940" cy="1180" r="12" fill="none" stroke="#F7C948" stroke-width="1.5" opacity="0.03"/>
+</svg>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#" class="logo">Stonecutter</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#connect" class="btn-connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="eyebrow">New York Amazon Agency</div>
+  <h1>Your Boutique<br><span class="hand-underline">Amazon Agency<svg viewBox="0 0 300 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,8 C40,3 80,10 150,5 C220,0 260,9 298,4" stroke="#F7C948" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h1>
+  <p class="sub">We manage Amazon so premium brands can focus on what they do best — building products people love.</p>
+  <a href="#connect" class="btn-connect" style="font-size: 1rem; padding: 16px 36px;">Connect →</a>
+</section>
+
+<!-- Station marker between hero and stats -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot"></div>
+  <span class="station-name">The Numbers</span>
+  <div class="station-dot"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">$220M+</div><div class="stat-label">Managed Revenue</div></div>
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Premium Brands</div></div>
+  <div class="stat"><div class="stat-num">92%</div><div class="stat-label">Client Retention</div></div>
+  <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years Deep</div></div>
+</div>
+
+<!-- Station marker -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot" style="border-color: var(--true-patina);"></div>
+  <span class="station-name">Services</span>
+  <div class="station-dot" style="border-color: var(--true-patina);"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <h2>What We <span class="hand-underline">Do Best<svg viewBox="0 0 200 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,8 C30,2 70,10 100,5 C130,1 170,9 198,4" stroke="#4A7C6F" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+  <p class="desc">Full-service Amazon management for brands that take their channel seriously.</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Advertising & PPC</h3>
+      <p>Full-funnel strategy from Sponsored Products to DSP. We don't just manage spend — we make every dollar work harder.</p>
+    </div>
+    <div class="service-card">
+      <h3>Catalog & Listings</h3>
+      <p>A+ Content, SEO-optimized copy, and brand storytelling that converts browsers into buyers.</p>
+    </div>
+    <div class="service-card">
+      <h3>Operations & Fulfillment</h3>
+      <p>Inventory planning, logistics coordination, and keeping your account health pristine.</p>
+    </div>
+    <div class="service-card">
+      <h3>Analytics & Strategy</h3>
+      <p>Data-driven insights that inform real decisions. Market analysis, competitive intel, growth roadmaps.</p>
+    </div>
+    <div class="service-card">
+      <h3>Brand & Content</h3>
+      <p>Brand Stores, video, photography direction — everything your brand needs to stand out on Amazon.</p>
+    </div>
+    <div class="service-card">
+      <h3>Marketplace Expansion</h3>
+      <p>Ready for international? We launch and manage Amazon channels across North America, EU, and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Station marker -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot" style="border-color: var(--taxi);"></div>
+  <span class="station-name">Who We Work With</span>
+  <div class="station-dot" style="border-color: var(--taxi);"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== ICP ===== -->
+<section class="icp">
+  <h2>Built for <span class="hand-underline">Premium Brands<svg viewBox="0 0 300 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,8 C50,2 100,10 150,5 C200,1 250,9 298,4" stroke="#F7C948" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+  <p class="desc">We're selective about who we work with — because the best results come from real partnerships.</p>
+  <div class="icp-pills">
+    <span class="icp-pill">Beauty & Skincare</span>
+    <span class="icp-pill">Health & Wellness</span>
+    <span class="icp-pill">Consumer Packaged Goods</span>
+    <span class="icp-pill">Sports & Outdoors</span>
+    <span class="icp-pill">Home & Kitchen</span>
+    <span class="icp-pill">$10M+ Amazon Revenue</span>
+    <span class="icp-pill">DTC Brands Going Omni</span>
+  </div>
+</section>
+
+<!-- Station marker -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot" style="border-color: var(--deep-teal);"></div>
+  <span class="station-name">Results</span>
+  <div class="station-dot" style="border-color: var(--deep-teal);"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="cases" id="results">
+  <h2>Real <span class="hand-underline">Results<svg viewBox="0 0 160 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,8 C25,2 55,10 80,5 C105,1 135,9 158,4" stroke="#4A7C6F" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></h2>
+  <p class="desc">No client names — just the numbers that matter.</p>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="case-category">Premium Skincare Brand</div>
+      <div class="case-metric">+340% Revenue</div>
+      <div class="case-desc">Took a DTC skincare brand from $2M to $8.8M on Amazon in 18 months through full-funnel advertising and catalog optimization.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-category">Sports Equipment</div>
+      <div class="case-metric">62% ACoS → 28%</div>
+      <div class="case-desc">Cut advertising costs in half while growing revenue 85% — by restructuring campaigns and killing wasted spend.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-category">Wellness & Supplements</div>
+      <div class="case-metric">$0 → $4.2M</div>
+      <div class="case-desc">Launched an established DTC brand onto Amazon from scratch. Hit $4.2M in year one with a profitable advertising strategy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Station marker -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot" style="border-color: var(--true-patina);"></div>
+  <span class="station-name">What They Say</span>
+  <div class="station-dot" style="border-color: var(--true-patina);"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="quote-bubble">
+    <div class="quote-text">"Stonecutter doesn't feel like an agency. They feel like an extension of our team — people who genuinely care about our brand."</div>
+    <div class="quote-attr">— VP of E-Commerce, Premium Beauty Brand</div>
+  </div>
+</section>
+
+<!-- Station marker (final stop) -->
+<div class="station-marker">
+  <div class="station-line"></div>
+  <div class="station-dot" style="border-color: var(--taxi); background: var(--taxi);"></div>
+  <span class="station-name">Last Stop</span>
+  <div class="station-dot" style="border-color: var(--taxi); background: var(--taxi);"></div>
+  <div class="station-line"></div>
+</div>
+
+<!-- ===== FOOTER CTA ===== -->
+<section class="footer-cta" id="connect">
+  <h2>Ready to Talk?</h2>
+  <p>No pitch deck. No pressure. Just a conversation about your brand and where Amazon fits.</p>
+  <a href="#" class="btn-connect" style="font-size: 1rem; padding: 16px 36px;">Connect →</a>
+</section>
+
+<div style="text-align: center; padding: 40px; color: rgba(3,63,99,0.3); font-size: 0.75rem;">
+  © 2026 Stonecutter NYC. All rights reserved.
+</div>
+
+</body>
+</html>
