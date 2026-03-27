@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter — Amazon Growth Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A1628;
+  --navy-light: #132240;
+  --cream: #F5F0E8;
+  --cream-dark: #E8E0D0;
+  --liberty: #4A7C6F;
+  --liberty-light: #5A9484;
+  --liberty-muted: rgba(74,124,111,0.15);
+  --taxi: #F7C948;
+  --taxi-muted: rgba(247,201,72,0.12);
+  --text-light: rgba(245,240,232,0.7);
+  --text-lighter: rgba(245,240,232,0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--navy);
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,22,40,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.nav-logo span { color: var(--liberty-light); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  color: var(--text-light); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-cta {
+  background: var(--liberty) !important;
+  color: var(--cream) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  transition: background 0.3s !important;
+}
+.nav-cta:hover { background: var(--liberty-light) !important; }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 3rem 6rem;
+  max-width: 1200px; margin: 0 auto;
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--liberty-light);
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--liberty-light);
+}
+.hero-sub {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-light);
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--taxi);
+  color: var(--navy);
+  font-weight: 600; font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(247,201,72,0.25);
+}
+.hero-cta svg { width: 18px; height: 18px; }
+
+/* Stats strip */
+.stats {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  border-bottom: 1px solid rgba(245,240,232,0.08);
+  padding: 3.5rem 3rem;
+}
+.stats-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 800;
+  color: var(--cream);
+  line-height: 1;
+}
+.stat-num span { color: var(--liberty-light); }
+.stat-label {
+  font-size: 0.8rem; font-weight: 500;
+  color: var(--text-lighter);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+/* Approach section */
+.approach {
+  padding: 7rem 3rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--liberty-light);
+  margin-bottom: 1rem;
+}
+.approach h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  max-width: 700px;
+  margin-bottom: 3.5rem;
+}
+.approach-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.approach-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(245,240,232,0.06);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  transition: border-color 0.3s;
+}
+.approach-card:hover {
+  border-color: rgba(74,124,111,0.3);
+}
+.approach-icon {
+  width: 44px; height: 44px;
+  background: var(--liberty-muted);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--liberty-light);
+  font-size: 1.2rem;
+}
+.approach-card h3 {
+  font-size: 1.15rem; font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.approach-card p {
+  font-size: 0.95rem; line-height: 1.7;
+  color: var(--text-light);
+}
+
+/* Results */
+.results {
+  padding: 7rem 3rem;
+  background: var(--navy-light);
+}
+.results-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+.results h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 3.5rem;
+}
+.results-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.result-card {
+  background: var(--navy);
+  border: 1px solid rgba(245,240,232,0.06);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.result-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--liberty), var(--liberty-light));
+}
+.result-category {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--liberty-light);
+  margin-bottom: 1rem;
+}
+.result-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.result-headline span { color: var(--taxi); }
+.result-desc {
+  font-size: 0.9rem; color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* About */
+.about {
+  padding: 7rem 3rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+.about p {
+  font-size: 1.05rem; line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+.about-quote {
+  border-left: 3px solid var(--liberty);
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+}
+.about-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.6;
+}
+.about-quote cite {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--text-lighter);
+  display: block;
+  margin-top: 0.75rem;
+}
+.about-visual {
+  background: var(--navy-light);
+  border-radius: 16px;
+  border: 1px solid rgba(245,240,232,0.06);
+  padding: 3rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.about-value {
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.about-value-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--liberty);
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+.about-value h4 {
+  font-size: 1rem; font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.about-value p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Contact */
+.contact {
+  padding: 7rem 3rem;
+  background: var(--navy-light);
+  text-align: center;
+}
+.contact-inner {
+  max-width: 600px; margin: 0 auto;
+}
+.contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.contact-sub {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+.contact-form {
+  display: flex; flex-direction: column; gap: 1rem;
+  text-align: left;
+}
+.form-row { display: flex; gap: 1rem; }
+.form-row > * { flex: 1; }
+.contact-form label {
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-lighter);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid rgba(245,240,232,0.1);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--liberty);
+}
+.contact-form textarea { resize: vertical; min-height: 120px; }
+.contact-form button {
+  background: var(--taxi);
+  color: var(--navy);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600; font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none; border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 0.5rem;
+}
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(247,201,72,0.25);
+}
+
+/* Footer */
+footer {
+  padding: 2.5rem 3rem;
+  border-top: 1px solid rgba(245,240,232,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+footer p {
+  font-size: 0.8rem;
+  color: var(--text-lighter);
+}
+footer a {
+  color: var(--text-lighter);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.3s;
+}
+footer a:hover { color: var(--cream); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+  .approach, .results-inner, .about, .contact-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .approach-grid, .results-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { flex-direction: column; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Stone<span>cutter</span></div>
+  <div class="nav-links">
+    <a href="#approach">Approach</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Let's Connect</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">Amazon Growth Partners</div>
+  <h1>100% of our clients came from <em>reputation.</em></h1>
+  <p class="hero-sub">We're exceptional Amazon operators — and it shows. Every brand we work with found us because someone they trust told them to call us. We'd love for you to be next.</p>
+  <a href="#contact" class="hero-cta">
+    Let's Connect
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">$220M<span>+</span></div>
+      <div class="stat-label">Revenue Managed</div>
+    </div>
+    <div>
+      <div class="stat-num">$20M<span>+</span></div>
+      <div class="stat-label">Annual Ad Spend</div>
+    </div>
+    <div>
+      <div class="stat-num">35<span>+</span></div>
+      <div class="stat-label">Team Members</div>
+    </div>
+    <div>
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Referral-Based Growth</div>
+    </div>
+  </div>
+</section>
+
+<!-- Approach -->
+<section class="approach" id="approach">
+  <div class="section-label">Our Approach</div>
+  <h2>The traditional agency model is broken. We built something better.</h2>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-icon">◆</div>
+      <h3>Boutique by Design</h3>
+      <p>We only take on brands where we know we can add real value. If we're not the right fit, we'll tell you — and point you in the right direction.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-icon">◆</div>
+      <h3>True Partnership</h3>
+      <p>Most agencies stack clients until quality drops. We partner deeply with every brand, ensuring outcomes that are mutually beneficial — not just billable.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-icon">◆</div>
+      <h3>Operators, Not Advisors</h3>
+      <p>We're hands-on-keyboard Amazon experts. We don't send you a deck and disappear — we're in the trenches with you, every day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="results" id="results">
+  <div class="results-inner">
+    <div class="section-label">Proof in the Numbers</div>
+    <h2>What happens when we partner with a brand.</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-category">Premium Beauty Brand</div>
+        <div class="result-headline"><span>3.2x</span> ROAS</div>
+        <div class="result-desc">Scaled from $2M to $8M in Amazon revenue within 18 months while maintaining premium brand positioning.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-category">Consumer Electronics</div>
+        <div class="result-headline"><span>147%</span> Growth</div>
+        <div class="result-desc">Year-over-year revenue growth through strategic catalog expansion and advertising optimization.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-category">Health & Wellness</div>
+        <div class="result-headline"><span>$40M</span> Revenue</div>
+        <div class="result-desc">Grew a challenger brand into a category leader, reaching $40M in annual Amazon revenue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">About Us</div>
+      <h2>We built our reputation one brand at a time.</h2>
+      <p>Stonecutter started with a simple belief: if you do incredible work for the brands you serve, you'll never need to chase new business. That's proven true — every client we've ever worked with came through a referral.</p>
+      <p>We're a team of 35+ Amazon specialists based in New York City. We're selective about who we work with because our reputation depends on delivering results for every single client, not just most of them.</p>
+      <div class="about-quote">
+        <p>"It takes 20 years to build a reputation and five minutes to ruin it. If you think about that, you'll do things differently."</p>
+        <cite>— Warren Buffett</cite>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-value">
+        <div class="about-value-dot"></div>
+        <div>
+          <h4>Selective, Not Exclusive</h4>
+          <p>We take on brands where we can genuinely move the needle. Capacity is limited by choice.</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-dot"></div>
+        <div>
+          <h4>Skin in the Game</h4>
+          <p>Our success is tied to yours. We structure partnerships so incentives are aligned from day one.</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-dot"></div>
+        <div>
+          <h4>No Black Boxes</h4>
+          <p>Full transparency on strategy, spend, and performance. You'll always know exactly what we're doing and why.</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-dot"></div>
+        <div>
+          <h4>Currently Taking On New Brands</h4>
+          <p>We're selectively expanding and looking for the right partners to grow with.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2>Let's connect.</h2>
+    <p class="contact-sub">Whether you were referred by a friend or just found us, we'd love to learn about your brand and see if there's a fit.</p>
+    <form class="contact-form">
+      <div class="form-row">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div>
+          <label for="company">Brand / Company</label>
+          <input type="text" id="company" placeholder="Your brand">
+        </div>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@company.com">
+      </div>
+      <div>
+        <label for="message">Tell us about your brand</label>
+        <textarea id="message" placeholder="What are you selling on Amazon? What does your current setup look like?"></textarea>
+      </div>
+      <button type="submit">Send It Over →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Stonecutter. All Rights Reserved.</p>
+  <a href="mailto:hello@stonecutter.nyc">hello@stonecutter.nyc</a>
+</footer>
+
+</body>
+</html>
