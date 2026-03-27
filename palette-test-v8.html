@@ -229,25 +229,10 @@ nav {
   transition: background 0.3s;
 }
 
-/* Card 1: Deep Teal */
-.case-card:nth-child(1) { background: rgba(3,63,99,0.12); border-color: rgba(3,63,99,0.22); }
-.case-card:nth-child(1)::before { background: var(--deep-teal); }
-.case-card:nth-child(1):hover { background: rgba(3,63,99,0.06); border-color: rgba(3,63,99,0.32); }
-
-/* Card 2: Green Patina */
-.case-card:nth-child(2) { background: rgba(74,124,111,0.14); border-color: rgba(74,124,111,0.28); }
-.case-card:nth-child(2)::before { background: var(--true-patina); }
-.case-card:nth-child(2):hover { background: rgba(74,124,111,0.06); border-color: rgba(74,124,111,0.38); }
-
-/* Card 3: Taxi Yellow */
-.case-card:nth-child(3) { background: rgba(247,201,72,0.12); border-color: rgba(247,201,72,0.3); }
-.case-card:nth-child(3)::before { background: var(--taxi); }
-.case-card:nth-child(3):hover { background: rgba(247,201,72,0.06); border-color: rgba(247,201,72,0.4); }
-
-/* Card 4: Mid Patina */
-.case-card:nth-child(4) { background: rgba(90,143,123,0.13); border-color: rgba(90,143,123,0.28); }
-.case-card:nth-child(4)::before { background: var(--mid-patina); }
-.case-card:nth-child(4):hover { background: rgba(90,143,123,0.06); border-color: rgba(90,143,123,0.38); }
+/* All case cards: uniform cream on deep-teal section */
+.case-card { background: rgba(3,63,99,0.1); border-color: rgba(3,63,99,0.2); }
+.case-card::before { background: var(--taxi); }
+.case-card:hover { background: rgba(3,63,99,0.05); border-color: rgba(3,63,99,0.3); }
 
 .case-category { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--true-patina); margin-bottom: 10px; }
 .case-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.28rem; color: var(--deep-teal); margin-bottom: 12px; }
@@ -283,12 +268,8 @@ nav {
   transform: translateY(-5px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.09);
 }
-/* Per-bubble colors — rich use of sage/green + other palette colors */
-.value-bubble:nth-child(1) { background: rgba(90,143,123,0.18); border: 1px solid rgba(90,143,123,0.35); }
-.value-bubble:nth-child(2) { background: rgba(74,124,111,0.12); border: 1px solid rgba(74,124,111,0.22); }
-.value-bubble:nth-child(3) { background: rgba(181,182,130,0.18); border: 1px solid rgba(181,182,130,0.35); }
-.value-bubble:nth-child(4) { background: rgba(3,63,99,0.09); border: 1px solid rgba(3,63,99,0.18); }
-.value-bubble:nth-child(5) { background: rgba(90,143,123,0.14); border: 1px solid rgba(90,143,123,0.28); }
+/* All value bubbles: uniform cream/white on olive background */
+.value-bubble { background: rgba(255,255,255,0.6); border: 1px solid rgba(181,182,130,0.3); }
 .value-num { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--mid-patina); display: block; margin-bottom: 10px; font-style: italic; }
 .value-bubble h4 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--deep-teal); margin-bottom: 8px; }
 .value-bubble p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
@@ -390,20 +371,33 @@ footer { background: var(--deep-teal); padding: 56px 60px 36px; margin-top: 60px
 }
 
 /* COLORED SECTION BACKGROUNDS */
+
+/* Case Studies: deep teal, bold and dark */
+.bg-deep-teal-dark {
+  background-color: rgba(3,63,99,0.08);
+  border-top: 1px solid rgba(3,63,99,0.15);
+  border-bottom: 1px solid rgba(3,63,99,0.15);
+}
+
+/* Testimonials: patina green tint (Lee likes this) */
 .bg-patina-light {
-  background-color: rgba(90,143,123,0.08);
+  background-color: rgba(90,143,123,0.09);
   border-top: 1px solid rgba(90,143,123,0.15);
   border-bottom: 1px solid rgba(90,143,123,0.15);
 }
-.bg-patina-deep {
-  background-color: rgba(74,124,111,0.07);
-  border-top: 1px solid rgba(74,124,111,0.12);
-  border-bottom: 1px solid rgba(74,124,111,0.12);
-}
+
+/* Values/What We Stand For: olive-sage, medium */
 .bg-olive-light {
-  background-color: rgba(181,182,130,0.08);
-  border-top: 1px solid rgba(181,182,130,0.15);
-  border-bottom: 1px solid rgba(181,182,130,0.15);
+  background-color: rgba(181,182,130,0.1);
+  border-top: 1px solid rgba(181,182,130,0.18);
+  border-bottom: 1px solid rgba(181,182,130,0.18);
+}
+
+/* About: deeper patina — noticeably different */
+.bg-patina-deep {
+  background-color: rgba(74,124,111,0.12);
+  border-top: 1px solid rgba(74,124,111,0.18);
+  border-bottom: 1px solid rgba(74,124,111,0.18);
 }
 </style>
 </head>
@@ -446,7 +440,7 @@ footer { background: var(--deep-teal); padding: 56px 60px 36px; margin-top: 60px
 </section>
 
 <!-- STATS — Version B only -->
-<section class="stats-section section-wrapper subway-bg">
+<section class="stats-section section-wrapper">
   <div class="stats-bubble-wrap reveal">
     <div class="stats-row">
       <div class="stat-item">
@@ -547,7 +541,7 @@ footer { background: var(--deep-teal); padding: 56px 60px 36px; margin-top: 60px
 </section>
 
 <!-- WHO WE WORK WITH -->
-<section class="section-wrapper subway-bg">
+<section class="section-wrapper">
   <div class="icp-section">
     <div class="icp-columns">
       <div class="icp-left">
@@ -581,7 +575,7 @@ footer { background: var(--deep-teal); padding: 56px 60px 36px; margin-top: 60px
 </section>
 
 <!-- CASE STUDIES -->
-<section id="work" class="section-wrapper">
+<section id="work" class="section-wrapper bg-deep-teal-dark">
   <div class="cases-section">
     <div class="section-header">
       <span class="section-label reveal">Case Studies</span>
