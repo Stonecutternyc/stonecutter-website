@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Colors — Big Apple Red + Liberty Green</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --teal: #28666E;
+  --sage: #7C9885;
+  --olive: #B5B682;
+  --taxi: #F7C948;
+  /* NYC Big Apple Reds */
+  --apple-1: #C41E3A; /* Classic Big Apple red */
+  --apple-2: #B22234; /* Deeper, American-flag red */
+  --apple-3: #D72638; /* Brighter, juicy apple */
+  --apple-4: #9B1B30; /* Dark burgundy apple */
+  /* Statue of Liberty Greens (oxidized copper/patina) */
+  --liberty-1: #4A7C6F; /* True patina green */
+  --liberty-2: #6B9E8A; /* Lighter patina */
+  --liberty-3: #3D6B5E; /* Darker/moodier patina */
+  --liberty-4: #7FB5A0; /* Bright verdigris */
+  --liberty-5: #5A8F7B; /* Mid patina */
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--deep-teal); }
+h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+.section-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--teal); margin-bottom: 12px;
+}
+.section-title { font-size: 2.4rem; color: var(--deep-teal); margin-bottom: 8px; }
+.section-desc { font-size: 1.05rem; color: var(--teal); margin-bottom: 40px; max-width: 650px; line-height: 1.6; }
+hr.divider { border: none; height: 1px; background: rgba(3,63,99,0.08); margin: 60px 0; }
+
+.btn {
+  display: inline-block; padding: 14px 32px; border-radius: 50px;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.25s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+
+/* Swatch cards */
+.swatch-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+.swatch-card { flex: 1; min-width: 160px; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(3,63,99,0.08); }
+.swatch-block { height: 100px; display: flex; align-items: flex-end; padding: 12px 16px; }
+.swatch-block span { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; border-radius: 6px; padding: 3px 8px; background: rgba(0,0,0,0.2); color: white; }
+.swatch-info { background: white; padding: 14px 16px; }
+.swatch-info h4 { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--deep-teal); }
+.swatch-info p { font-size: 0.75rem; color: var(--teal); margin-top: 4px; }
+
+/* Button rows */
+.btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; align-items: flex-start; }
+.btn-group { text-align: center; }
+.btn-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #999; margin-top: 8px; }
+
+/* Stat bubbles */
+.stats-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+.stat-card { flex: 1; min-width: 150px; padding: 28px 18px; border-radius: 18px; text-align: center; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 2.6rem; line-height: 1; }
+.stat-label { font-size: 0.75rem; margin-top: 6px; font-weight: 500; }
+
+/* Pill badges */
+.pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.pill { padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+
+/* Service cards */
+.card-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+.card { flex: 1; min-width: 220px; padding: 28px 22px; border-radius: 18px; }
+.card h4 { font-size: 1.05rem; margin-bottom: 8px; }
+.card p { font-size: 0.85rem; line-height: 1.5; opacity: 0.85; }
+
+/* Quote block */
+.quote-block { border-radius: 24px; padding: 48px 40px; margin-bottom: 40px; }
+.quote-block blockquote { font-family: 'DM Serif Display', serif; font-size: 1.6rem; font-style: italic; line-height: 1.5; margin-bottom: 16px; }
+.quote-block cite { font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.82rem; font-weight: 500; }
+
+/* Full palette combos */
+.combo-section { border-radius: 24px; padding: 48px 36px; margin-bottom: 30px; overflow: hidden; }
+.combo-section h2 { font-size: 2.2rem; margin-bottom: 8px; }
+.combo-section p { font-size: 1rem; line-height: 1.6; max-width: 550px; margin-bottom: 24px; }
+.combo-section .tag { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 5px 12px; border-radius: 6px; margin-bottom: 16px; }
+
+/* Side-by-side palette strips */
+.palette-strip { display: flex; border-radius: 12px; overflow: hidden; margin-bottom: 20px; height: 60px; }
+.palette-strip div { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; color: white; }
+
+@media (max-width: 700px) {
+  .swatch-row, .stats-row, .btn-row, .card-row { flex-direction: column; }
+  .section-title { font-size: 1.8rem; }
+  .combo-section { padding: 32px 24px; }
+  .combo-section h2 { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ========== BIG APPLE RED ========== -->
+  <span class="section-label">🍎 The Big Apple</span>
+  <h1 class="section-title">Big Apple Red</h1>
+  <p class="section-desc">The red of a perfect Macintosh, a Broadway marquee, a fire escape in SoHo. Four shades from juicy to dark.</p>
+
+  <div class="swatch-row">
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--apple-1);"><span>#C41E3A</span></div>
+      <div class="swatch-info"><h4>Classic Big Apple</h4><p>The one you picture. Bold, iconic.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--apple-2);"><span>#B22234</span></div>
+      <div class="swatch-info"><h4>Flag Red</h4><p>Deeper. Old Glory meets Broadway.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--apple-3);"><span>#D72638</span></div>
+      <div class="swatch-info"><h4>Juicy Apple</h4><p>Brighter, more energetic. Neon-adjacent.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--apple-4);"><span>#9B1B30</span></div>
+      <div class="swatch-info"><h4>Dark Burgundy</h4><p>Sophisticated. Wine bar in the West Village.</p></div>
+    </div>
+  </div>
+
+  <!-- Red buttons -->
+  <h3 style="margin-bottom: 16px;">Buttons on Cream</h3>
+  <div class="btn-row">
+    <div class="btn-group">
+      <div class="btn" style="background: var(--apple-1); color: white;">Connect →</div>
+      <div class="btn-label">Classic</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--apple-2); color: white;">Connect →</div>
+      <div class="btn-label">Flag Red</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--apple-3); color: white;">Connect →</div>
+      <div class="btn-label">Juicy</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--apple-4); color: white;">Connect →</div>
+      <div class="btn-label">Burgundy</div>
+    </div>
+    <div class="btn-group">
+      <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+      <div class="btn-label">Taxi (compare)</div>
+    </div>
+  </div>
+
+  <!-- Red on dark -->
+  <h3 style="margin-bottom: 16px;">On Dark Navy</h3>
+  <div style="background: var(--deep-teal); border-radius: 20px; padding: 30px; margin-bottom: 40px;">
+    <div class="btn-row" style="margin-bottom: 0;">
+      <div class="btn-group">
+        <div class="btn" style="background: var(--apple-1); color: white;">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.4);">Classic</div>
+      </div>
+      <div class="btn-group">
+        <div class="btn" style="background: var(--apple-3); color: white;">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.4);">Juicy</div>
+      </div>
+      <div class="btn-group">
+        <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+        <div class="btn-label" style="color: rgba(255,255,255,0.4);">Taxi (compare)</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ========== STATUE OF LIBERTY GREEN ========== -->
+  <span class="section-label">🗽 Lady Liberty</span>
+  <h1 class="section-title">Statue of Liberty Green</h1>
+  <p class="section-desc">Oxidized copper patina — that gorgeous blue-green that only comes from a century of salt air and rain. Very close to our existing sage/teal family, but with that specific verdigris character.</p>
+
+  <div class="swatch-row">
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-1);"><span>#4A7C6F</span></div>
+      <div class="swatch-info"><h4>True Patina</h4><p>The real deal — copper gone green.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-2);"><span>#6B9E8A</span></div>
+      <div class="swatch-info"><h4>Light Patina</h4><p>Sunlit Lady Liberty. Fresh.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-3);"><span>#3D6B5E</span></div>
+      <div class="swatch-info"><h4>Dark Patina</h4><p>Deep, moody. Foggy harbor morning.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-4);"><span>#7FB5A0</span></div>
+      <div class="swatch-info"><h4>Bright Verdigris</h4><p>The copper just starting to turn.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-5);"><span>#5A8F7B</span></div>
+      <div class="swatch-info"><h4>Mid Patina</h4><p>Split the difference. Balanced.</p></div>
+    </div>
+  </div>
+
+  <!-- Compare Liberty greens vs our current greens -->
+  <h3 style="margin-bottom: 16px;">Liberty Green vs Our Current Greens</h3>
+  <div class="swatch-row">
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--teal);"><span>#28666E</span></div>
+      <div class="swatch-info"><h4>Our Teal (current)</h4><p>More blue, less copper.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--sage);"><span>#7C9885</span></div>
+      <div class="swatch-info"><h4>Our Sage (current)</h4><p>Grayer, more muted.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-1);"><span>#4A7C6F</span></div>
+      <div class="swatch-info"><h4>True Patina</h4><p>Between teal and sage. More alive.</p></div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background: var(--liberty-5);"><span>#5A8F7B</span></div>
+      <div class="swatch-info"><h4>Mid Patina</h4><p>Close to sage but greener, richer.</p></div>
+    </div>
+  </div>
+
+  <!-- Liberty green service cards -->
+  <h3 style="margin-bottom: 16px;">Service Cards in Liberty Green</h3>
+  <div class="card-row">
+    <div class="card" style="background: var(--liberty-1); color: white;">
+      <h4>Advertising & PPC</h4>
+      <p>Full-funnel Amazon strategy optimized weekly.</p>
+    </div>
+    <div class="card" style="background: var(--liberty-2); color: var(--deep-teal);">
+      <h4>Catalog & Listings</h4>
+      <p>A+ Content that converts browsers to buyers.</p>
+    </div>
+    <div class="card" style="background: var(--liberty-3); color: white;">
+      <h4>Operations</h4>
+      <p>Inventory, logistics, and account health.</p>
+    </div>
+    <div class="card" style="background: var(--liberty-4); color: var(--deep-teal);">
+      <h4>Brand Strategy</h4>
+      <p>Long-term positioning and growth planning.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ========== FULL NYC PALETTE COMBOS ========== -->
+  <span class="section-label">🗽🚕🍎 The Full NYC</span>
+  <h1 class="section-title">What If We Used All Three?</h1>
+  <p class="section-desc">Taxi Yellow for warmth and CTAs. Liberty Green for depth and cards. Big Apple Red as a rare, powerful accent. Here are some combos.</p>
+
+  <!-- Palette strips -->
+  <h3 style="margin-bottom: 16px;">Palette Options</h3>
+
+  <p style="font-size: 0.82rem; color: var(--teal); margin-bottom: 8px; font-weight: 600;">Current Palette</p>
+  <div class="palette-strip">
+    <div style="background: var(--deep-teal);">Deep Teal</div>
+    <div style="background: var(--teal);">Teal</div>
+    <div style="background: var(--sage);">Sage</div>
+    <div style="background: var(--olive); color: var(--deep-teal);">Olive</div>
+    <div style="background: var(--taxi); color: var(--deep-teal);">Gold</div>
+  </div>
+
+  <p style="font-size: 0.82rem; color: var(--teal); margin-bottom: 8px; font-weight: 600;">NYC Edition — Taxi + Liberty + Apple</p>
+  <div class="palette-strip">
+    <div style="background: var(--deep-teal);">Deep Teal</div>
+    <div style="background: var(--liberty-1);">Patina</div>
+    <div style="background: var(--liberty-5);">Mid Patina</div>
+    <div style="background: var(--taxi); color: var(--deep-teal);">Taxi</div>
+    <div style="background: var(--apple-1);">Apple</div>
+  </div>
+
+  <p style="font-size: 0.82rem; color: var(--teal); margin-bottom: 8px; font-weight: 600;">NYC Subtle — Red as Accent Only</p>
+  <div class="palette-strip">
+    <div style="background: var(--deep-teal);">Deep Teal</div>
+    <div style="background: var(--liberty-1);">Patina</div>
+    <div style="background: var(--liberty-4); color: var(--deep-teal);">Verdigris</div>
+    <div style="background: var(--taxi); color: var(--deep-teal);">Taxi</div>
+    <div style="background: var(--apple-4);">Burgundy</div>
+  </div>
+
+  <br>
+
+  <!-- Combo 1: Hero with apple red accent -->
+  <div class="combo-section" style="background: var(--deep-teal);">
+    <span class="tag" style="background: rgba(237,232,224,0.1); color: var(--taxi);">Dark Hero + All Three</span>
+    <h2 style="color: var(--cream);">Your Boutique<br><span style="color: var(--taxi);">Amazon</span> Agency</h2>
+    <p style="color: rgba(237,232,224,0.75);">Premium Amazon brand management from New York City. Fewer clients, deeper partnerships, better results.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <div class="btn" style="background: var(--taxi); color: var(--deep-teal);">Connect →</div>
+      <div class="btn" style="background: var(--apple-1); color: white;">Connect →</div>
+      <div class="btn" style="background: var(--liberty-1); color: white;">Connect →</div>
+    </div>
+  </div>
+
+  <!-- Combo 2: Quote in Liberty Green -->
+  <div class="quote-block" style="background: var(--liberty-1); color: white;">
+    <blockquote style="color: white;">"Stonecutter doesn't feel like a vendor — they feel like an extension of our team."</blockquote>
+    <cite style="color: rgba(255,255,255,0.6);">— VP of E-Commerce, Premium Skincare Brand</cite>
+  </div>
+
+  <!-- Combo 3: Stats with NYC colors -->
+  <h3 style="margin-bottom: 16px;">Stats with NYC Accents</h3>
+  <div class="stats-row">
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--taxi);">$220M+</div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.6);">Managed Revenue</div>
+    </div>
+    <div class="stat-card" style="background: var(--liberty-1);">
+      <div class="stat-num" style="color: white;">14</div>
+      <div class="stat-label" style="color: rgba(255,255,255,0.7);">Premium Brands</div>
+    </div>
+    <div class="stat-card" style="background: var(--deep-teal);">
+      <div class="stat-num" style="color: var(--liberty-4);">92%</div>
+      <div class="stat-label" style="color: rgba(237,232,224,0.6);">Client Retention</div>
+    </div>
+    <div class="stat-card" style="background: var(--apple-1);">
+      <div class="stat-num" style="color: white;">8+</div>
+      <div class="stat-label" style="color: rgba(255,255,255,0.7);">Years Experience</div>
+    </div>
+  </div>
+
+  <!-- Case studies in NYC colors -->
+  <h3 style="margin-bottom: 16px;">Case Study Cards — NYC Palette</h3>
+  <div class="card-row">
+    <div class="card" style="background: var(--deep-teal); color: var(--cream);">
+      <h4 style="color: var(--taxi);">+340%</h4>
+      <p>Revenue growth in 18 months for a P&G-owned skincare brand.</p>
+    </div>
+    <div class="card" style="background: var(--liberty-1); color: white;">
+      <h4>68% ↓ ACOS</h4>
+      <p>While scaling ad spend 3x for a premium supplements company.</p>
+    </div>
+    <div class="card" style="background: var(--taxi); color: var(--deep-teal);">
+      <h4>#1 BSR</h4>
+      <p>Best Seller Rank in 4 categories for a DTC wellness brand.</p>
+    </div>
+    <div class="card" style="background: var(--apple-4); color: white;">
+      <h4>$2.4M/mo</h4>
+      <p>Monthly revenue milestone for a heritage food brand.</p>
+    </div>
+  </div>
+
+  <!-- Red as micro-accent only -->
+  <hr class="divider">
+  <h3 style="margin-bottom: 16px;">🍎 Red as a Micro-Accent (Subtle Use)</h3>
+  <p class="section-desc">Red doesn't have to be a main player. It could be just a tiny pop — a notification dot, an underline, a single highlight.</p>
+
+  <div style="margin-bottom: 30px;">
+    <h2 style="font-size: 2.2rem;">We Manage <span style="position: relative; display: inline-block;">Amazon
+      <svg style="position:absolute; bottom:-5px; left:0; width:100%; height:10px;" viewBox="0 0 200 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2,7 C30,2 60,9 100,5 C140,1 170,8 198,4" stroke="#C41E3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </span> So You Don't Have To</h2>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 1.05rem; color: var(--teal); line-height: 1.8;">
+      We're an Amazon Verified Partner <span style="display: inline-block; width: 8px; height: 8px; background: var(--apple-1); border-radius: 50%; vertical-align: middle; margin: 0 2px;"></span> 
+      running on EOS <span style="display: inline-block; width: 8px; height: 8px; background: var(--apple-1); border-radius: 50%; vertical-align: middle; margin: 0 2px;"></span> 
+      and members of Million Dollar Sellers.
+    </p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <span class="pill" style="background: var(--liberty-1); color: white;">DTC Brands</span>
+    <span class="pill" style="background: var(--liberty-5); color: white;">CPG</span>
+    <span class="pill" style="background: var(--taxi); color: var(--deep-teal);">$5M+ Revenue</span>
+    <span class="pill" style="background: var(--apple-1); color: white;">New to Amazon</span>
+  </div>
+
+  <div style="text-align: center; padding: 40px 0; color: var(--teal); font-size: 0.85rem;">
+    <p style="font-size: 1.5rem; margin-bottom: 12px;">🍎🚕🗽</p>
+    <p><strong>Big Apple Red:</strong> #C41E3A · <strong>Taxi Yellow:</strong> #F7C948 · <strong>Liberty Green:</strong> #4A7C6F</p>
+    <p style="margin-top: 4px; opacity: 0.7;">Three colors. One city. Your brand.</p>
+  </div>
+</div>
+
+</body>
+</html>
