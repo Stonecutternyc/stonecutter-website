@@ -4,9 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stonecutter — Amazon Growth Partners</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Louize';
+  src: url('fonts/louize-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Louize';
+  src: url('fonts/louize-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Plaax';
+  src: url('fonts/plaax-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Plaax';
+  src: url('fonts/plaax-heavy.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --navy: #0A1628;
   --navy-light: #132240;
@@ -26,7 +52,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Plaax', -apple-system, sans-serif;
   background: var(--navy);
   color: var(--cream);
   overflow-x: hidden;
@@ -42,8 +68,8 @@ nav {
   border-bottom: 1px solid rgba(245,240,232,0.06);
 }
 .nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem; font-weight: 800;
+  font-family: 'Louize', Georgia, serif;
+  font-size: 1.4rem; font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--cream);
 }
@@ -80,9 +106,9 @@ nav {
   margin-bottom: 1.5rem;
 }
 .hero h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.03em;
   max-width: 900px;
@@ -129,8 +155,8 @@ nav {
   text-align: center;
 }
 .stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem; font-weight: 800;
+  font-family: 'Louize', Georgia, serif;
+  font-size: 2.8rem; font-weight: 400;
   color: var(--cream);
   line-height: 1;
 }
@@ -155,9 +181,9 @@ nav {
   margin-bottom: 1rem;
 }
 .approach h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.15;
   max-width: 700px;
   margin-bottom: 3.5rem;
@@ -203,9 +229,9 @@ nav {
   max-width: 1200px; margin: 0 auto;
 }
 .results h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 800;
+  font-weight: 400;
   margin-bottom: 3.5rem;
 }
 .results-grid {
@@ -233,8 +259,8 @@ nav {
   margin-bottom: 1rem;
 }
 .result-headline {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight: 800;
+  font-family: 'Louize', Georgia, serif;
+  font-size: 2.2rem; font-weight: 400;
   margin-bottom: 0.5rem;
 }
 .result-headline span { color: var(--taxi); }
@@ -254,9 +280,9 @@ nav {
   align-items: center;
 }
 .about h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 800;
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
 .about p {
@@ -270,14 +296,14 @@ nav {
   margin-top: 2rem;
 }
 .about-quote p {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: 1.2rem;
   font-style: italic;
   color: var(--cream);
   line-height: 1.6;
 }
 .about-quote cite {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plaax', sans-serif;
   font-style: normal;
   font-size: 0.8rem;
   color: var(--text-lighter);
@@ -320,9 +346,9 @@ nav {
   max-width: 600px; margin: 0 auto;
 }
 .contact h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Louize', Georgia, serif;
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 .contact-sub {
@@ -352,7 +378,7 @@ nav {
   border-radius: 8px;
   padding: 0.9rem 1rem;
   color: var(--cream);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plaax', sans-serif;
   font-size: 0.95rem;
   transition: border-color 0.3s;
 }
@@ -365,7 +391,7 @@ nav {
 .contact-form button {
   background: var(--taxi);
   color: var(--navy);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plaax', sans-serif;
   font-weight: 600; font-size: 1rem;
   padding: 1rem 2rem;
   border: none; border-radius: 8px;
