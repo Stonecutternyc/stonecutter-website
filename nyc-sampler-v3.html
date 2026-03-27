@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Sampler v3 — Purposeful Subway Lines</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #EDE8E0;
+  --deep-teal: #033F63;
+  --teal: #28666E;
+  --sage: #7C9885;
+  --olive: #B5B682;
+  --taxi: #F7C948;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--deep-teal); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; }
+
+/* ========== SUBWAY LINE SYSTEM ========== */
+/* 
+  Lines are full-page SVGs positioned absolutely behind content.
+  They flow PURPOSEFULLY — running alongside sections, turning 
+  to connect them, with station dots at section transitions.
+*/
+
+.page-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The subway lines SVG sits behind everything */
+.subway-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.subway-lines path {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.subway-lines circle {
+  /* station dots */
+}
+
+/* Content sits above the lines */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+}
+
+/* ========== HERO ========== */
+.hero {
+  padding: 120px 40px 100px;
+}
+
+.hero-inner {
+  max-width: 700px;
+}
+
+.hero .eyebrow {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--teal); margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 3.8rem; line-height: 1.08; color: var(--deep-teal);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.15rem; color: var(--teal); line-height: 1.7;
+  max-width: 520px; margin-bottom: 32px;
+}
+
+.btn {
+  display: inline-block; padding: 16px 36px; border-radius: 50px;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; cursor: pointer; border: none;
+  background: var(--taxi); color: var(--deep-teal);
+  transition: all 0.25s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,201,72,0.35); }
+
+/* Wavy underline */
+.underlined { position: relative; display: inline-block; }
+.underlined svg.wavy {
+  position: absolute; bottom: -6px; left: 0; width: 100%; height: 12px;
+}
+
+/* ========== STATS ========== */
+.stats {
+  padding: 60px 40px;
+}
+.stats-row {
+  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+}
+.stat-bubble {
+  flex: 1; min-width: 180px; max-width: 240px;
+  padding: 32px 20px; border-radius: 20px;
+  background: var(--deep-teal); text-align: center;
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif; font-size: 2.8rem;
+  color: var(--taxi); line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem; color: rgba(237,232,224,0.6); margin-top: 6px; font-weight: 500;
+}
+
+/* ========== SERVICES ========== */
+.services { padding: 80px 40px; }
+.services .section-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--teal); margin-bottom: 12px;
+}
+.services h2 { font-size: 2.4rem; margin-bottom: 32px; }
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  padding: 32px 24px; border-radius: 20px; border: 1.5px solid rgba(3,63,99,0.08);
+  transition: all 0.3s ease; background: rgba(255,255,255,0.4);
+}
+.service-card:hover { border-color: var(--sage); background: rgba(124,152,133,0.06); transform: translateY(-3px); }
+.service-card h4 { font-size: 1.15rem; color: var(--deep-teal); margin-bottom: 10px; }
+.service-card p { font-size: 0.88rem; color: var(--teal); line-height: 1.6; }
+
+/* ========== QUOTE ========== */
+.quote-section {
+  padding: 80px 40px;
+}
+.quote-bubble {
+  background: var(--deep-teal); border-radius: 28px; padding: 60px 48px;
+  max-width: 800px; margin: 0 auto; position: relative;
+}
+.quote-bubble blockquote {
+  font-family: 'DM Serif Display', serif; font-size: 1.8rem;
+  font-style: italic; color: var(--cream); line-height: 1.5;
+  margin-bottom: 20px;
+}
+.quote-bubble cite {
+  font-family: 'Inter', sans-serif; font-style: normal;
+  font-size: 0.85rem; color: rgba(237,232,224,0.5); font-weight: 500;
+}
+
+/* ========== CASE STUDIES ========== */
+.cases { padding: 80px 40px; }
+.cases .section-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--teal); margin-bottom: 12px;
+}
+.cases h2 { font-size: 2.4rem; margin-bottom: 32px; }
+.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.case-card {
+  padding: 32px 28px; border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.case-card:nth-child(1) { background: var(--deep-teal); color: var(--cream); }
+.case-card:nth-child(2) { background: var(--teal); color: var(--cream); }
+.case-card:nth-child(3) { background: var(--sage); color: white; }
+.case-card:nth-child(4) { background: var(--olive); color: var(--deep-teal); }
+.case-card:hover { transform: translateY(-3px); filter: brightness(1.08); }
+.case-card .case-metric { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 6px; }
+.case-card .case-desc { font-size: 0.88rem; opacity: 0.85; line-height: 1.5; }
+
+/* ========== CTA ========== */
+.cta-section { padding: 80px 40px 120px; }
+.cta-bubble {
+  background: var(--sage); border-radius: 28px; padding: 60px 48px;
+  text-align: center; max-width: 700px; margin: 0 auto;
+}
+.cta-bubble h2 { font-size: 2.2rem; color: white; margin-bottom: 12px; }
+.cta-bubble p { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 28px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 800px) {
+  .hero h1 { font-size: 2.6rem; }
+  .service-grid { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 24px; }
+  .hero { padding: 80px 24px 60px; }
+  .subway-lines { display: none; } /* hide lines on mobile */
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ========== THE SUBWAY LINES ========== -->
+  <!-- These run the full height of the page, weaving around sections -->
+  <svg class="subway-lines" viewBox="0 0 1200 4200" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
+
+    <!--
+      LINE A (Deep Teal) — The "express" line
+      Runs down the left side, cuts across under the hero,
+      drops down past services, runs along bottom
+    -->
+    <path d="
+      M 120,-20
+      L 120,280
+      Q 120,320 160,320
+      L 700,320
+      Q 740,320 740,360
+      L 740,900
+      Q 740,940 700,940
+      L 200,940
+      Q 160,940 160,980
+      L 160,1500
+      Q 160,1540 200,1540
+      L 500,1540
+      Q 540,1540 540,1580
+      L 540,2100
+      Q 540,2140 500,2140
+      L 180,2140
+      Q 140,2140 140,2180
+      L 140,2800
+      Q 140,2840 180,2840
+      L 600,2840
+      Q 640,2840 640,2880
+      L 640,3400
+      Q 640,3440 600,3440
+      L 200,3440
+      Q 160,3440 160,3480
+      L 160,4220
+    " stroke="#033F63" stroke-width="5" opacity="0.04"/>
+
+    <!--
+      LINE B (Taxi Yellow) — The "local" line
+      Enters from right, weaves between sections,
+      crosses Line A at key moments
+    -->
+    <path d="
+      M 1220,200
+      L 900,200
+      Q 860,200 860,240
+      L 860,600
+      Q 860,640 820,640
+      L 400,640
+      Q 360,640 360,680
+      L 360,1200
+      Q 360,1240 400,1240
+      L 900,1240
+      Q 940,1240 940,1280
+      L 940,1800
+      Q 940,1840 900,1840
+      L 600,1840
+      Q 560,1840 560,1880
+      L 560,2400
+      Q 560,2440 600,2440
+      L 1000,2440
+      Q 1040,2440 1040,2480
+      L 1040,3000
+      Q 1040,3040 1000,3040
+      L 500,3040
+      Q 460,3040 460,3080
+      L 460,3600
+      Q 460,3640 500,3640
+      L 800,3640
+      Q 840,3640 840,3680
+      L 840,4220
+    " stroke="#F7C948" stroke-width="5" opacity="0.04"/>
+
+    <!--
+      LINE C (Sage Green) — The "crosstown"
+      Runs mostly horizontal, connecting the two vertical lines
+    -->
+    <path d="
+      M -20,500
+      L 400,500
+      Q 440,500 440,540
+      L 440,800
+      Q 440,840 480,840
+      L 1220,840
+    " stroke="#7C9885" stroke-width="5" opacity="0.04"/>
+
+    <!-- Sage crosstown 2 — connects around case studies -->
+    <path d="
+      M -20,2600
+      L 350,2600
+      Q 390,2600 390,2640
+      L 390,2840
+      Q 390,2880 430,2880
+      L 1220,2880
+    " stroke="#7C9885" stroke-width="4.5" opacity="0.04"/>
+
+    <!--
+      LINE D (Teal) — Short connector
+      Connects services to quote section
+    -->
+    <path d="
+      M 1220,1500
+      L 800,1500
+      Q 760,1500 760,1540
+      L 760,2000
+      Q 760,2040 720,2040
+      L -20,2040
+    " stroke="#28666E" stroke-width="4.5" opacity="0.04"/>
+
+    <!--
+      LINE E (Olive) — The spur
+      Short run connecting quote to CTA
+    -->
+    <path d="
+      M -20,3200
+      L 300,3200
+      Q 340,3200 340,3240
+      L 340,3500
+      Q 340,3540 380,3540
+      L 1220,3540
+    " stroke="#B5B682" stroke-width="4" opacity="0.04"/>
+
+    <!-- ========== STATION DOTS ========== -->
+    <!-- Hero area — where Line A turns east -->
+    <circle cx="120" cy="280" r="7" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+    <!-- Line A meets sage crosstown -->
+    <circle cx="440" cy="500" r="7" fill="var(--cream)" stroke="#7C9885" stroke-width="2.5" opacity="0.05"/>
+    <!-- Line B enters -->
+    <circle cx="900" cy="200" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+    <!-- Line B turns south at stats -->
+    <circle cx="860" cy="600" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- Transfer station: Line A meets Line B near services -->
+    <circle cx="400" cy="940" r="8" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+    <circle cx="400" cy="940" r="14" fill="none" stroke="#033F63" stroke-width="1.5" opacity="0.035"/>
+    
+    <!-- Line A station at services -->
+    <circle cx="160" cy="1200" r="7" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+    <!-- Line B station -->
+    <circle cx="900" cy="1240" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+    <!-- Line D station -->
+    <circle cx="800" cy="1500" r="7" fill="var(--cream)" stroke="#28666E" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- Transfer: Line A meets Teal near quote -->
+    <circle cx="540" cy="1800" r="8" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+    <circle cx="540" cy="1800" r="14" fill="none" stroke="#28666E" stroke-width="1.5" opacity="0.035"/>
+
+    <!-- Line B station at quote -->
+    <circle cx="560" cy="1880" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- Sage crosstown 2 station -->
+    <circle cx="350" cy="2600" r="7" fill="var(--cream)" stroke="#7C9885" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- Transfer: Lines A+B near case studies -->
+    <circle cx="640" cy="2880" r="8" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+    <circle cx="640" cy="2880" r="14" fill="none" stroke="#F7C948" stroke-width="1.5" opacity="0.035"/>
+
+    <!-- Line B station near cases -->
+    <circle cx="1000" cy="3040" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- Olive spur station -->
+    <circle cx="300" cy="3200" r="7" fill="var(--cream)" stroke="#B5B682" stroke-width="2.5" opacity="0.05"/>
+
+    <!-- CTA area stations -->
+    <circle cx="460" cy="3600" r="7" fill="var(--cream)" stroke="#F7C948" stroke-width="2.5" opacity="0.05"/>
+    <circle cx="160" cy="3480" r="7" fill="var(--cream)" stroke="#033F63" stroke-width="2.5" opacity="0.05"/>
+
+  </svg>
+
+  <!-- ========== CONTENT ========== -->
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Stonecutter NYC</p>
+      <h1>Your Boutique<br><span class="underlined">Amazon Agency
+        <svg class="wavy" viewBox="0 0 270 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2,9 C30,3 70,12 108,6 C145,1 180,10 218,6 C242,3 262,8 268,7" stroke="#7C9885" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span></h1>
+      <p>We manage Amazon so premium brands can focus on what they do best. Boutique by choice — because fewer clients means deeper partnerships.</p>
+      <a class="btn" href="#contact">Connect →</a>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats-row">
+      <div class="stat-bubble">
+        <div class="stat-num">$220M<span style="font-size:1.4rem;">+</span></div>
+        <div class="stat-label">Managed Revenue</div>
+      </div>
+      <div class="stat-bubble">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Premium Brands</div>
+      </div>
+      <div class="stat-bubble">
+        <div class="stat-num">92%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="stat-bubble">
+        <div class="stat-num">8<span style="font-size:1.4rem;">+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <p class="section-label">What We Do</p>
+    <h2>Full-Service Amazon<br>Brand Management</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <h4>Advertising & PPC</h4>
+        <p>Full-funnel strategy from Sponsored Products to DSP. Every dollar tracked, every campaign optimized.</p>
+      </div>
+      <div class="service-card">
+        <h4>Catalog & Listings</h4>
+        <p>A+ Content, SEO-driven copy, and brand storytelling that turns browsers into buyers.</p>
+      </div>
+      <div class="service-card">
+        <h4>Operations & Logistics</h4>
+        <p>Inventory planning, FBA coordination, and account health — the unsexy stuff that makes everything work.</p>
+      </div>
+      <div class="service-card">
+        <h4>Brand Strategy</h4>
+        <p>Market analysis, competitive positioning, and long-term planning. Not just tactics — real strategy.</p>
+      </div>
+      <div class="service-card">
+        <h4>Creative & Design</h4>
+        <p>Photography direction, infographic design, and brand-consistent visual systems across your catalog.</p>
+      </div>
+      <div class="service-card">
+        <h4>Analytics & Reporting</h4>
+        <p>Custom dashboards, weekly insights, and the context behind the numbers. No vanity metrics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote-bubble">
+      <blockquote>"Stonecutter doesn't feel like a vendor — they feel like an extension of our team."</blockquote>
+      <cite>— VP of E-Commerce, Premium Skincare Brand</cite>
+    </div>
+  </section>
+
+  <section class="cases">
+    <p class="section-label">Results</p>
+    <h2>What Growth Looks Like</h2>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-metric">+340%</div>
+        <div class="case-desc">Revenue growth in 18 months for a P&G-owned skincare brand entering Amazon.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-metric">68% ↓</div>
+        <div class="case-desc">ACOS reduction while scaling ad spend 3x for a premium supplements company.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-metric">#1 BSR</div>
+        <div class="case-desc">Best Seller Rank achieved in 4 categories for a DTC wellness brand.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-metric">$2.4M</div>
+        <div class="case-desc">Monthly revenue milestone for a heritage food brand within their first year.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="cta-bubble">
+      <h2>Let's Find Out What Your Brand Is Leaving Behind.</h2>
+      <p>Free Amazon audit — no strings, no pitch. Just clarity.</p>
+      <a class="btn" href="mailto:lee@stonecutter.nyc" style="background: var(--deep-teal); color: var(--cream);">Schedule a Free Consult →</a>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
