@@ -27,6 +27,32 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Dot texture overlay */
+.dot-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(27,45,69,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dot-texture-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(244,239,230,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Ensure content sits above texture */
+.hero, .stats, .approach, .results, .results-inner, .about, .cta-banner, .contact, footer {
+  position: relative;
+}
+.hero > *, .approach > *, .about > *, .cta-banner > *, .contact-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
 body {
   font-family: 'Hanken Grotesk', -apple-system, sans-serif;
   font-weight: 400;
@@ -119,8 +145,8 @@ nav.scrolled {
   left: -4px; right: -4px;
   bottom: 0.06em;
   height: 0.14em;
-  background: var(--plum);
-  opacity: 0.4;
+  background: var(--green);
+  opacity: 0.35;
   border-radius: 2px;
   transform: rotate(-0.8deg) skewX(-8deg);
 }
@@ -491,6 +517,7 @@ footer a:hover { color: var(--cream); }
 
 <!-- Hero - Cream -->
 <section class="hero">
+  <div class="dot-texture"></div>
   <div class="hero-label">Amazon Growth Partners</div>
   <h1>100% of our clients have come from <em>referral.</em></h1>
   <p class="hero-sub">We're exceptional Amazon operators - and it shows. Every brand we work with found us because someone they trust told them to call us.</p>
@@ -502,6 +529,7 @@ footer a:hover { color: var(--cream); }
 
 <!-- Stats - Navy -->
 <section class="stats">
+  <div class="dot-texture-light"></div>
   <div class="stats-inner">
     <div>
       <div class="stat-num">$220M+</div>
@@ -524,6 +552,7 @@ footer a:hover { color: var(--cream); }
 
 <!-- Approach - Cream -->
 <section class="approach" id="approach">
+  <div class="dot-texture"></div>
   <div class="section-label">Our Approach</div>
   <h2>The agency model has always been broken. We built something different.</h2>
   <div class="approach-grid">
@@ -544,6 +573,7 @@ footer a:hover { color: var(--cream); }
 
 <!-- Results - Hunter Green -->
 <section class="results" id="results">
+  <div class="dot-texture-light"></div>
   <div class="results-inner">
     <div class="section-label">What Happens</div>
     <h2>When we partner with a brand.</h2>
@@ -569,6 +599,7 @@ footer a:hover { color: var(--cream); }
 
 <!-- About - Cream -->
 <section class="about" id="about">
+  <div class="dot-texture"></div>
   <div class="about-grid">
     <div>
       <div class="section-label">About Us</div>

@@ -185,7 +185,7 @@ h1 {
 h2 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
@@ -273,7 +273,7 @@ p.muted { opacity: 0.6; }
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
 }
 .grid-4 {
   display: grid;
@@ -285,7 +285,7 @@ p.muted { opacity: 0.6; }
 .card {
   background: rgba(244,239,230,0.06);
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2.2rem;
   border: 1px solid rgba(244,239,230,0.06);
 }
 .bg-cream .card,
@@ -298,12 +298,12 @@ p.muted { opacity: 0.6; }
   border-color: rgba(244,239,230,0.08);
 }
 .card h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 0.75rem;
 }
 .card p {
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 1.0rem;
+  line-height: 1.75;
   opacity: 0.7;
   max-width: none;
 }
@@ -323,20 +323,20 @@ p.muted { opacity: 0.6; }
 /* Process Steps */
 .process {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   margin-top: 2.5rem;
 }
 .step {
   position: relative;
-  padding: 2rem 1.5rem;
+  padding: 2.2rem;
   background: rgba(244,239,230,0.05);
   border-radius: 10px;
   border: 1px solid rgba(244,239,230,0.06);
 }
 .step-num {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
   opacity: 0.15;
   line-height: 1;
   margin-bottom: 1rem;
@@ -345,16 +345,10 @@ p.muted { opacity: 0.6; }
   margin-bottom: 1rem;
   display: block;
 }
-.step h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-.step p { font-size: 0.88rem; opacity: 0.6; line-height: 1.65; max-width: none; }
+.step h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.step p { font-size: 1.0rem; opacity: 0.65; line-height: 1.7; max-width: none; }
 .step-arrow {
-  position: absolute;
-  right: -1.1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  opacity: 0.2;
-  z-index: 1;
+  display: none;
 }
 
 /* Interstitial */
@@ -371,17 +365,19 @@ p.muted { opacity: 0.6; }
 /* Services Overview */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin-top: 2rem;
 }
 .service-item {
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(27,45,69,0.1);
+  padding: 2.2rem;
+  background: rgba(27,45,69,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(27,45,69,0.08);
 }
-.bg-navy .service-item { border-top-color: rgba(244,239,230,0.08); }
-.service-item h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.service-item p { font-size: 0.92rem; opacity: 0.6; line-height: 1.65; max-width: none; }
+.bg-navy .service-item { background: rgba(244,239,230,0.06); border-color: rgba(244,239,230,0.06); }
+.service-item h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.service-item p { font-size: 1.0rem; opacity: 0.65; line-height: 1.7; max-width: none; }
 .service-icon {
   margin-bottom: 1rem;
   display: block;
