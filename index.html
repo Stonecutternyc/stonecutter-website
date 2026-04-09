@@ -1,1860 +1,1334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stonecutter NYC | Premium Amazon Agency</title>
-  <meta name="description" content="Stonecutter is a boutique Amazon management agency for established beauty, wellness, and CPG brands. Strategic depth. Genuine partnership. New York." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --cream: #EDE8E0;
-      --cream-dark: #E3DDD4;
-      --navy: #1E3A5F;
-      --navy-dark: #162D4A;
-      --green: #355E3B;
-      --green-dark: #2A4B2F;
-      --orange: #CC5500;
-      --orange-hover: #B34A00;
-      --sand: #C4A882;
-      --gunmetal: #6B7B8D;
-      --white: #FFFFFF;
-      --text-muted: rgba(30, 58, 95, 0.5);
-      --text-light: rgba(255, 255, 255, 0.72);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      color: var(--navy);
-      background: var(--cream);
-      overflow-x: hidden;
-    }
-
-    /* ── REVEAL ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-
-    /* ── PAGE LOADER ── */
-    .page-loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.7s ease, visibility 0.7s ease;
-    }
-    .page-loader.hidden { opacity: 0; visibility: hidden; }
-
-    .loader-mark {
-      font-family: 'DM Serif Display', serif;
-      font-size: 26px;
-      color: var(--cream);
-      letter-spacing: 0.08em;
-      opacity: 0;
-      animation: loaderIn 1.4s ease forwards;
-    }
-    .loader-mark span { color: var(--orange); }
-
-    @keyframes loaderIn {
-      0%   { opacity: 0; transform: translateY(10px); }
-      35%  { opacity: 1; transform: translateY(0); }
-      80%  { opacity: 1; }
-      100% { opacity: 0.5; }
-    }
-
-    /* ── NAVIGATION ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      padding: 0 56px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: transparent;
-      transition: background 0.4s ease, height 0.3s ease, box-shadow 0.4s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(237, 232, 224, 0.97);
-      box-shadow: 0 1px 0 rgba(30, 58, 95, 0.1);
-      height: 68px;
-    }
-
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      color: var(--navy);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 44px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gunmetal);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--navy); }
-
-    .btn-nav {
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      color: var(--white) !important;
-      background: var(--orange);
-      padding: 10px 22px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease;
-      display: inline-block;
-    }
-
-    .btn-nav:hover {
-      background: var(--orange-hover) !important;
-      color: var(--white) !important;
-      transform: translateY(-1px);
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--navy);
-      transition: all 0.3s ease;
-    }
-
-    /* ── HERO ── */
-    #hero {
-      background: var(--cream);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 140px 56px 100px;
-    }
-
-    .hero-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 2px;
-      background: var(--orange);
-      flex-shrink: 0;
-    }
-
-    .hero-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(44px, 5.8vw, 78px);
-      font-weight: 400;
-      line-height: 1.06;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .hero-sub {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: var(--gunmetal);
-      max-width: 480px;
-      margin-bottom: 48px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--orange);
-      padding: 17px 38px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--orange-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(204, 85, 0, 0.22);
-    }
-
-    .btn-ghost {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--navy);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid rgba(30, 58, 95, 0.25);
-      padding-bottom: 2px;
-      transition: gap 0.2s ease, border-color 0.2s ease;
-    }
-
-    .btn-ghost:hover {
-      gap: 14px;
-      border-color: var(--navy);
-    }
-
-    .btn-ghost::after { content: '→'; font-size: 16px; }
-
-    .hero-visual {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      background: var(--cream-dark);
-      border-radius: 4px;
-      border: 1px solid rgba(30, 58, 95, 0.08);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .hero-visual-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(30, 58, 95, 0.22);
-    }
-
-    .hero-visual-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(30, 58, 95, 0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-visual-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: rgba(30, 58, 95, 0.2);
-      fill: none;
-    }
-
-    /* ── STATS STRIP ── */
-    #stats-strip {
-      background: var(--navy);
-      padding: 72px 56px;
-    }
-
-    .stats-strip-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .strip-stat {
-      background: var(--navy);
-      padding: 48px 40px;
-      transition: background 0.2s ease;
-    }
-
-    .strip-stat:hover { background: var(--navy-dark); }
-
-    .strip-stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 4vw, 54px);
-      font-weight: 400;
-      color: var(--cream);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-    }
-
-    .strip-stat-number span {
-      color: var(--orange);
-    }
-
-    .strip-stat-label {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.6;
-      color: rgba(237, 232, 224, 0.55);
-    }
-
-    /* ── STATEMENT ── */
-    #statement {
-      background: var(--cream);
-      padding: 140px 56px;
-    }
-
-    .statement-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .statement-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 5vw, 68px);
-      font-weight: 400;
-      line-height: 1.07;
-      color: var(--navy);
-      max-width: 900px;
-      letter-spacing: -0.02em;
-      margin-bottom: 40px;
-    }
-
-    .statement-headline em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .statement-body {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.78;
-      color: var(--gunmetal);
-      max-width: 560px;
-      margin-bottom: 80px;
-    }
-
-    .statement-data {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid rgba(30, 58, 95, 0.1);
-    }
-
-    .data-point {
-      padding: 52px 0 52px 48px;
-      border-right: 1px solid rgba(30, 58, 95, 0.08);
-    }
-
-    .data-point:first-child { padding-left: 0; }
-    .data-point:last-child { border-right: none; }
-
-    .data-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(40px, 4.5vw, 60px);
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .data-number sup {
-      font-size: 0.55em;
-      vertical-align: super;
-      color: var(--orange);
-    }
-
-    .data-label {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--gunmetal);
-      max-width: 260px;
-    }
-
-    /* ── SERVICES ── */
-    #services {
-      background: var(--white);
-      padding: 140px 56px;
-    }
-
-    .services-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .section-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-      flex-shrink: 0;
-    }
-
-    .section-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
-      max-width: 560px;
-      letter-spacing: -0.01em;
-      margin-bottom: 80px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(30, 58, 95, 0.06);
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 52px 44px;
-      position: relative;
-      transition: background 0.25s ease;
-      overflow: hidden;
-    }
-
-    .service-card:hover { background: var(--cream); }
-
-    .service-accent {
-      width: 36px;
-      height: 3px;
-      background: var(--orange);
-      margin-bottom: 28px;
-      transition: width 0.3s ease;
-    }
-
-    .service-card:hover .service-accent { width: 56px; }
-
-    .service-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-
-    .service-desc {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--gunmetal);
-    }
-
-    /* ── WHO WE WORK WITH ── */
-    #icp {
-      background: var(--green);
-      padding: 140px 56px;
-    }
-
-    .icp-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .section-eyebrow-light {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(237, 232, 224, 0.6);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-eyebrow-light::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-      flex-shrink: 0;
-    }
-
-    .section-headline-light {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--cream);
-      max-width: 660px;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-    }
-
-    .section-intro-light {
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: rgba(237, 232, 224, 0.72);
-      max-width: 560px;
-      margin-bottom: 72px;
-    }
-
-    .icp-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: rgba(255, 255, 255, 0.06);
-      margin-bottom: 48px;
-    }
-
-    .icp-card {
-      background: var(--green);
-      padding: 52px 48px;
-      transition: background 0.25s ease;
-    }
-
-    .icp-card:hover { background: var(--green-dark); }
-
-    .icp-badge {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--orange);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-      display: block;
-    }
-
-    .icp-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 14px;
-      line-height: 1.25;
-    }
-
-    .icp-body {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: rgba(237, 232, 224, 0.65);
-    }
-
-    .icp-note {
-      padding: 28px 36px;
-      background: rgba(237, 232, 224, 0.06);
-      border-left: 3px solid var(--orange);
-    }
-
-    .icp-note p {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: rgba(237, 232, 224, 0.72);
-    }
-
-    .icp-note a {
-      color: var(--cream);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s ease;
-    }
-
-    .icp-note a:hover { color: var(--orange); }
-
-    /* ── CASE STUDIES ── */
-    #work {
-      background: var(--cream);
-      padding: 140px 56px;
-    }
-
-    .work-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .work-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 32px;
-      margin-bottom: 72px;
-    }
-
-    .work-link {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--orange);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      transition: gap 0.2s ease;
-      padding-bottom: 4px;
-    }
-
-    .work-link:hover { gap: 14px; }
-    .work-link::after { content: '→'; }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: rgba(30, 58, 95, 0.08);
-    }
-
-    .case-card {
-      background: var(--white);
-      padding: 56px 52px;
-      transition: background 0.25s ease;
-      position: relative;
-    }
-
-    .case-card:hover { background: var(--cream); }
-
-    .case-category {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gunmetal);
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .case-metric-big {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(42px, 5vw, 64px);
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .case-metric-label {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .case-result {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.55;
-      color: var(--navy);
-      border-top: 1px solid rgba(30, 58, 95, 0.1);
-      padding-top: 24px;
-    }
-
-    /* ── TESTIMONIALS ── */
-    #testimonials {
-      background: var(--navy);
-      padding: 140px 56px;
-    }
-
-    .testimonials-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(255, 255, 255, 0.06);
-      margin-top: 72px;
-    }
-
-    .testimonial-card {
-      background: var(--navy);
-      padding: 52px 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 36px;
-      transition: background 0.25s ease;
-    }
-
-    .testimonial-card:hover { background: var(--navy-dark); }
-
-    .testimonial-quote-mark {
-      font-family: 'DM Serif Display', serif;
-      font-size: 56px;
-      font-weight: 400;
-      line-height: 0.8;
-      color: var(--orange);
-      margin-bottom: 4px;
-    }
-
-    .testimonial-quote {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.7;
-      color: var(--cream);
-      flex: 1;
-    }
-
-    .testimonial-attribution {
-      border-top: 1px solid rgba(237, 232, 224, 0.1);
-      padding-top: 24px;
-    }
-
-    .testimonial-role {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(237, 232, 224, 0.7);
-      margin-bottom: 4px;
-    }
-
-    .testimonial-company {
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(237, 232, 224, 0.38);
-    }
-
-    .testimonial-note {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-top: 8px;
-      opacity: 0.7;
-    }
-
-    /* ── VALUES ── */
-    #values {
-      background: var(--cream-dark);
-      padding: 100px 56px;
-      border-top: 1px solid rgba(30, 58, 95, 0.08);
-    }
-
-    .values-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .values-label {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(22px, 2.5vw, 30px);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--navy);
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .values-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .value-item {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      opacity: 0.4;
-      padding: 16px 40px;
-      transition: opacity 0.3s ease;
-      position: relative;
-    }
-
-    .value-item:hover { opacity: 1; }
-
-    .value-item + .value-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--sand);
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      background: var(--cream);
-      padding: 140px 56px;
-    }
-
-    .about-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .about-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(30px, 3.8vw, 48px);
-      font-weight: 400;
-      line-height: 1.12;
-      color: var(--navy);
-      letter-spacing: -0.01em;
-      margin-bottom: 32px;
-    }
-
-    .about-body {
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--gunmetal);
-      margin-bottom: 24px;
-    }
-
-    .about-callout {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.5;
-      color: var(--navy);
-      border-left: 3px solid var(--orange);
-      padding: 4px 0 4px 24px;
-      margin-bottom: 36px;
-    }
-
-    .about-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--navy);
-      border: 1px solid rgba(30, 58, 95, 0.18);
-      padding: 8px 16px;
-      border-radius: 3px;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .tag:hover {
-      border-color: var(--orange);
-      background: rgba(204, 85, 0, 0.04);
-    }
-
-    .about-visual {
-      aspect-ratio: 4 / 5;
-      background: var(--cream-dark);
-      border-radius: 4px;
-      border: 1px solid rgba(30, 58, 95, 0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      position: sticky;
-      top: 100px;
-    }
-
-    .about-visual-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(30, 58, 95, 0.22);
-    }
-
-    .about-visual-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(30, 58, 95, 0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-visual-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: rgba(30, 58, 95, 0.2);
-      fill: none;
-    }
-
-    /* ── CTA BAND ── */
-    #cta-band {
-      background: var(--navy);
-      padding: 120px 56px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #cta-band::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(204, 85, 0, 0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .cta-band-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .cta-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-eyebrow::before,
-    .cta-eyebrow::after {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: rgba(204, 85, 0, 0.5);
-    }
-
-    .cta-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(30px, 3.8vw, 52px);
-      font-weight: 400;
-      color: var(--cream);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
-    }
-
-    .cta-sub {
-      font-size: 17px;
-      font-weight: 300;
-      color: rgba(237, 232, 224, 0.65);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .cta-details {
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(237, 232, 224, 0.42);
-      line-height: 1.6;
-      margin-bottom: 48px;
-    }
-
-    .cta-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    .btn-cta-primary {
-      display: inline-block;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy);
-      background: var(--cream);
-      padding: 18px 44px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-cta-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .cta-alt-link {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(237, 232, 224, 0.55);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease, gap 0.2s ease;
-    }
-
-    .cta-alt-link:hover {
-      color: var(--cream);
-      gap: 14px;
-    }
-
-    .cta-alt-link::after { content: '→'; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy-dark);
-      padding: 80px 56px 48px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .footer-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 48px;
-      padding-bottom: 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      margin-bottom: 40px;
-    }
-
-    .footer-brand {
-      max-width: 280px;
-    }
-
-    .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      color: var(--cream);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      display: block;
-      margin-bottom: 14px;
-    }
-
-    .footer-tagline {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: rgba(237, 232, 224, 0.38);
-    }
-
-    .footer-right {
-      display: flex;
-      gap: 80px;
-      align-items: flex-start;
-    }
-
-    .footer-nav-col h4 {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(237, 232, 224, 0.38);
-      margin-bottom: 20px;
-    }
-
-    .footer-nav-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-nav-links a {
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(237, 232, 224, 0.55);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-nav-links a:hover { color: var(--cream); }
-
-    .footer-contact-col h4 {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(237, 232, 224, 0.38);
-      margin-bottom: 20px;
-    }
-
-    .footer-email {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--cream);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 20px;
-      transition: color 0.2s ease;
-    }
-
-    .footer-email:hover { color: var(--orange); }
-
-    .btn-footer-audit {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--orange);
-      padding: 11px 22px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.2s ease;
-    }
-
-    .btn-footer-audit:hover { background: var(--orange-hover); }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .footer-copy {
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(237, 232, 224, 0.25);
-    }
-
-    .footer-location {
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(237, 232, 224, 0.25);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-location::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      background: var(--orange);
-      border-radius: 50%;
-    }
-
-    /* ── MARQUEE CLIENT STRIP ── */
-    #clients {
-      background: var(--cream-dark);
-      padding: 64px 0;
-      overflow: hidden;
-      border-top: 1px solid rgba(30, 58, 95, 0.07);
-      border-bottom: 1px solid rgba(30, 58, 95, 0.07);
-    }
-
-    .marquee-wrap {
-      position: relative;
-    }
-
-    .marquee-wrap::before,
-    .marquee-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .marquee-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, var(--cream-dark), transparent);
-    }
-
-    .marquee-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, var(--cream-dark), transparent);
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 0;
-      width: max-content;
-      animation: marqueeScroll 40s linear infinite;
-    }
-
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .marquee-track { animation: none; }
-    }
-
-    .marquee-item {
-      flex-shrink: 0;
-      padding: 12px 52px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--navy);
-      opacity: 0.32;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: opacity 0.3s ease;
-    }
-
-    .marquee-item:hover { opacity: 0.7; }
-
-    .marquee-item::after {
-      content: '';
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--sand);
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 900px) {
-      nav { padding: 0 28px; }
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 68px;
-        left: 0;
-        right: 0;
-        background: var(--cream);
-        flex-direction: column;
-        gap: 0;
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(30, 58, 95, 0.08);
-        box-shadow: 0 4px 20px rgba(30, 58, 95, 0.1);
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: 14px 28px; }
-      .btn-nav { margin: 8px 28px; display: block; text-align: center; }
-      .hamburger { display: flex; }
-
-      #hero { padding: 120px 28px 80px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-visual { aspect-ratio: 16/9; max-height: 260px; }
-
-      #stats-strip { padding: 56px 28px; }
-      .stats-strip-inner { grid-template-columns: repeat(2, 1fr); }
-
-      #statement { padding: 96px 28px; }
-      .statement-data { grid-template-columns: 1fr; }
-      .data-point { padding: 40px 0; border-right: none; border-bottom: 1px solid rgba(30, 58, 95, 0.08); }
-      .data-point:last-child { border-bottom: none; }
-      .data-point:first-child { padding-left: 0; }
-
-      #services { padding: 96px 28px; }
-      .services-grid { grid-template-columns: 1fr; }
-
-      #icp { padding: 96px 28px; }
-      .icp-grid { grid-template-columns: 1fr; }
-      .icp-card { padding: 44px 36px; }
-
-      #work { padding: 96px 28px; }
-      .work-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 48px; }
-      .case-grid { grid-template-columns: 1fr; }
-      .case-card { padding: 44px 36px; }
-
-      #testimonials { padding: 96px 28px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .testimonial-card { padding: 44px 36px; }
-
-      #values { padding: 72px 28px; }
-
-      #about { padding: 96px 28px; }
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
-      .about-visual { aspect-ratio: 16/9; max-height: 280px; position: static; }
-
-      #cta-band { padding: 96px 28px; }
-      .cta-actions { flex-direction: column; align-items: center; gap: 20px; }
-
-      footer { padding: 64px 28px 40px; }
-      .footer-top { flex-direction: column; gap: 48px; }
-      .footer-right { flex-direction: column; gap: 40px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-    }
-
-    @media (max-width: 540px) {
-      .stats-strip-inner { grid-template-columns: 1fr; }
-      .hero-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .value-item { padding: 12px 24px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stonecutter - Amazon Growth Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2D45;
+  --navy-deep: #152238;
+  --cream: #F4EFE6;
+  --cream-warm: #EDE7DB;
+  --green: #355E3B;
+  --green-light: #9A7494;
+  --plum: #855D7F;
+  --plum-light: #9A7494;
+  --slate: #6B7B8D;
+  --slate-light: #8A97A6;
+  --text-dark: #1B2D45;
+  --text-dark-muted: rgba(27,45,69,0.6);
+  --text-light: #F4EFE6;
+  --text-light-muted: rgba(244,239,230,0.65);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* Dot texture overlay */
+.dot-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(27,45,69,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dot-texture-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(244,239,230,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Ensure content sits above texture */
+.hero, .stats, .approach, .results, .results-inner, .about, .cta-banner, .contact, footer {
+  position: relative;
+}
+.hero > *, .approach > *, .about > *, .cta-banner > *, .contact-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  font-family: 'Hanken Grotesk', -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-dark);
+  background: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(244,239,230,0.92);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(27,45,69,0.06);
+  transition: background 0.4s;
+}
+nav.scrolled {
+  background: rgba(244,239,230,0.97);
+  box-shadow: 0 1px 20px rgba(27,45,69,0.06);
+}
+.nav-logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+  color: var(--navy);
+  display: flex; flex-direction: column; align-items: center;
+  line-height: 1;
+}
+.nav-logo-nyc {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  margin-top: 0.25rem;
+}
+.nav-links { display: flex; gap: 2.25rem; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--text-dark-muted);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy) !important;
+  color: var(--cream) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 5px;
+  transition: opacity 0.3s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── Hero (Cream) ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 3rem 6rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.hero-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: #355E3B;
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-bottom: 2rem;
+  color: var(--navy);
+}
+.hero h1 em {
+  font-style: italic;
+  color: #355E3B;
+  position: relative;
+  display: inline-block;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  left: -10px; right: -10px;
+  bottom: -0.08em;
+  height: 0.28em;
+  background: url('marker-stroke.png') no-repeat center;
+  background-size: 100% 100%;
+  opacity: 0.7;
+}
+.hero-sub {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-dark-muted);
+  max-width: 580px;
+  margin-bottom: 3rem;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 1rem 2.2rem;
+  border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(27,45,69,0.18);
+}
+.btn-primary svg { width: 16px; height: 16px; }
+
+/* ── Stats (Navy) ── */
+.stats {
+  background: var(--navy);
+  padding: 5rem 3rem;
+}
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  color: var(--cream);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--text-light-muted);
+  margin-top: 0.6rem;
+}
+
+/* ── Approach (Cream) ── */
+.approach {
+  padding: 7rem 3rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: #355E3B;
+  margin-bottom: 1.25rem;
+}
+.approach h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 700px;
+  margin-bottom: 3.5rem;
+  color: var(--navy);
+}
+.approach-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(27,45,69,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.approach-card {
+  background: var(--cream-warm);
+  padding: 3rem 2.25rem;
+}
+.approach-card h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--navy);
+}
+.approach-card p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-dark-muted);
+}
+
+/* ── Results (Hunter Green) ── */
+.results {
+  background: #355E3B;
+  padding: 7rem 3rem;
+}
+.results-inner {
+  max-width: 1100px; margin: 0 auto;
+}
+.results .section-label { color: rgba(244,239,230,0.5); }
+.results h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 3.5rem;
+}
+.results-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.result-card {
+  border-top: 1px solid rgba(244,239,230,0.25);
+  padding-top: 2rem;
+}
+.result-category {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: rgba(244,239,230,0.5);
+  margin-bottom: 1.25rem;
+}
+.result-num {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4.5rem;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.result-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(244,239,230,0.7);
+}
+
+/* ── About (Cream) ── */
+.about {
+  padding: 7rem 3rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1.75rem;
+  color: var(--navy);
+}
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--text-dark-muted);
+  margin-bottom: 1.5rem;
+}
+.about-quote {
+  border-left: 2px solid var(--plum);
+  padding-left: 1.75rem;
+  margin-top: 2.5rem;
+}
+.about-quote p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--navy);
+  margin-bottom: 0;
+}
+.about-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--text-dark-muted);
+  margin-top: 0.75rem;
+}
+.about-values {
+  display: flex; flex-direction: column; gap: 2.5rem;
+  padding-top: 0.5rem;
+}
+.about-value h4 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+  color: var(--navy);
+}
+.about-value p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+.about-value-line {
+  width: 32px; height: 2px;
+  background: var(--plum);
+  margin-bottom: 1rem;
+}
+
+/* ── CTA Banner (Navy) ── */
+.cta-banner {
+  background: var(--navy);
+  padding: 5.5rem 3rem;
+  text-align: center;
+}
+.cta-banner h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.cta-banner p {
+  font-size: 1.1rem;
+  color: var(--text-light-muted);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.7;
+}
+.btn-light {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: var(--cream);
+  color: var(--navy);
+  padding: 1rem 2.2rem;
+  border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none; cursor: pointer;
+}
+.btn-light:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+}
+
+/* ── Contact (Slate/Light) ── */
+.contact {
+  background: var(--cream-warm);
+  padding: 7rem 3rem;
+}
+.contact-inner {
+  max-width: 560px; margin: 0 auto;
+}
+.contact .section-label { color: #355E3B; }
+.contact h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.contact-sub {
+  font-size: 1.1rem;
+  color: var(--text-dark-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.contact-form {
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.form-row { display: flex; gap: 1.25rem; }
+.form-row > * { flex: 1; }
+.contact-form label {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(27,45,69,0.15);
+  padding: 0.75rem 0;
+  color: var(--navy);
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  border-radius: 0;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom-color: #355E3B;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(27,45,69,0.25);
+}
+.contact-form textarea { resize: vertical; min-height: 100px; }
+.contact-form .btn-submit {
+  display: inline-flex; align-items: center;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: #355E3B;
+  color: var(--cream);
+  padding: 1rem 2.2rem;
+  border: none; border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+}
+.contact-form .btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(133,93,127,0.2);
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--navy);
+  padding: 2.5rem 3rem;
+}
+footer .footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer p, footer a {
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+}
+footer a { text-decoration: none; transition: color 0.3s; }
+footer a:hover { color: var(--cream); }
+
+/* ── Marquee ── */
+.marquee-section {
+  background: var(--cream);
+  border-top: 1px solid rgba(27,45,69,0.1);
+  border-bottom: 1px solid rgba(27,45,69,0.1);
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  animation: marquee-scroll 40s linear infinite;
+}
+.marquee-track .logo-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 60px;
+  flex-shrink: 0;
+}
+.marquee-track .logo-item img,
+.marquee-track .logo-item svg {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  display: block;
+}
+/* Per-logo size overrides */
+.logo-jshealth img { height: 28px; max-width: 160px; }
+.logo-plantpeople img { height: 28px; max-width: 160px; }
+.logo-tumblerware img { height: 32px; max-width: 180px; }
+.logo-pethonesty img { height: 40px; max-width: 160px; }
+.logo-eachandevery img { height: 32px; max-width: 150px; }
+.marquee-track .logo-item:hover img,
+.marquee-track .logo-item:hover svg {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── AI Section ── */
+.ai-section {
+  background: #1B2D45;
+  padding: 100px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.ai-section .dot-texture-light {
+  background-image: radial-gradient(circle, rgba(244,239,230,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.ai-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.ai-copy {
+  /* left column */
+}
+.ai-section .section-label {
+  color: rgba(244,239,230,0.45);
+  margin-bottom: 1.25rem;
+}
+.ai-section h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.ai-subhead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgba(244,239,230,0.65);
+  margin-bottom: 2.5rem;
+  line-height: 1.55;
+}
+.ai-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(244,239,230,0.7);
+  margin-bottom: 2rem;
+}
+.ai-body p { margin-bottom: 1.25rem; }
+.ai-body p:last-child { margin-bottom: 0; }
+.ai-label {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: rgba(244,239,230,0.38);
+}
+
+/* ── Polaris Dashboard Mockup ── */
+.polaris-mockup {
+  max-width: 520px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  overflow: hidden;
+  font-family: 'Hanken Grotesk', sans-serif;
+  background: #0B1929;
+  display: flex;
+  flex-direction: column;
+}
+.polaris-chrome {
+  background: #1C2B3A;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 7px;
+  flex-shrink: 0;
+  position: relative;
+}
+.polaris-chrome .pdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.polaris-chrome .pdot-red { background: #FF5F57; }
+.polaris-chrome .pdot-yellow { background: #FEBC2E; }
+.polaris-chrome .pdot-green { background: #28C840; }
+.polaris-chrome-url {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0F1E33;
+  border-radius: 9px;
+  width: 40%;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.polaris-chrome-url span {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+.polaris-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+/* ── Sidebar ── */
+.polaris-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: #0F1E33;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.polaris-logo-area {
+  height: 32px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.polaris-logo-area span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #6B9BC3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.polaris-sidebar-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 0;
+  flex-shrink: 0;
+}
+.polaris-nav-items {
+  flex: 1;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+.polaris-nav-item {
+  height: 34px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  cursor: default;
+}
+.polaris-nav-item.active {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.95);
+  border-left: 2px solid #6B9BC3;
+  padding-left: 14px;
+}
+.polaris-nav-icon {
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.polaris-nav-group-label {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  padding: 0 0 0 16px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.polaris-sidebar-footer {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.polaris-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1a3a5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.polaris-user-info {
+  flex: 1;
+  overflow: hidden;
+}
+.polaris-user-name {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.polaris-settings-icon {
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── Main Content ── */
+.polaris-content {
+  flex: 1;
+  background: #0B1929;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.polaris-content::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 60%;
+  background: linear-gradient(to right, transparent, #1B2D45);
+  pointer-events: none;
+  z-index: 2;
+}
+.polaris-topbar {
+  height: 40px;
+  background: #0F1E33;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+.polaris-topbar-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.polaris-topbar-period {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
+.polaris-cal-icon {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.polaris-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 10px;
+}
+.polaris-kpi-tile {
+  background: #162236;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.polaris-kpi-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+.polaris-kpi-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+.polaris-kpi-value.red { color: #FF6B6B; }
+.polaris-kpi-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+}
+.polaris-kpi-sub.green { color: #4CAF50; }
+.polaris-table-placeholder {
+  margin: 0 10px 10px;
+  background: #162236;
+  border-radius: 6px;
+  height: 80px;
+  position: relative;
+  flex-shrink: 0;
+}
+.polaris-table-label {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.05em;
+}
+
+/* ── Testimonial Cards ── */
+.testimonial-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.testimonial-card {
+  background: #EDE7DB;
+  border: 1px solid rgba(27,45,69,0.1);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.testimonial-name {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.testimonial-title {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-dark-muted);
+  line-height: 1.3;
+}
+.testimonial-quote {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1rem; }
+  .approach { padding: 5rem 1.5rem; }
+  .results { padding: 5rem 1.5rem; }
+  .results-inner { padding: 0; }
+  .approach-grid, .results-grid { grid-template-columns: 1fr; }
+  .about { padding: 5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .ai-section { padding: 5rem 1.5rem; }
+  .ai-inner { grid-template-columns: 1fr; gap: 48px; }
+  .polaris-mockup { max-width: 100%; }
+  .polaris-body { transform-origin: top left; transform: scale(0.85); width: calc(100% / 0.85); }
+  .contact-inner { padding: 0 1.5rem; }
+  .form-row { flex-direction: column; }
+  footer .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
 </head>
 <body>
 
-  <!-- PAGE LOADER -->
-  <div class="page-loader" id="pageLoader">
-    <div class="loader-mark">Stonecutter<span>.</span></div>
+<nav>
+  <div class="nav-logo">STONECUTTER <span class="nav-logo-nyc">NYC</span></div>
+  <div class="nav-links">
+    <a href="#approach">Approach</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Let's Connect</a>
   </div>
+</nav>
 
-  <!-- NAVIGATION -->
-  <nav id="navbar">
-    <a href="#hero" class="nav-logo">Stonecutter</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="btn-nav">Free Audit</a></li>
-    </ul>
-  </nav>
+<!-- Hero - Cream -->
+<section class="hero">
+  <div class="dot-texture"></div>
+  <div class="hero-label">Amazon Growth Partners</div>
+  <h1><em>Every</em> client we've ever had has come through referrals.</h1>
+  <p class="hero-sub">We're exceptional Amazon operators, and it shows. Every brand we work with found us through someone they trust.</p>
+  <a href="#contact" class="btn-primary">
+    Let's Connect
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow reveal">New York Amazon Agency</div>
-        <h1 class="hero-headline reveal reveal-delay-1">
-          We grow premium brands on Amazon.<br>
-          <em>Without compromise.</em>
-        </h1>
-        <p class="hero-sub reveal reveal-delay-2">
-          Stonecutter partners with beauty, wellness, and CPG brands to scale profitably on Amazon — with strategic depth, operational rigor, and a genuine stake in your success.
-        </p>
-        <div class="hero-ctas reveal reveal-delay-3">
-          <a href="mailto:lee@stonecutter.nyc" class="btn-primary">Schedule a Free Audit</a>
-          <a href="#work" class="btn-ghost">See Our Work</a>
-        </div>
+<!-- Marquee - Client Logos -->
+<div class="marquee-section">
+  <div class="marquee-track" aria-hidden="true">
+    <!-- Set 1 -->
+    <span class="logo-item"><img src="src/logos/hiya.svg" alt="Hiya Health"></span>
+    <span class="logo-item"><img src="src/logos/firstaidbeauty.png" alt="First Aid Beauty"></span>
+    <span class="logo-item logo-eachandevery"><img src="src/logos/eachandevery.svg" alt="Each & Every"></span>
+    <span class="logo-item logo-pethonesty"><img src="src/logos/pethonesty.png" alt="Pet Honesty"></span>
+    <span class="logo-item logo-tumblerware"><img src="src/logos/tumblerware.png" alt="Tumblerware"></span>
+    <span class="logo-item"><img src="src/logos/ogee.png" alt="Ogee"></span>
+    <span class="logo-item"><img src="src/logos/khloudfoods.svg" alt="Khloud Foods"></span>
+    <span class="logo-item"><img src="src/logos/needed.svg" alt="Needed"></span>
+    <span class="logo-item logo-jshealth"><img src="src/logos/jshealth.svg" alt="JS Health Vitamins"></span>
+    <span class="logo-item"><img src="src/logos/snap.svg" alt="Snap Supplements"></span>
+    <span class="logo-item"><img src="src/logos/cheers.svg" alt="Cheers Health"></span>
+    <span class="logo-item"><img src="src/logos/maelys.svg" alt="Maelys Cosmetics"></span>
+    <span class="logo-item logo-plantpeople"><img src="src/logos/plantpeople.svg" alt="Plant People"></span>
+    <span class="logo-item"><img src="src/logos/goodr.png" alt="Goodr"></span>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <span class="logo-item"><img src="src/logos/hiya.svg" alt="Hiya Health"></span>
+    <span class="logo-item"><img src="src/logos/firstaidbeauty.png" alt="First Aid Beauty"></span>
+    <span class="logo-item logo-eachandevery"><img src="src/logos/eachandevery.svg" alt="Each & Every"></span>
+    <span class="logo-item logo-pethonesty"><img src="src/logos/pethonesty.png" alt="Pet Honesty"></span>
+    <span class="logo-item logo-tumblerware"><img src="src/logos/tumblerware.png" alt="Tumblerware"></span>
+    <span class="logo-item"><img src="src/logos/ogee.png" alt="Ogee"></span>
+    <span class="logo-item"><img src="src/logos/khloudfoods.svg" alt="Khloud Foods"></span>
+    <span class="logo-item"><img src="src/logos/needed.svg" alt="Needed"></span>
+    <span class="logo-item logo-jshealth"><img src="src/logos/jshealth.svg" alt="JS Health Vitamins"></span>
+    <span class="logo-item"><img src="src/logos/snap.svg" alt="Snap Supplements"></span>
+    <span class="logo-item"><img src="src/logos/cheers.svg" alt="Cheers Health"></span>
+    <span class="logo-item"><img src="src/logos/maelys.svg" alt="Maelys Cosmetics"></span>
+    <span class="logo-item logo-plantpeople"><img src="src/logos/plantpeople.svg" alt="Plant People"></span>
+    <span class="logo-item"><img src="src/logos/goodr.png" alt="Goodr"></span>
+  </div>
+</div>
+
+<!-- Stats - Navy -->
+<section class="stats">
+  <div class="dot-texture-light"></div>
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">$220M+</div>
+      <div class="stat-label">Revenue Managed</div>
+    </div>
+    <div>
+      <div class="stat-num">$20M+</div>
+      <div class="stat-label">Annual Ad Spend</div>
+    </div>
+    <div>
+      <div class="stat-num">35+</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Referral-Based</div>
+    </div>
+  </div>
+</section>
+
+<!-- Approach - Cream -->
+<section class="approach" id="approach">
+  <div class="dot-texture"></div>
+  <div class="section-label">Our Approach</div>
+  <h2>The agency model is broken. We built something different.</h2>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <h3>Boutique by design</h3>
+      <p>We only take on brands where we know we can add real value. If we're not the right fit, we'll tell you - and point you in the right direction.</p>
+    </div>
+    <div class="approach-card">
+      <h3>True partnership</h3>
+      <p>Most agencies stack clients until quality drops. We partner deeply with every brand, focused on outcomes that matter - not just billables.</p>
+    </div>
+    <div class="approach-card">
+      <h3>Operators, not advisors</h3>
+      <p>We don't send a deck and disappear. We're hands-on Amazon experts, in the trenches with you every day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Results - Hunter Green -->
+<section class="results" id="results">
+  <div class="dot-texture-light"></div>
+  <div class="results-inner">
+    <div class="section-label">What Happens</div>
+    <h2>When we partner with a brand.</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-category">Premium Beauty</div>
+        <div class="result-num">3.2x</div>
+        <div class="result-desc">ROAS - scaled from $2M to $8M within 18 months while maintaining premium positioning.</div>
       </div>
-      <div class="hero-visual reveal reveal-delay-4">
-        <div class="hero-visual-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
+      <div class="result-card">
+        <div class="result-category">Sports & Outdoors</div>
+        <div class="result-num">147%</div>
+        <div class="result-desc">Year-over-year revenue growth driven by strategic catalog expansion and advertising optimization.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-category">Health & Wellness</div>
+        <div class="result-num">$40M</div>
+        <div class="result-desc">Scaled a challenger brand into a category leader, reaching $40M in annual Amazon revenue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Section - Navy -->
+<section class="ai-section">
+  <div class="dot-texture-light"></div>
+  <div class="ai-inner">
+    <!-- Left: Copy -->
+    <div class="ai-copy">
+      <div class="section-label">Intelligence</div>
+      <h2>We see what other agencies miss.</h2>
+      <p class="ai-subhead">Twelve years of data, now processed with intelligence that didn't exist before.</p>
+      <div class="ai-body">
+        <p>We've spent over a decade building the operational systems, client relationships, and Amazon expertise that only come from doing the work - not observing it.</p>
+        <p>That's why we built Polaris, our proprietary intelligence layer. It tracks every brand we manage, surfaces issues before they become problems, and delivers recommendations grounded in real operational data. Not dashboards. Not reports. Decisions.</p>
+        <p>Our team still makes every decision. Polaris simply brings clarity to it.</p>
+      </div>
+      <span class="ai-label">AI-enhanced, human-led</span>
+    </div>
+    <!-- Right: Polaris Dashboard Mockup -->
+    <div class="polaris-mockup">
+      <!-- Browser chrome -->
+      <div class="polaris-chrome">
+        <span class="pdot pdot-red"></span>
+        <span class="pdot pdot-yellow"></span>
+        <span class="pdot pdot-green"></span>
+        <div class="polaris-chrome-url"><span>app.polaris.stonecutter.nyc</span></div>
+      </div>
+      <!-- Body: sidebar + content -->
+      <div class="polaris-body">
+        <!-- Left Sidebar -->
+        <div class="polaris-sidebar">
+          <div class="polaris-logo-area"><span>Polaris</span></div>
+          <div class="polaris-sidebar-divider"></div>
+          <div class="polaris-nav-items">
+            <!-- Group 1: no label -->
+            <div class="polaris-nav-item active"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>Dashboard</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2.5"/><path d="M1 13c0-2.8 2.2-5 5-5s5 2.2 5 5"/><circle cx="12" cy="5" r="2"/><path d="M12 8c1.7 0 3 1.3 3 3"/></svg>Clients</div>
+            <!-- Operations -->
+            <div class="polaris-nav-group-label">Operations</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="14" height="10" rx="1"/><path d="M5 5V3a3 3 0 0 1 6 0v2"/><line x1="8" y1="9" x2="8" y2="11"/></svg>Inventory</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5H3m0 0l3-3M3 5l3 3"/><path d="M3 11h10m0 0l-3-3m3 3l-3 3"/></svg>Replenishment</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="10" height="9" rx="1"/><path d="M11 8h2l2 3v2h-4V8z"/><circle cx="4" cy="14" r="1.5"/><circle cx="12" cy="14" r="1.5"/></svg>Shipments</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.5"/><path d="M8 4v1.5m0 5V12m2-5.5c0-.8-.9-1.5-2-1.5S6 5.7 6 6.5s.9 1.5 2 1.5 2 .7 2 1.5-.9 1.5-2 1.5-2-.7-2-1.5"/></svg>Settlements</div>
+            <!-- Growth -->
+            <div class="polaris-nav-group-label">Growth</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h10l2-3v10l-2-3H1z"/><path d="M13 6.5h2m-2 3h2"/></svg>Advertising</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="5"/><line x1="11" y1="11" x2="15" y2="15"/><line x1="5" y1="7" x2="9" y2="7"/><line x1="7" y1="5" x2="7" y2="9"/></svg>Keywords</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/></svg>Buy Box</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h14v8H9l-4 3V11H1z"/></svg>Reviews</div>
+            <!-- Intelligence -->
+            <div class="polaris-nav-group-label">Intelligence</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1 14h14L8 1z"/><line x1="8" y1="7" x2="8" y2="10"/><circle cx="8" cy="12" r=".7" fill="currentColor"/></svg>Alerts</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,13 5,8 8,10 12,4 15,7"/></svg>Analytics</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/></svg>Forecasting</div>
+            <!-- Account -->
+            <div class="polaris-nav-group-label">Account</div>
+            <div class="polaris-nav-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><path d="M8 1v2m0 10v2M1 8h2m10 0h2m-2.9-5.1-1.4 1.4M5.3 10.7l-1.4 1.4M13.1 13.1l-1.4-1.4M5.3 5.3 3.9 3.9"/></svg>Settings</div>
+          </div>
+          <div class="polaris-sidebar-divider"></div>
+          <div class="polaris-sidebar-footer">
+            <div class="polaris-avatar">SC</div>
+            <div class="polaris-user-info"><div class="polaris-user-name">Stonecutter NYC</div></div>
+            <div class="polaris-settings-icon"></div>
+          </div>
+        </div>
+        <!-- Right Content Area -->
+        <div class="polaris-content">
+          <!-- Top bar -->
+          <div class="polaris-topbar">
+            <span class="polaris-topbar-title">Dashboard</span>
+            <div class="polaris-topbar-period"><div class="polaris-cal-icon"></div>Apr 1 – Apr 8, 2026</div>
+          </div>
+          <!-- KPI tiles -->
+          <div class="polaris-kpi-grid">
+            <div class="polaris-kpi-tile">
+              <div class="polaris-kpi-label">Total Revenue</div>
+              <div class="polaris-kpi-value">$4.2M</div>
+              <div class="polaris-kpi-sub green">+12% vs last period</div>
+            </div>
+            <div class="polaris-kpi-tile">
+              <div class="polaris-kpi-label">Ad Spend</div>
+              <div class="polaris-kpi-value">$380K</div>
+              <div class="polaris-kpi-sub">TACOS 9.1%</div>
+            </div>
+            <div class="polaris-kpi-tile">
+              <div class="polaris-kpi-label">In-Stock Rate</div>
+              <div class="polaris-kpi-value">96.4%</div>
+              <div class="polaris-kpi-sub">847 SKUs tracked</div>
+            </div>
+            <div class="polaris-kpi-tile">
+              <div class="polaris-kpi-label">Active Alerts</div>
+              <div class="polaris-kpi-value red">12</div>
+              <div class="polaris-kpi-sub">3 critical</div>
+            </div>
+          </div>
+          <!-- Inventory Health Table -->
+          <div style="margin-top:16px;">
+            <div style="font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:8px;">INVENTORY HEALTH</div>
+            <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:9px;color:rgba(255,255,255,0.25);padding:0 6px 4px;">
+              <span>ASIN</span><span>Product</span><span style="text-align:right;">30d Sales</span><span style="text-align:center;">DoS</span><span style="text-align:center;">Status</span>
+            </div>
+            <!-- Row 1 -->
+            <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:rgba(255,255,255,0.02);align-items:center;">
+              <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B0CBL7</span>
+              <span style="color:rgba(255,255,255,0.85);">Brightening Pads</span>
+              <span style="color:rgba(255,255,255,0.7);text-align:right;">$28,400</span>
+              <span style="color:#4CAF50;text-align:center;">42d</span>
+              <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(40,167,69,0.2);color:#4CAF50;border:1px solid rgba(40,167,69,0.3);">Healthy</span></span>
+            </div>
+            <!-- Row 2 -->
+            <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:transparent;align-items:center;">
+              <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B07XG6</span>
+              <span style="color:rgba(255,255,255,0.85);">Renewal Body Scrub</span>
+              <span style="color:rgba(255,255,255,0.7);text-align:right;">$19,200</span>
+              <span style="color:#f0b429;text-align:center;">18d</span>
+              <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(240,180,41,0.2);color:#f0b429;border:1px solid rgba(240,180,41,0.3);">Watch</span></span>
+            </div>
+            <!-- Row 3 -->
+            <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:rgba(255,255,255,0.02);align-items:center;">
+              <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B0BTJ6</span>
+              <span style="color:rgba(255,255,255,0.85);">Smoothing Treatment Pads</span>
+              <span style="color:rgba(255,255,255,0.7);text-align:right;">$11,800</span>
+              <span style="color:#FF6B6B;text-align:center;">9d</span>
+              <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(229,62,62,0.2);color:#FF6B6B;border:1px solid rgba(229,62,62,0.3);">Critical</span></span>
+            </div>
+            <!-- Row 4 -->
+            <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:transparent;align-items:center;">
+              <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B008RJ</span>
+              <span style="color:rgba(255,255,255,0.85);">Barrier Repair Moisturizer</span>
+              <span style="color:rgba(255,255,255,0.7);text-align:right;">$31,500</span>
+              <span style="color:#4CAF50;text-align:center;">38d</span>
+              <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(40,167,69,0.2);color:#4CAF50;border:1px solid rgba(40,167,69,0.3);">Healthy</span></span>
+            </div>
+          </div>
+          <!-- Revenue Trend Chart -->
+          <div style="margin-top:18px;">
+            <div style="font-size:9px;letter-spacing:0.08em;color:rgba(255,255,255,0.25);margin-bottom:6px;">REVENUE TREND — LAST 8 WEEKS</div>
+            <svg width="100%" height="60" viewBox="0 0 124 60" preserveAspectRatio="none" style="display:block;">
+              <!-- Background bars -->
+              <rect x="2" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="16" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="30" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="44" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="58" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="72" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="86" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <rect x="100" y="0" width="8" height="60" fill="rgba(255,255,255,0.1)"/>
+              <!-- Data bars: heights 35,42,38,55,48,62,58,70 (% of 60px) -->
+              <rect x="2" y="39" width="8" height="21" fill="#355E3B"/>
+              <rect x="16" y="34.8" width="8" height="25.2" fill="#355E3B"/>
+              <rect x="30" y="37.2" width="8" height="22.8" fill="#355E3B"/>
+              <rect x="44" y="27" width="8" height="33" fill="#355E3B"/>
+              <rect x="58" y="31.2" width="8" height="28.8" fill="#355E3B"/>
+              <rect x="72" y="22.8" width="8" height="37.2" fill="#355E3B"/>
+              <rect x="86" y="25.2" width="8" height="34.8" fill="#355E3B"/>
+              <rect x="100" y="18" width="8" height="42" fill="#355E3B"/>
+            </svg>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);font-size:8px;color:rgba(255,255,255,0.2);text-align:center;margin-top:3px;">
+              <span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span>
+            </div>
+          </div>
+          <!-- Ad Performance Line Graph -->
+          <div style="margin-top:14px;margin-bottom:6px;font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);">AD PERFORMANCE — LAST 30 DAYS</div>
+          <svg width="100%" height="55" viewBox="0 0 300 55" preserveAspectRatio="none" style="display:block;">
+            <line x1="0" y1="28" x2="300" y2="28" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <polyline fill="none" stroke="#6B9BC3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0,45 37,40 75,42 112,30 150,35 187,25 225,28 262,20 300,15"/>
+            <polyline fill="none" stroke="#355E3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0,38 37,32 75,35 112,22 150,28 187,18 225,22 262,14 300,10"/>
+            <circle cx="300" cy="15" r="2" fill="#6B9BC3"/>
+            <circle cx="300" cy="10" r="2" fill="#355E3B"/>
           </svg>
+          <div style="display:inline-flex;gap:12px;margin-top:4px;">
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.4);"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#6B9BC3"/></svg>Ad Spend</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.4);"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#355E3B"/></svg>ROAS</span>
+          </div>
         </div>
-        <span class="hero-visual-tag">Hero Image</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENT MARQUEE -->
-  <div id="clients">
-    <div class="marquee-wrap">
-      <div class="marquee-track" aria-hidden="true">
-        <span class="marquee-item">P&amp;G-Owned Skincare</span>
-        <span class="marquee-item">DTC Sports Brand</span>
-        <span class="marquee-item">Wellness Supplements</span>
-        <span class="marquee-item">Pet Supplements</span>
-        <span class="marquee-item">Children's Health</span>
-        <span class="marquee-item">Prenatal Nutrition</span>
-        <span class="marquee-item">Clean Beauty</span>
-        <span class="marquee-item">Natural Deodorant</span>
-        <span class="marquee-item">Kitchen Innovation</span>
-        <span class="marquee-item">P&amp;G-Owned Skincare</span>
-        <span class="marquee-item">DTC Sports Brand</span>
-        <span class="marquee-item">Wellness Supplements</span>
-        <span class="marquee-item">Pet Supplements</span>
-        <span class="marquee-item">Children's Health</span>
-        <span class="marquee-item">Prenatal Nutrition</span>
-        <span class="marquee-item">Clean Beauty</span>
-        <span class="marquee-item">Natural Deodorant</span>
-        <span class="marquee-item">Kitchen Innovation</span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- STATS STRIP -->
-  <section id="stats-strip">
-    <div class="stats-strip-inner reveal">
-      <div class="strip-stat">
-        <div class="strip-stat-number">$<span>220M</span>+</div>
-        <p class="strip-stat-label">In client revenue managed annually across beauty, wellness, and CPG.</p>
+<!-- About - Cream -->
+<section class="about" id="about">
+  <div class="dot-texture"></div>
+  <div class="about-grid">
+    <div>
+      <div class="section-label">About Us</div>
+      <h2>We built our reputation one brand at a time.</h2>
+      <p>Stonecutter was built on a simple belief: do exceptional work, and you won't need to chase new business.</p>
+      <p>It's proven true. Every client we've worked with has come through referral.</p>
+      <p>We're a team of 35+ Amazon specialists, founded in New York and operating globally. We're selective about who we work with because our reputation depends on delivering results for every client - not just most.</p>
+
+    </div>
+    <div class="testimonial-stack">
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jamie R." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Jamie R.</span>
+            <span class="testimonial-title">CEO, Personal Care Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"We'd worked with bigger agencies before. None of them actually knew our business the way Stonecutter does. They treat our P&L like it's their own."</p>
       </div>
-      <div class="strip-stat">
-        <div class="strip-stat-number"><span>14</span></div>
-        <p class="strip-stat-label">Premium brand partners — deliberately focused, never spread thin.</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Marcus K." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Marcus K.</span>
+            <span class="testimonial-title">Founder, Supplement Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Every client they've ever had came from a referral. I asked around before we signed. Everyone said the same thing — just trust them."</p>
       </div>
-      <div class="strip-stat">
-        <div class="strip-stat-number"><span>9</span>+</div>
-        <p class="strip-stat-label">Years navigating Amazon's complexity, long before it was mainstream.</p>
-      </div>
-      <div class="strip-stat">
-        <div class="strip-stat-number"><span>32</span></div>
-        <p class="strip-stat-label">Team members dedicated exclusively to Amazon — nothing else.</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah L." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Sarah L.</span>
+            <span class="testimonial-title">VP of eCommerce, Beauty Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Our Amazon revenue doubled in 14 months. That's not a coincidence — that's what happens when your agency actually understands the channel."</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- STATEMENT -->
-  <section id="statement">
-    <div class="statement-inner">
-      <h2 class="statement-headline reveal">
-        Amazon isn't a channel. It's where your <em>category is won or lost.</em>
-      </h2>
-      <p class="statement-body reveal reveal-delay-1">
-        Your customer is already searching there. The question is whether your brand shows up like a category leader — or an afterthought with poor reviews and wasted ad spend.
-      </p>
-      <div class="statement-data">
-        <div class="data-point reveal reveal-delay-1">
-          <div class="data-number" data-count="40">0<sup>%</sup></div>
-          <p class="data-label">Amazon's share of all U.S. e-commerce. More than the next 10 competitors combined.</p>
-        </div>
-        <div class="data-point reveal reveal-delay-2">
-          <div class="data-number" data-count="74">0<sup>%</sup></div>
-          <p class="data-label">of shoppers go directly to Amazon when they're ready to buy. Not Google. Not your website.</p>
-        </div>
-        <div class="data-point reveal reveal-delay-3">
-          <div class="data-number" data-count="20">0<sup>%+</sup></div>
-          <p class="data-label">avg. year-over-year growth for brands that treat Amazon as a strategic priority.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- CTA Banner - Navy -->
+<section class="cta-banner">
+  <h2>We'd love to hear about your brand.</h2>
+  <p>Whether you were referred or found us, let's see if there's a fit.</p>
+  <a href="#contact" class="btn-light">Get in Touch</a>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="services-inner">
-      <div class="section-eyebrow reveal">What We Do</div>
-      <h2 class="section-headline reveal reveal-delay-1">Every layer of your Amazon business, done right.</h2>
-      <div class="services-grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Amazon Advertising</h3>
-          <p class="service-desc">Full-funnel ad strategy that grows efficiently — protecting margins while building the brand equity that compounds over time. We manage Sponsored Products, Brands, Display, and DSP with precision bid strategy and TACoS discipline.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Catalog & Listings</h3>
-          <p class="service-desc">Your brand deserves to look as premium on Amazon as it does anywhere else. We handle A+ Content, Brand Story, Storefronts, listing SEO, and variation architecture — built to convert, not just to exist.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Operations & Fulfillment</h3>
-          <p class="service-desc">Inventory management, replenishment planning, FBA inbound coordination, Subscribe &amp; Save optimization, and Buy Box defense — the operational backbone that keeps growth from becoming chaos.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Analytics & Strategy</h3>
-          <p class="service-desc">Data without context is noise. We turn Amazon's complex reporting into clear strategic decisions — monthly business reviews, competitive intelligence, and market expansion planning that actually moves the needle.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Brand & Content</h3>
-          <p class="service-desc">Brand Registry strategy, image optimization, video content direction, and creative asset briefing. Your visual brand on Amazon should reinforce everything you've built off-platform.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-accent"></div>
-          <h3 class="service-title">Marketplace Expansion</h3>
-          <p class="service-desc">When you're ready to grow beyond the US, we handle UK, EU, and Canadian marketplaces with the same care as your core business — not as an afterthought, and only when the opportunity is real.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO WE WORK WITH -->
-  <section id="icp">
-    <div class="icp-inner">
-      <div class="section-eyebrow-light reveal">Who We Work With</div>
-      <h2 class="section-headline-light reveal reveal-delay-1">We're selective. That's the point.</h2>
-      <p class="section-intro-light reveal reveal-delay-2">Our model is built on depth, not volume. We only take on partners where we're genuinely confident we can make a difference — which means we also say no, a lot.</p>
-      <div class="icp-grid">
-        <div class="icp-card reveal reveal-delay-1">
-          <span class="icp-badge">$10M+</span>
-          <h3 class="icp-title">Established Amazon Revenue</h3>
-          <p class="icp-body">Or a clear, funded trajectory toward it. We partner with brands that have proven product-market fit and are ready to scale intelligently — not startups still figuring out the basics.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-2">
-          <span class="icp-badge">CPG</span>
-          <h3 class="icp-title">Beauty, Wellness & Consumer Goods</h3>
-          <p class="icp-body">Our expertise runs deepest in health, wellness, skincare, and CPG — categories where brand integrity and customer trust are the competitive moat, not just nice to have.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-3">
-          <span class="icp-badge">3–5yr</span>
-          <h3 class="icp-title">Long-Term Partnership Mindset</h3>
-          <p class="icp-body">We look for brands that value sustainable growth over short-term spikes. Our best client relationships span years — built on shared accountability, honest communication, and genuine trust.</p>
-        </div>
-        <div class="icp-card reveal reveal-delay-4">
-          <span class="icp-badge">DTC</span>
-          <h3 class="icp-title">Strong Off-Amazon Presence</h3>
-          <p class="icp-body">Brands investing $3M+ in external media. Amazon should amplify what you've already built — brand recognition, loyal customers, and product credibility — not replace it.</p>
-        </div>
-      </div>
-      <div class="icp-note reveal">
-        <p>Not sure if you're the right fit? <a href="mailto:lee@stonecutter.nyc">Reach out anyway</a> — we're always happy to have an honest conversation, even if the answer is no.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section id="work">
-    <div class="work-inner">
-      <div class="work-header">
+<!-- Contact - Warm Cream -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Connect</div>
+    <h2>Let's connect.</h2>
+    <p class="contact-sub">Tell us a little about your brand and we'll reach out.</p>
+    <form class="contact-form">
+      <div class="form-row">
         <div>
-          <div class="section-eyebrow reveal">Selected Work</div>
-          <h2 class="section-headline reveal reveal-delay-1" style="margin-bottom:0;">Real brands. Real results.</h2>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
         </div>
-        <a href="mailto:lee@stonecutter.nyc" class="work-link reveal reveal-delay-2">Start a conversation</a>
-      </div>
-      <div class="case-grid">
-        <div class="case-card reveal reveal-delay-1">
-          <span class="case-category">P&amp;G-Owned Skincare Brand — Premium Skincare</span>
-          <div class="case-metric-big">+143%</div>
-          <span class="case-metric-label">YoY Revenue Growth</span>
-          <p class="case-result">Rebuilt branded search strategy after a 27% search volume decline, recovering visibility and category rank within 60 days through aggressive listing and ad restructuring.</p>
-        </div>
-        <div class="case-card reveal reveal-delay-2">
-          <span class="case-category">DTC Sports Equipment Brand — Sports &amp; Outdoors</span>
-          <div class="case-metric-big">5.1×</div>
-          <span class="case-metric-label">Return on Ad Spend</span>
-          <p class="case-result">Built category authority from scratch, reaching page-one search dominance in 90 days within a highly competitive, established sports market.</p>
-        </div>
-        <div class="case-card reveal reveal-delay-3">
-          <span class="case-category">International Wellness Brand — Health &amp; Wellness</span>
-          <div class="case-metric-big">2.8×</div>
-          <span class="case-metric-label">YoY Growth</span>
-          <p class="case-result">Dominant keyword presence and multi-market expansion strategy driving compounding growth across health and beauty categories in the US and UK.</p>
-        </div>
-        <div class="case-card reveal reveal-delay-4">
-          <span class="case-category">Premium Pet Supplement Brand — Pet Health</span>
-          <div class="case-metric-big">4.2×</div>
-          <span class="case-metric-label">Return on Ad Spend</span>
-          <p class="case-result">Navigated complex SKU subscription transfers and inventory restructuring while maintaining full growth trajectory and protecting a high subscriber retention rate.</p>
+        <div>
+          <label for="company">Brand / Company</label>
+          <input type="text" id="company" placeholder="Your brand">
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="testimonials-inner">
-      <div class="section-eyebrow-light reveal">Client Perspective</div>
-      <h2 class="section-headline-light reveal reveal-delay-1">What our partners say.</h2>
-      <div class="testimonials-grid">
-        <blockquote class="testimonial-card reveal reveal-delay-1">
-          <div>
-            <div class="testimonial-quote-mark">"</div>
-            <p class="testimonial-quote">Stonecutter doesn't feel like a vendor — they feel like part of our internal team. The proactivity and strategic depth is unlike any agency we've worked with.</p>
-          </div>
-          <div class="testimonial-attribution">
-            <p class="testimonial-role">VP of E-Commerce</p>
-            <p class="testimonial-company">P&amp;G-owned skincare brand</p>
-            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
-          </div>
-        </blockquote>
-        <blockquote class="testimonial-card reveal reveal-delay-2">
-          <div>
-            <div class="testimonial-quote-mark">"</div>
-            <p class="testimonial-quote">We went from a messy Amazon presence to category leaders within a year. The combination of ad strategy and catalog work is what makes the real difference.</p>
-          </div>
-          <div class="testimonial-attribution">
-            <p class="testimonial-role">Founder & CEO</p>
-            <p class="testimonial-company">DTC wellness supplement brand</p>
-            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
-          </div>
-        </blockquote>
-        <blockquote class="testimonial-card reveal reveal-delay-3">
-          <div>
-            <div class="testimonial-quote-mark">"</div>
-            <p class="testimonial-quote">Most agencies hand you reports. Stonecutter gives you decisions. That shift in how we think about Amazon data has been genuinely transformative for our business.</p>
-          </div>
-          <div class="testimonial-attribution">
-            <p class="testimonial-role">Head of Digital</p>
-            <p class="testimonial-company">Premium CPG brand</p>
-            <p class="testimonial-note">[Placeholder — awaiting approval]</p>
-          </div>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <section id="values">
-    <div class="values-inner">
-      <h2 class="values-label reveal">Five principles we never compromise on.</h2>
-      <div class="values-row">
-        <div class="value-item reveal reveal-delay-1">Trust</div>
-        <div class="value-item reveal reveal-delay-2">Clarity</div>
-        <div class="value-item reveal reveal-delay-3">Excellence</div>
-        <div class="value-item reveal reveal-delay-4">Partnership</div>
-        <div class="value-item reveal reveal-delay-5">Balance</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-inner">
       <div>
-        <div class="section-eyebrow reveal">About Stonecutter</div>
-        <h2 class="about-headline reveal reveal-delay-1">A different kind of Amazon partner.</h2>
-        <p class="about-body reveal reveal-delay-2">
-          We built Stonecutter for brands that care about <em>how</em> they grow, not just how fast. We're a boutique agency — deliberately small, deeply invested in each partner, and relentlessly focused on sustainable results.
-        </p>
-        <p class="about-callout reveal reveal-delay-3">"Fail together, win together" isn't a tagline. It's how we operate every day.</p>
-        <p class="about-body reveal reveal-delay-3">
-          Most Amazon agencies are built around volume. We're built around quality. Fewer clients, deeper relationships, and a genuine stake in the outcome. We turn away clients that don't fit our profile — even when it's lucrative to say yes.
-        </p>
-        <p class="about-body reveal reveal-delay-4">
-          Led by Lee Assoulin from New York City, Stonecutter is an Amazon Verified Partner, EOS-driven, and proud member of the Million Dollar Sellers community.
-        </p>
-        <div class="about-tags reveal reveal-delay-4">
-          <span class="tag">Amazon Verified Partner</span>
-          <span class="tag">EOS-Driven</span>
-          <span class="tag">MDS Member</span>
-          <span class="tag">New York City</span>
-          <span class="tag">Full-Service</span>
-        </div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@company.com">
       </div>
-      <div class="about-visual reveal reveal-delay-2">
-        <div class="about-visual-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
-        </div>
-        <span class="about-visual-tag">Lee Assoulin, Founder</span>
+      <div>
+        <label for="message">Tell us about your brand</label>
+        <textarea id="message" placeholder="What are you selling on Amazon? What does your current setup look like?"></textarea>
       </div>
-    </div>
-  </section>
+      <button type="submit" class="btn-submit">Send it over</button>
+    </form>
+  </div>
+</section>
 
-  <!-- CTA BAND -->
-  <section id="cta-band">
-    <div class="cta-band-inner">
-      <div class="cta-eyebrow reveal">Free Amazon Audit</div>
-      <h2 class="cta-headline reveal reveal-delay-1">Your Amazon channel is either an asset or a liability.</h2>
-      <p class="cta-sub reveal reveal-delay-2">Most brands don't know which one they have until it's costing them.</p>
-      <p class="cta-details reveal reveal-delay-2">Start with a free audit — no commitment, no pitch deck. Just an honest look at where your brand stands on Amazon and what's realistically possible. We cover ad efficiency, catalog health, competitive positioning, and growth opportunities.</p>
-      <div class="cta-actions reveal reveal-delay-3">
-        <a href="mailto:lee@stonecutter.nyc" class="btn-cta-primary">Schedule a Free Audit</a>
-        <a href="#work" class="cta-alt-link">See our work first</a>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 Stonecutter. All Rights Reserved.</p>
+    <a href="mailto:hello@stonecutter.nyc">hello@stonecutter.nyc</a>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#hero" class="footer-logo">Stonecutter</a>
-          <p class="footer-tagline">Premium Amazon management for brands that mean it. New York City.</p>
-        </div>
-        <div class="footer-right">
-          <div class="footer-nav-col">
-            <h4>Navigation</h4>
-            <ul class="footer-nav-links">
-              <li><a href="#services">Services</a></li>
-              <li><a href="#work">Work</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#values">Values</a></li>
-            </ul>
-          </div>
-          <div class="footer-contact-col">
-            <h4>Get in Touch</h4>
-            <a href="mailto:lee@stonecutter.nyc" class="footer-email">lee@stonecutter.nyc</a>
-            <a href="mailto:lee@stonecutter.nyc" class="btn-footer-audit">Schedule a Free Audit</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Stonecutter NYC. All rights reserved.</p>
-        <p class="footer-location">New York City</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JAVASCRIPT -->
-  <script>
-    // Page loader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('pageLoader').classList.add('hidden');
-      }, 1500);
-    });
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    // Nav scroll state
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 48);
-    }, { passive: true });
-
-    // Mobile hamburger
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-      const spans = hamburger.querySelectorAll('span');
-      if (isOpen) {
-        spans[0].style.cssText = 'transform: translateY(7px) rotate(45deg)';
-        spans[1].style.cssText = 'opacity: 0';
-        spans[2].style.cssText = 'transform: translateY(-7px) rotate(-45deg)';
-      } else {
-        spans.forEach(s => s.style.cssText = '');
-      }
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.querySelectorAll('span').forEach(s => s.style.cssText = '');
-      });
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Count-up animation
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.count);
-          const supEl = el.querySelector('sup');
-          const supText = supEl ? supEl.outerHTML : '';
-          let current = 0;
-          const duration = 1800;
-          const step = target / (duration / 16);
-
-          const counter = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(counter);
-            }
-            el.innerHTML = Math.floor(current) + supText;
-          }, 16);
-
-          countObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
-
-    // Trigger above-fold reveals
-    document.addEventListener('DOMContentLoaded', () => {
-      revealEls.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          setTimeout(() => el.classList.add('visible'), 120);
-        }
-      });
-    });
-  </script>
+<script>
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
 
 </body>
 </html>
