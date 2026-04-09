@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Stonecutter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2D45;
+  --navy-deep: #152238;
+  --cream: #F4EFE6;
+  --cream-warm: #EDE7DB;
+  --green: #355E3B;
+  --green-light: #9A7494;
+  --plum: #855D7F;
+  --plum-light: #9A7494;
+  --slate: #6B7B8D;
+  --slate-light: #8A97A6;
+  --text-dark: #1B2D45;
+  --text-dark-muted: rgba(27,45,69,0.6);
+  --text-light: #F4EFE6;
+  --text-light-muted: rgba(244,239,230,0.65);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* Dot texture overlay */
+.dot-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(27,45,69,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dot-texture-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(244,239,230,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+body {
+  font-family: 'Hanken Grotesk', -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-dark);
+  background: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(244,239,230,0.92);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(27,45,69,0.06);
+  transition: background 0.4s;
+}
+nav.scrolled {
+  background: rgba(244,239,230,0.97);
+  box-shadow: 0 1px 20px rgba(27,45,69,0.06);
+}
+.nav-logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+  color: var(--navy);
+  display: flex; flex-direction: column; align-items: center;
+  line-height: 1;
+  text-decoration: none;
+}
+.nav-logo-nyc {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  margin-top: 0.25rem;
+}
+.nav-links { display: flex; gap: 2.25rem; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--text-dark-muted);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-links a.active { color: var(--navy); font-weight: 500; }
+.nav-cta {
+  background: var(--navy) !important;
+  color: var(--cream) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 5px;
+  transition: opacity 0.3s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── Shared ── */
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: #355E3B;
+  margin-bottom: 1.25rem;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 1rem 2.2rem;
+  border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(27,45,69,0.18);
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--navy);
+  padding: 2.5rem 3rem;
+}
+footer .footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer p, footer a {
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+}
+footer a { text-decoration: none; transition: color 0.3s; }
+footer a:hover { color: var(--cream); }
+.footer-spapi {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.72rem;
+  color: rgba(244,239,230,0.35);
+  line-height: 1.7;
+  border-top: 1px solid rgba(244,239,230,0.08);
+  padding-top: 1.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .svc-hero { padding: 80px 24px 60px !important; }
+  .svc-body { padding: 60px 24px !important; }
+  .svc-grid { grid-template-columns: 1fr !important; }
+  footer { padding: 2rem 1.5rem; }
+  footer .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">STONECUTTER <span class="nav-logo-nyc">NYC</span></a>
+  <div class="nav-links">
+    <a href="/#approach">Approach</a>
+    <a href="/src/services.html" class="active">Services</a>
+    <a href="/#about">About</a>
+    <a href="/#contact" class="nav-cta">Let's Connect</a>
+  </div>
+</nav>
+
+<!-- Hero - Navy -->
+<section class="svc-hero" style="background:#1B2D45; padding: 140px 60px 80px; text-align:center; position:relative;">
+  <div class="dot-texture-light"></div>
+  <div class="section-label" style="position:relative;z-index:1;color:rgba(244,239,230,0.5);">What We Do</div>
+  <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4rem); color:#F4EFE6; font-weight:500; margin-bottom:1.5rem; position:relative;z-index:1;">Full-service Amazon management.</h1>
+  <p style="font-family:'Hanken Grotesk',sans-serif; font-size:1.1rem; color:rgba(244,239,230,0.65); max-width:580px; margin:0 auto; line-height:1.7; position:relative;z-index:1;">We handle every aspect of your Amazon presence — from catalog and content to advertising, analytics, and operations.</p>
+</section>
+
+<!-- Services Grid - Cream -->
+<section class="svc-body" style="background:#F4EFE6; padding:100px 60px; position:relative;">
+  <div class="dot-texture"></div>
+  <div style="max-width:1000px; margin:0 auto; position:relative; z-index:1;">
+
+    <div class="svc-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-bottom:60px;">
+
+      <!-- Card 1: Listing Optimization -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Listing Optimization</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">Keyword research, competitive analysis, and copy that converts. We manage titles, bullets, descriptions, and A+ content across your full catalog.</p>
+      </div>
+
+      <!-- Card 2: Advertising Management -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Advertising Management</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">Sponsored Products, Sponsored Brands, and DSP. Full-funnel campaign strategy, daily bid management, and performance reporting.</p>
+      </div>
+
+      <!-- Card 3: Inventory Planning -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Inventory Planning</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">Replenishment recommendations, FBA shipment creation, and stockout prevention. We keep your products in stock and your IPI score healthy.</p>
+      </div>
+
+      <!-- Card 4: Reporting & Analytics -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Reporting &amp; Analytics</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">Custom dashboards and weekly performance reviews. We track what matters — revenue, margin, TACOS, and market share — and surface insights that drive decisions.</p>
+      </div>
+
+      <!-- Card 5: Brand Analytics -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Brand Analytics</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">We use Amazon Brand Analytics data exclusively to identify keyword and conversion opportunities for each individual client account.</p>
+      </div>
+
+      <!-- Card 6: Storefront Management -->
+      <div style="padding:28px; border:1px solid rgba(27,45,69,0.1); border-radius:8px; background:rgba(255,255,255,0.5);">
+        <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:#1B2D45; margin-bottom:10px;">Storefront Management</h4>
+        <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.875rem; color:rgba(27,45,69,0.6); line-height:1.65; margin:0;">Brand Store design, content updates, and promotional integration. Your storefront is your brand's home on Amazon — we keep it sharp.</p>
+      </div>
+
+    </div>
+
+    <!-- Pricing note + CTA -->
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(27,45,69,0.1); max-width:600px; margin:0 auto;">
+      <p style="font-family:'Hanken Grotesk',sans-serif; font-size:0.95rem; color:rgba(27,45,69,0.6); margin-bottom:24px;">Our management fees are custom-quoted based on brand size, marketplace footprint, and services required.</p>
+      <a href="/#contact" class="btn-primary">Request a Quote</a>
+    </div>
+
+    <!-- App name note -->
+    <p style="text-align:center; margin-top:40px; font-family:'Hanken Grotesk',sans-serif; font-size:0.75rem; color:rgba(27,45,69,0.35);">Powered by <strong>Stonecutter Analytics</strong> — our Amazon SP-API application.</p>
+
+  </div>
+</section>
+
+<footer>
+  <p class="footer-spapi">Stonecutter accesses the Amazon Selling Partner API (SP-API) on behalf of authorized selling partner clients. Data accessed through the SP-API is used solely to provide services to the specific authorized selling partner who granted access. We do not aggregate data across client accounts, sell or share SP-API data with third parties, or use it for any purpose outside of directly serving the authorizing selling partner. Brand Analytics data is used exclusively to identify keyword opportunities and optimize listings and advertising strategy for each individual client account.</p>
+  <div class="footer-inner">
+    <p>© 2026 Stonecutter NYC. All rights reserved. &nbsp;·&nbsp; <a href="/src/privacy-policy.html" style="color:rgba(244,239,230,0.5);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a> &nbsp;·&nbsp; <a href="/src/services.html" style="color:rgba(244,239,230,0.5);text-decoration:underline;text-underline-offset:3px;">Services</a></p>
+    <a href="mailto:hello@stonecutter.nyc">hello@stonecutter.nyc</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>
