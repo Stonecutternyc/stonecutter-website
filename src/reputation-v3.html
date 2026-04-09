@@ -489,22 +489,35 @@ footer a:hover { color: var(--cream); }
   background: var(--cream);
   border-top: 1px solid rgba(27,45,69,0.1);
   border-bottom: 1px solid rgba(27,45,69,0.1);
-  padding: 0.9rem 0;
+  padding: 20px 0;
   overflow: hidden;
   white-space: nowrap;
 }
 .marquee-track {
   display: inline-flex;
-  animation: marquee-scroll 28s linear infinite;
+  align-items: center;
+  animation: marquee-scroll 40s linear infinite;
 }
-.marquee-track span {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--slate);
-  padding: 0 1.5rem;
+.marquee-track .logo-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 60px;
   flex-shrink: 0;
+}
+.marquee-track .logo-item img,
+.marquee-track .logo-item svg {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  display: block;
+}
+.marquee-track .logo-item:hover img,
+.marquee-track .logo-item:hover svg {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 @keyframes marquee-scroll {
   0%   { transform: translateX(0); }
@@ -667,27 +680,39 @@ footer a:hover { color: var(--cream); }
   </a>
 </section>
 
-<!-- Marquee - Categories -->
+<!-- Marquee - Client Logos -->
 <div class="marquee-section">
   <div class="marquee-track" aria-hidden="true">
-    <span>Beauty</span><span>·</span>
-    <span>Supplements</span><span>·</span>
-    <span>Baby &amp; Kids</span><span>·</span>
-    <span>Pet</span><span>·</span>
-    <span>Food &amp; Beverage</span><span>·</span>
-    <span>Personal Care</span><span>·</span>
-    <span>Health &amp; Wellness</span><span>·</span>
-    <span>Home</span><span>·</span>
-    <span>Sports &amp; Outdoors</span><span>·</span>
-    <span>Beauty</span><span>·</span>
-    <span>Supplements</span><span>·</span>
-    <span>Baby &amp; Kids</span><span>·</span>
-    <span>Pet</span><span>·</span>
-    <span>Food &amp; Beverage</span><span>·</span>
-    <span>Personal Care</span><span>·</span>
-    <span>Health &amp; Wellness</span><span>·</span>
-    <span>Home</span><span>·</span>
-    <span>Sports &amp; Outdoors</span><span>·</span>
+    <!-- Set 1 -->
+    <span class="logo-item"><img src="logos/hiya.svg" alt="Hiya Health"></span>
+    <span class="logo-item"><img src="logos/firstaidbeauty.png" alt="First Aid Beauty"></span>
+    <span class="logo-item"><img src="logos/eachandevery.svg" alt="Each & Every"></span>
+    <span class="logo-item"><img src="logos/pethonesty.png" alt="Pet Honesty"></span>
+    <span class="logo-item"><img src="logos/tumblerware.png" alt="Tumblerware"></span>
+    <span class="logo-item"><img src="logos/ogee.png" alt="Ogee"></span>
+    <span class="logo-item"><img src="logos/khloudfoods.svg" alt="Khloud Foods"></span>
+    <span class="logo-item"><img src="logos/needed.svg" alt="Needed"></span>
+    <span class="logo-item"><img src="logos/jshealth.svg" alt="JS Health Vitamins"></span>
+    <span class="logo-item"><img src="logos/snap.svg" alt="Snap Supplements"></span>
+    <span class="logo-item"><img src="logos/cheers.svg" alt="Cheers Health"></span>
+    <span class="logo-item"><img src="logos/maelys.svg" alt="Maelys Cosmetics"></span>
+    <span class="logo-item"><img src="logos/plantpeople.svg" alt="Plant People"></span>
+    <span class="logo-item"><img src="logos/goodr.png" alt="Goodr"></span>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <span class="logo-item"><img src="logos/hiya.svg" alt="Hiya Health"></span>
+    <span class="logo-item"><img src="logos/firstaidbeauty.png" alt="First Aid Beauty"></span>
+    <span class="logo-item"><img src="logos/eachandevery.svg" alt="Each & Every"></span>
+    <span class="logo-item"><img src="logos/pethonesty.png" alt="Pet Honesty"></span>
+    <span class="logo-item"><img src="logos/tumblerware.png" alt="Tumblerware"></span>
+    <span class="logo-item"><img src="logos/ogee.png" alt="Ogee"></span>
+    <span class="logo-item"><img src="logos/khloudfoods.svg" alt="Khloud Foods"></span>
+    <span class="logo-item"><img src="logos/needed.svg" alt="Needed"></span>
+    <span class="logo-item"><img src="logos/jshealth.svg" alt="JS Health Vitamins"></span>
+    <span class="logo-item"><img src="logos/snap.svg" alt="Snap Supplements"></span>
+    <span class="logo-item"><img src="logos/cheers.svg" alt="Cheers Health"></span>
+    <span class="logo-item"><img src="logos/maelys.svg" alt="Maelys Cosmetics"></span>
+    <span class="logo-item"><img src="logos/plantpeople.svg" alt="Plant People"></span>
+    <span class="logo-item"><img src="logos/goodr.png" alt="Goodr"></span>
   </div>
 </div>
 
