@@ -595,51 +595,63 @@ footer a:hover { color: var(--cream); }
   background: rgba(244,239,230,0.05);
 }
 
-/* ── Timeline ── */
-.timeline {
-  position: relative;
-  padding-left: 1.75rem;
+/* ── Testimonial Cards ── */
+.testimonial-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.45rem;
-  bottom: 0;
-  width: 2px;
-  background: var(--plum);
-  opacity: 0.55;
+.testimonial-card {
+  background: #EDE7DB;
+  border: 1px solid rgba(27,45,69,0.1);
+  border-radius: 8px;
+  padding: 24px;
 }
-.timeline-item {
-  position: relative;
-  margin-bottom: 2.5rem;
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
 }
-.timeline-item:last-child { margin-bottom: 0; }
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -1.84rem;
-  top: 0.45rem;
-  width: 9px;
-  height: 9px;
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--plum);
-  border: 2px solid var(--cream);
-  box-shadow: 0 0 0 1px var(--plum);
-}
-.timeline-year {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-.timeline-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.testimonial-name {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.testimonial-title {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.8rem;
   color: var(--text-dark-muted);
-  line-height: 1.5;
+  line-height: 1.3;
+}
+.testimonial-quote {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--navy);
+  margin: 0;
 }
 
 /* ── Responsive ── */
@@ -825,26 +837,36 @@ footer a:hover { color: var(--cream); }
         <cite>Warren Buffett</cite>
       </div>
     </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">2012</div>
-        <div class="timeline-label">Founded</div>
+    <div class="testimonial-stack">
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#355E3B;">JR</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Jamie R.</span>
+            <span class="testimonial-title">CEO, Personal Care Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"We'd worked with bigger agencies before. None of them actually knew our business the way Stonecutter does. They treat our P&L like it's their own."</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2015</div>
-        <div class="timeline-label">First $10M brand</div>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#1B2D45;">MK</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Marcus K.</span>
+            <span class="testimonial-title">Founder, Supplement Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Every client they've ever had came from a referral. I asked around before we signed. Everyone said the same thing — just trust them."</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2018</div>
-        <div class="timeline-label">100% referral track record established</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2022</div>
-        <div class="timeline-label">$100M+ in managed revenue</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-label">$220M+ across 14 brands</div>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#855D7F;">SL</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Sarah L.</span>
+            <span class="testimonial-title">VP of eCommerce, Beauty Brand</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Our Amazon revenue doubled in 14 months. That's not a coincidence — that's what happens when your agency actually understands the channel."</p>
       </div>
     </div>
   </div>
