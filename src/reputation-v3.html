@@ -847,13 +847,13 @@ footer a:hover { color: var(--cream); }
 .testimonial-stack {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 .testimonial-card {
   background: #EDE7DB;
   border: 1px solid rgba(27,45,69,0.1);
   border-radius: 8px;
-  padding: 24px;
+  padding: 16px;
 }
 .testimonial-header {
   display: flex;
@@ -882,7 +882,7 @@ footer a:hover { color: var(--cream); }
 }
 .testimonial-name {
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--navy);
   line-height: 1.2;
@@ -896,7 +896,7 @@ footer a:hover { color: var(--cream); }
 .testimonial-quote {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 0.875rem;
   line-height: 1.65;
   color: var(--navy);
   margin: 0;
@@ -1156,7 +1156,7 @@ footer a:hover { color: var(--cream); }
             <!-- Row 1 -->
             <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:rgba(255,255,255,0.02);align-items:center;">
               <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B0CBL7</span>
-              <span style="color:rgba(255,255,255,0.85);">Radiance Pads</span>
+              <span style="color:rgba(255,255,255,0.85);">Brightening Pads</span>
               <span style="color:rgba(255,255,255,0.7);text-align:right;">$28,400</span>
               <span style="color:#4CAF50;text-align:center;">42d</span>
               <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(40,167,69,0.2);color:#4CAF50;border:1px solid rgba(40,167,69,0.3);">Healthy</span></span>
@@ -1164,7 +1164,7 @@ footer a:hover { color: var(--cream); }
             <!-- Row 2 -->
             <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:transparent;align-items:center;">
               <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B07XG6</span>
-              <span style="color:rgba(255,255,255,0.85);">KP Eraser Scrub</span>
+              <span style="color:rgba(255,255,255,0.85);">Renewal Body Scrub</span>
               <span style="color:rgba(255,255,255,0.7);text-align:right;">$19,200</span>
               <span style="color:#f0b429;text-align:center;">18d</span>
               <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(240,180,41,0.2);color:#f0b429;border:1px solid rgba(240,180,41,0.3);">Watch</span></span>
@@ -1172,7 +1172,7 @@ footer a:hover { color: var(--cream); }
             <!-- Row 3 -->
             <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:rgba(255,255,255,0.02);align-items:center;">
               <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B0BTJ6</span>
-              <span style="color:rgba(255,255,255,0.85);">Ingrown Hair Pads</span>
+              <span style="color:rgba(255,255,255,0.85);">Smoothing Treatment Pads</span>
               <span style="color:rgba(255,255,255,0.7);text-align:right;">$11,800</span>
               <span style="color:#FF6B6B;text-align:center;">9d</span>
               <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(229,62,62,0.2);color:#FF6B6B;border:1px solid rgba(229,62,62,0.3);">Critical</span></span>
@@ -1180,7 +1180,7 @@ footer a:hover { color: var(--cream); }
             <!-- Row 4 -->
             <div style="display:grid;grid-template-columns:60px 1fr 70px 36px 64px;gap:0;font-size:11px;padding:6px 6px;background:transparent;align-items:center;">
               <span style="color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;">B008RJ</span>
-              <span style="color:rgba(255,255,255,0.85);">Ultra Repair Cream</span>
+              <span style="color:rgba(255,255,255,0.85);">Barrier Repair Moisturizer</span>
               <span style="color:rgba(255,255,255,0.7);text-align:right;">$31,500</span>
               <span style="color:#4CAF50;text-align:center;">38d</span>
               <span style="text-align:center;"><span style="font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500;background:rgba(40,167,69,0.2);color:#4CAF50;border:1px solid rgba(40,167,69,0.3);">Healthy</span></span>
@@ -1213,6 +1213,19 @@ footer a:hover { color: var(--cream); }
               <span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span>
             </div>
           </div>
+          <!-- Ad Performance Line Graph -->
+          <div style="margin-top:14px;margin-bottom:6px;font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);">AD PERFORMANCE — LAST 30 DAYS</div>
+          <svg width="100%" height="55" viewBox="0 0 300 55" preserveAspectRatio="none" style="display:block;">
+            <line x1="0" y1="28" x2="300" y2="28" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <polyline fill="none" stroke="#6B9BC3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0,45 37,40 75,42 112,30 150,35 187,25 225,28 262,20 300,15"/>
+            <polyline fill="none" stroke="#355E3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0,38 37,32 75,35 112,22 150,28 187,18 225,22 262,14 300,10"/>
+            <circle cx="300" cy="15" r="2" fill="#6B9BC3"/>
+            <circle cx="300" cy="10" r="2" fill="#355E3B"/>
+          </svg>
+          <div style="display:inline-flex;gap:12px;margin-top:4px;">
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.4);"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#6B9BC3"/></svg>Ad Spend</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,0.4);"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#355E3B"/></svg>ROAS</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1233,7 +1246,7 @@ footer a:hover { color: var(--cream); }
     <div class="testimonial-stack">
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:#355E3B;">JR</div>
+          <img src="https://ui-avatars.com/api/?name=Jamie+R&background=355E3B&color=fff&size=40&rounded=true&bold=true" alt="Jamie R." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
           <div class="testimonial-meta">
             <span class="testimonial-name">Jamie R.</span>
             <span class="testimonial-title">CEO, Personal Care Brand</span>
@@ -1243,7 +1256,7 @@ footer a:hover { color: var(--cream); }
       </div>
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:#1B2D45;">MK</div>
+          <img src="https://ui-avatars.com/api/?name=Marcus+K&background=1B2D45&color=fff&size=40&rounded=true&bold=true" alt="Marcus K." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
           <div class="testimonial-meta">
             <span class="testimonial-name">Marcus K.</span>
             <span class="testimonial-title">Founder, Supplement Brand</span>
@@ -1253,7 +1266,7 @@ footer a:hover { color: var(--cream); }
       </div>
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:#855D7F;">SL</div>
+          <img src="https://ui-avatars.com/api/?name=Sarah+L&background=855D7F&color=fff&size=40&rounded=true&bold=true" alt="Sarah L." style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
           <div class="testimonial-meta">
             <span class="testimonial-name">Sarah L.</span>
             <span class="testimonial-title">VP of eCommerce, Beauty Brand</span>
