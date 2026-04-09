@@ -555,9 +555,6 @@
 
     /* Monogram */
     .monogram {
-      width: 52px;
-      height: 52px;
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -565,27 +562,15 @@
 
     .monogram-inner {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 400;
-      letter-spacing: -0.05em;
-      position: relative;
-      z-index: 1;
+      letter-spacing: 0.05em;
     }
 
-    .monogram-slash {
-      position: absolute;
-      width: 1.5px;
-      height: 75%;
-      transform: rotate(20deg);
-      top: 12%;
-      left: 50%;
-      margin-left: -1px;
-    }
+    .monogram-slash { display: none; }
 
     .monogram.dark .monogram-inner { color: var(--navy); }
-    .monogram.dark .monogram-slash { background: var(--navy); }
     .monogram.light .monogram-inner { color: var(--cream); }
-    .monogram.light .monogram-slash { background: var(--cream); }
 
     .logo-donts {
       list-style: none;
