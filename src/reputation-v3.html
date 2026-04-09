@@ -921,6 +921,83 @@ footer a:hover { color: var(--cream); }
   .contact-inner { padding: 0 1.5rem; }
   .form-row { flex-direction: column; }
   footer .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .services-grid { grid-template-columns: 1fr; }
+  .services { padding: 60px 24px; }
+}
+
+.services {
+  background: var(--cream);
+  padding: 100px 60px;
+  position: relative;
+  text-align: center;
+}
+.services-intro {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-dark-muted);
+  max-width: 600px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+.app-name-note {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-dark-muted);
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  text-align: left;
+}
+.service-item {
+  padding: 28px;
+  border: 1px solid rgba(27,45,69,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.5);
+}
+.service-item h4 {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+.service-item p {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-dark-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.services-pricing {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 40px;
+  border-top: 1px solid rgba(27,45,69,0.1);
+  text-align: center;
+}
+.services-pricing p {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark-muted);
+  margin-bottom: 20px;
+}
+.spapi-notice {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(244,239,230,0.4);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 24px;
+  text-align: center;
+  padding: 24px 20px 0;
+  border-top: 1px solid rgba(244,239,230,0.08);
 }
 </style>
 </head>
@@ -1051,6 +1128,44 @@ footer a:hover { color: var(--cream); }
         <div class="result-desc">Scaled a challenger brand into a category leader, reaching $40M in annual Amazon revenue.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="dot-texture"></div>
+  <div class="section-label">What We Do</div>
+  <h2>Full-service Amazon management.</h2>
+  <p class="services-intro">We handle every aspect of your Amazon presence — from catalog and content to advertising and analytics — so you can focus on building your brand.</p>
+  <p class="app-name-note">Powered by <strong>Stonecutter Analytics</strong> — our Amazon SP-API application.</p>
+  <div class="services-grid">
+    <div class="service-item">
+      <h4>Listing Optimization</h4>
+      <p>Keyword research, competitive analysis, and copy that converts. We manage titles, bullets, descriptions, and A+ content across your full catalog.</p>
+    </div>
+    <div class="service-item">
+      <h4>Advertising Management</h4>
+      <p>Sponsored Products, Sponsored Brands, and DSP. Full-funnel campaign strategy, daily bid management, and performance reporting.</p>
+    </div>
+    <div class="service-item">
+      <h4>Inventory Planning</h4>
+      <p>Replenishment recommendations, FBA shipment creation, and stockout prevention. We keep your products in stock and your IPI score healthy.</p>
+    </div>
+    <div class="service-item">
+      <h4>Reporting &amp; Analytics</h4>
+      <p>Custom dashboards and weekly performance reviews. We track what matters — revenue, margin, TACOS, and market share — and surface insights that drive decisions.</p>
+    </div>
+    <div class="service-item">
+      <h4>Brand Analytics</h4>
+      <p>We use Amazon Brand Analytics data exclusively to identify keyword and conversion opportunities for each individual client account.</p>
+    </div>
+    <div class="service-item">
+      <h4>Storefront Management</h4>
+      <p>Brand Store design, content updates, and promotional integration. Your storefront is your brand's home on Amazon — we keep it sharp.</p>
+    </div>
+  </div>
+  <div class="services-pricing">
+    <p>Our management fees are custom-quoted based on brand size, marketplace footprint, and services required.</p>
+    <a href="#contact" class="btn-primary">Request a Quote</a>
   </div>
 </section>
 
@@ -1318,7 +1433,10 @@ footer a:hover { color: var(--cream); }
 
 <footer>
   <div class="footer-inner">
-    <p>© 2026 Stonecutter. All Rights Reserved.</p>
+    <div class="spapi-notice">
+      Stonecutter accesses the Amazon Selling Partner API (SP-API) on behalf of authorized selling partner clients. Data accessed through the SP-API is used solely to provide services to the specific authorized selling partner who granted access. We do not aggregate data across client accounts, sell or share SP-API data with third parties, or use it for any purpose outside of directly serving the authorizing selling partner. Brand Analytics data is used exclusively to identify keyword opportunities and optimize listings and advertising strategy for each individual client account.
+    </div>
+    <p class="footer-copy">&copy; 2026 Stonecutter NYC. All rights reserved. &nbsp;&middot;&nbsp; <a href="/privacy-policy" style="color:rgba(244,239,230,0.5);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a></p>
     <a href="mailto:hello@stonecutter.nyc">hello@stonecutter.nyc</a>
   </div>
 </footer>
