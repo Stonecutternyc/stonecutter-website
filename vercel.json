@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/services", "dest": "/services.html" },
+    { "src": "/careers", "dest": "/careers.html" },
+    { "src": "/privacy-policy", "dest": "/src/privacy-policy.html" }
+  ]
+}
