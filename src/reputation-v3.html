@@ -484,6 +484,145 @@ footer p, footer a {
 footer a { text-decoration: none; transition: color 0.3s; }
 footer a:hover { color: var(--cream); }
 
+/* ── Marquee ── */
+.marquee-section {
+  background: var(--cream);
+  border-top: 1px solid rgba(27,45,69,0.1);
+  border-bottom: 1px solid rgba(27,45,69,0.1);
+  padding: 0.9rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee-track span {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── AI Section ── */
+.ai-section {
+  background: var(--navy);
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.ai-section .dot-texture-light {
+  background-image: radial-gradient(circle, rgba(244,239,230,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.ai-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.ai-section .section-label {
+  color: rgba(244,239,230,0.45);
+  margin-bottom: 1.25rem;
+}
+.ai-section h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+  max-width: 700px;
+  margin-bottom: 1rem;
+}
+.ai-subhead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgba(244,239,230,0.65);
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+  line-height: 1.55;
+}
+.ai-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(244,239,230,0.7);
+  max-width: 680px;
+  margin-bottom: 3rem;
+}
+.ai-body p { margin-bottom: 1.25rem; }
+.ai-body p:last-child { margin-bottom: 0; }
+.ai-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.ai-badge {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(244,239,230,0.75);
+  border: 1px solid rgba(244,239,230,0.2);
+  border-radius: 100px;
+  padding: 0.5rem 1.25rem;
+  background: rgba(244,239,230,0.05);
+}
+
+/* ── Timeline ── */
+.timeline {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--plum);
+  opacity: 0.55;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.84rem;
+  top: 0.45rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--plum);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 1px var(--plum);
+}
+.timeline-year {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.timeline-label {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark-muted);
+  line-height: 1.5;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   nav { padding: 1rem 1.5rem; }
@@ -496,6 +635,8 @@ footer a:hover { color: var(--cream); }
   .approach-grid, .results-grid { grid-template-columns: 1fr; }
   .about { padding: 5rem 1.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .ai-section { padding: 5rem 1.5rem; }
+  .ai-badges { flex-direction: column; }
   .contact-inner { padding: 0 1.5rem; }
   .form-row { flex-direction: column; }
   footer .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
@@ -518,13 +659,37 @@ footer a:hover { color: var(--cream); }
 <section class="hero">
   <div class="dot-texture"></div>
   <div class="hero-label">Amazon Growth Partners</div>
-  <h1>100% of our clients have come from <em>referral.</em></h1>
+  <h1><em>Every</em> client we've ever had came from referral.</h1>
   <p class="hero-sub">We're exceptional Amazon operators - and it shows. Every brand we work with found us because someone they trust told them to call us.</p>
   <a href="#contact" class="btn-primary">
     Let's Connect
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
 </section>
+
+<!-- Marquee - Categories -->
+<div class="marquee-section">
+  <div class="marquee-track" aria-hidden="true">
+    <span>Beauty</span><span>·</span>
+    <span>Supplements</span><span>·</span>
+    <span>Baby &amp; Kids</span><span>·</span>
+    <span>Pet</span><span>·</span>
+    <span>Food &amp; Beverage</span><span>·</span>
+    <span>Personal Care</span><span>·</span>
+    <span>Health &amp; Wellness</span><span>·</span>
+    <span>Home</span><span>·</span>
+    <span>Sports &amp; Outdoors</span><span>·</span>
+    <span>Beauty</span><span>·</span>
+    <span>Supplements</span><span>·</span>
+    <span>Baby &amp; Kids</span><span>·</span>
+    <span>Pet</span><span>·</span>
+    <span>Food &amp; Beverage</span><span>·</span>
+    <span>Personal Care</span><span>·</span>
+    <span>Health &amp; Wellness</span><span>·</span>
+    <span>Home</span><span>·</span>
+    <span>Sports &amp; Outdoors</span><span>·</span>
+  </div>
+</div>
 
 <!-- Stats - Navy -->
 <section class="stats">
@@ -596,6 +761,25 @@ footer a:hover { color: var(--cream); }
   </div>
 </section>
 
+<!-- AI Section - Navy -->
+<section class="ai-section">
+  <div class="dot-texture-light"></div>
+  <div class="ai-inner">
+    <div class="section-label">Intelligence</div>
+    <h2>We see things other agencies miss.</h2>
+    <p class="ai-subhead">Twelve years of data. Now processed with intelligence that didn't exist before.</p>
+    <div class="ai-body">
+      <p>We've spent over a decade building the operational systems, client relationships, and Amazon expertise that only comes from being in the work — not observing it. Now we've layered in AI tools built specifically around our methodology: to surface patterns faster, catch margin leaks earlier, and make recommendations that used to take a week in under an hour.</p>
+      <p>This isn't about replacing judgment. It's about sharpening it. Our team still makes every call. The intelligence just means we're working from a clearer picture.</p>
+    </div>
+    <div class="ai-badges">
+      <div class="ai-badge">Data across 14 brands</div>
+      <div class="ai-badge">12+ years of operational history</div>
+      <div class="ai-badge">AI-enhanced, human-led</div>
+    </div>
+  </div>
+</section>
+
 <!-- About - Cream -->
 <section class="about" id="about">
   <div class="dot-texture"></div>
@@ -610,26 +794,26 @@ footer a:hover { color: var(--cream); }
         <cite>Warren Buffett</cite>
       </div>
     </div>
-    <div class="about-values">
-      <div class="about-value">
-        <div class="about-value-line"></div>
-        <h4>Selective, not exclusive</h4>
-        <p>We take on brands where we can genuinely move the needle. Capacity is limited by choice.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-label">Founded</div>
       </div>
-      <div class="about-value">
-        <div class="about-value-line"></div>
-        <h4>Skin in the game</h4>
-        <p>Our success is tied to yours. We structure partnerships so incentives are aligned from day one.</p>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-label">First $10M brand</div>
       </div>
-      <div class="about-value">
-        <div class="about-value-line"></div>
-        <h4>No black boxes</h4>
-        <p>Full transparency on strategy, spend, and performance. You'll always know exactly what we're doing and why.</p>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-label">100% referral track record established</div>
       </div>
-      <div class="about-value">
-        <div class="about-value-line"></div>
-        <h4>Currently taking on new brands</h4>
-        <p>We're selectively expanding and looking for the right partners to grow with.</p>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-label">$100M+ in managed revenue</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-label">$220M+ across 14 brands</div>
       </div>
     </div>
   </div>
