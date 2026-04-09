@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- Navy background with slight rounding -->
-  <rect width="32" height="32" rx="5" fill="#1B2D45"/>
-  <!-- "S" centered, cream, Georgia serif -->
-  <text x="16" y="23" font-family="Georgia, serif" font-size="22" font-weight="400" fill="#F4EFE6" text-anchor="middle">S</text>
+  <!-- Cream background -->
+  <rect width="32" height="32" rx="5" fill="#F4EFE6"/>
+  <!-- Diagonal slash: top-right to bottom-left (forward slash direction) -->
+  <line x1="21" y1="4" x2="11" y2="28" stroke="#1B2D45" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- S: upper left -->
+  <text x="9" y="14" font-family="Georgia, serif" font-size="11" font-weight="400" fill="#1B2D45" text-anchor="middle">S</text>
+  <!-- C: lower right -->
+  <text x="23" y="28" font-family="Georgia, serif" font-size="11" font-weight="400" fill="#1B2D45" text-anchor="middle">C</text>
 </svg>
