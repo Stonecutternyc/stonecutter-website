@@ -1,776 +1,2358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stonecutter NYC - Brand Guidelines</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy: #1B2D45;
-  --cream: #F4EFE6;
-  --cream-warm: #EDE7DB;
-  --green: #355E3B;
-  --plum: #855D7F;
-  --slate: #6B7B8D;
-  --text-muted: rgba(27,45,69,0.55);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Guidelines — Stonecutter NYC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  font-family: 'Hanken Grotesk', -apple-system, sans-serif;
-  background: #fff;
-  color: var(--navy);
-  -webkit-font-smoothing: antialiased;
-}
+    :root {
+      --navy:        #1B2D45;
+      --navy-deep:   #152238;
+      --cream:       #F4EFE6;
+      --cream-warm:  #EDE7DB;
+      --green:       #355E3B;
+      --plum:        #855D7F;
+      --slate:       #6B7B8D;
 
-/* Layout */
-.page { max-width: 1000px; margin: 0 auto; padding: 4rem 3rem; }
-.page-header {
-  display: flex; justify-content: space-between; align-items: baseline;
-  border-bottom: 1px solid rgba(27,45,69,0.1);
-  padding-bottom: 1.5rem;
-  margin-bottom: 4rem;
-}
-.page-header h1 {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-}
-.page-header span {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
+      --sidebar-w:   260px;
+      --content-max: 800px;
+    }
 
-section {
-  margin-bottom: 5rem;
-}
-section > .section-header {
-  display: flex; align-items: baseline; gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(27,45,69,0.08);
-  padding-bottom: 1rem;
-}
-.section-num {
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  min-width: 1.5rem;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-}
-.section-subtitle {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  margin-left: auto;
-}
-.note {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 460px;
-}
-.note strong { color: var(--navy); font-weight: 500; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* ── 1. Logo ── */
-.logo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-.logo-box {
-  border-radius: 12px;
-  padding: 3.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
-.logo-box-light { background: var(--cream); }
-.logo-box-dark { background: var(--navy); }
-.logo-box-green { background: var(--green); }
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(27,45,69,0.85);
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-/* Wordmark */
-.wordmark {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.8rem;
-  letter-spacing: 0.2em;
-  line-height: 1;
-  text-align: center;
-}
-.wordmark-nyc {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-align: center;
-  margin-top: 0.2rem;
-}
-.wordmark-dark { color: var(--navy); }
-.wordmark-light { color: var(--cream); }
+    /* =============================================
+       TOP HEADER
+    ============================================= */
+    .doc-header {
+      background: var(--navy);
+      color: var(--cream);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Monogram */
-.monogram-svg { width: 80px; height: 80px; }
+    .doc-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(244,239,230,0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
 
-.logo-caption {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-}
-.logo-box-dark .logo-caption { color: rgba(244,239,230,0.45); }
-.logo-box-green .logo-caption { color: rgba(244,239,230,0.45); }
+    .doc-header-left {
+      position: relative;
+      z-index: 1;
+    }
 
-.logo-rules {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.logo-rule {
-  padding: 1.5rem 0;
-}
-.logo-rule h4 {
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-.logo-rule p {
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--text-muted);
-}
+    .doc-header-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
 
-/* ── 2. Color ── */
-.color-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-.color-card {
-  border-radius: 10px;
-  overflow: hidden;
-}
-.color-swatch {
-  height: 100px;
-}
-.color-info {
-  padding: 1rem 1.25rem;
-  background: #fff;
-  border: 1px solid rgba(27,45,69,0.08);
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-}
-.color-name {
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-.color-hex {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-family: 'Hanken Grotesk', monospace;
-}
-.color-role {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-  line-height: 1.5;
-}
+    .doc-header-brand span {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      display: block;
+      margin-top: 0.15rem;
+      color: rgba(244,239,230,0.6);
+      text-transform: uppercase;
+    }
 
-.color-accents {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
+    .doc-header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-top: 1.2rem;
+    }
 
-/* ── 3. Typography ── */
-.type-specimen {
-  margin-bottom: 3rem;
-}
-.type-specimen-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 1.5rem;
-}
-.type-font-name {
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-.type-font-meta {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-.type-display {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 4.5rem;
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  color: var(--navy);
-}
-.type-display-italic {
-  font-style: italic;
-}
-.type-body-display {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-  color: var(--navy);
-}
-.type-body-display-500 {
-  font-weight: 500;
-}
-.type-body-display-600 {
-  font-weight: 600;
-}
-.type-alphabet {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-.type-alphabet-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-}
-.type-alphabet-sans {
-  font-family: 'Hanken Grotesk', sans-serif;
-}
+    .doc-header-meta {
+      position: relative;
+      z-index: 1;
+      text-align: right;
+    }
 
-.type-usage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(27,45,69,0.08);
-}
-.type-usage-item h4 {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-}
-.type-example-headline {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.8rem;
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-.type-example-subhead {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.3;
-}
-.type-example-label {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  color: var(--green);
-}
-.type-example-body {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-}
-.type-example-button {
-  display: inline-block;
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  background: var(--navy);
-  color: var(--cream);
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  margin-top: 0.5rem;
-}
+    .doc-header-meta p {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(244,239,230,0.55);
+      text-transform: uppercase;
+      line-height: 2;
+    }
 
-/* ── 4. Voice ── */
-.voice-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.voice-card {
-  background: var(--cream);
-  border-radius: 10px;
-  padding: 2rem;
-}
-.voice-card h4 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 0.75rem;
-}
-.voice-card p {
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-}
-.do-dont {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.do-col h4, .dont-col h4 {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-}
-.do-col h4 {
-  color: var(--green);
-  border-bottom: 2px solid var(--green);
-}
-.dont-col h4 {
-  color: #B54A4A;
-  border-bottom: 2px solid #B54A4A;
-}
-.do-col li, .dont-col li {
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-  list-style: none;
-}
-.do-col li::before { content: "✓ "; color: var(--green); font-weight: 600; }
-.dont-col li::before { content: "✗ "; color: #B54A4A; font-weight: 600; }
+    .doc-header-meta strong {
+      color: rgba(244,239,230,0.85);
+      font-weight: 500;
+    }
 
-/* ── 5. Elements ── */
-.elements-row {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-.element-demo {
-  flex: 1;
-  min-width: 250px;
-}
-.element-demo h4 {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
-  margin-bottom: 1rem;
-}
-.btn-demo {
-  display: inline-block;
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.9rem 2rem;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-right: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-.btn-navy { background: var(--navy); color: var(--cream); }
-.btn-green { background: var(--green); color: var(--cream); }
-.btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+    /* =============================================
+       LAYOUT: SIDEBAR + CONTENT
+    ============================================= */
+    .doc-body {
+      display: flex;
+      flex: 1;
+      align-items: flex-start;
+    }
 
-.marker-demo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 3rem;
-  font-weight: 400;
-  position: relative;
-  display: inline-block;
-}
-.marker-demo::after {
-  content: '';
-  position: absolute;
-  left: -4px; right: -4px;
-  bottom: 0.06em;
-  height: 0.14em;
-  background: var(--plum);
-  opacity: 0.4;
-  border-radius: 2px;
-  transform: rotate(-0.8deg) skewX(-8deg);
-}
+    /* SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--navy-deep);
+      min-height: calc(100vh - 160px);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2.5rem 0 3rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(244,239,230,0.15) transparent;
+    }
 
-.divider-demos {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-.divider-line {
-  height: 2px;
-  width: 40px;
-}
-.divider-plum { background: var(--plum); }
-.divider-green { background: var(--green); }
-.divider-slate { background: var(--slate); }
-.divider-label {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-left: 0.75rem;
-}
+    .sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: rgba(244,239,230,0.15);
+      border-radius: 2px;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .page { padding: 2rem 1.5rem; }
-  .logo-grid, .color-grid, .color-accents, .type-usage, .voice-grid, .do-dont, .logo-rules { grid-template-columns: 1fr; }
-}
-</style>
+    .sidebar-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.35);
+      padding: 0 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar nav a {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(244,239,230,0.55);
+      text-decoration: none;
+      padding: 0.55rem 1.75rem;
+      border-left: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1.4;
+    }
+
+    .sidebar nav a:hover {
+      color: rgba(244,239,230,0.9);
+      border-left-color: rgba(53,94,59,0.5);
+    }
+
+    .sidebar nav a.active {
+      color: rgba(244,239,230,1);
+      border-left-color: var(--green);
+      font-weight: 500;
+    }
+
+    .sidebar-section-num {
+      font-size: 0.65rem;
+      color: rgba(244,239,230,0.25);
+      margin-right: 0.5rem;
+      font-weight: 400;
+    }
+
+    /* MAIN CONTENT */
+    .doc-content {
+      flex: 1;
+      padding: 4rem 5rem 6rem;
+      max-width: calc(var(--content-max) + 10rem);
+    }
+
+    /* =============================================
+       SECTIONS
+    ============================================= */
+    .doc-section {
+      margin-bottom: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(27,45,69,0.1);
+    }
+
+    .doc-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--green);
+      opacity: 0.5;
+    }
+
+    .section-num {
+      color: rgba(27,45,69,0.25);
+      font-weight: 400;
+    }
+
+    h2.section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    h3.subsection-heading {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(27,45,69,0.08);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: rgba(27,45,69,0.8);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =============================================
+       FOUNDATION CARDS
+    ============================================= */
+    .foundation-block {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.1);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .foundation-block-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .foundation-block p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--navy);
+      margin: 0;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+    }
+
+    .foundation-block.plain p {
+      font-style: normal;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 1rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .value-card {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--green);
+    }
+
+    .value-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(27,45,69,0.3);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .value-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .value-desc {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: rgba(27,45,69,0.65);
+      margin: 0;
+    }
+
+    /* =============================================
+       VOICE & TONE
+    ============================================= */
+    .personality-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .personality-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 1.25rem;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 6px;
+    }
+
+    .personality-yes {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.95rem;
+      min-width: 160px;
+    }
+
+    .personality-sep {
+      color: rgba(27,45,69,0.2);
+      font-size: 0.8rem;
+    }
+
+    .personality-no {
+      font-weight: 400;
+      color: var(--slate);
+      font-size: 0.9rem;
+    }
+
+    .writing-rules {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .writing-rule {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(27,45,69,0.08);
+    }
+
+    .rule-do, .rule-dont {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .rule-do {
+      background: rgba(53,94,59,0.06);
+      border-right: 1px solid rgba(27,45,69,0.08);
+    }
+
+    .rule-dont {
+      background: rgba(133,93,127,0.04);
+    }
+
+    .rule-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .rule-do .rule-label { color: var(--green); }
+    .rule-dont .rule-label { color: var(--plum); }
+
+    .tone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .tone-card {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+    }
+
+    .tone-context {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.3rem;
+    }
+
+    .tone-desc {
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .avoid-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .avoid-tag {
+      font-size: 0.8rem;
+      font-family: 'Hanken Grotesk', sans-serif;
+      color: rgba(27,45,69,0.5);
+      background: rgba(133,93,127,0.07);
+      border: 1px solid rgba(133,93,127,0.2);
+      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+      text-decoration: line-through;
+      text-decoration-color: rgba(133,93,127,0.5);
+    }
+
+    /* =============================================
+       LOGO SECTION
+    ============================================= */
+    .logo-examples {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .logo-box {
+      border-radius: 8px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(27,45,69,0.1);
+      min-height: 160px;
+    }
+
+    .logo-box-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1.2rem;
+    }
+
+    .logo-box.on-cream {
+      background: var(--cream);
+    }
+
+    .logo-box.on-navy {
+      background: var(--navy);
+    }
+
+    .logo-box.on-cream .logo-box-label { color: var(--slate); }
+    .logo-box.on-navy .logo-box-label  { color: rgba(244,239,230,0.45); }
+
+    /* Wordmark rendered in CSS */
+    .wordmark {
+      text-align: center;
+    }
+
+    .wordmark-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 1;
+      display: block;
+    }
+
+    .wordmark-sub {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.45rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .wordmark.dark .wordmark-main { color: var(--navy); }
+    .wordmark.dark .wordmark-sub  { color: var(--slate); }
+    .wordmark.light .wordmark-main { color: var(--cream); }
+    .wordmark.light .wordmark-sub  { color: rgba(244,239,230,0.5); }
+
+    /* Monogram */
+    .monogram {
+      width: 52px;
+      height: 52px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monogram-inner {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .monogram-slash {
+      position: absolute;
+      width: 2px;
+      height: 140%;
+      transform: rotate(-20deg);
+      top: -20%;
+      left: 50%;
+      margin-left: -1px;
+    }
+
+    .monogram.dark .monogram-inner { color: var(--navy); }
+    .monogram.dark .monogram-slash { background: var(--navy); }
+    .monogram.light .monogram-inner { color: var(--cream); }
+    .monogram.light .monogram-slash { background: var(--cream); }
+
+    .logo-donts {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .logo-donts li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: rgba(27,45,69,0.75);
+      padding: 0.7rem 1rem;
+      background: rgba(133,93,127,0.04);
+      border: 1px solid rgba(133,93,127,0.12);
+      border-radius: 5px;
+    }
+
+    .logo-donts li::before {
+      content: '✗';
+      color: var(--plum);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* =============================================
+       COLOR SWATCHES
+    ============================================= */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .swatch-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(27,45,69,0.1);
+    }
+
+    .swatch-color {
+      height: 100px;
+      width: 100%;
+    }
+
+    .swatch-info {
+      padding: 0.9rem 1rem;
+      background: white;
+    }
+
+    .swatch-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .swatch-hex {
+      font-size: 0.78rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--slate);
+      margin-bottom: 0.15rem;
+    }
+
+    .swatch-rgb {
+      font-size: 0.72rem;
+      color: rgba(107,123,141,0.75);
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch-usage {
+      font-size: 0.78rem;
+      color: rgba(27,45,69,0.6);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .color-rules {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .color-rule {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(27,45,69,0.06);
+      color: rgba(27,45,69,0.75);
+    }
+
+    .color-rule:last-child { border-bottom: none; }
+
+    .color-rule-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+    }
+
+    .pairings-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .pairing {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .pairing-swatch {
+      display: flex;
+      border-radius: 4px;
+      overflow: hidden;
+      height: 28px;
+    }
+
+    .pairing-bg, .pairing-fg {
+      width: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .pairing-check {
+      color: var(--green);
+      font-size: 0.85rem;
+    }
+
+    /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+    .type-specimen {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .type-spec-header {
+      background: var(--navy);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .type-spec-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.6);
+    }
+
+    .type-spec-meta {
+      font-size: 0.68rem;
+      color: rgba(244,239,230,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .type-spec-body {
+      padding: 1.5rem;
+    }
+
+    .type-spec-example {
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(27,45,69,0.06);
+    }
+
+    .type-spec-example:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .type-spec-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.4rem;
+    }
+
+    .scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+
+    .scale-table th {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(27,45,69,0.1);
+      background: rgba(255,255,255,0.4);
+    }
+
+    .scale-table td {
+      padding: 0.7rem 0.8rem;
+      color: rgba(27,45,69,0.8);
+      border-bottom: 1px solid rgba(27,45,69,0.05);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .scale-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .scale-table tr:hover td {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .typo-rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin: 1rem 0;
+    }
+
+    .typo-rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      padding: 0.65rem 1rem;
+      background: rgba(255,255,255,0.4);
+      border: 1px solid rgba(27,45,69,0.07);
+      border-radius: 5px;
+      color: rgba(27,45,69,0.8);
+    }
+
+    .typo-rule-list li::before {
+      content: '—';
+      color: var(--green);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       LAYOUT SECTION
+    ============================================= */
+    .spacing-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .spacing-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'SF Mono', monospace;
+      color: var(--slate);
+      width: 2.5rem;
+    }
+
+    .spacing-value {
+      font-size: 0.75rem;
+      color: rgba(27,45,69,0.5);
+      width: 6rem;
+    }
+
+    .spacing-bar {
+      height: 10px;
+      background: var(--navy);
+      border-radius: 2px;
+      opacity: 0.15;
+    }
+
+    .section-pattern {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 1rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(27,45,69,0.1);
+    }
+
+    .pattern-row {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 1.25rem;
+      gap: 1rem;
+    }
+
+    .pattern-num {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(107,123,141,0.6);
+      width: 1.5rem;
+    }
+
+    .pattern-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .pattern-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .radius-demo {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .radius-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .radius-shape {
+      width: 64px;
+      height: 32px;
+      background: var(--navy);
+      opacity: 0.15;
+    }
+
+    .radius-label {
+      font-size: 0.72rem;
+      color: var(--slate);
+      text-align: center;
+    }
+
+    /* =============================================
+       COMPONENTS SECTION
+    ============================================= */
+    .component-example {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 1rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(27,45,69,0.2);
+    }
+
+    .eyebrow-example {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .card-example {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.1);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      max-width: 340px;
+    }
+
+    .card-example h4 {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card-example p {
+      font-size: 0.9rem;
+      color: rgba(27,45,69,0.65);
+      margin: 0;
+    }
+
+    /* Nav example */
+    .nav-example {
+      background: rgba(244,239,230,0.85);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-ex-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .nav-ex-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-ex-links a {
+      font-size: 0.82rem;
+      color: var(--slate);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .nav-ex-cta {
+      background: var(--navy);
+      color: var(--cream);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 1.1rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* =============================================
+       PHOTOGRAPHY SECTION
+    ============================================= */
+    .photo-placeholder {
+      background: var(--cream-warm);
+      border: 1.5px dashed rgba(27,45,69,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(27,45,69,0.3);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .photo-examples {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+      height: 160px;
+    }
+
+    .photo-circle-row {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      align-items: center;
+    }
+
+    .photo-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--cream-warm);
+      border: 1.5px dashed rgba(27,45,69,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      color: rgba(27,45,69,0.3);
+      text-align: center;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    /* =============================================
+       MARKER UNDERLINE SECTION
+    ============================================= */
+    .marker-demo {
+      background: var(--cream-warm);
+      border: 1px solid rgba(27,45,69,0.08);
+      border-radius: 8px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .marker-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .marker-word {
+      position: relative;
+      display: inline-block;
+    }
+
+    .marker-word::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -4px;
+      right: -4px;
+      height: 8px;
+      background: rgba(53,94,59,0.3);
+      border-radius: 4px;
+      transform: rotate(-0.5deg) skewX(-2deg);
+      z-index: -1;
+    }
+
+    /* =============================================
+       DIGITAL APPLICATIONS
+    ============================================= */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .app-card {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(27,45,69,0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .app-card-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .app-icon-inner {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      color: var(--cream);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .app-card-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .app-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .app-card li {
+      font-size: 0.84rem;
+      color: rgba(27,45,69,0.7);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .app-card li::before {
+      content: '·';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .app-card a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Favicon demo */
+    .favicon-demo {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .favicon-32 {
+      width: 32px;
+      height: 32px;
+      background: var(--cream);
+      border: 1px solid rgba(27,45,69,0.15);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .favicon-inner {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      color: var(--navy);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .favicon-slash {
+      position: absolute;
+      width: 1.5px;
+      height: 150%;
+      background: var(--navy);
+      opacity: 0.8;
+      transform: rotate(-18deg);
+      top: -25%;
+      left: 55%;
+    }
+
+    /* =============================================
+       UTILITIES
+    ============================================= */
+    code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82em;
+      background: rgba(27,45,69,0.06);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      color: var(--navy);
+    }
+
+    .dot-texture {
+      position: relative;
+    }
+
+    .dot-texture::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(27,45,69,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .doc-body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 1.5rem 0;
+      }
+      .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+      }
+      .sidebar nav a {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.78rem;
+      }
+      .doc-content {
+        padding: 2rem 1.5rem 4rem;
+      }
+      .values-grid,
+      .tone-grid,
+      .swatches-grid,
+      .apps-grid,
+      .logo-examples {
+        grid-template-columns: 1fr;
+      }
+      .writing-rule {
+        grid-template-columns: 1fr;
+      }
+      .doc-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .doc-header-meta {
+        text-align: left;
+      }
+      .photo-examples {
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="page">
-
-  <!-- Header -->
-  <div class="page-header">
-    <h1>Brand Guidelines</h1>
-    <span>March 2026</span>
-  </div>
-
-  <!-- 1. Logo -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">1</span>
-      <span class="section-title">Logo</span>
-      <span class="section-subtitle">Primary Marks</span>
+  <!-- ===== TOP HEADER ===== -->
+  <header class="doc-header">
+    <div class="doc-header-left">
+      <div class="doc-header-brand">
+        Stonecutter
+        <span>NYC</span>
+      </div>
+      <h1 class="doc-header-title">Brand Guidelines</h1>
     </div>
-
-    <div class="logo-grid">
-      <!-- Wordmark on cream -->
-      <div class="logo-box logo-box-light">
-        <div class="wordmark wordmark-dark">STONECUTTER</div>
-        <div class="wordmark-nyc wordmark-dark">NYC</div>
-        <div class="logo-caption">Primary wordmark - cream background</div>
-      </div>
-      <!-- Wordmark on navy -->
-      <div class="logo-box logo-box-dark">
-        <div class="wordmark wordmark-light">STONECUTTER</div>
-        <div class="wordmark-nyc wordmark-light">NYC</div>
-        <div class="logo-caption">Primary wordmark - dark background</div>
-      </div>
-      <!-- Monogram on cream -->
-      <div class="logo-box logo-box-light">
-        <svg class="monogram-svg" viewBox="0 0 200 200">
-          <line x1="145" y1="30" x2="55" y2="170" stroke="#1B2D45" stroke-width="8" stroke-linecap="round"/>
-          <text x="52" y="88" font-family="'Cormorant Garamond', Georgia, serif" font-size="90" font-weight="400" fill="#1B2D45" text-anchor="middle">S</text>
-          <text x="148" y="168" font-family="'Cormorant Garamond', Georgia, serif" font-size="90" font-weight="400" fill="#1B2D45" text-anchor="middle">C</text>
-        </svg>
-        <div class="logo-caption">S/C monogram - cream background</div>
-      </div>
-      <!-- Monogram on navy -->
-      <div class="logo-box logo-box-dark">
-        <svg class="monogram-svg" viewBox="0 0 200 200">
-          <line x1="145" y1="30" x2="55" y2="170" stroke="#F4EFE6" stroke-width="8" stroke-linecap="round"/>
-          <text x="52" y="88" font-family="'Cormorant Garamond', Georgia, serif" font-size="90" font-weight="400" fill="#F4EFE6" text-anchor="middle">S</text>
-          <text x="148" y="168" font-family="'Cormorant Garamond', Georgia, serif" font-size="90" font-weight="400" fill="#F4EFE6" text-anchor="middle">C</text>
-        </svg>
-        <div class="logo-caption">S/C monogram - dark background</div>
-      </div>
+    <div class="doc-header-meta">
+      <p><strong>Version</strong> 1.0</p>
+      <p><strong>Date</strong> April 2026</p>
+      <p><strong>Status</strong> Active</p>
+      <p><strong>Owner</strong> Stonecutter NYC</p>
     </div>
+  </header>
 
-    <div class="logo-rules">
-      <div class="logo-rule">
-        <h4>Clear space</h4>
-        <p>Maintain a minimum clear space equal to the height of the "NYC" text around all sides of the logo marks.</p>
-      </div>
-      <div class="logo-rule">
-        <h4>Minimum size</h4>
-        <p>Wordmark: 120px wide minimum. Monogram: 32px minimum. Below these sizes, legibility is compromised.</p>
-      </div>
-      <div class="logo-rule">
-        <h4>Approved backgrounds</h4>
-        <p>Use only on Cream (#F4EFE6), Navy (#1B2D45), or Hunter Green (#355E3B) backgrounds. No photography or busy textures behind the logo.</p>
-      </div>
-      <div class="logo-rule">
-        <h4>Don't</h4>
-        <p>Don't rotate, stretch, add drop shadows, change colors, or rearrange the wordmark and "NYC" relationship.</p>
-      </div>
-    </div>
-  </section>
+  <!-- ===== BODY: SIDEBAR + CONTENT ===== -->
+  <div class="doc-body">
 
-  <!-- 2. Color -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">2</span>
-      <span class="section-title">Color</span>
-      <span class="section-subtitle">Palette</span>
-    </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-label">Sections</div>
+      <nav id="sidebar-nav">
+        <a href="#brand-foundation" class="active">
+          <span class="sidebar-section-num">01</span>Brand Foundation
+        </a>
+        <a href="#voice-tone">
+          <span class="sidebar-section-num">02</span>Voice &amp; Tone
+        </a>
+        <a href="#logo">
+          <span class="sidebar-section-num">03</span>Logo
+        </a>
+        <a href="#color-palette">
+          <span class="sidebar-section-num">04</span>Color Palette
+        </a>
+        <a href="#typography">
+          <span class="sidebar-section-num">05</span>Typography
+        </a>
+        <a href="#layout-spacing">
+          <span class="sidebar-section-num">06</span>Layout &amp; Spacing
+        </a>
+        <a href="#ui-components">
+          <span class="sidebar-section-num">07</span>UI Components
+        </a>
+        <a href="#photography">
+          <span class="sidebar-section-num">08</span>Photography
+        </a>
+        <a href="#marker-underline">
+          <span class="sidebar-section-num">09</span>Marker Underline
+        </a>
+        <a href="#digital-applications">
+          <span class="sidebar-section-num">10</span>Digital Applications
+        </a>
+      </nav>
+    </aside>
 
-    <p class="note" style="margin-bottom: 2rem;">The palette is built around three core colors. Navy and Cream alternate as primary section backgrounds. Hunter Green is used for accent sections, buttons, and labels. Plum and Slate are supporting accents used sparingly.</p>
+    <!-- MAIN CONTENT -->
+    <main class="doc-content">
 
-    <div class="color-grid">
-      <div class="color-card">
-        <div class="color-swatch" style="background: #1B2D45;"></div>
-        <div class="color-info">
-          <div class="color-name">Navy</div>
-          <div class="color-hex">#1B2D45</div>
-          <div class="color-role">Primary dark. Headlines, body text on light backgrounds, dark section backgrounds, nav CTA.</div>
+      <!-- ============================================================
+           SECTION 1: BRAND FOUNDATION
+      ============================================================ -->
+      <section class="doc-section" id="brand-foundation">
+        <div class="section-eyebrow">
+          <span class="section-num">01</span>
+          Brand Foundation
         </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #F4EFE6;"></div>
-        <div class="color-info">
-          <div class="color-name">Cream</div>
-          <div class="color-hex">#F4EFE6</div>
-          <div class="color-role">Primary light. Page background, text on dark backgrounds, light section backgrounds.</div>
+        <h2 class="section-heading">Who we are and why we exist</h2>
+
+        <div class="foundation-block">
+          <div class="foundation-block-label">Mission</div>
+          <p>We help exceptional consumer brands build and dominate their presence on Amazon.</p>
         </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #355E3B;"></div>
-        <div class="color-info">
-          <div class="color-name">Hunter Green</div>
-          <div class="color-hex">#355E3B</div>
-          <div class="color-role">Accent. Section backgrounds, buttons, section labels, form focus states.</div>
+
+        <div class="foundation-block">
+          <div class="foundation-block-label">Vision</div>
+          <p>To be the most trusted Amazon agency in the world — chosen because of what we've built, not how we pitched.</p>
         </div>
-      </div>
-    </div>
 
-    <div class="color-accents">
-      <div class="color-card">
-        <div class="color-swatch" style="background: #855D7F; height: 70px;"></div>
-        <div class="color-info">
-          <div class="color-name">Plum</div>
-          <div class="color-hex">#855D7F</div>
-          <div class="color-role">Subtle accent only. Marker underlines, decorative lines, quote borders.</div>
+        <div class="foundation-block plain">
+          <div class="foundation-block-label">Positioning</div>
+          <p>Stonecutter is a boutique Amazon agency that operates as a true partner, not a vendor. We're operators, not advisors. We're selective, reputation-driven, and 100% referral-based. Every client we've ever had has come through someone they trust.</p>
         </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #6B7B8D; height: 70px;"></div>
-        <div class="color-info">
-          <div class="color-name">Slate</div>
-          <div class="color-hex">#6B7B8D</div>
-          <div class="color-role">Supporting neutral. Form labels, tertiary text, subtle UI elements.</div>
+
+        <h3 class="subsection-heading">Core Values</h3>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-num">Value 01</div>
+            <div class="value-title">Operators First</div>
+            <p class="value-desc">We do the work. Hands-on, in the account, every day.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-num">Value 02</div>
+            <div class="value-title">Selective by Design</div>
+            <p class="value-desc">We only take on brands where we know we can add real value.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-num">Value 03</div>
+            <div class="value-title">Reputation Over Revenue</div>
+            <p class="value-desc">Our business model only works if our clients succeed.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-num">Value 04</div>
+            <div class="value-title">Clarity Over Complexity</div>
+            <p class="value-desc">We cut through the noise and tell you what actually matters.</p>
+          </div>
         </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #EDE7DB; height: 70px;"></div>
-        <div class="color-info">
-          <div class="color-name">Warm Cream</div>
-          <div class="color-hex">#EDE7DB</div>
-          <div class="color-role">Secondary light. Contact sections, card backgrounds, subtle contrast from Cream.</div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 2: VOICE & TONE
+      ============================================================ -->
+      <section class="doc-section" id="voice-tone">
+        <div class="section-eyebrow">
+          <span class="section-num">02</span>
+          Voice &amp; Tone
         </div>
-      </div>
-    </div>
-  </section>
+        <h2 class="section-heading">How we sound</h2>
 
-  <!-- 3. Typography -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">3</span>
-      <span class="section-title">Typography</span>
-      <span class="section-subtitle">Brand Fonts</span>
-    </div>
+        <h3 class="subsection-heading">Personality</h3>
+        <div class="personality-list">
+          <div class="personality-item">
+            <span class="personality-yes">Confident</span>
+            <span class="personality-sep">not</span>
+            <span class="personality-no">arrogant</span>
+          </div>
+          <div class="personality-item">
+            <span class="personality-yes">Direct</span>
+            <span class="personality-sep">not</span>
+            <span class="personality-no">blunt</span>
+          </div>
+          <div class="personality-item">
+            <span class="personality-yes">Expert</span>
+            <span class="personality-sep">not</span>
+            <span class="personality-no">academic</span>
+          </div>
+          <div class="personality-item">
+            <span class="personality-yes">Warm</span>
+            <span class="personality-sep">not</span>
+            <span class="personality-no">casual</span>
+          </div>
+          <div class="personality-item">
+            <span class="personality-yes">Selective</span>
+            <span class="personality-sep">not</span>
+            <span class="personality-no">exclusive</span>
+          </div>
+        </div>
 
-    <div class="note" style="margin-bottom: 2.5rem;">
-      The typographic system pairs a classic editorial serif with a clean geometric sans-serif. <strong>Cormorant Garamond</strong> brings elegance and presence to headlines. <strong>Hanken Grotesk</strong> provides clarity and a modern edge for body text and UI - chosen as a close alternative to Gotham.
-    </div>
+        <h3 class="subsection-heading">Writing Rules</h3>
+        <div class="writing-rules">
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Use plain, clear language.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Use jargon or buzzwords.
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Be specific.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Be vague ("great results", "proven process").
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Use regular dashes.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Use em dashes — they signal AI-written copy.
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Write in lowercase where appropriate.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              CAPITALIZE FOR EMPHASIS.
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Write short sentences.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Write sentences that run on longer than they need to.
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Lead with the outcome.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Lead with the process.
+            </div>
+          </div>
+          <div class="writing-rule">
+            <div class="rule-do">
+              <div class="rule-label">Do</div>
+              Sound like a founder talking to a peer.
+            </div>
+            <div class="rule-dont">
+              <div class="rule-label">Don't</div>
+              Sound like a brochure.
+            </div>
+          </div>
+        </div>
 
-    <!-- Cormorant Garamond -->
-    <div class="type-specimen">
-      <div class="type-specimen-header">
-        <span class="type-font-name">Cormorant Garamond</span>
-        <span class="type-font-meta">Headlines, Logo, Stats, Quotes</span>
-      </div>
-      <div class="type-display">Reputation is everything.</div>
-      <div class="type-display type-display-italic">Reputation is everything.</div>
-      <div class="type-alphabet type-alphabet-serif">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</div>
-      <div class="type-alphabet type-alphabet-serif">0123456789 $%+ &amp;</div>
-    </div>
+        <h3 class="subsection-heading">Tone by Context</h3>
+        <div class="tone-grid">
+          <div class="tone-card">
+            <div class="tone-context">Website</div>
+            <p class="tone-desc">Confident, understated, editorial</p>
+          </div>
+          <div class="tone-card">
+            <div class="tone-context">Pitch Deck</div>
+            <p class="tone-desc">Direct, evidence-based, warm</p>
+          </div>
+          <div class="tone-card">
+            <div class="tone-context">Client Communications</div>
+            <p class="tone-desc">Expert, clear, no fluff</p>
+          </div>
+          <div class="tone-card">
+            <div class="tone-context">Social / LinkedIn</div>
+            <p class="tone-desc">Thoughtful, honest, no hype</p>
+          </div>
+        </div>
 
-    <!-- Hanken Grotesk -->
-    <div class="type-specimen">
-      <div class="type-specimen-header">
-        <span class="type-font-name">Hanken Grotesk</span>
-        <span class="type-font-meta">Body, Navigation, Buttons, Labels</span>
-      </div>
-      <div class="type-body-display">We built something different.</div>
-      <div class="type-body-display type-body-display-500">We built something different.</div>
-      <div class="type-body-display type-body-display-600">We built something different.</div>
-      <div class="type-alphabet type-alphabet-sans">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</div>
-      <div class="type-alphabet type-alphabet-sans">0123456789 $%+ &amp;</div>
-    </div>
+        <h3 class="subsection-heading">Words to Avoid</h3>
+        <p style="font-size:0.88rem; color: rgba(27,45,69,0.6); margin-bottom: 0.75rem;">These phrases are banned from all Stonecutter communications. They sound like templates.</p>
+        <div class="avoid-list">
+          <span class="avoid-tag">Best-in-class</span>
+          <span class="avoid-tag">Proven track record</span>
+          <span class="avoid-tag">Full-service</span>
+          <span class="avoid-tag">Holistic approach</span>
+          <span class="avoid-tag">Synergy</span>
+          <span class="avoid-tag">Leverage</span>
+          <span class="avoid-tag">Ecosystem</span>
+          <span class="avoid-tag">Game-changer</span>
+          <span class="avoid-tag">World-class</span>
+          <span class="avoid-tag">Strategic partner</span>
+        </div>
+      </section>
 
-    <!-- Usage -->
-    <div class="type-usage">
-      <div class="type-usage-item">
-        <h4>Headlines</h4>
-        <div class="type-example-headline">100% from referral.</div>
-        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Cormorant Garamond Regular / Italic</p>
-      </div>
-      <div class="type-usage-item">
-        <h4>Section Labels</h4>
-        <div class="type-example-label" style="margin-bottom: 1.5rem;">Our Approach</div>
-        <h4>Body Copy</h4>
-        <div class="type-example-body" style="margin-bottom: 1.5rem;">We partner deeply with every brand, ensuring outcomes that are mutually beneficial - not just billable.</div>
-        <h4>Buttons</h4>
-        <div class="type-example-button">Let's Connect</div>
-      </div>
-    </div>
-  </section>
+      <!-- ============================================================
+           SECTION 3: LOGO
+      ============================================================ -->
+      <section class="doc-section" id="logo">
+        <div class="section-eyebrow">
+          <span class="section-num">03</span>
+          Logo
+        </div>
+        <h2 class="section-heading">The Stonecutter wordmark</h2>
 
-  <!-- 4. Voice & Tone -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">4</span>
-      <span class="section-title">Voice & Tone</span>
-      <span class="section-subtitle">How We Sound</span>
-    </div>
+        <p>The primary logo is a typographic wordmark: <strong>STONECUTTER</strong> set in Cormorant Garamond with wide letter-spacing (0.2em), with <strong>NYC</strong> stacked beneath in Hanken Grotesk at smaller scale and wider tracking. No icon. The name is the brand.</p>
 
-    <div class="voice-grid">
-      <div class="voice-card">
-        <h4>Confident, not boastful</h4>
-        <p>We let our track record speak. Every client came through referral - that says more than any tagline could.</p>
-      </div>
-      <div class="voice-card">
-        <h4>Direct, not corporate</h4>
-        <p>We talk like real people. No jargon walls, no buzzword bingo. Clear language that respects the reader's time.</p>
-      </div>
-      <div class="voice-card">
-        <h4>Selective, not exclusive</h4>
-        <p>We're boutique by choice, not by limitation. We frame selectivity as quality assurance, not gatekeeping.</p>
-      </div>
-      <div class="voice-card">
-        <h4>Partnership-oriented</h4>
-        <p>We position ourselves alongside our clients, not above them. Language reflects collaboration - "we" over "you should."</p>
-      </div>
-    </div>
+        <h3 class="subsection-heading">Logo Variations</h3>
+        <div class="logo-examples">
+          <!-- Dark on cream -->
+          <div class="logo-box on-cream">
+            <div class="wordmark dark">
+              <span class="wordmark-main">Stonecutter</span>
+              <span class="wordmark-sub">NYC</span>
+            </div>
+            <div class="logo-box-label">Primary — on Cream</div>
+          </div>
+          <!-- Light on navy -->
+          <div class="logo-box on-navy">
+            <div class="wordmark light">
+              <span class="wordmark-main">Stonecutter</span>
+              <span class="wordmark-sub">NYC</span>
+            </div>
+            <div class="logo-box-label">Reversed — on Navy</div>
+          </div>
+          <!-- Monogram -->
+          <div class="logo-box on-cream">
+            <div class="monogram dark">
+              <span class="monogram-inner">S/C</span>
+              <div class="monogram-slash"></div>
+            </div>
+            <div class="logo-box-label">Monogram — Favicon &amp; Icon</div>
+          </div>
+        </div>
 
-    <div class="do-dont">
-      <div class="do-col">
-        <h4>Do</h4>
-        <ul>
-          <li>Use regular dashes, not em dashes</li>
-          <li>Write in sentence case (not Title Case)</li>
-          <li>Keep copy concise and human</li>
-          <li>Lead with results and reputation</li>
-          <li>Say "partner" instead of "manage"</li>
-          <li>Use specifics over superlatives</li>
+        <h3 class="subsection-heading">Clearspace</h3>
+        <p>Minimum clearspace equals the height of the "S" in STONECUTTER on all four sides. Never crowd the wordmark. Give it room to breathe.</p>
+
+        <h3 class="subsection-heading">Logo Don'ts</h3>
+        <ul class="logo-donts">
+          <li>Don't stretch or distort the wordmark in any direction</li>
+          <li>Don't place it on busy backgrounds without a clear zone</li>
+          <li>Don't change the typeface — Cormorant Garamond only</li>
+          <li>Don't add drop shadows, outlines, or decorative effects</li>
+          <li>Don't use the monogram as the primary logo when the full wordmark fits</li>
+          <li>Don't recolor the logo outside the approved palette (navy or cream only)</li>
         </ul>
-      </div>
-      <div class="dont-col">
-        <h4>Don't</h4>
-        <ul>
-          <li>Use em dashes (they signal AI-generated copy)</li>
-          <li>Write in ALL CAPS (except the logo wordmark)</li>
-          <li>Use generic agency language ("full-service," "360")</li>
-          <li>List every service like a menu</li>
-          <li>Over-explain what Amazon is</li>
-          <li>Name specific client brands</li>
+
+        <h3 class="subsection-heading">File Formats</h3>
+        <p><code>SVG</code> — Preferred for all digital use. Scales infinitely without quality loss.<br />
+        <code>PNG</code> — Transparent background version for documents, presentations, email.</p>
+      </section>
+
+      <!-- ============================================================
+           SECTION 4: COLOR PALETTE
+      ============================================================ -->
+      <section class="doc-section" id="color-palette">
+        <div class="section-eyebrow">
+          <span class="section-num">04</span>
+          Color Palette
+        </div>
+        <h2 class="section-heading">The Stonecutter colors</h2>
+
+        <div class="swatches-grid">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#1B2D45;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Navy</div>
+              <div class="swatch-hex">#1B2D45</div>
+              <div class="swatch-rgb">RGB(27, 45, 69)</div>
+              <p class="swatch-usage">Primary brand color. Backgrounds, headlines, primary buttons, nav.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#152238;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Navy Deep</div>
+              <div class="swatch-hex">#152238</div>
+              <div class="swatch-rgb">RGB(21, 34, 56)</div>
+              <p class="swatch-usage">Hover states, deep dark sections, sidebar.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#F4EFE6; border-bottom: 1px solid rgba(27,45,69,0.08);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cream</div>
+              <div class="swatch-hex">#F4EFE6</div>
+              <div class="swatch-rgb">RGB(244, 239, 230)</div>
+              <p class="swatch-usage">Primary background. Text on dark backgrounds.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#EDE7DB; border-bottom: 1px solid rgba(27,45,69,0.08);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cream Warm</div>
+              <div class="swatch-hex">#EDE7DB</div>
+              <div class="swatch-rgb">RGB(237, 231, 219)</div>
+              <p class="swatch-usage">Secondary background, card backgrounds, contact section.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#355E3B;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Hunter Green</div>
+              <div class="swatch-hex">#355E3B</div>
+              <div class="swatch-rgb">RGB(53, 94, 59)</div>
+              <p class="swatch-usage">Accent. Section backgrounds (Results), buttons, highlight emphasis.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#855D7F;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Plum</div>
+              <div class="swatch-hex">#855D7F</div>
+              <div class="swatch-rgb">RGB(133, 93, 127)</div>
+              <p class="swatch-usage">Decoration only. Marker underlines, quote borders. Use sparingly.</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background:#6B7B8D;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Slate</div>
+              <div class="swatch-hex">#6B7B8D</div>
+              <div class="swatch-rgb">RGB(107, 123, 141)</div>
+              <p class="swatch-usage">Secondary text, labels, captions, muted UI elements.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Usage Rules</h3>
+        <div class="color-rules">
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Navy is the primary brand color — it anchors every layout
+          </div>
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Cream is the default background — the site "lives" on cream
+          </div>
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Green is used for sections that need to pop (Results, highlights)
+          </div>
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Plum is decoration only — never use as a background or primary button color
+          </div>
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Never use yellow, bright red, or high-contrast accent colors
+          </div>
+          <div class="color-rule">
+            <div class="color-rule-bullet"></div>
+            Minimum contrast ratio: 4.5:1 for all body text
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Approved Pairings</h3>
+        <div class="pairings-row">
+          <div class="pairing">
+            <div class="pairing-swatch">
+              <div class="pairing-bg" style="background:#1B2D45; color:#F4EFE6;">bg</div>
+              <div class="pairing-fg" style="background:#F4EFE6; color:#1B2D45;">fg</div>
+            </div>
+            <span style="font-size:0.82rem; color:rgba(27,45,69,0.7);">Navy bg → Cream text</span>
+            <span class="pairing-check">✓</span>
+          </div>
+          <div class="pairing">
+            <div class="pairing-swatch">
+              <div class="pairing-bg" style="background:#F4EFE6; color:#1B2D45; border: 1px solid rgba(27,45,69,0.1);">bg</div>
+              <div class="pairing-fg" style="background:#1B2D45; color:#F4EFE6;">fg</div>
+            </div>
+            <span style="font-size:0.82rem; color:rgba(27,45,69,0.7);">Cream bg → Navy text</span>
+            <span class="pairing-check">✓</span>
+          </div>
+          <div class="pairing">
+            <div class="pairing-swatch">
+              <div class="pairing-bg" style="background:#355E3B; color:#F4EFE6;">bg</div>
+              <div class="pairing-fg" style="background:#F4EFE6; color:#355E3B; border: 1px solid rgba(27,45,69,0.1);">fg</div>
+            </div>
+            <span style="font-size:0.82rem; color:rgba(27,45,69,0.7);">Green bg → Cream text</span>
+            <span class="pairing-check">✓</span>
+          </div>
+          <div class="pairing">
+            <div class="pairing-swatch">
+              <div class="pairing-bg" style="background:#1B2D45; color:#855D7F;">bg</div>
+              <div class="pairing-fg" style="background:#855D7F; color:#1B2D45;">fg</div>
+            </div>
+            <span style="font-size:0.82rem; color:rgba(27,45,69,0.7);">Navy bg → Plum accent</span>
+            <span class="pairing-check" style="color: var(--slate);">✓ sparingly</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 5: TYPOGRAPHY
+      ============================================================ -->
+      <section class="doc-section" id="typography">
+        <div class="section-eyebrow">
+          <span class="section-num">05</span>
+          Typography
+        </div>
+        <h2 class="section-heading">Two typefaces, used with discipline</h2>
+
+        <!-- Cormorant Specimen -->
+        <div class="type-specimen">
+          <div class="type-spec-header">
+            <span class="type-spec-name">Cormorant Garamond — Primary</span>
+            <span class="type-spec-meta">Google Fonts · Free</span>
+          </div>
+          <div class="type-spec-body">
+            <div class="type-spec-example">
+              <div class="type-spec-label">400 Regular</div>
+              <div style="font-family: 'Cormorant Garamond'; font-weight: 400; font-size: 2rem; color: var(--navy); line-height: 1.1;">The only agency chosen for what it built</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">500 Medium</div>
+              <div style="font-family: 'Cormorant Garamond'; font-weight: 500; font-size: 1.6rem; color: var(--navy);">Operators, not advisors.</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">400 Italic</div>
+              <div style="font-family: 'Cormorant Garamond'; font-weight: 400; font-style: italic; font-size: 1.4rem; color: rgba(27,45,69,0.7);">"The results speak for themselves."</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">Use for: Headlines · Hero text · Wordmark · Pull quotes · Stat numbers</div>
+              <div style="font-family: 'Cormorant Garamond'; font-size: 0.85rem; color: var(--slate);">Editorial, refined, high-contrast serif. Feels authoritative without being stuffy.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hanken Specimen -->
+        <div class="type-specimen">
+          <div class="type-spec-header">
+            <span class="type-spec-name">Hanken Grotesk — Secondary</span>
+            <span class="type-spec-meta">Google Fonts · Free</span>
+          </div>
+          <div class="type-spec-body">
+            <div class="type-spec-example">
+              <div class="type-spec-label">400 Regular</div>
+              <div style="font-family: 'Hanken Grotesk'; font-weight: 400; font-size: 1rem; color: rgba(27,45,69,0.8); line-height: 1.7;">We work inside your Amazon account every day. Not quarterly. Not on retainer calls. In the account, on the listing, running the ads.</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">500 Medium · Buttons / Labels</div>
+              <div style="font-family: 'Hanken Grotesk'; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green);">About the Agency</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">600 SemiBold · Card headings</div>
+              <div style="font-family: 'Hanken Grotesk'; font-weight: 600; font-size: 1.05rem; color: var(--navy); letter-spacing: 0.01em;">Full-funnel Amazon management</div>
+            </div>
+            <div class="type-spec-example">
+              <div class="type-spec-label">Use for: Body copy · Nav · Labels · Buttons · Captions · All UI text</div>
+              <div style="font-family: 'Hanken Grotesk'; font-size: 0.85rem; color: var(--slate);">Clean, modern sans-serif. Closest free alternative to Gotham. Not as round as Montserrat.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Type Scale — Desktop</h3>
+        <table class="scale-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Typeface</th>
+              <th>Size</th>
+              <th>Weight</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hero H1</td>
+              <td>Cormorant Garamond</td>
+              <td>5–6.5rem</td>
+              <td>400</td>
+              <td>line-height 1.05, letter-spacing -0.02em</td>
+            </tr>
+            <tr>
+              <td>Section H2</td>
+              <td>Cormorant Garamond</td>
+              <td>3–4rem</td>
+              <td>500</td>
+              <td>line-height 1.1</td>
+            </tr>
+            <tr>
+              <td>Card H3</td>
+              <td>Hanken Grotesk</td>
+              <td>1.1rem</td>
+              <td>600</td>
+              <td>letter-spacing 0.01em</td>
+            </tr>
+            <tr>
+              <td>Body</td>
+              <td>Hanken Grotesk</td>
+              <td>1rem (16px)</td>
+              <td>400</td>
+              <td>line-height 1.7</td>
+            </tr>
+            <tr>
+              <td>Label / Eyebrow</td>
+              <td>Hanken Grotesk</td>
+              <td>0.8–0.85rem</td>
+              <td>500</td>
+              <td>letter-spacing 0.1em, uppercase</td>
+            </tr>
+            <tr>
+              <td>Caption / Small</td>
+              <td>Hanken Grotesk</td>
+              <td>0.75–0.8rem</td>
+              <td>400</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Button</td>
+              <td>Hanken Grotesk</td>
+              <td>0.9rem</td>
+              <td>500</td>
+              <td>letter-spacing 0.04em</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-heading">Typography Rules</h3>
+        <ul class="typo-rule-list">
+          <li>Headlines in Cormorant Garamond are always cream on dark or navy on light — never plum or green</li>
+          <li>Italic is reserved for emphasis and pull quotes in Cormorant Garamond only</li>
+          <li>Never set body copy in Cormorant Garamond</li>
+          <li>Never use more than 2 typefaces in any single layout</li>
+          <li>Minimum body text size: 14px / 0.875rem</li>
         </ul>
-      </div>
-    </div>
-  </section>
 
-  <!-- 5. Design Elements -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">5</span>
-      <span class="section-title">Design Elements</span>
-      <span class="section-subtitle">Components & Patterns</span>
-    </div>
-
-    <div class="elements-row">
-      <div class="element-demo">
-        <h4>Buttons</h4>
-        <div>
-          <span class="btn-demo btn-navy">Let's Connect</span>
-          <span class="btn-demo btn-green">Get in Touch</span>
-          <span class="btn-demo btn-outline">Learn More</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="elements-row">
-      <div class="element-demo">
-        <h4>Marker Underline</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Used for emphasis on key words. Plum color, slightly skewed to feel hand-drawn. Use very sparingly - one per page maximum.</p>
-        <span class="marker-demo">referral</span>
-      </div>
-      <div class="element-demo">
-        <h4>Accent Lines</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Short decorative lines used to introduce content blocks or separate items in a list.</p>
-        <div class="divider-demos">
-          <div style="display: flex; align-items: center;">
-            <div class="divider-line divider-plum"></div>
-            <span class="divider-label">Plum - decorative accents</span>
+        <h3 class="subsection-heading">Presentation Substitute Fonts</h3>
+        <p>When brand fonts are unavailable (PowerPoint, Google Slides, email):</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin: 0.75rem 0;">
+          <div style="background:rgba(255,255,255,0.5); border:1px solid rgba(27,45,69,0.08); border-radius:6px; padding:0.8rem 1.2rem; font-size:0.88rem;">
+            <strong style="color:var(--navy);">Cormorant Garamond</strong>
+            <span style="color:var(--slate);"> → </span>
+            <span style="font-family: Georgia, serif; color: rgba(27,45,69,0.7);">Georgia</span>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="divider-line divider-green"></div>
-            <span class="divider-label">Green - section dividers</span>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <div class="divider-line divider-slate"></div>
-            <span class="divider-label">Slate - subtle separators</span>
+          <div style="background:rgba(255,255,255,0.5); border:1px solid rgba(27,45,69,0.08); border-radius:6px; padding:0.8rem 1.2rem; font-size:0.88rem;">
+            <strong style="color:var(--navy);">Hanken Grotesk</strong>
+            <span style="color:var(--slate);"> → </span>
+            <span style="color: rgba(27,45,69,0.7);">Calibri</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- 6. Section Layout -->
-  <section>
-    <div class="section-header">
-      <span class="section-num">6</span>
-      <span class="section-title">Layout</span>
-      <span class="section-subtitle">Section Pattern</span>
-    </div>
+      <!-- ============================================================
+           SECTION 6: LAYOUT & SPACING
+      ============================================================ -->
+      <section class="doc-section" id="layout-spacing">
+        <div class="section-eyebrow">
+          <span class="section-num">06</span>
+          Layout &amp; Spacing
+        </div>
+        <h2 class="section-heading">Structure and rhythm</h2>
 
-    <p class="note" style="margin-bottom: 2rem;">Sections alternate between light and dark backgrounds to create visual rhythm. No more than two consecutive sections should share the same background tone.</p>
+        <h3 class="subsection-heading">Grid</h3>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Max content width: <strong>1100px</strong></div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Standard section padding: <strong>100px vertical, 60px horizontal</strong> (desktop)</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Mobile section padding: <strong>60px vertical, 24px horizontal</strong></div>
+        </div>
 
-    <div style="display: flex; flex-direction: column; gap: 4px; border-radius: 8px; overflow: hidden;">
-      <div style="background: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Hero</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">Cream #F4EFE6</span>
-      </div>
-      <div style="background: var(--navy); color: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Stats</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted); color: rgba(244,239,230,0.5);">Navy #1B2D45</span>
-      </div>
-      <div style="background: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Approach</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">Cream #F4EFE6</span>
-      </div>
-      <div style="background: var(--green); color: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Results</span>
-        <span style="font-size: 0.75rem; color: rgba(244,239,230,0.5);">Hunter Green #355E3B</span>
-      </div>
-      <div style="background: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">About</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">Cream #F4EFE6</span>
-      </div>
-      <div style="background: var(--navy); color: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">CTA</span>
-        <span style="font-size: 0.75rem; color: rgba(244,239,230,0.5);">Navy #1B2D45</span>
-      </div>
-      <div style="background: #EDE7DB; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Contact</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">Warm Cream #EDE7DB</span>
-      </div>
-      <div style="background: var(--navy); color: var(--cream); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;">
-        <span style="font-size: 0.85rem;">Footer</span>
-        <span style="font-size: 0.75rem; color: rgba(244,239,230,0.5);">Navy #1B2D45</span>
-      </div>
-    </div>
-  </section>
+        <h3 class="subsection-heading">Section Alternation Pattern</h3>
+        <p style="font-size:0.88rem; color:rgba(27,45,69,0.6); margin-bottom:0.75rem;">The site uses a strict alternating light/dark section sequence. Never stack two dark or two light sections back to back.</p>
+        <div class="section-pattern">
+          <div class="pattern-row" style="background: #F4EFE6;">
+            <div class="pattern-num">01</div>
+            <div class="pattern-swatch" style="background:#F4EFE6; border:1px solid rgba(27,45,69,0.15);"></div>
+            <div class="pattern-name" style="color:var(--navy);">Cream — Hero</div>
+          </div>
+          <div class="pattern-row" style="background: #1B2D45;">
+            <div class="pattern-num" style="color:rgba(244,239,230,0.4);">02</div>
+            <div class="pattern-swatch" style="background:#1B2D45; border:1px solid rgba(244,239,230,0.15);"></div>
+            <div class="pattern-name" style="color:var(--cream);">Navy — Stats</div>
+          </div>
+          <div class="pattern-row" style="background: #F4EFE6;">
+            <div class="pattern-num">03</div>
+            <div class="pattern-swatch" style="background:#F4EFE6; border:1px solid rgba(27,45,69,0.15);"></div>
+            <div class="pattern-name" style="color:var(--navy);">Cream — Approach</div>
+          </div>
+          <div class="pattern-row" style="background: #355E3B;">
+            <div class="pattern-num" style="color:rgba(244,239,230,0.4);">04</div>
+            <div class="pattern-swatch" style="background:#355E3B; border:1px solid rgba(244,239,230,0.15);"></div>
+            <div class="pattern-name" style="color:var(--cream);">Hunter Green — Results</div>
+          </div>
+          <div class="pattern-row" style="background: #1B2D45;">
+            <div class="pattern-num" style="color:rgba(244,239,230,0.4);">05</div>
+            <div class="pattern-swatch" style="background:#1B2D45; border:1px solid rgba(244,239,230,0.15);"></div>
+            <div class="pattern-name" style="color:var(--cream);">Navy — Polaris / AI</div>
+          </div>
+          <div class="pattern-row" style="background: #F4EFE6;">
+            <div class="pattern-num">06</div>
+            <div class="pattern-swatch" style="background:#F4EFE6; border:1px solid rgba(27,45,69,0.15);"></div>
+            <div class="pattern-name" style="color:var(--navy);">Cream — About</div>
+          </div>
+          <div class="pattern-row" style="background: #1B2D45;">
+            <div class="pattern-num" style="color:rgba(244,239,230,0.4);">07</div>
+            <div class="pattern-swatch" style="background:#1B2D45; border:1px solid rgba(244,239,230,0.15);"></div>
+            <div class="pattern-name" style="color:var(--cream);">Navy — CTA</div>
+          </div>
+          <div class="pattern-row" style="background: #EDE7DB;">
+            <div class="pattern-num">08</div>
+            <div class="pattern-swatch" style="background:#EDE7DB; border:1px solid rgba(27,45,69,0.15);"></div>
+            <div class="pattern-name" style="color:var(--navy);">Cream Warm — Contact</div>
+          </div>
+          <div class="pattern-row" style="background: #1B2D45;">
+            <div class="pattern-num" style="color:rgba(244,239,230,0.4);">09</div>
+            <div class="pattern-swatch" style="background:#1B2D45; border:1px solid rgba(244,239,230,0.15);"></div>
+            <div class="pattern-name" style="color:var(--cream);">Navy — Footer</div>
+          </div>
+        </div>
 
-</div>
+        <h3 class="subsection-heading">Spacing Scale</h3>
+        <div class="spacing-scale">
+          <div class="spacing-row">
+            <div class="spacing-label">xs</div>
+            <div class="spacing-value">0.5rem / 8px</div>
+            <div class="spacing-bar" style="width: 8px;"></div>
+          </div>
+          <div class="spacing-row">
+            <div class="spacing-label">sm</div>
+            <div class="spacing-value">1rem / 16px</div>
+            <div class="spacing-bar" style="width: 16px;"></div>
+          </div>
+          <div class="spacing-row">
+            <div class="spacing-label">md</div>
+            <div class="spacing-value">1.5rem / 24px</div>
+            <div class="spacing-bar" style="width: 24px;"></div>
+          </div>
+          <div class="spacing-row">
+            <div class="spacing-label">lg</div>
+            <div class="spacing-value">2.5rem / 40px</div>
+            <div class="spacing-bar" style="width: 40px;"></div>
+          </div>
+          <div class="spacing-row">
+            <div class="spacing-label">xl</div>
+            <div class="spacing-value">5rem / 80px</div>
+            <div class="spacing-bar" style="width: 80px;"></div>
+          </div>
+          <div class="spacing-row">
+            <div class="spacing-label">2xl</div>
+            <div class="spacing-value">6.25rem / 100px</div>
+            <div class="spacing-bar" style="width: 100px;"></div>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Border Radius</h3>
+        <div class="radius-demo">
+          <div class="radius-box">
+            <div class="radius-shape" style="border-radius: 5px;"></div>
+            <div class="radius-label">Buttons<br/><code>5px</code></div>
+          </div>
+          <div class="radius-box">
+            <div class="radius-shape" style="border-radius: 8px;"></div>
+            <div class="radius-label">Cards<br/><code>8px</code></div>
+          </div>
+          <div class="radius-box">
+            <div class="radius-shape" style="border-radius: 0;"></div>
+            <div class="radius-label">Never<br/><code>pill/50%</code></div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:rgba(27,45,69,0.6);">Never use fully rounded pill buttons for primary CTAs. Stonecutter's aesthetic is precise, not playful.</p>
+
+        <h3 class="subsection-heading">Dot Texture</h3>
+        <p>All sections use a subtle dot grid overlay. It creates depth without visual noise.</p>
+        <div style="background: var(--navy); border-radius: 8px; padding: 2rem; margin: 1rem 0; position:relative; overflow:hidden;">
+          <div style="position:absolute; inset:0; background-image: radial-gradient(circle, rgba(244,239,230,0.07) 1px, transparent 1px); background-size:24px 24px;"></div>
+          <div style="position:relative; z-index:1; font-family:'Cormorant Garamond'; font-size:1.2rem; color:var(--cream); font-weight:400;">
+            Dark section — 7% opacity, 1px dots, 24px spacing
+          </div>
+        </div>
+        <div style="background: var(--cream-warm); border-radius: 8px; padding: 2rem; margin: 1rem 0; border:1px solid rgba(27,45,69,0.08); position:relative; overflow:hidden;">
+          <div style="position:absolute; inset:0; background-image: radial-gradient(circle, rgba(27,45,69,0.06) 1px, transparent 1px); background-size:24px 24px;"></div>
+          <div style="position:relative; z-index:1; font-family:'Cormorant Garamond'; font-size:1.2rem; color:var(--navy); font-weight:400;">
+            Light section — 6% opacity, 1px dots, 24px spacing
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 7: UI COMPONENTS
+      ============================================================ -->
+      <section class="doc-section" id="ui-components">
+        <div class="section-eyebrow">
+          <span class="section-num">07</span>
+          UI Components
+        </div>
+        <h2 class="section-heading">The building blocks</h2>
+
+        <h3 class="subsection-heading">Primary Button</h3>
+        <div class="component-example">
+          <button class="btn-primary">Apply to Work with Us</button>
+        </div>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Background: Navy <code>#1B2D45</code></div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Text: Cream <code>#F4EFE6</code> · Hanken Grotesk · 0.9rem · weight 500 · letter-spacing 0.04em</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Padding: 1rem 2.2rem · Border radius: 5px</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Hover: <code>translateY(-1px)</code> + <code>box-shadow: 0 4px 16px rgba(27,45,69,0.2)</code></div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Never use outline/ghost buttons as primary CTAs</div>
+        </div>
+
+        <h3 class="subsection-heading">Section Label (Eyebrow)</h3>
+        <div class="component-example">
+          <div>
+            <div class="eyebrow-example">About the Agency</div>
+            <div style="font-family:'Cormorant Garamond'; font-size:2rem; color:var(--navy); margin-top:0.5rem;">The operator behind the results</div>
+          </div>
+        </div>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Hanken Grotesk · 0.8rem · weight 500 · letter-spacing 0.12em · uppercase</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Color: Hunter Green on light backgrounds · Cream 50% opacity on dark</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Always placed above the section H2 to signal context</div>
+        </div>
+
+        <h3 class="subsection-heading">Cards</h3>
+        <div class="component-example">
+          <div class="card-example">
+            <div style="font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:0.5rem;">Service</div>
+            <h4>Full-funnel Amazon management</h4>
+            <p>Listings, ads, inventory, and brand protection — all handled in one place, by people who've done it before.</p>
+          </div>
+        </div>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Background: <code>rgba(255,255,255,0.5)</code> on cream sections</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Border: <code>1px solid rgba(27,45,69,0.1)</code></div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Border radius: 8px · Padding: 28-32px</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>No drop shadows — rely on border only</div>
+        </div>
+
+        <h3 class="subsection-heading">Navigation</h3>
+        <div class="component-example" style="padding: 1.5rem;">
+          <div class="nav-example">
+            <div class="nav-ex-logo">Stonecutter</div>
+            <div class="nav-ex-links">
+              <a href="#">Approach</a>
+              <a href="#">Results</a>
+              <a href="#">About</a>
+              <a href="#" class="nav-ex-cta">Apply</a>
+            </div>
+          </div>
+        </div>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Fixed top position · Frosted glass: <code>backdrop-filter: blur(24px)</code></div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Logo: left-aligned wordmark · Links: right-aligned, 0.85rem, slate color</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Scrolled state: more opaque background + subtle shadow</div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 8: PHOTOGRAPHY & IMAGERY
+      ============================================================ -->
+      <section class="doc-section" id="photography">
+        <div class="section-eyebrow">
+          <span class="section-num">08</span>
+          Photography &amp; Imagery
+        </div>
+        <h2 class="section-heading">What we show</h2>
+
+        <h3 class="subsection-heading">Style Direction</h3>
+        <div class="photo-examples">
+          <div class="photo-placeholder" style="border-radius:8px;">Editorial / Workspace</div>
+          <div class="photo-placeholder" style="border-radius:8px;">Portrait</div>
+          <div class="photo-placeholder" style="border-radius:8px;">Detail</div>
+        </div>
+        <div class="color-rules">
+          <div class="color-rule"><div class="color-rule-bullet"></div>Clean, editorial, premium — not lifestyle or stock</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Real people, real work environments — no posed stock photos</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Desaturated or natural tones that complement the navy/cream palette</div>
+          <div class="color-rule"><div class="color-rule-bullet"></div>Headshots: circular crop, warm lighting, professional but approachable</div>
+        </div>
+
+        <h3 class="subsection-heading">What to Avoid</h3>
+        <ul class="logo-donts">
+          <li>Generic stock photos (handshakes, people pointing at laptops)</li>
+          <li>Bright/saturated photos that clash with the cream and navy palette</li>
+          <li>Amazon screenshots in client-facing materials (IP concerns)</li>
+          <li>Brand logos unless explicitly approved by the client</li>
+        </ul>
+
+        <h3 class="subsection-heading">Testimonial Headshots</h3>
+        <div class="photo-circle-row">
+          <div class="photo-circle">Real<br/>Photo</div>
+          <div class="photo-circle">Real<br/>Photo</div>
+          <div class="photo-circle">Real<br/>Photo</div>
+          <div style="font-size:0.82rem; color:rgba(27,45,69,0.55);">Circular crop · 40-60px · Real photos always preferred over illustrations or initials</div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 9: MARKER UNDERLINE
+      ============================================================ -->
+      <section class="doc-section" id="marker-underline">
+        <div class="section-eyebrow">
+          <span class="section-num">09</span>
+          Marker Underline
+        </div>
+        <h2 class="section-heading">The signature element</h2>
+
+        <p>The marker underline is the one signature design element of the Stonecutter brand. A hand-drawn stroke appears beneath a single emotionally loaded word in a headline. It communicates authenticity and draws the eye to what matters most.</p>
+
+        <div class="marker-demo">
+          <div class="marker-headline">
+            <span class="marker-word">Every</span> client came<br/>through a referral.
+          </div>
+          <p style="font-size:0.78rem; color:var(--slate); margin-top:1.5rem; letter-spacing:0.05em; text-transform:uppercase; font-weight:500;">The marker highlights the most loaded word in the sentence</p>
+        </div>
+
+        <h3 class="subsection-heading">Usage Rules</h3>
+        <ul class="logo-donts">
+          <li>Use on ONE word per headline maximum — never two or more</li>
+          <li>Only on the most emotionally loaded word in the sentence</li>
+          <li>Color: Hunter Green tint — not plum, not navy</li>
+          <li>Never animate the marker stroke</li>
+          <li>Use SVG or PNG marker stroke image, not CSS text-decoration underline</li>
+          <li>Scale to match the word width exactly — no overflow, no clipping</li>
+        </ul>
+
+        <p style="margin-top:1.25rem; font-size:0.9rem; color:rgba(27,45,69,0.65);">The marker is a restraint play. Its power comes from rarity. The moment it appears on multiple words or in every section, it loses meaning. Use it once per page maximum.</p>
+      </section>
+
+      <!-- ============================================================
+           SECTION 10: DIGITAL APPLICATIONS
+      ============================================================ -->
+      <section class="doc-section" id="digital-applications">
+        <div class="section-eyebrow">
+          <span class="section-num">10</span>
+          Digital Applications
+        </div>
+        <h2 class="section-heading">Where the brand lives</h2>
+
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-card-icon">
+              <div class="app-icon-inner">W</div>
+            </div>
+            <div class="app-card-title">Website</div>
+            <ul>
+              <li>Live at <a href="https://stonecutter.nyc" target="_blank">stonecutter.nyc</a></li>
+              <li>HTML/CSS — no framework</li>
+              <li>Hosted on Vercel</li>
+              <li>Repo: <a href="https://github.com/Stonecutternyc/stonecutter-website" target="_blank">github.com/Stonecutternyc</a></li>
+            </ul>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon">
+              <div class="app-icon-inner">D</div>
+            </div>
+            <div class="app-card-title">Pitch Deck</div>
+            <ul>
+              <li>HTML version on Vercel</li>
+              <li>PPTX available in repo</li>
+              <li>Always use brand palette</li>
+              <li>Never introduce new colors in presentations</li>
+            </ul>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon" style="background:var(--cream-warm); border:1px solid rgba(27,45,69,0.1);">
+              <div class="favicon-32" style="width:24px; height:24px; border-radius:3px;">
+                <span class="favicon-inner" style="font-size:0.45rem;">S/C</span>
+                <div class="favicon-slash" style="width:1px; height:140%; top:-20%;"></div>
+              </div>
+            </div>
+            <div class="app-card-title">Favicon</div>
+            <ul>
+              <li>S/C monogram with diagonal slash</li>
+              <li>Cream background, navy marks</li>
+              <li>32×32px SVG format</li>
+              <li>Not a wordmark — icon only at this scale</li>
+            </ul>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon" style="background:var(--navy-deep);">
+              <div class="app-icon-inner">@</div>
+            </div>
+            <div class="app-card-title">Email Signature</div>
+            <ul>
+              <li>Name, title in Calibri or Hanken Grotesk</li>
+              <li>stonecutter.nyc linked</li>
+              <li>No logo unless specifically requested</li>
+              <li>Plain text preferred for outreach</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Favicon Reference</h3>
+        <div class="favicon-demo">
+          <div class="favicon-32">
+            <span class="favicon-inner">S/C</span>
+            <div class="favicon-slash"></div>
+          </div>
+          <div style="font-size:0.82rem; color:rgba(27,45,69,0.6);">
+            32×32px · S/C monogram · diagonal slash · Cream bg · Navy marks · SVG format
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Brand Consistency Checklist</h3>
+        <ul class="typo-rule-list">
+          <li>Only Cormorant Garamond and Hanken Grotesk are used — no exceptions</li>
+          <li>No new colors introduced outside the 7-color palette</li>
+          <li>Section backgrounds follow the alternating light/dark pattern</li>
+          <li>All photography is editorial and desaturated — no stock poses</li>
+          <li>The dot texture is present on every section</li>
+          <li>The marker underline appears on one word maximum per page</li>
+          <li>Button text never uses outline/ghost style as a primary CTA</li>
+          <li>No em dashes in any written copy</li>
+        </ul>
+      </section>
+
+      <!-- Footer note -->
+      <div style="text-align:center; padding:2rem 0; border-top:1px solid rgba(27,45,69,0.1);">
+        <div style="font-family:'Cormorant Garamond'; font-size:1rem; color:rgba(27,45,69,0.3); letter-spacing:0.15em; text-transform:uppercase;">Stonecutter NYC</div>
+        <div style="font-size:0.72rem; color:rgba(27,45,69,0.3); margin-top:0.4rem; letter-spacing:0.08em;">Brand Guidelines v1.0 · April 2026 · Internal use only</div>
+      </div>
+
+    </main>
+  </div><!-- /.doc-body -->
+
+  <script>
+    // Sidebar active state on scroll
+    (function() {
+      const sections = document.querySelectorAll('.doc-section[id]');
+      const navLinks = document.querySelectorAll('#sidebar-nav a');
+
+      function onScroll() {
+        let current = '';
+        sections.forEach(section => {
+          const sTop = section.offsetTop - 80;
+          if (window.scrollY >= sTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 
 </body>
 </html>
