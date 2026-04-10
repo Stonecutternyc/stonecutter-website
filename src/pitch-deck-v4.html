@@ -72,6 +72,49 @@ body {
 .bg-cream .slide-footer-num,
 .bg-warm .slide-footer-num { color: var(--navy); }
 
+/* ── Photo Split Slides ── */
+.photo-slide {
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: 42% 1fr;
+  height: 100vh !important;
+  min-height: unset !important;
+  overflow: hidden;
+}
+.photo-slide-img {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.photo-slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.photo-slide-content {
+  padding: 5rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.photo-slide-content .slide-footer {
+  position: absolute;
+  bottom: 2rem;
+  left: 4.5rem;
+  right: 4.5rem;
+}
+.photo-slide.photo-right {
+  grid-template-columns: 1fr 42%;
+}
+.photo-slide.photo-right .photo-slide-img { order: 2; }
+.photo-slide.photo-right .photo-slide-content { order: 1; }
+/* Espresso image is landscape rotated — correct it */
+.espresso-img img { object-position: center top; }
+
 /* Grain texture overlay on dark slides */
 .grain-overlay {
   position: absolute;
@@ -1600,7 +1643,7 @@ p.muted { opacity: 0.6; }
 <!-- Slide 14: Contact -->
 <div class="slide bg-cream photo-slide">
   <div class="photo-slide-img">
-    <img src="deck-images/espresso-wsj.jpg" alt="Morning coffee">
+    <img src="deck-images/espresso-wsj.jpg" alt="Morning coffee" style="object-position: center 30%;">
   </div>
   <div class="photo-slide-content" style="text-align:center; align-items:center; justify-content:center;">
     <div class="label">Let's Connect</div>
